@@ -1,1 +1,0 @@
-/Users/ericwooley/Sites/Wine_App/Wine_App/Resources/ui/tablet/ApplicationWindow.js
