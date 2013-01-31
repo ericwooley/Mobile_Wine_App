@@ -1,0 +1,13 @@
+Logfile initialized
+[INFO] logfile = /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build.log
+[DEBUG] /Users/ericwooley/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py simulator Mobile_Web_App /Applications/android-sdk-macosx /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App com.menplusone.WineApp 2 WVGA854 
+[INFO] Building Mobile_Web_App for Android ... one moment
+[INFO] Titanium SDK version: 3.0.0 (12/12/12 18:49 a5894b3)
+[DEBUG] Waiting for device to be ready ...
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[ERROR] Timed out waiting for emulator to be ready, you may need to close the emulator and try again
