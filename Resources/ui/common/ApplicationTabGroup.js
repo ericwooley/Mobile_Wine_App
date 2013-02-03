@@ -3,11 +3,12 @@ function ApplicationTabGroup(Window) {
 	var self = Ti.UI.createTabGroup();
 	
 	//create app tabs
-	var win1 = new Window(L('Home')),
+	var win1 = new Window(L('Home'), {backgroundColor:"ffdc95"}),
 		win2 = new Window(L('Discover')),
 		win3 = new Window(L('Check-Ins'))
 		win4 = new Window(L('Friends'))
 		win5 = new Window(L('Profile'));
+		
 	
 	var tab1 = Ti.UI.createTab({
 		title: 'Home',

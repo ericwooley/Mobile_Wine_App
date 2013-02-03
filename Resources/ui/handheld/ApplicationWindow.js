@@ -1,14 +1,20 @@
 function ApplicationWindow(title) {
 	var self = Ti.UI.createWindow({
 		title:title,
-		backgroundColor:'white'
+		backgroundColor:Ti.Locale.getString('dark')
 	});
 	
 	var button = Ti.UI.createButton({
 		height:44,
-		width:200,
-		title:L('openWindow'),
-		top:20
+		width:300,
+		title:'Open Window',
+		color: 'black',
+		top:20,
+		borderColor: 'black',
+		borderRadius: 5,
+		borderWidth: 1,
+		backgroundColor: Ti.Locale.getString('lightest'),
+		backgroundImage: 'none'
 	});
 	self.add(button);
 	
