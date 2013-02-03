@@ -1,7 +1,7 @@
 function ApplicationWindow(title) {
 	var self = Ti.UI.createWindow({
 		title:title,
-		backgroundColor:Ti.Locale.getString('dark')
+		backgroundColor: global.colors.dark
 	});
 	
 	var button = Ti.UI.createButton({
@@ -13,7 +13,7 @@ function ApplicationWindow(title) {
 		borderColor: 'black',
 		borderRadius: 5,
 		borderWidth: 1,
-		backgroundColor: Ti.Locale.getString('lightest'),
+		backgroundColor: global.colors.lightest,
 		backgroundImage: 'none'
 	});
 	self.add(button);
@@ -23,7 +23,7 @@ function ApplicationWindow(title) {
 		//the window for this work
 		self.containingTab.open(Ti.UI.createWindow({
 			title: L('newWindow'),
-			backgroundColor: 'white'
+			backgroundColor: global.colors.light
 		}));
 	});
 	

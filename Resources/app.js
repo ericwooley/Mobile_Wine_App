@@ -15,6 +15,21 @@
  * 
  */
 
+/*
+ * Color Theme
+ */
+
+ var global = {};
+ global.colors = {
+ 	lightest: '#ffdc95',
+	lighter:'#ffb36f',
+	light: '#ed5f4a',
+	lessDark: '#c42d30',
+	dark: '#3c0017'
+ }
+
+
+
 //bootstrap and check dependencies
 if (Ti.version < 1.8 ) {
 	alert('Sorry - this application template requires Titanium Mobile SDK 1.8 or later');
