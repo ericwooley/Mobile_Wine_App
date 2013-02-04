@@ -19,6 +19,11 @@
  * Color Theme
  */
 
+/*
+ * I made some changes that pertain to demo branch
+ * 
+ */
+
  var global = {};
  global.colors = {
  	lightest: '#ffdc95',
