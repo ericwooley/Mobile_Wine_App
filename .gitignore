@@ -2,3 +2,5 @@
 tmp
 android/
 iphone/
+.fastdev.lock
+build.log
