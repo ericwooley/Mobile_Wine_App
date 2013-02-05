@@ -6,7 +6,8 @@ function ProfileWindow(title) {
 		backgroundColor: global.colors.lightest
 	});
 	
-
+	// User Image field - upper left of view
+	// Will be populated with image data from user's account in database. 
 	var image = Ti.UI.createImageView({
   		
   		height: 100,
@@ -21,20 +22,51 @@ function ProfileWindow(title) {
 	});
 	self.add(image)
 
+
 	// NEW TEST TEXT FIELD
-	var textArea = Ti.UI.createTextArea({
-  		
-		color: global.colors.dark,
-		font: {fontSize:20, fontWeight:'bold'},
-		keyboardType: Ti.UI.KEYBOARD_NUMBER_PAD,
-		returnKeyType: Ti.UI.RETURNKEY_GO,
-		textAlign: 'left',
-		value: 'I am a textarea',
-		top: 60,
-		width: 300, height : 70
-});
+	var userFullName = Ti.UI.createLabel({
+  		color: global.colors.dark,
+  		font: { fontSize:28 },
+  		//shadowColor: '#aaa',
+  		//shadowOffset: {x:5, y:5},
+  		text: 'User Name',
+  		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  		top: 10,
+  		right: 10,
+ 		width: 'auto', 
+ 		height: 25,
+	});
+	self.add(userFullName)
 
 
+	var aboutMe = Ti.UI.createLabel({
+  		color: global.colors.dark,
+  		font: { fontSize:18 },
+  		//shadowColor: '#aaa',
+  		//shadowOffset: {x:5, y:5},
+  		text: 'About Me',
+  		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  		top: 40,
+  		right: 10,
+ 		width: 'auto', 
+ 		//height: 'auto',
+	});
+	self.add(aboutMe)
+
+
+	var aboutMe_Text = Ti.UI.createLabel({
+  		color: global.colors.dark,
+  		font: { fontSize:12 },
+  		//shadowColor: '#aaa',
+  		//shadowOffset: {x:5, y:5},
+  		text: 'About me text goes here... ',
+  		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  		top: 60,
+  		right: 10,
+ 		width: 'auto', 
+ 		height: 'auto',
+	});
+	self.add(aboutMe_Text)
 
 
 	return self;
