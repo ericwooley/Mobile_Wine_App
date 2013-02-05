@@ -21,6 +21,19 @@ function ProfileWindow(title) {
 	});
 	self.add(image)
 
+	// NEW TEST TEXT FIELD
+	var textArea = Ti.UI.createTextArea({
+  		
+		color: global.colors.dark,
+		font: {fontSize:20, fontWeight:'bold'},
+		keyboardType: Ti.UI.KEYBOARD_NUMBER_PAD,
+		returnKeyType: Ti.UI.RETURNKEY_GO,
+		textAlign: 'left',
+		value: 'I am a textarea',
+		top: 60,
+		width: 300, height : 70
+});
+
 
 
 
