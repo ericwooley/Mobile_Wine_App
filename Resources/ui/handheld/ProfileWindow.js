@@ -2,7 +2,8 @@ function ProfileWindow(title) {
 	var global = require('ui/common/globals');
 	var self = Ti.UI.createWindow({
 		title:title,
-		backgroundColor: global.colors.dark
+		barColor: global.colors.dark,
+		backgroundColor: global.colors.lightest
 	});
 	
 	var button = Ti.UI.createButton({
