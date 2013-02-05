@@ -1,10 +1,10 @@
-function LoginWindow(title) {
+function LoginWindow() {
 	var global = require('ui/common/globals');
 	
 	var self = Ti.UI.createWindow({
-		title:title,
-		barColor: global.colors.dark,
-		backgroundColor: global.colors.lightest
+		title:"Login to Wine Life",
+		backgroundColor: global.colors.lightest,
+		exitOnClose: true
 	});
 	
 	var Body = global.elements.SimpleView('vertical');
@@ -45,6 +45,8 @@ function LoginWindow(title) {
 	   	message: 'User would now attempt to login: '+ username + ' ' + pw
 	   });
 	   dia.show();
+	   self.exitOnClose = false;
+	   self.close();
 	});	
 	
 	var loginForm = global.elements.SimpleView('vertical');
