@@ -1,4 +1,5 @@
 function CheckInsWindow(title) {
+	var global = require('ui/common/globals');
 	var self = Ti.UI.createWindow({
 		title:title,
 		backgroundColor: global.colors.dark
@@ -7,7 +8,7 @@ function CheckInsWindow(title) {
 	var button = Ti.UI.createButton({
 		height:44,
 		width:300,
-		title:'Open Window',
+		title:'Check Ins Window',
 		color: 'black',
 		top:20,
 		borderColor: 'black',

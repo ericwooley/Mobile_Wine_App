@@ -1,23 +1,22 @@
 function HomeWindow(title) {
+	var global = require('ui/common/globals');
+	
 	var self = Ti.UI.createWindow({
 		title:title,
-		//backgroundColor: global.colors.dark
-	});
-	
-	self = global.elements.SetTitleBar(self);
-	
-	var pageTitle = Ti.UI.createLabel({
-		text: 'This is the home page'
+		barColor: global.colors.dark,
+		backgroundColor: global.colors.lightest
 	});
 	//Head.add(pageTitle);
 	
 	var Body = global.elements.SimpleView();
-	Body.add(pageTitle);
-	Body.add(global.elements.SimpleLabel("This is the Home Content."));
+	//Body.add(global.elements.SimpleLabel("This is the Home Content."));
 	
-	self.add(Body);
+	Body.add(global.elements.SimpleLabel("This is some home content"));
 	
-	//self.add(Head);	
+	Body.add(global.elements.SimpleLabel("This is some More content"));
+	
+	
+	self.add(Body);	
 	
 	return self;
 };

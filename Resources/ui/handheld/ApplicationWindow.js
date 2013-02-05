@@ -1,4 +1,5 @@
 function ApplicationWindow(title) {
+	var global = require('ui/common/globals');
 	var self = Ti.UI.createWindow({
 		title:title,
 		backgroundColor: global.colors.dark

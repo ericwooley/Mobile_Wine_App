@@ -1,4 +1,6 @@
 function ApplicationTabGroup() {
+	global = require('ui/common/globals');
+	
 	//create module instance
 	var self = Ti.UI.createTabGroup();
 	
