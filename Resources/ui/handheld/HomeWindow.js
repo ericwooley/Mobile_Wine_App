@@ -1,10 +1,10 @@
 function HomeWindow(title) {
 	var self = Ti.UI.createWindow({
 		title:title,
-		backgroundColor: global.colors.dark
+		//backgroundColor: global.colors.dark
 	});
 	
-	var Head = global.elements.SimpleView();
+	self = global.elements.SetTitleBar(self);
 	
 	var pageTitle = Ti.UI.createLabel({
 		text: 'This is the home page'

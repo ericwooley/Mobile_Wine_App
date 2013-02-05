@@ -35,8 +35,10 @@
  
  global.elements = {
  	SimpleView: require('ui/common/elements/SimpleView'),
- 	SimpleLabel: require('ui/common/elements/SimpleLabel')
+ 	SimpleLabel: require('ui/common/elements/SimpleLabel'),
+ 	SetTitleBar: require('ui/common/elements/SetTitleBar')
  }
+
 
 
  
