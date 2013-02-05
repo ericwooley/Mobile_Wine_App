@@ -6,12 +6,23 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.015393 seconds on emulator to get ready
+[DEBUG] waited 0.080288 seconds on emulator to get ready
 [DEBUG] com.menplusone.WineApp installed? True
 [INFO] Fastdev server running, deploying in Fastdev mode
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
+[TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/app.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/app.js
+[TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/ui/common/ApplicationTabGroup.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/ApplicationTabGroup.js
+[TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/ui/common/elements/SetTitleBar.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/elements/SetTitleBar.js
 [TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/ui/common/elements/SimpleLabel.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/elements/SimpleLabel.js
+[TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/ui/common/elements/SimpleView.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/elements/SimpleView.js
+[TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/ui/common/globals.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/globals.js
+[TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/ui/handheld/ApplicationWindow.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/ApplicationWindow.js
+[TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/ui/handheld/CheckInsWindow.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/CheckInsWindow.js
+[TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/ui/handheld/DiscoverWindow.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/DiscoverWindow.js
+[TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/ui/handheld/FriendsWindow.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/FriendsWindow.js
+[TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/ui/handheld/HomeWindow.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/HomeWindow.js
+[TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/ui/handheld/ProfileWindow.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/ProfileWindow.js
 [INFO] Tiapp.xml unchanged, skipping class generation
 [DEBUG] Processing Android resource drawables
 [DEBUG] found drawable-long-land-hdpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-long-land-hdpi/default.png
@@ -29,3 +40,4 @@ Logfile initialized
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.menplusone.WineApp/.Mobile_web_appActivity }
 Warning: Activity not started, its current task has been brought to the front
 
+[INFO] Relaunched Mobile_Web_App ... Application should be running.

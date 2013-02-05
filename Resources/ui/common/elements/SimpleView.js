@@ -1,4 +1,4 @@
-function SimpleView(){
+function SimpleView(layout){
 	var global = require('ui/common/globals');
 	var self = Ti.UI.createView({
 		width: '100%',
@@ -6,7 +6,7 @@ function SimpleView(){
 		top: 0,
 		left: 0,
 		backgroundColor: 'transparent',
-		layout: 'vertical'
+		layout: layout
 	});
 	
 	return self;

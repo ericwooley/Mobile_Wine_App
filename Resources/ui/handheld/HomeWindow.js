@@ -6,14 +6,40 @@ function HomeWindow(title) {
 		barColor: global.colors.dark,
 		backgroundColor: global.colors.lightest
 	});
-	//Head.add(pageTitle);
 	
-	var Body = global.elements.SimpleView();
-	//Body.add(global.elements.SimpleLabel("This is the Home Content."));
+	var Body = global.elements.SimpleView('vertical');
+	Body.add(global.elements.SimpleLabel("Login to use this page"));
+	var usernameTextField = Ti.UI.createTextField({
+		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+  		color: '#336699',
+  		top: 15,
+  		width: '80%',
+  		hintText: 'Username'
+	});
+	var passwordTextField = Ti.UI.createTextField({
+		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+  		color: '#336699',
+  		width: '80%',
+  		top: 15,
+  		hintText: 'password',
+  		passwordMask: true
+	});
+	var loginButton = Ti.UI.createButton({
+		title: 'Login',
+		top: 15,
+		width: '80%'
+		
+	});
+	var loginForm = global.elements.SimpleView('vertical');
 	
-	Body.add(global.elements.SimpleLabel("This is some home content"));
 	
-	Body.add(global.elements.SimpleLabel("This is some More content"));
+	
+	loginForm.add(usernameTextField);
+	loginForm.add(passwordTextField);
+	loginForm.add(loginButton);
+	
+	Body.add(loginForm);
+	
 	
 	
 	self.add(Body);	
