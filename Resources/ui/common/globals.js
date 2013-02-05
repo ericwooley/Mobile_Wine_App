@@ -1,4 +1,4 @@
-// My common global variables.
+
 
 module.exports  =
 {
@@ -23,12 +23,11 @@ module.exports.GVUpdate   = function(inValue, inName)
 };
 
 /* Usage Example
-	var VARS  = require('/common/globals');
+	var global  = require('ui/common/globals');
 	
-	alert(VARS.GV.variable1);
-	alert(VARS.GV.variable3);
+	alert(global.colors.lightest);
 	
-	VARS.GVUpdate('www.thewarpedcoder.net', 'variable3');
+	global.GVUpdate('www.thewarpedcoder.net', 'variable3');
 	
 	alert(VARS.GV.variable3);
  */
