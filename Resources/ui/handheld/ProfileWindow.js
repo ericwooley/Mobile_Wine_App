@@ -14,9 +14,7 @@ function ProfileWindow(title) {
   		top: 10,
   		left: 10,
   		borderColor: 'black',
-		//borderRadius: ,
 		borderWidth: 1,
-  		//hires: true,
   		contentMode: 'aspectfill',
   		clipsToBounds: false,
   		image:'/images/user_image.png',
@@ -25,32 +23,7 @@ function ProfileWindow(title) {
 
 
 
-	/*
-	var button = Ti.UI.createButton({
-		height:44,
-		width:300,
-		title:'Profile Window',
-		color: 'black',
-		top:20,
-		borderColor: 'black',
-		borderRadius: 5,
-		borderWidth: 1,
-		backgroundColor: global.colors.lightest,
-		backgroundImage: 'none'
-	});
-	self.add(button);
-	
-	
-	
-	button.addEventListener('click', function() {
-		//containingTab attribute must be set by parent tab group on
-		//the window for this work
-		self.containingTab.open(Ti.UI.createWindow({
-			title: L('newWindow'),
-			backgroundColor: global.colors.light
-		}));
-	});
-	*/
+
 	return self;
 };
 
