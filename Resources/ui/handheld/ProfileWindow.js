@@ -2,7 +2,8 @@ function ProfileWindow(title) {
 	var global = require('ui/common/globals');
 	var self = Ti.UI.createWindow({
 		title:title,
-		backgroundColor: global.colors.dark
+		backgroundColor: global.colors.dark,
+		exitOnClose: true
 	});
 	
 	var button = Ti.UI.createButton({
@@ -26,6 +27,8 @@ function ProfileWindow(title) {
 			title: L('newWindow'),
 			backgroundColor: global.colors.light
 		}));
+		self.exitOnClose = false;
+		self.close();
 	});
 	
 	return self;

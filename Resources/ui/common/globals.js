@@ -17,10 +17,6 @@ module.exports  =
 	 }
 };
 
-module.exports.GVUpdate   = function(inValue, inName)
-{
-    this.GV[inName]    =     inValue;
-};
 
 /* Usage Example
 	var global  = require('ui/common/globals');
@@ -31,3 +27,7 @@ module.exports.GVUpdate   = function(inValue, inName)
 	
 	alert(VARS.GV.variable3);
  */
+
+module.exports.userIsLoggedIn = function(){
+	return true;
+}
