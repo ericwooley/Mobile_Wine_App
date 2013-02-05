@@ -14,12 +14,12 @@ function ProfileWindow(title) {
   		top: 10,
   		left: 10,
   		borderColor: 'black',
-		borderRadius: 5,
+		//borderRadius: ,
 		borderWidth: 1,
   		//hires: true,
   		contentMode: 'aspectfill',
-  		clipsToBounds: true,
-  		image:'/images/github-logo.png',
+  		clipsToBounds: false,
+  		image:'/images/user_image.png',
 	});
 	self.add(image)
 
