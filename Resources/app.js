@@ -32,6 +32,11 @@
 	lessDark: '#c42d30',
 	dark: '#3c0017'
  }
+ 
+ global.elements = {
+ 	SimpleView: require('ui/common/elements/SimpleView'),
+ 	SimpleLabel: require('ui/common/elements/SimpleLabel')
+ }
 
 
  
@@ -52,7 +57,7 @@ if (Ti.version < 1.8 ) {
 	//yourself what you consider a tablet form factor for android
 	var isTablet = osname === 'ipad' || (osname === 'android' && (width > 899 || height > 899));
 	
-	var Window = require('ui/handheld/ApplicationWindow');
+	//var Window = require('ui/handheld/ApplicationWindow');
 	/* if (isTablet) {
 		Window = require('ui/tablet/ApplicationWindow');
 	}
@@ -61,5 +66,5 @@ if (Ti.version < 1.8 ) {
 	}*/
 	
 	var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
-	new ApplicationTabGroup(Window).open();
+	new ApplicationTabGroup().open();
 })();

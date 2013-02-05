@@ -1,14 +1,13 @@
-function ApplicationTabGroup(Window) {
+function ApplicationTabGroup() {
 	//create module instance
 	var self = Ti.UI.createTabGroup();
 	
 	//create app tabs
-	var win1 = new Window(L('Home')),
-		win2 = new Window(L('Discover')),
-		win3 = new Window(L('Check-Ins'))
-		win4 = new Window(L('Friends'))
-		win5 = new Window(L('Profile'));
-		
+	var win1 = require('ui/handheld/HomeWindow')('Home'),
+		win2 = require('ui/handheld/DiscoverWindow')('Discover'),//new Window(L('Discover')),
+		win3 = require('ui/handheld/CheckInsWindow')('Check-Ins'),//new Window(L('Check-Ins'))
+		win4 = require('ui/handheld/FriendsWindow')('Friends'),//new Window(L('Friends'))
+		win5 = require('ui/handheld/ProfileWindow')('Profile')//new Window(L('Profile'));
 	
 	var tab1 = Ti.UI.createTab({
 		title: 'Home',
