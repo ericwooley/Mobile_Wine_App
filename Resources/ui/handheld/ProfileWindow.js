@@ -6,6 +6,26 @@ function ProfileWindow(title) {
 		backgroundColor: global.colors.lightest
 	});
 	
+
+	var image = Ti.UI.createImageView({
+  		
+  		height: 100,
+  		width: 100,
+  		top: 10,
+  		left: 10,
+  		borderColor: 'black',
+		borderRadius: 5,
+		borderWidth: 1,
+  		//hires: true,
+  		contentMode: 'aspectfill',
+  		clipsToBounds: true,
+  		image:'/images/github-logo.png',
+	});
+	self.add(image)
+
+
+
+	/*
 	var button = Ti.UI.createButton({
 		height:44,
 		width:300,
@@ -20,6 +40,8 @@ function ProfileWindow(title) {
 	});
 	self.add(button);
 	
+	
+	
 	button.addEventListener('click', function() {
 		//containingTab attribute must be set by parent tab group on
 		//the window for this work
@@ -28,7 +50,7 @@ function ProfileWindow(title) {
 			backgroundColor: global.colors.light
 		}));
 	});
-	
+	*/
 	return self;
 };
 
