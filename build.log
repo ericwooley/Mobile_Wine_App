@@ -6,12 +6,20 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
+<<<<<<< HEAD
 [DEBUG] waited 0.017809 seconds on emulator to get ready
+=======
+[DEBUG] waited 0.015214 seconds on emulator to get ready
+>>>>>>> 1d51a232cd4b15c857889d34277202c539387376
 [DEBUG] com.menplusone.WineApp installed? True
 [INFO] Fastdev server running, deploying in Fastdev mode
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
+<<<<<<< HEAD
 [TRACE] COPYING MODIFIED FILE: /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/Resources/ui/handheld/ProfileWindow.js => /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/ProfileWindow.js
+=======
+[TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/app.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/app.js
+>>>>>>> 1d51a232cd4b15c857889d34277202c539387376
 [INFO] Tiapp.xml unchanged, skipping class generation
 [DEBUG] Processing Android resource drawables
 [DEBUG] found drawable-long-land-hdpi splash screen at /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/Resources/android/images/res-long-land-hdpi/default.png
@@ -27,7 +35,6 @@ Logfile initialized
 [INFO] Re-launching application ... Mobile_Web_App
 [INFO] Launching application ... Mobile_Web_App
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.menplusone.WineApp/.Mobile_web_appActivity }
-Warning: Activity not started, its current task has been brought to the front
 
 [INFO] Forwarding host port 54011 to device for debugging.
 [INFO] Android Emulator has exited

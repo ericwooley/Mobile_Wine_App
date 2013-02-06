@@ -6,6 +6,7 @@ if (Ti.version < 1.8 ) {
 
 // This is a single context application with mutliple windows in a stack
 (function() {
+	var global = require('ui/common/globals');
 	//determine platform and form factor and render approproate components
 	var osname = Ti.Platform.osname,
 		version = Ti.Platform.version,
@@ -24,6 +25,16 @@ if (Ti.version < 1.8 ) {
 		Window = require('ui/handheld/ApplicationWindow');
 	}*/
 	
-	var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
-	new ApplicationTabGroup().open();
+	
+	
+	// This will open up a window that keeps the others hidden until the user is logged in.
+	if(global.userIsLoggedIn()){
+		var loginWindow = require('ui/handheld/Login')();
+		loginWindow.open();
+	}
+	else
+	{
+		var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
+		new ApplicationTabGroup().open();
+	}
 })();
