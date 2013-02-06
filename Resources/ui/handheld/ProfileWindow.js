@@ -34,7 +34,7 @@ function ProfileWindow(title) {
   		top: 10,
   		right: 10,
  		width: 'auto', 
- 		height: 25,
+ 		//height: 25,
 	});
 	self.add(userFullName)
 
@@ -46,7 +46,7 @@ function ProfileWindow(title) {
   		//shadowOffset: {x:5, y:5},
   		text: 'About Me',
   		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-  		top: 40,
+  		top: 40 + userFullName.getBottom,
   		right: 10,
  		width: 'auto', 
  		//height: 'auto',
