@@ -47,6 +47,8 @@ function LoginWindow() {
 	   dia.show();
 	   self.exitOnClose = false;
 	   self.close();
+	   var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
+	   new ApplicationTabGroup().open();
 	});	
 	
 	var loginForm = global.elements.SimpleView('vertical');
