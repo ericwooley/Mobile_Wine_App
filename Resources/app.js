@@ -25,13 +25,16 @@ if (Ti.version < 1.8 ) {
 		Window = require('ui/handheld/ApplicationWindow');
 	}*/
 	
-	var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
-	new ApplicationTabGroup().open();
+	
 	
 	// This will open up a window that keeps the others hidden until the user is logged in.
 	if(global.userIsLoggedIn()){
 		var loginWindow = require('ui/handheld/Login')();
 		loginWindow.open();
 	}
-	
+	else
+	{
+		var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
+		new ApplicationTabGroup().open();
+	}
 })();
