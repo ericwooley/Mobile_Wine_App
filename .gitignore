@@ -4,3 +4,4 @@ android/
 iphone/
 .fastdev.lock
 build.log
+*.log
