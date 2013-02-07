@@ -7,19 +7,26 @@ Logfile initialized
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
 <<<<<<< HEAD
+<<<<<<< HEAD
 [DEBUG] waited 0.017809 seconds on emulator to get ready
 =======
 [DEBUG] waited 0.015214 seconds on emulator to get ready
 >>>>>>> 1d51a232cd4b15c857889d34277202c539387376
+=======
+[DEBUG] waited 0.014938 seconds on emulator to get ready
+>>>>>>> build log annoyance
 [DEBUG] com.menplusone.WineApp installed? True
 [INFO] Fastdev server running, deploying in Fastdev mode
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
 <<<<<<< HEAD
+<<<<<<< HEAD
 [TRACE] COPYING MODIFIED FILE: /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/Resources/ui/handheld/ProfileWindow.js => /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/ProfileWindow.js
 =======
 [TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/app.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/app.js
 >>>>>>> 1d51a232cd4b15c857889d34277202c539387376
+=======
+>>>>>>> build log annoyance
 [INFO] Tiapp.xml unchanged, skipping class generation
 [DEBUG] Processing Android resource drawables
 [DEBUG] found drawable-long-land-hdpi splash screen at /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/Resources/android/images/res-long-land-hdpi/default.png
