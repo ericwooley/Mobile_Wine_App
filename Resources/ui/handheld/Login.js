@@ -100,13 +100,6 @@ function LoginWindow() {
 	   var pw = passwordTextField.value;
 	   
 	   global.register(email, pw);
-	   
-	   /*
-	   self.exitOnClose = false;
-	   self.close();
-	   var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
-	   new ApplicationTabGroup().open();
-	   */
 	});	
 	function validateFields(e){ 
 		
