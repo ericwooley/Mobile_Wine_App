@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> 51a1206d3621f7e7de737faffe7d17c727a38582
 module.exports  =
 {
 	colors: {
@@ -36,7 +31,7 @@ module.exports.userIsLoggedIn = function()
 	return true;
 }
 
-<<<<<<< HEAD
+
 
 //  GLOBAL CREATE WINDOW FUNCTION
 //  One change here will change basic window properties on all windows.
@@ -55,7 +50,7 @@ function createWindow(title){
 module.exports.createWindow = createWindow;
 //	End Function
 	
-=======
+
 module.exports.login = function(email, password)
 {
 	Ti.API.info(email + ' ' + password)
@@ -123,4 +118,4 @@ module.exports.register = function(email, password)
     };  
     loginReq.send(params);
 }
->>>>>>> 51a1206d3621f7e7de737faffe7d17c727a38582
+
