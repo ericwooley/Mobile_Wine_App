@@ -1,10 +1,18 @@
+//	***********************************************
+//	WINE LIFE
+//	PROFILE WINDOW  - ProfileWindow.js
+//	
+//	MEN+1
+//	DAVID WELLS
+//	***********************************************
+
+
 function ProfileWindow(title) {
 	var global = require('ui/common/globals');
-	var self = Ti.UI.createWindow({
-		title:title,
-		barColor: global.colors.dark,
-		backgroundColor: global.colors.lightest
-	});
+	
+	// Creates the default window with global color scheme
+	var self = global.createWindow(title);
+	
 	
 	// User Image field - upper left of view
 	// Will be populated with image data from user's account in database. 
@@ -19,6 +27,7 @@ function ProfileWindow(title) {
   		contentMode: 'aspectfill',
   		clipsToBounds: false,
   		image:'/images/user_image.png',
+  		layout:'vertical'
 	});
 	self.add(image)
 
@@ -67,6 +76,9 @@ function ProfileWindow(title) {
  		height: 'auto',
 	});
 	self.add(aboutMe_Text)
+	
+	
+	
 
 
 	return self;

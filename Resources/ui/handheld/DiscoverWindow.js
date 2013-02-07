@@ -1,9 +1,7 @@
 function DiscoverWindow(title) {
 	var global = require('ui/common/globals');
-	var self = Ti.UI.createWindow({
-		title:title,
-		backgroundColor: global.colors.dark
-	});
+	// Creates the default window with global color scheme
+	var self = global.createWindow(title);
 	
 	var button = Ti.UI.createButton({
 		height:44,

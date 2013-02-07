@@ -1,3 +1,4 @@
+
 module.exports  =
 {
 	colors: {
@@ -29,6 +30,25 @@ module.exports.userIsLoggedIn = function()
 {
 	return true;
 }
+
+
+
+//  GLOBAL CREATE WINDOW FUNCTION
+//  One change here will change basic window properties on all windows.
+//  *******************************************************************
+function createWindow(title){
+	
+	var self = Ti.UI.createWindow({
+		title:title,
+		barColor: global.colors.dark,
+		backgroundColor: global.colors.lightest
+	});
+	
+	return self;
+}
+
+module.exports.createWindow = createWindow;
+//	End Function
 
 module.exports.login = function(email, password)
 {
@@ -97,3 +117,4 @@ module.exports.register = function(email, password)
     };  
     loginReq.send(params);
 }
+
