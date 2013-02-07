@@ -74,6 +74,7 @@ function LoginWindow() {
 		width: '80%',
 		enabled: false
 	});
+	
 	loginButton.addEventListener('click',function(e)
 	{
 	   Titanium.API.info("User Login Pressed");
@@ -91,6 +92,22 @@ function LoginWindow() {
 	   */
 	});	
 	
+	registerButton.addEventListener('click', function(e)
+	{
+	   Titanium.API.info("User Register Pressed");
+	   
+	   var email = emailTextField.value;
+	   var pw = passwordTextField.value;
+	   
+	   global.register(email, pw);
+	   
+	   /*
+	   self.exitOnClose = false;
+	   self.close();
+	   var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
+	   new ApplicationTabGroup().open();
+	   */
+	});	
 	function validateFields(e){ 
 		
 		// Email regex
@@ -105,6 +122,8 @@ function LoginWindow() {
 			loginButton.enabled = false;
 			registerButton.enabled = false;
 		}
+		
+		
 	}
 	
 	emailTextField.addEventListener('change', validateFields);
