@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 51a1206d3621f7e7de737faffe7d17c727a38582
 module.exports  =
 {
 	colors: {
@@ -15,10 +18,9 @@ module.exports  =
 		SimpleView: require('ui/common/elements/SimpleView'),
 		SimpleLabel: require('ui/common/elements/SimpleLabel'),
 		SetTitleBar: require('ui/common/elements/SetTitleBar')
-	 }
+	},
+	httpInterface: Ti.Network.createHTTPClient()
 };
-
-
 /* Usage Example
 	var global  = require('ui/common/globals');
 	
@@ -29,10 +31,12 @@ module.exports  =
 	alert(VARS.GV.variable3);
  */
 
-module.exports.userIsLoggedIn = function(){
+module.exports.userIsLoggedIn = function()
+{
 	return true;
 }
 
+<<<<<<< HEAD
 
 //  GLOBAL CREATE WINDOW FUNCTION
 //  One change here will change basic window properties on all windows.
@@ -51,3 +55,72 @@ function createWindow(title){
 module.exports.createWindow = createWindow;
 //	End Function
 	
+=======
+module.exports.login = function(email, password)
+{
+	Ti.API.info(email + ' ' + password)
+	var loginReq = module.exports.httpInterface;
+	
+	loginReq.onload = function()
+	{
+		Ti.API.info('Loaded');
+		var json = this.responseText;
+		Ti.API.info(json);
+		var response = JSON.parse(json);
+		if (response.success == true)
+		{
+			var dialog = Ti.UI.createAlertDialog({
+				title: "User Logged In"
+			});
+			dialog.show();
+		}
+		else
+		{
+			var dialog = Ti.UI.createAlertDialog({
+				title: "Email/Password incorrect"
+			});
+			dialog.show();
+		}
+	};
+	loginReq.open("POST","http://winelife.ericwooley.com/login/user_login/");  
+    var params = {  
+        email: email,  
+        password: password  
+    };  
+    loginReq.send(params);
+}
+
+module.exports.register = function(email, password)
+{
+	Ti.API.info(email + ' ' + password)
+	var loginReq = module.exports.httpInterface;
+	
+	loginReq.onload = function()
+	{
+		Ti.API.info('Loaded');
+		var json = this.responseText;
+		Ti.API.info(json);
+		var response = JSON.parse(json);
+		if (response.success == true)
+		{
+			var dialog = Ti.UI.createAlertDialog({
+				title: "User was created"
+			});
+			dialog.show();
+		}
+		else
+		{
+			var dialog = Ti.UI.createAlertDialog({
+				title: "invalid Email or password"
+			});
+			dialog.show();
+		}
+	};
+	loginReq.open("POST","http://winelife.ericwooley.com/login/create_user/");  
+    var params = {  
+        email: email,  
+        password: password  
+    };  
+    loginReq.send(params);
+}
+>>>>>>> 51a1206d3621f7e7de737faffe7d17c727a38582
