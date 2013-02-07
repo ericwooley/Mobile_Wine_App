@@ -1,4 +1,6 @@
 
+
+
 module.exports  =
 {
 	colors: {
@@ -16,6 +18,7 @@ module.exports  =
 	},
 	httpInterface: Ti.Network.createHTTPClient()
 };
+module.exports.config = require('ui/common/config');
 /* Usage Example
 	var global  = require('ui/common/globals');
 	

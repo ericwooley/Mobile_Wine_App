@@ -5,3 +5,4 @@ iphone/
 .fastdev.lock
 build.log
 *.log
+ui/common/config.js
