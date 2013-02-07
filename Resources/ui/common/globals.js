@@ -1,5 +1,14 @@
 
 
+/* Usage Example
+	var global  = require('ui/common/globals');
+	
+	alert(global.colors.lightest);
+	
+	global.GVUpdate('www.thewarpedcoder.net', 'variable3');
+	
+	alert(VARS.GV.variable3);
+ */
 
 module.exports  =
 {
@@ -19,15 +28,6 @@ module.exports  =
 	httpInterface: Ti.Network.createHTTPClient()
 };
 module.exports.config = require('ui/common/config');
-/* Usage Example
-	var global  = require('ui/common/globals');
-	
-	alert(global.colors.lightest);
-	
-	global.GVUpdate('www.thewarpedcoder.net', 'variable3');
-	
-	alert(VARS.GV.variable3);
- */
 
 module.exports.userIsLoggedIn = function()
 {
@@ -43,8 +43,8 @@ function createWindow(title){
 	
 	var self = Ti.UI.createWindow({
 		title:title,
-		barColor: global.colors.dark,
-		backgroundColor: global.colors.lightest
+		barColor: module.exports.colors.dark,
+		backgroundColor: module.exports.colors.lightest
 	});
 	
 	return self;
