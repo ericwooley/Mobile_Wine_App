@@ -37,7 +37,6 @@ module.exports.login = function(email, password)
 	
 	loginReq.onload = function()
 	{
-		
 		Ti.API.info('Loaded');
 		var json = this.responseText;
 		Ti.API.info(json);
@@ -58,6 +57,40 @@ module.exports.login = function(email, password)
 		}
 	};
 	loginReq.open("POST","http://winelife.ericwooley.com/login/user_login/");  
+    var params = {  
+        email: email,  
+        password: password  
+    };  
+    loginReq.send(params);
+}
+
+module.exports.register = function(email, password)
+{
+	Ti.API.info(email + ' ' + password)
+	var loginReq = module.exports.httpInterface;
+	
+	loginReq.onload = function()
+	{
+		Ti.API.info('Loaded');
+		var json = this.responseText;
+		Ti.API.info(json);
+		var response = JSON.parse(json);
+		if (response.success == true)
+		{
+			var dialog = Ti.UI.createAlertDialog({
+				title: "User was created"
+			});
+			dialog.show();
+		}
+		else
+		{
+			var dialog = Ti.UI.createAlertDialog({
+				title: "invalid Email or password"
+			});
+			dialog.show();
+		}
+	};
+	loginReq.open("POST","http://winelife.ericwooley.com/login/create_user/");  
     var params = {  
         email: email,  
         password: password  
