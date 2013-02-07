@@ -26,11 +26,50 @@ function LoginWindow() {
   		hintText: 'password',
   		passwordMask: true
 	});
+	
+	var showPWtext = Ti.UI.createLabel({
+		text: 'Show Password: ',
+		width: '50%',
+		textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT
+	})
+	var showPWbox = Ti.UI.createSwitch({
+    	title:"Show Password",
+    	value:false,
+    	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
+    	
+	});
+	
+	var showPWview = Ti.UI.createView({
+		width: '100%',
+		height: Ti.UI.SIZE,
+		layout: 'horizontal'
+	});
+	
+	showPWview.add(showPWtext);
+	showPWview.add(showPWbox);
+	
+	showPWbox.addEventListener('change', function(e){
+		passwordTextField.passwordMask = !e.value;
+		Ti.API.info(!e.value);
+	});
+	
+	
+	
 	var loginButton = Ti.UI.createButton({
 		title: 'Login',
 		top: 15,
 		width: '80%'
 		
+	});
+	var orLabel = Ti.UI.createLabel({
+		text: '-- or --',
+		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+		top: 25
+	});
+	var registerButton = Ti.UI.createButton({
+		title:'Register',
+		top: 25,
+		width: '80%'
 	});
 	loginButton.addEventListener('click',function(e)
 	{
@@ -39,17 +78,13 @@ function LoginWindow() {
 	   var username = emailTextField.value;
 	   var pw = passwordTextField.value;
 	   
-	   var dia = Ti.UI.createAlertDialog(
-	   {
-	   	title: 'User Login Pressed',
-	   	message: 'User would now attempt to login: '+ username + ' ' + pw
-	   });
-	   dia.show();
 	   self.exitOnClose = false;
 	   self.close();
 	   var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
 	   new ApplicationTabGroup().open();
 	});	
+	
+	
 	
 	var loginForm = global.elements.SimpleView('vertical');
 	
@@ -57,7 +92,10 @@ function LoginWindow() {
 	
 	loginForm.add(emailTextField);
 	loginForm.add(passwordTextField);
+	loginForm.add(showPWview);
 	loginForm.add(loginButton);
+	loginForm.add(orLabel);
+	loginForm.add(registerButton);
 	Body.add(loginForm);
 	self.add(Body);	
 	

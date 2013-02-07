@@ -1,48 +1,36 @@
 Logfile initialized
-[INFO] logfile = /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/build.log
-[DEBUG] /Users/TheDavid/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py simulator Mobile_Web_App /Users/TheDavid/android-sdk /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App com.menplusone.WineApp 8 WVGA854 /127.0.0.1:54011
+[INFO] logfile = /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build.log
+[DEBUG] /Users/ericwooley/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py simulator Mobile_Web_App /Applications/android-sdk-macosx /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App com.menplusone.WineApp 2 WVGA854 
 [INFO] Building Mobile_Web_App for Android ... one moment
 [INFO] Titanium SDK version: 3.0.0 (12/12/12 18:49 a5894b3)
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-<<<<<<< HEAD
-<<<<<<< HEAD
-[DEBUG] waited 0.017809 seconds on emulator to get ready
-=======
-[DEBUG] waited 0.015214 seconds on emulator to get ready
->>>>>>> 1d51a232cd4b15c857889d34277202c539387376
-=======
-[DEBUG] waited 0.014938 seconds on emulator to get ready
->>>>>>> build log annoyance
+[DEBUG] waited 0.021625 seconds on emulator to get ready
 [DEBUG] com.menplusone.WineApp installed? True
 [INFO] Fastdev server running, deploying in Fastdev mode
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-<<<<<<< HEAD
-<<<<<<< HEAD
-[TRACE] COPYING MODIFIED FILE: /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/Resources/ui/handheld/ProfileWindow.js => /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/ProfileWindow.js
-=======
-[TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/app.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/app.js
->>>>>>> 1d51a232cd4b15c857889d34277202c539387376
-=======
->>>>>>> build log annoyance
+[TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/ui/handheld/Login.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/Login.js
 [INFO] Tiapp.xml unchanged, skipping class generation
 [DEBUG] Processing Android resource drawables
-[DEBUG] found drawable-long-land-hdpi splash screen at /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/Resources/android/images/res-long-land-hdpi/default.png
-[DEBUG] found drawable-long-land-ldpi splash screen at /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/Resources/android/images/res-long-land-ldpi/default.png
-[DEBUG] found drawable-long-port-hdpi splash screen at /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/Resources/android/images/res-long-port-hdpi/default.png
-[DEBUG] found drawable-long-port-ldpi splash screen at /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/Resources/android/images/res-long-port-ldpi/default.png
-[DEBUG] found drawable-notlong-land-hdpi splash screen at /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/Resources/android/images/res-notlong-land-hdpi/default.png
-[DEBUG] found drawable-notlong-land-ldpi splash screen at /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/Resources/android/images/res-notlong-land-ldpi/default.png
-[DEBUG] found drawable-notlong-land-mdpi splash screen at /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/Resources/android/images/res-notlong-land-mdpi/default.png
-[DEBUG] found drawable-notlong-port-hdpi splash screen at /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/Resources/android/images/res-notlong-port-hdpi/default.png
-[DEBUG] found drawable-notlong-port-ldpi splash screen at /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/Resources/android/images/res-notlong-port-ldpi/default.png
-[DEBUG] found drawable-notlong-port-mdpi splash screen at /Users/TheDavid/Documents/Titanium_Studio_Workspace/Mobile_Wine_App/Resources/android/images/res-notlong-port-mdpi/default.png
+[DEBUG] found drawable-long-land-hdpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-long-land-hdpi/default.png
+[DEBUG] found drawable-long-land-ldpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-long-land-ldpi/default.png
+[DEBUG] found drawable-long-port-hdpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-long-port-hdpi/default.png
+[DEBUG] found drawable-long-port-ldpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-long-port-ldpi/default.png
+[DEBUG] found drawable-notlong-land-hdpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-notlong-land-hdpi/default.png
+[DEBUG] found drawable-notlong-land-ldpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-notlong-land-ldpi/default.png
+[DEBUG] found drawable-notlong-land-mdpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-notlong-land-mdpi/default.png
+[DEBUG] found drawable-notlong-port-hdpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-notlong-port-hdpi/default.png
+[DEBUG] found drawable-notlong-port-ldpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-notlong-port-ldpi/default.png
+[DEBUG] found drawable-notlong-port-mdpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-notlong-port-mdpi/default.png
 [INFO] Re-launching application ... Mobile_Web_App
 [INFO] Launching application ... Mobile_Web_App
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.menplusone.WineApp/.Mobile_web_appActivity }
 
+<<<<<<< HEAD
 [INFO] Forwarding host port 54011 to device for debugging.
 [INFO] Android Emulator has exited
 [INFO] Android Emulator has exited
+=======
+>>>>>>> Added Register button
