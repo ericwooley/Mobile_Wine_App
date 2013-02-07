@@ -44,7 +44,8 @@ function createWindow(title){
 	var self = Ti.UI.createWindow({
 		title:title,
 		barColor: module.exports.colors.dark,
-		backgroundColor: module.exports.colors.lightest
+		backgroundColor: module.exports.colors.lightest,
+		backgroundImage:'images/lightpaperfibers.png'
 	});
 	
 	return self;
