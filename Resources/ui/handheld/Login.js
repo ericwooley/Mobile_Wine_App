@@ -23,20 +23,19 @@ function LoginWindow() {
   		color: '#336699',
   		width: '80%',
   		top: 15,
-  		hintText: 'password',
+  		hintText: 'Password',
   		passwordMask: true
 	});
 	
 	var showPWtext = Ti.UI.createLabel({
 		text: 'Show Password: ',
-		width: '50%',
+		width: '55%',
 		textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT
 	})
 	var showPWbox = Ti.UI.createSwitch({
     	title:"Show Password",
     	value:false,
-    	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
-    	
+    	left: 10
 	});
 	
 	var showPWview = Ti.UI.createView({
@@ -50,6 +49,8 @@ function LoginWindow() {
 	
 	showPWbox.addEventListener('change', function(e){
 		passwordTextField.passwordMask = !e.value;
+		if(Ti.Platform.osname == 'iphone' || Ti.Platform.osname == 'ipad')
+			showPWbox.enabled = false;
 		Ti.API.info(!e.value);
 	});
 	
@@ -62,13 +63,13 @@ function LoginWindow() {
 		
 	});
 	var orLabel = Ti.UI.createLabel({
-		text: '-- or --',
+		text: 'or',
 		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-		top: 25
+		top: 10
 	});
 	var registerButton = Ti.UI.createButton({
 		title:'Register',
-		top: 25,
+		top: 10,
 		width: '80%'
 	});
 	loginButton.addEventListener('click',function(e)
@@ -92,10 +93,10 @@ function LoginWindow() {
 	
 	loginForm.add(emailTextField);
 	loginForm.add(passwordTextField);
-	loginForm.add(showPWview);
 	loginForm.add(loginButton);
 	loginForm.add(orLabel);
 	loginForm.add(registerButton);
+	loginForm.add(showPWview);
 	Body.add(loginForm);
 	self.add(Body);	
 	
