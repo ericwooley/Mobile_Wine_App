@@ -3,7 +3,7 @@
 //	PROFILE WINDOW  - ProfileWindow.js
 //	
 //	MEN+1
-//	DAVID WELLS
+//	Programmer:  David Wells
 //	***********************************************
 
 
@@ -14,7 +14,7 @@ function ProfileWindow(title) {
 	var self = global.createWindow(title);
 	
 	
-	// User Image field - upper left of view
+	// USER IMAGE - upper left of view
 	// Will be populated with image data from user's account in database. 
 	var image = Ti.UI.createImageView({
   		
