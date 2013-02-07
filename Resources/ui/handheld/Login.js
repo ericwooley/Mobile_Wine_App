@@ -1,12 +1,6 @@
 function LoginWindow() {
 	var global = require('ui/common/globals');
 	
-	/*var self = Ti.UI.createWindow({
-		title:"Login to Wine Life",
-		backgroundColor: global.colors.lightest,
-		exitOnClose: true
-	});*/
-	
 	var self = global.createWindow("Login");
 	self.navBarHidden = true;
 	

@@ -26,7 +26,7 @@ if (Ti.version < 1.8 ) {
 	}*/
 	Ti.API.info(JSON.stringify(global.config));
 	// This will open up a window that keeps the others hidden until the user is logged in.
-	if(global.config.requireLogin){
+	if(global.config.requireLogin && !global.userIsLoggedIn()){
 		var loginWindow = require('ui/handheld/Login')();
 		loginWindow.open();
 	}
