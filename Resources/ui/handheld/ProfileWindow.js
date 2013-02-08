@@ -30,9 +30,22 @@ function ProfileWindow(title) {
   		layout:'vertical'
 	});
 	self.add(image)
+	
+	
+	//  SCROLL VIEW
+	//  Attempting to get the whole view to scroll as "Recent Check-ins" grow.
+	var scroll_view = Ti.UI.createScrollView({
+   		height:200,
+    	width:200,
+    	/* left & right work too */
+    	contentHeight:'auto',
+    	contentWidth:'auto',
+    	scrollType: 'vertical'
+	});
+	self.add(scroll_view)
 
 
-	// NEW TEST TEXT FIELD
+	// USER NAME TEXT FIELD
 	var userFullName = Ti.UI.createLabel({
   		color: global.colors.dark,
   		font: { fontSize:28 },
@@ -47,7 +60,7 @@ function ProfileWindow(title) {
 	});
 	self.add(userFullName)
 
-
+	// ABOUT ME TITLE FIELD
 	var aboutMe = Ti.UI.createLabel({
   		color: global.colors.dark,
   		font: { fontSize:18 },
@@ -62,7 +75,7 @@ function ProfileWindow(title) {
 	});
 	self.add(aboutMe)
 
-
+	// ABOUT ME TEXT FIELD
 	var aboutMe_Text = Ti.UI.createLabel({
   		color: global.colors.dark,
   		font: { fontSize:12 },
