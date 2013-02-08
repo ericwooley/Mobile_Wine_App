@@ -34,7 +34,10 @@ module.exports.userIsLoggedIn = function()
 {
 	return true;
 }
-
+// Global create setting buttons function
+function createSettingsButton(){
+	
+}
 
 //  GLOBAL CREATE WINDOW FUNCTION
 //  One change here will change basic window properties on all windows.
@@ -50,6 +53,23 @@ function createWindow(title){
 		backgroundImage:'images/lightpaperfibers.png'
 	});
 	
+	var settingsButton = Ti.UI.createImageView(
+	{	
+		height: 30,
+		width: 30,
+		top: 0,
+		right: 0,
+		borderColor: 'black',
+		borderWidth: 0,
+		contentMode: 'aspectfill',
+		clipsToBounds: false,
+		image:'/images/gearIconCrop.png',
+		layout:'vertical'
+	});
+	settingsButton.addEventListener('click', function(){
+		Ti.API.info('Settigns button clicked');
+	});
+	self.add(settingsButton);
 	return self;
 }
 

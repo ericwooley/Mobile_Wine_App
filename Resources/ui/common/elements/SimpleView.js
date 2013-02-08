@@ -3,7 +3,7 @@ function SimpleView(layout){
 	var self = Ti.UI.createView({
 		width: '100%',
 		height: '100%',
-		top: 0,
+		top: 20,
 		left: 0,
 		backgroundColor: 'transparent',
 		layout: layout
