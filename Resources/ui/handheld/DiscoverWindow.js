@@ -32,30 +32,37 @@ for (var i = 0; i < 10; i++) {
   		layout:'vertical'
 	});
 	
-	var label = Ti.UI.createLabel({
-		left: image.right,
-		text: 'Wine Type',
-		top:10,
-		height:15
-	
+	// This is the Label for the location of the wine within the row
+	var lbl_location = Ti.UI.createLabel({
+		left:'40%',
+		bottom:10,
+		text: "Wine Location",
+		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'}
 	});
 	
-	var label2 = Ti.UI.createLabel({
-		left: image.right,
-		top:label.bottom,
-		text: 'Wine Place'
+		// This is the label of the type of wine within the row
+	var lbl_type = Ti.UI.createLabel({
+		left:'40%',
+		text: 'Wine Type',
+		bottom:lbl_location.top,
+		font:{fontSize:18,fontWeight:'bold',fontFamily:'Helvetica Neue'}
+	
 	});
 
-	var button = Ti.UI.createButton({
-		right: 10,
-		height: 30,
-		width: 80,
-		title: 'press me'
+	// This is the Label for the location of the wine within the row
+	var lbl_date = Ti.UI.createLabel({
+		right:5,
+		top:5,
+		text: "Date",
+		font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'}
 	});
-	row.add(label);
+
+
+	
 	row.add(image);
-	row.add(button);
-	row.add(label2);
+	row.add(lbl_location);
+	row.add(lbl_type);
+	row.add(lbl_date);
 	tbl_data.push(row);
 }
 // now assign that array to the table's data property to add those objects as rows
@@ -63,7 +70,7 @@ var table = Titanium.UI.createTableView({
 	backgroundColor:'transparent',
 	top:0,
 	width:'100%',
-	height:'75%',
+	height:'73%',
 	
 	data:tbl_data
 });
