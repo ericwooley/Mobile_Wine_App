@@ -91,19 +91,25 @@ function LoginWindow() {
 	
 	loginButton.addEventListener('click',function(e)
 	{
-	   Titanium.API.info("User Login Pressed");
-	   
-	   var email = emailTextField.value;
-	   var pw = passwordTextField.value;
-	   
-	   global.login(email, pw);
-	   
-	   /*
-	   self.exitOnClose = false;
-	   self.close();
-	   var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
-	   new ApplicationTabGroup().open();
-	   */
+		Titanium.API.info("User Login Pressed");
+		   
+		var email = emailTextField.value;
+		var pw = passwordTextField.value;
+		if(Ti.Network.networkType == Ti.Network.NETWORK_NONE){
+			var dialog = Ti.UI.createAlertDialog({
+				title: "Connectivity Error",
+				message: "An active internet connection is required"
+			});
+			dialog.show();
+		}
+		else
+			global.login(email, pw);
+		/*
+		self.exitOnClose = false;
+		self.close();
+		var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
+		new ApplicationTabGroup().open();
+		*/
 	});	
 	
 	registerButton.addEventListener('click', function(e)
@@ -160,6 +166,9 @@ function LoginWindow() {
 	Body.add(loginForm);
 	self.add(Body);	
 	
+	Ti.addEventListener('user_login', function(e){
+		
+	});
 
 	
 	return self;

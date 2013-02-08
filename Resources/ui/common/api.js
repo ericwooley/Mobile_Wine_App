@@ -1,16 +1,24 @@
 global = require('ui/common/globals');
 
-module.exports.login = function(email, password){
+module.exports.login = function(email, password, callback){
 	
 	Ti.addEventListener('data_returned', function(e){
 		
 	});
-	getResponse('http://winelife.ericwooley.com/login/user_login/', {email: email, password:password});
+	getResponse('http://winelife.ericwooley.com/login/user_login/', {email: email, password:password}, callback);
 }
 
 
 function getResponse(url, data){
 	var server = global.httpInterface;
+	if(Ti.Network.networkType == Ti.Network.NETWORK_NONE){
+		var dialog = Ti.UI.createAlertDialog({
+			title: "Connectivity Error",
+			message: "An active internet connection is required"
+		});
+		dialog.show();
+		return;
+	}
 	var response;
 	server.onload = function()
 	{
