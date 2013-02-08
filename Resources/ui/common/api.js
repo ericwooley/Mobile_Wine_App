@@ -1,8 +1,22 @@
-//global = require('ui/common/globals');
 
 module.exports.login = function(email, password, callback){
 	getResponse('http://winelife.ericwooley.com/login/user_login/', {email: email, password:password}, callback);
 }
+
+module.exports.register = function(email, password, callback){
+	getResponse('http://winelife.ericwooley.com/login/create_user/', {email: email, password:password}, callback);
+}
+
+
+
+
+
+
+
+/* The following is generic function to send data to the server, then get a response. 
+ * You shouldn't need to use this, unless you want to form a custom request, use the functions
+ * above for typical requests
+ */
 var server = Ti.Network.createHTTPClient();
 module.exports.httpInterface = server;
 function getResponse(url, data, callback){
@@ -15,10 +29,16 @@ function getResponse(url, data, callback){
 		return;
 	}
 	var response;
+	var dia = Ti.UI.createAlertDialog({
+		title: "Please Wait:",
+		message: "connecting to server..."
+	});
+	dia.show();
 	server.onload = function()
 	{
 		var json = this.responseText;
 		response = JSON.parse(json);
+		dia.hide();
 		callback(response);
 	}
 	server.open('POST', url);

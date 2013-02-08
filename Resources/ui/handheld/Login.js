@@ -89,53 +89,42 @@ function LoginWindow() {
 		enabled: false
 	});
 	
+	
+	// User is attempting to login.
 	loginButton.addEventListener('click',function(e)
-	{
-		Titanium.API.info("User Login Pressed");
-		   
+	{	   
 		var email = emailTextField.value;
 		var pw = passwordTextField.value;
-		if(Ti.Network.networkType == Ti.Network.NETWORK_NONE){
-			var dialog = Ti.UI.createAlertDialog({
-				title: "Connectivity Error",
-				message: "An active internet connection is required"
-			});
-			dialog.show();
-		}
-		else
-			global.api.login(email, pw, function(response){
-				if(response.error)
-				{
-					var dialog = Ti.UI.createAlertDialog({
-						title: "Login Response",
-						message: response.error
-					});
-					dialog.show();
-				}
-				else
-				{
-					self.close();
-					var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
-					new ApplicationTabGroup().open();
-				}
-				Ti.API.info(JSON.stringify(response));
-			});
-		/*
-		self.exitOnClose = false;
-		self.close();
-		var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
-		new ApplicationTabGroup().open();
-		*/
+		global.api.login(email, pw, function(response){
+			if(response.error)
+			{
+				var dialog = Ti.UI.createAlertDialog({
+					title: "Login Response",
+					message: response.error
+				});
+				dialog.show();
+			}
+			else
+			{
+				self.close();
+				var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
+				new ApplicationTabGroup().open();
+			}
+			Ti.API.info(JSON.stringify(response));
+		});
 	});	
 	
+	// User is attempting to register
 	registerButton.addEventListener('click', function(e)
 	{
-	   Titanium.API.info("User Register Pressed");
 	   
 	   var email = emailTextField.value;
 	   var pw = passwordTextField.value;
 	   
-	   global.register(email, pw);
+	   global.api.register(email, pw, function(response){
+	   		Ti.API.info("user is attempting to register");
+	   		Ti.API.info(JSON.stringify(response));
+	   });
 	   
 	});	
 	var fieldHints = Ti.UI.createLabel({
