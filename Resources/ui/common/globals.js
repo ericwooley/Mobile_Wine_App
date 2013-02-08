@@ -35,6 +35,7 @@ module.exports.userIsLoggedIn = function()
 	return true;
 }
 
+
 //  GLOBAL CREATE WINDOW FUNCTION
 //  One change here will change basic window properties on all windows.
 //  *******************************************************************
@@ -42,6 +43,8 @@ function createWindow(title){
 	
 	var self = Ti.UI.createWindow({
 		title:title,
+		height:'100%',
+		width: '100%',
 		barColor: module.exports.colors.dark,
 		backgroundColor: module.exports.colors.lightest,
 		backgroundImage:'images/lightpaperfibers.png'
