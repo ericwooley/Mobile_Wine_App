@@ -1,30 +1,88 @@
 Logfile initialized
-[INFO] logfile = /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build.log
-[DEBUG] /Users/ericwooley/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py simulator Mobile_Web_App /Applications/android-sdk-macosx /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App com.menplusone.WineApp 2 WVGA854 
+[INFO] logfile = /Users/Mattius/WineApp/Mobile_Wine_App/build.log
+[DEBUG] /Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py simulator Mobile_Web_App /Users/Mattius/AndroidSDK /Users/Mattius/WineApp/Mobile_Wine_App com.menplusone.WineApp 2 WVGA854 
 [INFO] Building Mobile_Web_App for Android ... one moment
 [INFO] Titanium SDK version: 3.0.0 (12/12/12 18:49 a5894b3)
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
-[DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.021625 seconds on emulator to get ready
-[DEBUG] com.menplusone.WineApp installed? True
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[DEBUG] Device connected... (waited 15 seconds)
+[DEBUG] waited 15.148703 seconds on emulator to get ready
+[INFO] Waiting for the Android Emulator to become available
+[ERROR] Timed out waiting for android.process.acore
+[DEBUG] com.menplusone.WineApp installed? False
 [INFO] Fastdev server running, deploying in Fastdev mode
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/ui/handheld/Login.js => /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/Login.js
-[INFO] Tiapp.xml unchanged, skipping class generation
+[INFO] Detected change in tiapp.xml, or assets deleted. Forcing full re-build...
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/appicon.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/appicon.png
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/default.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/default.png
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/app.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/app.js
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/images/github-logo.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/images/github-logo.png
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/images/KS_nav_ui.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/images/KS_nav_ui.png
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/images/KS_nav_views.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/images/KS_nav_views.png
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/images/lightpaperfibers.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/images/lightpaperfibers.png
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/images/user_image.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/images/user_image.png
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/KS_nav_ui.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/KS_nav_ui.png
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/KS_nav_views.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/KS_nav_views.png
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/common/api.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/api.js
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/common/ApplicationTabGroup.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/ApplicationTabGroup.js
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/common/config.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/config.js
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/common/elements/SetTitleBar.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/elements/SetTitleBar.js
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/common/elements/SimpleLabel.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/elements/SimpleLabel.js
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/common/elements/SimpleView.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/elements/SimpleView.js
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/common/globals.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/globals.js
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/ApplicationWindow.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/ApplicationWindow.js
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/CheckInsWindow.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/CheckInsWindow.js
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/DiscoverWindow.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/DiscoverWindow.js
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/FriendsWindow.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/FriendsWindow.js
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/HomeWindow.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/HomeWindow.js
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/Login.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/Login.js
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/ProfileWindow.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/ProfileWindow.js
+[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/tablet/ApplicationWindow.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/tablet/ApplicationWindow.js
+[TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
-[DEBUG] found drawable-long-land-hdpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-long-land-hdpi/default.png
-[DEBUG] found drawable-long-land-ldpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-long-land-ldpi/default.png
-[DEBUG] found drawable-long-port-hdpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-long-port-hdpi/default.png
-[DEBUG] found drawable-long-port-ldpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-long-port-ldpi/default.png
-[DEBUG] found drawable-notlong-land-hdpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-notlong-land-hdpi/default.png
-[DEBUG] found drawable-notlong-land-ldpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-notlong-land-ldpi/default.png
-[DEBUG] found drawable-notlong-land-mdpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-notlong-land-mdpi/default.png
-[DEBUG] found drawable-notlong-port-hdpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-notlong-port-hdpi/default.png
-[DEBUG] found drawable-notlong-port-ldpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-notlong-port-ldpi/default.png
-[DEBUG] found drawable-notlong-port-mdpi splash screen at /Users/ericwooley/Dropbox/school/2013s/cs355/Wine_App/Mobile_Wine_App/Resources/android/images/res-notlong-port-mdpi/default.png
-[INFO] Re-launching application ... Mobile_Web_App
-[INFO] Launching application ... Mobile_Web_App
-[TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.menplusone.WineApp/.Mobile_web_appActivity }
-
+[TRACE] COPYING FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-land-hdpi/default.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-long-land-hdpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-land-ldpi/default.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-long-land-ldpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-port-hdpi/default.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-long-port-hdpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-port-ldpi/default.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-long-port-ldpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-hdpi/default.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-land-hdpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-ldpi/default.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-land-ldpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-mdpi/default.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-land-mdpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-hdpi/default.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-port-hdpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-ldpi/default.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-port-ldpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-mdpi/default.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-port-mdpi/default_d44e27d97b.png
+[DEBUG] app stylesheet => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/ApplicationStylesheet.java
+[DEBUG] copying app icon: /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/appicon.png
+[DEBUG] generating theme.xml
+[DEBUG] found drawable-long-land-hdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-land-hdpi/default.png
+[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-land-hdpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-long-land-hdpi/background.png
+[DEBUG] found drawable-long-land-ldpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-land-ldpi/default.png
+[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-land-ldpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-long-land-ldpi/background.png
+[DEBUG] found drawable-long-port-hdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-port-hdpi/default.png
+[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-port-hdpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-long-port-hdpi/background.png
+[DEBUG] found drawable-long-port-ldpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-port-ldpi/default.png
+[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-port-ldpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-long-port-ldpi/background.png
+[DEBUG] found drawable-notlong-land-hdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-hdpi/default.png
+[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-hdpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-land-hdpi/background.png
+[DEBUG] found drawable-notlong-land-ldpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-ldpi/default.png
+[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-ldpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-land-ldpi/background.png
+[DEBUG] found drawable-notlong-land-mdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-mdpi/default.png
+[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-mdpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-land-mdpi/background.png
+[DEBUG] found drawable-notlong-port-hdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-hdpi/default.png
+[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-hdpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-port-hdpi/background.png
+[DEBUG] found drawable-notlong-port-ldpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-ldpi/default.png
+[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-ldpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-port-ldpi/background.png
+[DEBUG] found drawable-notlong-port-mdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-mdpi/default.png
+[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-mdpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-port-mdpi/background.png
+[DEBUG] found splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/default.png
+[TRACE] Writing out AndroidManifest.xml
+[DEBUG] adding /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/ApplicationStylesheet.java to javac build list
+[DEBUG] adding /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appActivity.java to javac build list
+[DEBUG] adding /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appAppInfo.java to javac build list
+[DEBUG] adding /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appApplication.java to javac build list
+[DEBUG] adding /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/R.java to javac build list
+[DEBUG] Building Java Sources: "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/ApplicationStylesheet.java" "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appActivity.java" "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appAppInfo.java" "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appApplication.java" "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/R.java"
+[INFO] Waiting for SDCard to become available..
