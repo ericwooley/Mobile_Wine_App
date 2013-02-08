@@ -114,6 +114,15 @@ module.exports.register = function(email, password)
 			dialog.show();
 		}
 	};
+	
+	loginReq.onerror = function(e){
+		Ti.API.info('error');
+		var dialog = Ti.UI.createAlertDialog({
+			title: "Connection Error",
+			message: e.value
+		});
+		dialog.show();
+	}
 	loginReq.open("POST","http://winelife.ericwooley.com/login/create_user/");  
     var params = {  
         email: email,  

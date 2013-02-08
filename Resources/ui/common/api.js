@@ -2,6 +2,10 @@ global = require('ui/common/globals');
 
 module.exports.login = function(email, password){
 	
+	Ti.addEventListener('data_returned', function(e){
+		
+	});
+	getResponse('http://winelife.ericwooley.com/login/user_login/', {email: email, password:password});
 }
 
 
@@ -12,6 +16,7 @@ function getResponse(url, data){
 	{
 		var json = this.responseText;
 		response = JSON.parse(json);
+		Ti.fireEvent('data_returned', response);
 	}
 	server.open('POST', url);
 	server.send(data);
