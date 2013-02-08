@@ -24,17 +24,16 @@ module.exports  =
 		SimpleView: require('ui/common/elements/SimpleView'),
 		SimpleLabel: require('ui/common/elements/SimpleLabel'),
 		SetTitleBar: require('ui/common/elements/SetTitleBar')
-	},
-	httpInterface: Ti.Network.createHTTPClient()
+	}
 };
+
 module.exports.config = require('ui/common/config');
+module.exports.api = require('ui/common/api');
 
 module.exports.userIsLoggedIn = function()
 {
 	return true;
 }
-
-
 
 //  GLOBAL CREATE WINDOW FUNCTION
 //  One change here will change basic window properties on all windows.

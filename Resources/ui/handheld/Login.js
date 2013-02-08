@@ -103,7 +103,23 @@ function LoginWindow() {
 			dialog.show();
 		}
 		else
-			global.login(email, pw);
+			global.api.login(email, pw, function(response){
+				if(response.error)
+				{
+					var dialog = Ti.UI.createAlertDialog({
+						title: "Login Response",
+						message: response.error
+					});
+					dialog.show();
+				}
+				else
+				{
+					self.close();
+					var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
+					new ApplicationTabGroup().open();
+				}
+				Ti.API.info(JSON.stringify(response));
+			});
 		/*
 		self.exitOnClose = false;
 		self.close();
