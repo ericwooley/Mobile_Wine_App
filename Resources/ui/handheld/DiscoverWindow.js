@@ -19,7 +19,7 @@ for (var i = 0; i < 10; i++) {
 		hasChild:true
 		
 	});
-	
+	// This image will be the image of the wine
 		var image = Ti.UI.createImageView({ 		
   		height: 90,
   		width: 90,
@@ -37,7 +37,8 @@ for (var i = 0; i < 10; i++) {
 		left:'40%',
 		bottom:10,
 		text: "Wine Location",
-		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'}
+		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+		touchEnabled:false
 	});
 	
 		// This is the label of the type of wine within the row
@@ -45,7 +46,8 @@ for (var i = 0; i < 10; i++) {
 		left:'40%',
 		text: 'Wine Type',
 		bottom:lbl_location.top,
-		font:{fontSize:18,fontWeight:'bold',fontFamily:'Helvetica Neue'}
+		font:{fontSize:18,fontWeight:'bold',fontFamily:'Helvetica Neue'},
+		touchEnabled:false
 	
 	});
 
@@ -54,7 +56,8 @@ for (var i = 0; i < 10; i++) {
 		right:5,
 		top:5,
 		text: "Date",
-		font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'}
+		font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+		touchEnabled:false
 	});
 
 
@@ -65,7 +68,7 @@ for (var i = 0; i < 10; i++) {
 	row.add(lbl_date);
 	tbl_data.push(row);
 }
-// now assign that array to the table's data property to add those objects as rows
+// This is the tableview
 var table = Titanium.UI.createTableView({
 	backgroundColor:'transparent',
 	top:0,
@@ -82,7 +85,6 @@ var table = Titanium.UI.createTableView({
 		height:'20%',
 		width:'42%',
 		left:20,
-		//title:'Browse by Color',
 		color: 'black',
 		bottom:10,
 		borderColor: 'black',
@@ -114,7 +116,6 @@ var table = Titanium.UI.createTableView({
 		height:'20%',
 		width:'42%',
 		right:20,
-		//title:'Browse by Style',
 		textAlign:'center',
 		color: 'black',
 		bottom:10,
