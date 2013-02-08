@@ -12,11 +12,52 @@ function DiscoverWindow(title) {
 	var self = global.createWindow(title);
 	
 // create an array of anonymous objects
-var tbl_data = [
-	{title:'Row 1'},
-	{title:'Row 2'},
-	{title:'Row 3'}
-];
+// Create an array of explicitly defined custom TableViewRows
+var tbl_data = [];
+for (var i = 0; i < 10; i++) {
+	var row = Ti.UI.createTableViewRow({
+		hasChild:true
+		
+	});
+	
+		var image = Ti.UI.createImageView({ 		
+  		height: 90,
+  		width: 90,
+  		left: 10,
+  		borderColor: 'black',
+		borderWidth: 1,
+  		contentMode: 'aspectfill',
+  		clipsToBounds: false,
+  		image:'/images/user_image.png',
+  		layout:'vertical'
+	});
+	
+	var label = Ti.UI.createLabel({
+		left: image.right,
+		text: 'Wine Type',
+		top:10,
+		height:15
+	
+	});
+	
+	var label2 = Ti.UI.createLabel({
+		left: image.right,
+		top:label.bottom,
+		text: 'Wine Place'
+	});
+
+	var button = Ti.UI.createButton({
+		right: 10,
+		height: 30,
+		width: 80,
+		title: 'press me'
+	});
+	row.add(label);
+	row.add(image);
+	row.add(button);
+	row.add(label2);
+	tbl_data.push(row);
+}
 // now assign that array to the table's data property to add those objects as rows
 var table = Titanium.UI.createTableView({
 	backgroundColor:'transparent',
