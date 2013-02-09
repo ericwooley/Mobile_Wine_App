@@ -35,6 +35,7 @@ for (var i = 0; i < 10; i++) {
 	// This is the Label for the location of the wine within the row
 	var lbl_location = Ti.UI.createLabel({
 		left:'40%',
+		color:'black',
 		bottom:10,
 		text: "Wine Location",
 		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'},
@@ -44,6 +45,7 @@ for (var i = 0; i < 10; i++) {
 		// This is the label of the type of wine within the row
 	var lbl_type = Ti.UI.createLabel({
 		left:'40%',
+		color:'black',
 		text: 'Wine Type',
 		bottom:lbl_location.top,
 		font:{fontSize:18,fontWeight:'bold',fontFamily:'Helvetica Neue'},
@@ -55,6 +57,7 @@ for (var i = 0; i < 10; i++) {
 	var lbl_date = Ti.UI.createLabel({
 		right:5,
 		top:5,
+		color:'black',
 		text: "Date",
 		font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
 		touchEnabled:false

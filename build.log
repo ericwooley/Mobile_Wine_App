@@ -1,23 +1,18 @@
 Logfile initialized
 [INFO] logfile = /Users/Mattius/WineApp/Mobile_Wine_App/build.log
-[DEBUG] /Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py simulator Mobile_Web_App /Users/Mattius/AndroidSDK /Users/Mattius/WineApp/Mobile_Wine_App com.menplusone.WineApp 2 WVGA854 
+[DEBUG] /Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py simulator Mobile_Web_App /Users/Mattius/AndroidSDK /Users/Mattius/WineApp/Mobile_Wine_App com.menplusone.WineApp 2 WVGA854 /127.0.0.1:56424
 [INFO] Building Mobile_Web_App for Android ... one moment
 [INFO] Titanium SDK version: 3.0.0 (12/12/12 18:49 a5894b3)
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[DEBUG] Device connected... (waited 30 seconds)
-[DEBUG] waited 30.227217 seconds on emulator to get ready
-[INFO] Waiting for the Android Emulator to become available
+[DEBUG] Device connected... (waited 0 seconds)
+[DEBUG] waited 0.067654 seconds on emulator to get ready
 [DEBUG] com.menplusone.WineApp installed? True
 [INFO] Fastdev server running, deploying in Fastdev mode
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
+[TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/common/api.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/api.js
+[TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/common/globals.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/globals.js
 [TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/DiscoverWindow.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/DiscoverWindow.js
 [INFO] Tiapp.xml unchanged, skipping class generation
 [DEBUG] Processing Android resource drawables
@@ -31,8 +26,10 @@ Logfile initialized
 [DEBUG] found drawable-notlong-port-hdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-hdpi/default.png
 [DEBUG] found drawable-notlong-port-ldpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-ldpi/default.png
 [DEBUG] found drawable-notlong-port-mdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-mdpi/default.png
-[INFO] Waiting for SDCard to become available..
 [INFO] Re-launching application ... Mobile_Web_App
 [INFO] Launching application ... Mobile_Web_App
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.menplusone.WineApp/.Mobile_web_appActivity }
+Warning: Activity not started, its current task has been brought to the front
 
+[INFO] Forwarding host port 56424 to device for debugging.
+[DEBUG] signal caught: 15
