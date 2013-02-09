@@ -9,6 +9,8 @@ function HomeWindow(title) {
 	Body.add(global.elements.SimpleLabel("This is the home page"));
 	self.add(Body);
 	
+	
+	global.outputHook(self);
 	return self;
 };
 

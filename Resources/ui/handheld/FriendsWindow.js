@@ -25,7 +25,7 @@ function FriendsWindow(title) {
 			backgroundColor: global.colors.light
 		}));
 	});
-	
+	global.outputHook(self);
 	return self;
 };
 

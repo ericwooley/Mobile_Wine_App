@@ -175,7 +175,7 @@ function LoginWindow() {
 		
 	});
 
-	
+	//global.outputHook(self);
 	return self;
 };
 

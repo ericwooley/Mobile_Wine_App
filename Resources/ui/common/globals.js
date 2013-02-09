@@ -53,6 +53,17 @@ function createWindow(title){
 		backgroundImage:'images/lightpaperfibers.png'
 	});
 	
+
+	
+	return self;
+}
+
+module.exports.createWindow = createWindow;
+//	End Function
+
+// This should be the last function called before the window is put on the screen.
+// This allows us to add layers ontop of all the content, like the settings button.
+function outputHook(win){
 	var settingsButton = Ti.UI.createImageView(
 	{	
 		height: 30,
@@ -66,13 +77,17 @@ function createWindow(title){
 		image:'/images/gearIconCrop.png',
 		layout:'vertical'
 	});
-	settingsButton.addEventListener('click', function(){
-		Ti.API.info('Settigns button clicked');
+	//settingsButton.addEventListener('click', function(){
+	//	alert('Settings button was pushed');
+	//});
+	win.add(settingsButton);
+	settingsButton.addEventListener('click', function() {
+		//containingTab attribute must be set by parent tab group on
+		//the window for this work
+		win.containingTab.open(Ti.UI.createWindow({
+			title: L('Settings'),
+			backgroundImage: 'images/lightpaperfibers.png'
+		}));
 	});
-	self.add(settingsButton);
-	return self;
 }
-
-module.exports.createWindow = createWindow;
-//	End Function
-
+module.exports.outputHook = outputHook;

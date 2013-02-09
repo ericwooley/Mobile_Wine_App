@@ -93,7 +93,7 @@ function ProfileWindow(title) {
 	
 	
 
-
+	global.outputHook(self);
 	return self;
 };
 
