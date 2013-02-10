@@ -107,8 +107,8 @@ function ProfileWindow(title) {
   		//shadowColor: '#aaa',
   		//shadowOffset: {x:5, y:5},
   		text: 'Recent Check-Ins',
-  		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-  		top: 5 + user_image,
+  		//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  		top: user_image.bottom,
   		left: 10,
  		width: 'auto', 
  		height: 'auto',
@@ -117,7 +117,8 @@ function ProfileWindow(title) {
 	
 	
 	
-
+	
+	// Add User Profile Data to top row of table
 	profile_row.add(user_image);
 	profile_row.add(userFullName);
 	profile_row.add(aboutMe);
@@ -125,11 +126,14 @@ function ProfileWindow(title) {
 	profile_row.add(recent_check_ins);
 	tbl_data.push(profile_row);
 
+
 	
-	// create an array of anonymous objects
+	
+	
+// create an array of anonymous objects
 // Create an array of explicitly defined custom TableViewRows
 
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < 5; i++) {
 	var row = Ti.UI.createTableViewRow({
 		hasChild:true
 		
@@ -139,8 +143,8 @@ for (var i = 0; i < 10; i++) {
 	
 	// Wine Picture
 	var wine_image = Ti.UI.createImageView({ 		
-  		height: 90,
-  		width: 90,
+  		height: 80,
+  		width: 80,
   		left: 10,
   		borderColor: 'black',
 		borderWidth: 1,
@@ -152,24 +156,35 @@ for (var i = 0; i < 10; i++) {
   		height: 70
 	});
 	
+	
+	
+	
+
+	
+	
+	
 	// This is the Label for the location of the wine within the row
-	var lbl_location = Ti.UI.createLabel({
-		left:'40%',
+	var wine_location = Ti.UI.createLabel({
+		left:'30%',
 		bottom:10,
 		text: "Wine Location",
 		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'},
 		touchEnabled:false
 	});
 	
-		// This is the label of the type of wine within the row
-	var lbl_type = Ti.UI.createLabel({
-		left:'40%',
-		text: 'Wine Name',
-		bottom:lbl_location.top,
+	
+	
+	// This is the label of the type of wine within the row
+	var wine_name = Ti.UI.createLabel({
+		left:'30%',
+		text: 'Wine Name and year',
+		bottom:wine_location.top,
 		font:{fontSize:18,fontWeight:'bold',fontFamily:'Helvetica Neue'},
 		touchEnabled:false
 	
 	});
+
+
 
 	// This is the Label for the location of the wine within the row
 	var lbl_date = Ti.UI.createLabel({
@@ -181,32 +196,21 @@ for (var i = 0; i < 10; i++) {
 	});
 
 
-	
+
+	// Add objects to each row
 	row.add(wine_image);
-	row.add(lbl_location);
-	row.add(lbl_type);
+	row.add(wine_name);
+	row.add(wine_location);
 	row.add(lbl_date);
 	tbl_data.push(row);
 }
 	
-	//*******
 	
 	
 	
+
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// RECENT CHECK-INS
+	// SCROLLING TABLE VIEW FOR ENTIRE PROFILE PAGE
 	var table = Titanium.UI.createTableView({
 		backgroundColor:'transparent',
 		top:0,
