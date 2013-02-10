@@ -28,7 +28,7 @@ for (var i = 0; i < 10; i++) {
 		borderWidth: 1,
   		contentMode: 'aspectfill',
   		clipsToBounds: false,
-  		image:'/images/user_image.png',
+  		image:'/images/logo.png',
   		layout:'vertical'
 	});
 	
