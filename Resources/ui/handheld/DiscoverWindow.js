@@ -155,7 +155,7 @@ var table = Titanium.UI.createTableView({
 			backgroundColor: global.colors.light
 		}));
 	});
-	
+	global.outputHook(self);
 	return self;
 };
 
