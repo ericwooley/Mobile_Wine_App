@@ -1,25 +1,36 @@
 Logfile initialized
 [INFO] logfile = /Users/Mattius/WineApp/Mobile_Wine_App/build.log
 <<<<<<< HEAD
+<<<<<<< HEAD
 [DEBUG] /Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py simulator Mobile_Web_App /Users/Mattius/AndroidSDK /Users/Mattius/WineApp/Mobile_Wine_App com.menplusone.WineApp 2 WVGA854 /127.0.0.1:56134
 =======
 [DEBUG] /Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py simulator Mobile_Web_App /Users/Mattius/AndroidSDK /Users/Mattius/WineApp/Mobile_Wine_App com.menplusone.WineApp 2 WVGA854 /127.0.0.1:56424
 >>>>>>> Experimental
+=======
+[DEBUG] /Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py simulator Mobile_Web_App /Users/Mattius/AndroidSDK /Users/Mattius/WineApp/Mobile_Wine_App com.menplusone.WineApp 2 WVGA854 /127.0.0.1:56134
+>>>>>>> 4c2040086643afc368533c714e0e87e4b4b2070a
 [INFO] Building Mobile_Web_App for Android ... one moment
 [INFO] Titanium SDK version: 3.0.0 (12/12/12 18:49 a5894b3)
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
 <<<<<<< HEAD
+<<<<<<< HEAD
 [DEBUG] waited 0.061062 seconds on emulator to get ready
 =======
 [DEBUG] waited 0.067654 seconds on emulator to get ready
 >>>>>>> Experimental
+=======
+[DEBUG] waited 0.061062 seconds on emulator to get ready
+>>>>>>> 4c2040086643afc368533c714e0e87e4b4b2070a
 [DEBUG] com.menplusone.WineApp installed? True
 [INFO] Fastdev server running, deploying in Fastdev mode
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4c2040086643afc368533c714e0e87e4b4b2070a
 [TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/app.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/app.js
 [TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/images/lightpaperfibers.png => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/images/lightpaperfibers.png
 [TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/common/api.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/api.js
@@ -28,11 +39,14 @@ Logfile initialized
 [TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/HomeWindow.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/HomeWindow.js
 [TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/Login.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/Login.js
 [TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/ProfileWindow.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/ProfileWindow.js
+<<<<<<< HEAD
 =======
 [TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/common/api.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/api.js
 [TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/common/globals.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/globals.js
 [TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/DiscoverWindow.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/DiscoverWindow.js
 >>>>>>> Experimental
+=======
+>>>>>>> 4c2040086643afc368533c714e0e87e4b4b2070a
 [INFO] Tiapp.xml unchanged, skipping class generation
 [DEBUG] Processing Android resource drawables
 [DEBUG] found drawable-long-land-hdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-land-hdpi/default.png
@@ -51,9 +65,14 @@ Logfile initialized
 Warning: Activity not started, its current task has been brought to the front
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [INFO] Relaunched Mobile_Web_App ... Application should be running.
 [INFO] Forwarding host port 56134 to device for debugging.
 =======
 [INFO] Forwarding host port 56424 to device for debugging.
 [DEBUG] signal caught: 15
 >>>>>>> Experimental
+=======
+[INFO] Relaunched Mobile_Web_App ... Application should be running.
+[INFO] Forwarding host port 56134 to device for debugging.
+>>>>>>> 4c2040086643afc368533c714e0e87e4b4b2070a
