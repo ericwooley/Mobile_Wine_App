@@ -28,7 +28,7 @@ function ApplicationTabGroup() {
 	win2.containingTab = tab2;
 	
 	var tab3 = Ti.UI.createTab({
-		title: 'Check-Ins',
+		title: 'Check-In',
 		icon: '/images/KS_nav_views.png',
 		backgroundColor: global.colors.dark,
 		window: win3
