@@ -1,6 +1,9 @@
 function ApplicationTabGroup() {
+<<<<<<< HEAD
 	global = require('ui/common/globals');
 	
+=======
+>>>>>>> Home-Aaron
 	//create module instance
 	var self = Ti.UI.createTabGroup();
 	
@@ -14,7 +17,10 @@ function ApplicationTabGroup() {
 	var tab1 = Ti.UI.createTab({
 		title: 'Home',
 		icon: '/images/KS_nav_ui.png',
+<<<<<<< HEAD
 		backgroundColor: global.colors.dark,
+=======
+>>>>>>> Home-Aaron
 		window: win1
 	});
 	win1.containingTab = tab1;
@@ -22,7 +28,10 @@ function ApplicationTabGroup() {
 	var tab2 = Ti.UI.createTab({
 		title: 'Discover',
 		icon: '/images/KS_nav_views.png',
+<<<<<<< HEAD
 		backgroundColor: global.colors.dark,
+=======
+>>>>>>> Home-Aaron
 		window: win2
 	});
 	win2.containingTab = tab2;
@@ -30,7 +39,10 @@ function ApplicationTabGroup() {
 	var tab3 = Ti.UI.createTab({
 		title: 'Check-Ins',
 		icon: '/images/KS_nav_views.png',
+<<<<<<< HEAD
 		backgroundColor: global.colors.dark,
+=======
+>>>>>>> Home-Aaron
 		window: win3
 	});
 	win3.containingTab = tab3;
@@ -38,7 +50,10 @@ function ApplicationTabGroup() {
 	var tab4 = Ti.UI.createTab({
 		title: 'Friends',
 		icon: '/images/KS_nav_views.png',
+<<<<<<< HEAD
 		backgroundColor: global.colors.dark,
+=======
+>>>>>>> Home-Aaron
 		window: win4
 	});
 	win4.containingTab = tab4;
@@ -46,7 +61,10 @@ function ApplicationTabGroup() {
 	var tab5 = Ti.UI.createTab({
 		title: 'Profile',
 		icon: '/images/KS_nav_views.png',
+<<<<<<< HEAD
 		backgroundColor: global.colors.dark,
+=======
+>>>>>>> Home-Aaron
 		window: win5
 	});
 	win5.containingTab = tab5;

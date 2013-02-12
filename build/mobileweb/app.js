@@ -1,3 +1,47 @@
+<<<<<<< HEAD
+=======
+/*
+ * A tabbed application, consisting of multiple stacks of windows associated with tabs in a tab group.  
+ * A starting point for tab-based application with multiple top-level windows. 
+ * Requires Titanium Mobile SDK 1.8.0+.
+ * 
+ * In app.js, we generally take care of a few things:
+ * - Bootstrap the application with any data we need
+ * - Check for dependencies like device type, platform version or network connection
+ * - Require and open our top-level UI component
+ *  
+ */
+
+/*
+ * This is a test to make sure git is working
+ * 
+ */
+
+/*
+ * Color Theme
+ */
+
+/*
+ * I made some changes that pertain to demo branch
+ * 
+ */
+
+ var global = {};
+ global.colors = {
+ 	lightest: '#ffdc95',
+	lighter:'#ffb36f',
+	light: '#ed5f4a',
+	lessDark: '#c42d30',
+	dark: '#3c0017'
+ }
+ 
+ global.elements = {
+ 	SimpleView: require('ui/common/elements/SimpleView'),
+ 	SimpleLabel: require('ui/common/elements/SimpleLabel')
+ }
+
+
+>>>>>>> Home-Aaron
  
 //bootstrap and check dependencies
 if (Ti.version < 1.8 ) {
@@ -6,7 +50,10 @@ if (Ti.version < 1.8 ) {
 
 // This is a single context application with mutliple windows in a stack
 (function() {
+<<<<<<< HEAD
 	var global = require('ui/common/globals');
+=======
+>>>>>>> Home-Aaron
 	//determine platform and form factor and render approproate components
 	var osname = Ti.Platform.osname,
 		version = Ti.Platform.version,
@@ -24,6 +71,7 @@ if (Ti.version < 1.8 ) {
 	else {
 		Window = require('ui/handheld/ApplicationWindow');
 	}*/
+<<<<<<< HEAD
 	// This will open up a window that keeps the others hidden until the user is logged in.
 	if(global.config.requireLogin){
 		var loginWindow = require('ui/handheld/Login')();
@@ -34,4 +82,9 @@ if (Ti.version < 1.8 ) {
 		var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
 		new ApplicationTabGroup().open();
 	}
+=======
+	
+	var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
+	new ApplicationTabGroup().open();
+>>>>>>> Home-Aaron
 })();

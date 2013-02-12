@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //	***********************************************
 //	WINE LIFE
 //	DISCOVER WINDOW  - DiscoverWindow.js
@@ -119,11 +120,26 @@ var table = Titanium.UI.createTableView({
 		textAlign:'center',
 		color: 'black',
 		bottom:10,
+=======
+function DiscoverWindow(title) {
+	var self = Ti.UI.createWindow({
+		title:title,
+		backgroundColor: global.colors.dark
+	});
+	
+	var button = Ti.UI.createButton({
+		height:44,
+		width:300,
+		title:'Open Window',
+		color: 'black',
+		top:20,
+>>>>>>> Home-Aaron
 		borderColor: 'black',
 		borderRadius: 5,
 		borderWidth: 1,
 		backgroundColor: global.colors.lightest,
 		backgroundImage: 'none'
+<<<<<<< HEAD
 	
 	});
 	
@@ -145,6 +161,12 @@ var table = Titanium.UI.createTableView({
 	self.add(lbl_bbs);
 	
 	btn_bbc.addEventListener('click', function() {
+=======
+	});
+	self.add(button);
+	
+	button.addEventListener('click', function() {
+>>>>>>> Home-Aaron
 		//containingTab attribute must be set by parent tab group on
 		//the window for this work
 		self.containingTab.open(Ti.UI.createWindow({
@@ -152,7 +174,11 @@ var table = Titanium.UI.createTableView({
 			backgroundColor: global.colors.light
 		}));
 	});
+<<<<<<< HEAD
 	global.outputHook(self);
+=======
+	
+>>>>>>> Home-Aaron
 	return self;
 };
 

@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 ts	1360467207000
 .DS_Store	6148
+=======
+ts	1360647599000
+>>>>>>> Home-Aaron
 Default-Landscape.jpg	36232
 Default-Portrait.jpg	28479
 Default.jpg	17184
 KS_nav_ui.png	1158
 KS_nav_views.png	1074
+<<<<<<< HEAD
 app.js	1314
+=======
+app.js	1968
+>>>>>>> Home-Aaron
 appicon.png	19109
 apple-touch-icon-114x114-precomposed.png	15820
 apple-touch-icon-57x57-precomposed.png	6790
@@ -15,12 +23,15 @@ favicon.ico	0
 images
 	KS_nav_ui.png	1158
 	KS_nav_views.png	1074
+<<<<<<< HEAD
 	gearIcon.png	1825
 	gearIconCrop.jpg	4195
 	gearIconCrop.png	4578
 	github-logo.png	22194
 	lightpaperfibers.png	161191
 	user_image.png	25207
+=======
+>>>>>>> Home-Aaron
 mobileweb
 	appicon.png	19109
 	apple_startup_images
@@ -361,6 +372,7 @@ titanium
 	dependencies.json	10937
 	package.json	660
 titanium.css	37837
+<<<<<<< HEAD
 titanium.js	522076
 ui
 	.DS_Store	6148
@@ -381,5 +393,21 @@ ui
 		HomeWindow.js	331
 		Login.js	4605
 		ProfileWindow.js	2230
+=======
+titanium.js	522039
+ui
+	common
+		ApplicationTabGroup.js	1353
+		elements
+			SimpleLabel.js	159
+			SimpleView.js	306
+	handheld
+		ApplicationWindow.js	717
+		CheckInsWindow.js	710
+		DiscoverWindow.js	710
+		FriendsWindow.js	708
+		HomeWindow.js	3725
+		ProfileWindow.js	708
+>>>>>>> Home-Aaron
 	tablet
 		ApplicationWindow.js	546

@@ -1,12 +1,23 @@
 function CheckInsWindow(title) {
+<<<<<<< HEAD
 	var global = require('ui/common/globals');
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
+=======
+	var self = Ti.UI.createWindow({
+		title:title,
+		backgroundColor: global.colors.dark
+	});
+>>>>>>> Home-Aaron
 	
 	var button = Ti.UI.createButton({
 		height:44,
 		width:300,
+<<<<<<< HEAD
 		title:'Check Ins Window',
+=======
+		title:'Open Window',
+>>>>>>> Home-Aaron
 		color: 'black',
 		top:20,
 		borderColor: 'black',
@@ -25,7 +36,11 @@ function CheckInsWindow(title) {
 			backgroundColor: global.colors.light
 		}));
 	});
+<<<<<<< HEAD
 	global.outputHook(self);
+=======
+	
+>>>>>>> Home-Aaron
 	return self;
 };
 

@@ -18037,7 +18037,11 @@ require("Ti/App/Properties", function(p) {
 	p.setString("acs-oauth-secret-development","axmJ26IskMm0v05zEmyJ7pat5K80hM39");
 	p.setString("acs-oauth-key-development","1JxfWLSHFRS4DhaKROwV5zDLRoUvpVFN");
 	p.setString("acs-api-key-development","XWnaxCijaw9Y0oLkKhOJIwUWoyhJiz7M");
+<<<<<<< HEAD
 	p.setBool("ti.android.fastdev",false);
 	p.setString("ti.ui.defaultunit","dip");
+=======
+	p.setString("ti.ui.defaultunit","system");
+>>>>>>> Home-Aaron
 });
 require(["Ti","Ti/Accelerometer","Ti/Analytics","Ti/BlobStream","Ti/BufferStream","Ti/Facebook/LoginButton","Ti/Filesystem/FileStream","Ti/Map/Annotation","Ti/Map/View","Ti/Media/VideoPlayer","Ti/Network/HTTPClient","Ti/Platform/DisplayCaps","Ti/UI/2DMatrix","Ti/UI/ActivityIndicator","Ti/UI/AlertDialog","Ti/UI/Clipboard","Ti/UI/EmailDialog","Ti/UI/OptionDialog","Ti/UI/Picker","Ti/UI/PickerColumn","Ti/UI/PickerRow","Ti/UI/ProgressBar","Ti/UI/ScrollView","Ti/UI/ScrollableView","Ti/UI/Slider","Ti/UI/Switch","Ti/UI/Tab","Ti/UI/TabGroup","Ti/UI/TableView","Ti/UI/TableViewRow","Ti/UI/TableViewSection","Ti/UI/TextArea","Ti/UI/TextField","Ti/UI/WebView","Ti/UI/Window","Ti/XML","Ti/Yahoo","Ti/_/Promise","Ti/_/colors","Ti/_/image"]);
