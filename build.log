@@ -6,7 +6,7 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.015506 seconds on emulator to get ready
+[DEBUG] waited 0.015379 seconds on emulator to get ready
 [DEBUG] com.menplusone.WineApp installed? True
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
@@ -120,10 +120,9 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.015483 seconds on emulator to get ready
+[DEBUG] waited 0.015511 seconds on emulator to get ready
 [INFO] Installing application on emulator
 [INFO] Launching application ... Mobile_Web_App
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.menplusone.WineApp/.Mobile_web_appActivity }
 
 [INFO] Deployed Mobile_Web_App ... Application should be running.
-[INFO] Android Emulator has exited

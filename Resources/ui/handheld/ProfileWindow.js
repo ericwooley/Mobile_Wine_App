@@ -35,7 +35,7 @@ function ProfileWindow(title) {
   		width: 100,
   		top: 10,
   		left: 10,
-  		borderColor: 'black',
+  		color: global.colors.dark,
 		borderWidth: 1,
   		contentMode: 'aspectfill',
   		clipsToBounds: false,
@@ -54,6 +54,7 @@ function ProfileWindow(title) {
   		//shadowColor: '#aaa',
   		//shadowOffset: {x:5, y:5},
   		text: 'User Name',
+  		color: global.colors.dark,
   		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   		top: 5,
   		right: 10,
@@ -135,8 +136,8 @@ function ProfileWindow(title) {
 
 for (var i = 0; i < 5; i++) {
 	var row = Ti.UI.createTableViewRow({
-		hasChild:true
-		
+		hasChild:true,
+		height:90
 	});
 	
 	
@@ -168,6 +169,7 @@ for (var i = 0; i < 5; i++) {
 		left:'30%',
 		bottom:10,
 		text: "Wine Location",
+		color: global.colors.dark,
 		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'},
 		touchEnabled:false
 	});
@@ -180,6 +182,7 @@ for (var i = 0; i < 5; i++) {
 		text: 'Wine Name and year',
 		bottom:wine_location.top,
 		font:{fontSize:18,fontWeight:'bold',fontFamily:'Helvetica Neue'},
+		color: global.colors.dark,
 		touchEnabled:false
 	
 	});
@@ -192,6 +195,7 @@ for (var i = 0; i < 5; i++) {
 		top:5,
 		text: "Date",
 		font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+		color: global.colors.dark,
 		touchEnabled:false
 	});
 
