@@ -86,6 +86,37 @@ height: (lbl_Rating.bottom - image.bottom)
 	font:{fontSize:14,fontWeight:'normal',fontFamily:'Helvetica Neue'},
 	touchEnabled:true
 });
+
+// This is the comment button
+var btn_comment = Ti.UI.createButton({
+	top: '55%',
+	left: '5%',
+	width: '26%',
+	height: 'auto',
+	backgroundColor: global.colors.lightest,
+	title:'Comment'
+});
+
+// This is the cheers button
+var btn_cheers = Ti.UI.createButton({
+	top: '55%',
+	left: '36%',
+	width: '26%',
+	height: 'auto',
+	backgroundColor: global.colors.lightest,
+	title:'Cheers'
+});
+
+// This is the share button
+var btn_share = Ti.UI.createButton({
+	top: '55%',
+	right: '5%',
+	width: '26%',
+	height: 'auto',
+	title:'Share',
+	backgroundColor: global.colors.lightest
+});
+
 	view_description.add(lbl_Description);
 	self.add(lbl_WineName);
 	self.add(lbl_CompanyName);
@@ -95,6 +126,9 @@ height: (lbl_Rating.bottom - image.bottom)
 	self.add(lbl_Rating);
 	self.add(lbl_Description);
 	self.add(view_description);
+	self.add(btn_comment);
+	self.add(btn_share);
+	self.add(btn_cheers);
 	return self;
 };
 
