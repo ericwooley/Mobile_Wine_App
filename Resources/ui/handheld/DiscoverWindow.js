@@ -149,14 +149,17 @@ var table = Titanium.UI.createTableView({
 	self.add(btn_bbs);
 	self.add(lbl_bbs);
 	
+	// Listener for Browse by Color
 	btn_bbc.addEventListener('click', function() {
-		//containingTab attribute must be set by parent tab group on
-		//the window for this work
-		self.containingTab.open(Ti.UI.createWindow({
-			title: L('newWindow'),
-			backgroundColor: global.colors.light
-		}));
+	var win_bbc = require('ui/handheld/BrowseByColor');
+		self.containingTab.open(win_bbc());			
 	});
+	// Listener for Browse by style
+	btn_bbs.addEventListener('click', function() {
+	var win_bbs = require('ui/handheld/BrowseByStyle');
+		self.containingTab.open(win_bbs());			
+	});
+	
 	global.outputHook(self);
 	return self;
 };
