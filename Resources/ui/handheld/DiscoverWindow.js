@@ -16,14 +16,16 @@ function DiscoverWindow(title) {
 var tbl_data = [];
 for (var i = 0; i < 10; i++) {
 	var row = Ti.UI.createTableViewRow({
-		hasChild:true
+		hasChild:true,
+		height:90
 		
 	});
 	// This image will be the image of the wine
 		var image = Ti.UI.createImageView({ 		
-  		height: 90,
-  		width: 90,
+  		height: 80,
+  		width: 80,
   		left: 10,
+  		top:5,
   		borderColor: 'black',
 		borderWidth: 1,
   		contentMode: 'aspectfill',
