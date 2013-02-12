@@ -6,7 +6,7 @@ function CheckInsWindow(title) {
 	var button = Ti.UI.createButton({
 		height:44,
 		width:300,
-		title:'Check Ins Window',
+		title:'Check In Window',
 		color: 'black',
 		top:20,
 		borderColor: 'black',
