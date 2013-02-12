@@ -37,7 +37,7 @@ for (var i = 0; i < 10; i++) {
 	// This is the Label for the location of the wine within the row
 	var lbl_location = Ti.UI.createLabel({
 		left:'40%',
-		color:'black',
+		color:global.colors.dark,
 		bottom:10,
 		text: "Wine Location",
 		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'},
@@ -47,7 +47,7 @@ for (var i = 0; i < 10; i++) {
 		// This is the label of the type of wine within the row
 	var lbl_type = Ti.UI.createLabel({
 		left:'40%',
-		color:'black',
+		color:global.colors.dark,
 		text: 'Wine Type',
 		bottom:lbl_location.top,
 		font:{fontSize:18,fontWeight:'bold',fontFamily:'Helvetica Neue'},
@@ -59,7 +59,7 @@ for (var i = 0; i < 10; i++) {
 	var lbl_date = Ti.UI.createLabel({
 		right:5,
 		top:5,
-		color:'black',
+		color:global.colors.dark,
 		text: "Date",
 		font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
 		touchEnabled:false
@@ -90,9 +90,9 @@ var table = Titanium.UI.createTableView({
 		height:'20%',
 		width:'42%',
 		left:20,
-		color: 'black',
+		color: global.colors.dark,
 		bottom:10,
-		borderColor: 'black',
+		borderColor: global.colors.dark,
 		borderRadius: 5,
 		borderWidth: 1,
 		backgroundColor: global.colors.lightest,
@@ -103,7 +103,7 @@ var table = Titanium.UI.createTableView({
 	var lbl_bbc = Titanium.UI.createLabel({
     color:'black',
     font:{fontSize:18,fontWeight:'bold',fontFamily:'Helvetica Neue'},
-    highlightedColor:'black',
+    highlightedColor:global.colors.dark,
     text:'Browse by Color',
     textAlign:'center',
     touchEnabled:false,
@@ -122,9 +122,9 @@ var table = Titanium.UI.createTableView({
 		width:'42%',
 		right:20,
 		textAlign:'center',
-		color: 'black',
+		color: global.colors.dark,
 		bottom:10,
-		borderColor: 'black',
+		borderColor: global.colors.dark,
 		borderRadius: 5,
 		borderWidth: 1,
 		backgroundColor: global.colors.lightest,
@@ -136,7 +136,7 @@ var table = Titanium.UI.createTableView({
 	var lbl_bbs = Titanium.UI.createLabel({
     color:'black',
     font:{fontSize:18,fontWeight:'bold',fontFamily:'Helvetica Neue'},
-    highlightedColor:'black',
+    highlightedColor:global.colors.dark,
     text:'Browse by Style',
     textAlign:'center',
     touchEnabled:false,
