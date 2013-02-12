@@ -1,5 +1,5 @@
 var config = {
-	requireLogin: true
+	requireLogin: false
 }
 
 module.exports = config;

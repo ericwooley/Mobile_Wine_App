@@ -108,14 +108,14 @@ function ProfileWindow(title) {
   		//shadowOffset: {x:5, y:5},
   		text: 'Recent Check-Ins',
   		//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-  		top: user_image.bottom,
+  		top: 120,
   		left: 10,
- 		width: 'auto', 
- 		height: 'auto',
+ 		//width: 'auto', 
+ 		//height: 'auto',
 	});
 	//self.add(recent_check_ins)
 	
-	
+
 	
 	
 	// Add User Profile Data to top row of table
