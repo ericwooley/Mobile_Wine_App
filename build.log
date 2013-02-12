@@ -4,31 +4,14 @@ Logfile initialized
 [INFO] Building Mobile_Web_App for Android ... one moment
 [INFO] Titanium SDK version: 3.0.0 (12/12/12 18:49 a5894b3)
 [DEBUG] Waiting for device to be ready ...
-[TRACE] adb devices returned 0 devices/emulators
 [TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[TRACE] adb devices returned 1 devices/emulators
-[INFO] Launching application ... Mobile_Web_App
-[TRACE] Launch output: Error type 2
-android.util.AndroidException: Can't connect to activity manager; is the system running?
-
-[INFO] Deployed Mobile_Web_App ... Application should be running.
-[TRACE] adb devices returned 1 devices/emulators
-[DEBUG] Device connected... (waited 35 seconds)
-[DEBUG] waited 35.367257 seconds on emulator to get ready
-[INFO] Waiting for the Android Emulator to become available
+[DEBUG] Device connected... (waited 0 seconds)
+[DEBUG] waited 0.038896 seconds on emulator to get ready
 [DEBUG] com.menplusone.WineApp installed? True
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/common/ApplicationTabGroup.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/common/ApplicationTabGroup.js
-[TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/BrowseByColor.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/BrowseByColor.js
-[TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/CheckInsWindow.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/CheckInsWindow.js
 [TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/DiscoverWindow.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/DiscoverWindow.js
-[TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/ProfileWindow.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/ProfileWindow.js
-[TRACE] COPYING CREATED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/WineReview.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/WineReview.js
+[TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/WineReview.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/WineReview.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [DEBUG] copying app icon: /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/appicon.png
@@ -60,7 +43,6 @@ android.util.AndroidException: Can't connect to activity manager; is the system 
 [DEBUG] adding /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appApplication.java to javac build list
 [DEBUG] adding /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/R.java to javac build list
 [DEBUG] Building Java Sources: "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appActivity.java" "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appAppInfo.java" "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appApplication.java" "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/R.java"
-[INFO] Waiting for SDCard to become available..
 [INFO] Compiling Android Resources... This could take some time
 [DEBUG] Android classes.dex built
 [DEBUG] creating unsigned apk: /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/app-unsigned.apk
@@ -144,7 +126,7 @@ android.util.AndroidException: Can't connect to activity manager; is the system 
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.024837 seconds on emulator to get ready
+[DEBUG] waited 0.024112 seconds on emulator to get ready
 [INFO] Installing application on emulator
 [INFO] Launching application ... Mobile_Web_App
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.menplusone.WineApp/.Mobile_web_appActivity }
