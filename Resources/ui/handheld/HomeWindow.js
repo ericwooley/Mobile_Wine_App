@@ -1,8 +1,8 @@
 function HomeWindow(title) {
 	var self = Ti.UI.createWindow({
 		title:title,
-		backgroundColor: global.colors.dark
 	});
+	// Change the bar color
 	
 	var data = [];
 	
