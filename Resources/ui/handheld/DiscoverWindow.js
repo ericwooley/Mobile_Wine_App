@@ -71,6 +71,12 @@ for (var i = 0; i < 10; i++) {
 	row.add(lbl_location);
 	row.add(lbl_type);
 	row.add(lbl_date);
+	
+	row.addEventListener('click', function() {
+	var win_review = require('ui/handheld/WineReview');
+		self.containingTab.open(win_review());			
+	});
+	
 	tbl_data.push(row);
 }
 // This is the tableview
