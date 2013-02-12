@@ -13,7 +13,7 @@ function ApplicationTabGroup() {
 	
 	var tab1 = Ti.UI.createTab({
 		title: 'Home',
-		icon: '/images/KS_nav_ui.png',
+		icon: '/images/home_tab.png',
 		backgroundColor: global.colors.dark,
 		window: win1
 	});
