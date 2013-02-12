@@ -92,9 +92,14 @@ var btn_comment = Ti.UI.createButton({
 	top: '55%',
 	left: '5%',
 	width: '26%',
-	height: 'auto',
+	height: '10%',
+	title:'Comment',
+	color: global.colors.dark,
+	borderColor: global.colors.dark,
+	borderRadius: 5,
+	borderWidth: 1,
 	backgroundColor: global.colors.lightest,
-	title:'Comment'
+	backgroundImage: 'none'
 });
 
 // This is the cheers button
@@ -102,9 +107,14 @@ var btn_cheers = Ti.UI.createButton({
 	top: '55%',
 	left: '36%',
 	width: '26%',
-	height: 'auto',
+	height: '10%',
+	title:'Cheers',
+	color: global.colors.dark,
+	borderColor: global.colors.dark,
+	borderRadius: 5,
+	borderWidth: 1,
 	backgroundColor: global.colors.lightest,
-	title:'Cheers'
+	backgroundImage: 'none'
 });
 
 // This is the share button
@@ -112,10 +122,25 @@ var btn_share = Ti.UI.createButton({
 	top: '55%',
 	right: '5%',
 	width: '26%',
+	height: '10%',
+	title:'Share',
+	color: global.colors.dark,
+	borderColor: global.colors.dark,
+	borderRadius: 5,
+	borderWidth: 1,
+	backgroundColor: global.colors.lightest,
+	backgroundImage: 'none'
+	
+	});
+/* var btn_share = Ti.UI.createButton({
+	top: '55%',
+	right: '5%',
+	width: '26%',
 	height: 'auto',
 	title:'Share',
-	backgroundColor: global.colors.lightest
+	backgroundColor:'#ffdc95'
 });
+btn_share.setBackgroundColor('#ffdc95'); */
 
 	view_description.add(lbl_Description);
 	self.add(lbl_WineName);
