@@ -1,19 +1,5 @@
 function HomeWindow(title) {
-<<<<<<< HEAD
-	var global = require('ui/common/globals');
-	
-	var self = global.createWindow(title);
-	
-	var Body = global.elements.SimpleView('vertical');
-	
-	
-	Body.add(global.elements.SimpleLabel("This is the home page"));
-	self.add(Body);
-	
-	
-	global.outputHook(self);
-	return self;
-=======
+
 	var win = Titanium.UI.createWindow();
 	// Change the bar color
 	win.barColor = '#000';
@@ -167,7 +153,6 @@ function HomeWindow(title) {
 	win.add(tableView);
 
 	return win;
->>>>>>> Home-Aaron
 };
 
 module.exports = HomeWindow;
