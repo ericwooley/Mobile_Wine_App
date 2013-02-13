@@ -7,7 +7,9 @@ module.exports.register = function(email, password, callback){
 	getResponse('http://winelife.ericwooley.com/login/create_user/', {email: email, password:password}, callback);
 }
 
-
+module.exports.editProfile = function(){
+	
+}
 
 
 
