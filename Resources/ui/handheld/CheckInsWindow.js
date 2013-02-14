@@ -25,8 +25,7 @@ function CheckInsWindow(title) {
 		paddingRight:8,
 		borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 		keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
-	    returnKeyType:Titanium.UI.RETURNKEY_NEXT,
-	    suppressReturn:false
+
 	});
 	
 	
@@ -47,8 +46,7 @@ function CheckInsWindow(title) {
 		paddingRight:8,
 		borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 		keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
-	    returnKeyType:Titanium.UI.RETURNKEY_NEXT,
-	    suppressReturn:false
+
 	});
 	
 	// "Style" text field
@@ -63,8 +61,7 @@ function CheckInsWindow(title) {
 		paddingRight:8,
 		borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 		keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
-	    returnKeyType:Titanium.UI.RETURNKEY_NEXT,
-	    suppressReturn:false
+
 	});
 	
 	// Creates "Look-Up" button
