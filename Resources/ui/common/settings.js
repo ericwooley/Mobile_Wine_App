@@ -4,16 +4,15 @@ module.exports = function(w)
 	var tmp = Ti.UI.createTextField({
 		hintText: "Enter something here",
 		backgroundColor: 'white',
-		value:'goldeneye',
+		value:'ponzi',
 		style: Ti.UI.INPUT_BORDERSTYLE_BEZEL
 	});
 	tmp.addEventListener('blur', function(){
 		global.api.search(tmp.value, function(result){
-			alert(typeof result.Products.List);
+			alert(result.Products);
 			var tbl_data = [];
-			result.Products.List.foreach(function(wine){
-				alert("happens");
-				alert(wine.Name);
+			for(var wine in result.Products.List){
+				alert(typeof wine);
 				/*var row = Ti.UI.createTableViewRow
 				({
 					hasChild:true
@@ -73,7 +72,7 @@ module.exports = function(w)
 				row.add(lbl_type);
 				row.add(lbl_date);
 				tbl_data.push(row);*/
-			});
+			};
 		});
 	});
 	var view = Ti.UI.createView({
