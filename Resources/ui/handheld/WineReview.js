@@ -99,7 +99,8 @@ var btn_comment = Ti.UI.createButton({
 	borderRadius: 5,
 	borderWidth: 1,
 	backgroundColor: global.colors.lightest,
-	backgroundImage: 'none'
+	backgroundImage: 'none',
+	font:{fontSize:14,fontWeight:'normal',fontFamily:'Helvetica Neue'}
 });
 
 // This is the cheers button
@@ -114,7 +115,8 @@ var btn_cheers = Ti.UI.createButton({
 	borderRadius: 5,
 	borderWidth: 1,
 	backgroundColor: global.colors.lightest,
-	backgroundImage: 'none'
+	backgroundImage: 'none',
+	font:{fontSize:14,fontWeight:'normal',fontFamily:'Helvetica Neue'}
 });
 
 // This is the share button
@@ -129,7 +131,8 @@ var btn_share = Ti.UI.createButton({
 	borderRadius: 5,
 	borderWidth: 1,
 	backgroundColor: global.colors.lightest,
-	backgroundImage: 'none'
+	backgroundImage: 'none',
+	font:{fontSize:14,fontWeight:'normal',fontFamily:'Helvetica Neue'}
 	
 	});
 /* var btn_share = Ti.UI.createButton({
