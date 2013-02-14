@@ -19,6 +19,12 @@ function CheckInsWindow(title) {
 	    suppressReturn:false
 	});
 	
+	
+
+	
+	
+	
+	
 	// "Year" text field
 	var year = Titanium.UI.createTextField({
 		backgroundColor:'#FFF',
