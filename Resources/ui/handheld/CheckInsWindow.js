@@ -6,9 +6,9 @@ function CheckInsWindow(title) {
 	// "Search for wine" text field
 	var wines = Titanium.UI.createTextField({
 		backgroundColor:'#FFF',
-		top:80,
-		left:20,
-		width:350,
+		top:20,
+		//left:20,
+		width:'80%',
 		height:40,
 		hintText:'  Search for a wine...',
 		paddingLeft:8,
@@ -24,7 +24,7 @@ function CheckInsWindow(title) {
 		backgroundColor:'#FFF',
 		bottom:170,
 		left:20,
-		width:165,
+		width:'40%',
 		height:40,
 		hintText:'  Year...',
 		paddingLeft:8,
@@ -40,7 +40,7 @@ function CheckInsWindow(title) {
 		backgroundColor:'#FFF',
 		bottom:170,
 		right:20,
-		width:165,
+		width:'40%',
 		height:40,
 		hintText:'  Style...',
 		paddingLeft:8,
@@ -55,28 +55,30 @@ function CheckInsWindow(title) {
 	var btn = Titanium.UI.createButton({
 		color:'#000',
 		title:"Look-Up",
-		font:{fontSize:22},
-		top: 150,
-		width:200,
-		height:45
+		font:{fontSize:18},
+		top: 70,
+		width:'80%',
+		height:35
+		
 	});
 	
 	// Creates "Browse" button
 	var btn2 = Titanium.UI.createButton({
 		color:'#000',
 		title:"Browse",
-		font:{fontSize:22},
-		bottom:100,
-		width:200,
-		height:45
+		font:{fontSize:18},
+		bottom:120,
+		width:'80%',
+		height:35
 	});
 	
 	// Creates label for "browsing by year/style"
 	var label1 = Titanium.UI.createLabel({
 		color:'#000',            // Black color
 		text:'Browse By Year/Style',
-		font:{fontSize:25,fontFamily:'Helvetica Neue'},
+		font:{fontSize:18,fontFamily:'Helvetica Neue'},
 		textAlign:'center',
+		top: 130,
 		width:'auto'
 	});
 	
