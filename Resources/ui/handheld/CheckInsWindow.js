@@ -61,11 +61,14 @@ function CheckInsWindow(title) {
 	self.add(wines);
 	
 	
+	// NEED SOMETHING HERE *****
 	
-	
-	//self.containingTab.open(search_results)
-	
+
 //*******
+	
+	
+	
+	
 	
 	// "Year" text field
 	var year = Titanium.UI.createTextField({
