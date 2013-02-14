@@ -16,14 +16,16 @@ function DiscoverWindow(title) {
 var tbl_data = [];
 for (var i = 0; i < 10; i++) {
 	var row = Ti.UI.createTableViewRow({
-		hasChild:true
+		hasChild:true,
+		height:90
 		
 	});
 	// This image will be the image of the wine
 		var image = Ti.UI.createImageView({ 		
-  		height: 90,
-  		width: 90,
+  		height: 80,
+  		width: 80,
   		left: 10,
+  		top:5,
   		borderColor: 'black',
 		borderWidth: 1,
   		contentMode: 'aspectfill',
@@ -35,7 +37,7 @@ for (var i = 0; i < 10; i++) {
 	// This is the Label for the location of the wine within the row
 	var lbl_location = Ti.UI.createLabel({
 		left:'40%',
-		color:'black',
+		color:global.colors.dark,
 		bottom:10,
 		text: "Wine Location",
 		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'},
@@ -45,7 +47,7 @@ for (var i = 0; i < 10; i++) {
 		// This is the label of the type of wine within the row
 	var lbl_type = Ti.UI.createLabel({
 		left:'40%',
-		color:'black',
+		color:global.colors.dark,
 		text: 'Wine Type',
 		bottom:lbl_location.top,
 		font:{fontSize:18,fontWeight:'bold',fontFamily:'Helvetica Neue'},
@@ -57,7 +59,7 @@ for (var i = 0; i < 10; i++) {
 	var lbl_date = Ti.UI.createLabel({
 		right:5,
 		top:5,
-		color:'black',
+		color:global.colors.dark,
 		text: "Date",
 		font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
 		touchEnabled:false
@@ -69,6 +71,12 @@ for (var i = 0; i < 10; i++) {
 	row.add(lbl_location);
 	row.add(lbl_type);
 	row.add(lbl_date);
+	
+	row.addEventListener('click', function() {
+	var win_review = require('ui/handheld/WineReview');
+		self.containingTab.open(win_review());			
+	});
+	
 	tbl_data.push(row);
 }
 // This is the tableview
@@ -88,9 +96,9 @@ var table = Titanium.UI.createTableView({
 		height:'20%',
 		width:'42%',
 		left:20,
-		color: 'black',
+		color: global.colors.dark,
 		bottom:10,
-		borderColor: 'black',
+		borderColor: global.colors.dark,
 		borderRadius: 5,
 		borderWidth: 1,
 		backgroundColor: global.colors.lightest,
@@ -101,7 +109,7 @@ var table = Titanium.UI.createTableView({
 	var lbl_bbc = Titanium.UI.createLabel({
     color:'black',
     font:{fontSize:18,fontWeight:'bold',fontFamily:'Helvetica Neue'},
-    highlightedColor:'black',
+    highlightedColor:global.colors.dark,
     text:'Browse by Color',
     textAlign:'center',
     touchEnabled:false,
@@ -120,9 +128,9 @@ var table = Titanium.UI.createTableView({
 		width:'42%',
 		right:20,
 		textAlign:'center',
-		color: 'black',
+		color: global.colors.dark,
 		bottom:10,
-		borderColor: 'black',
+		borderColor: global.colors.dark,
 		borderRadius: 5,
 		borderWidth: 1,
 		backgroundColor: global.colors.lightest,
@@ -134,7 +142,7 @@ var table = Titanium.UI.createTableView({
 	var lbl_bbs = Titanium.UI.createLabel({
     color:'black',
     font:{fontSize:18,fontWeight:'bold',fontFamily:'Helvetica Neue'},
-    highlightedColor:'black',
+    highlightedColor:global.colors.dark,
     text:'Browse by Style',
     textAlign:'center',
     touchEnabled:false,
@@ -147,14 +155,17 @@ var table = Titanium.UI.createTableView({
 	self.add(btn_bbs);
 	self.add(lbl_bbs);
 	
+	// Listener for Browse by Color
 	btn_bbc.addEventListener('click', function() {
-		//containingTab attribute must be set by parent tab group on
-		//the window for this work
-		self.containingTab.open(Ti.UI.createWindow({
-			title: L('newWindow'),
-			backgroundColor: global.colors.light
-		}));
+	var win_bbc = require('ui/handheld/BrowseByColor');
+		self.containingTab.open(win_bbc());			
 	});
+	// Listener for Browse by style
+	btn_bbs.addEventListener('click', function() {
+	var win_bbs = require('ui/handheld/BrowseByStyle');
+		self.containingTab.open(win_bbs());			
+	});
+	
 	global.outputHook(self);
 	return self;
 };

@@ -35,7 +35,7 @@ function ProfileWindow(title) {
   		width: 100,
   		top: 10,
   		left: 10,
-  		borderColor: 'black',
+  		color: global.colors.dark,
 		borderWidth: 1,
   		contentMode: 'aspectfill',
   		clipsToBounds: false,
@@ -54,13 +54,22 @@ function ProfileWindow(title) {
   		//shadowColor: '#aaa',
   		//shadowOffset: {x:5, y:5},
   		text: 'User Name',
+  		color: global.colors.dark,
   		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-  		top: 10,
+  		top: 5,
   		right: 10,
  		width: 'auto', 
  		//height: 25,
 	});
 	//self.add(userFullName)
+
+
+//create label & text field in same place.
+//set text field to hidden
+//add event listener to the label
+//in event listener function, hide label, and show text field
+//copy text from label into text field
+
 
 
 
@@ -73,7 +82,7 @@ function ProfileWindow(title) {
   		//shadowOffset: {x:5, y:5},
   		text: 'About Me',
   		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-  		top: 40 + userFullName.getBottom,
+  		top: 40,
   		right: 10,
  		width: 'auto', 
  		//height: 'auto',
@@ -108,14 +117,14 @@ function ProfileWindow(title) {
   		//shadowOffset: {x:5, y:5},
   		text: 'Recent Check-Ins',
   		//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-  		top: user_image.bottom,
+  		top: 120,
   		left: 10,
- 		width: 'auto', 
- 		height: 'auto',
+ 		//width: 'auto', 
+ 		//height: 'auto',
 	});
 	//self.add(recent_check_ins)
 	
-	
+
 	
 	
 	// Add User Profile Data to top row of table
@@ -135,8 +144,8 @@ function ProfileWindow(title) {
 
 for (var i = 0; i < 5; i++) {
 	var row = Ti.UI.createTableViewRow({
-		hasChild:true
-		
+		hasChild:true,
+		height:90
 	});
 	
 	
@@ -168,6 +177,7 @@ for (var i = 0; i < 5; i++) {
 		left:'30%',
 		bottom:10,
 		text: "Wine Location",
+		color: global.colors.dark,
 		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'},
 		touchEnabled:false
 	});
@@ -180,6 +190,7 @@ for (var i = 0; i < 5; i++) {
 		text: 'Wine Name and year',
 		bottom:wine_location.top,
 		font:{fontSize:18,fontWeight:'bold',fontFamily:'Helvetica Neue'},
+		color: global.colors.dark,
 		touchEnabled:false
 	
 	});
@@ -192,6 +203,7 @@ for (var i = 0; i < 5; i++) {
 		top:5,
 		text: "Date",
 		font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+		color: global.colors.dark,
 		touchEnabled:false
 	});
 

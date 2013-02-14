@@ -7,13 +7,13 @@ function ApplicationTabGroup() {
 	//create app tabs
 	var win1 = require('ui/handheld/HomeWindow')('Home'),
 		win2 = require('ui/handheld/DiscoverWindow')('Discover'),//new Window(L('Discover')),
-		win3 = require('ui/handheld/CheckInsWindow')('Check-Ins'),//new Window(L('Check-Ins'))
+		win3 = require('ui/handheld/CheckInsWindow')('Check-In'),//new Window(L('Check-Ins'))
 		win4 = require('ui/handheld/FriendsWindow')('Friends'),//new Window(L('Friends'))
 		win5 = require('ui/handheld/ProfileWindow')('Profile')//new Window(L('Profile'));
 	
 	var tab1 = Ti.UI.createTab({
 		title: 'Home',
-		icon: '/images/KS_nav_ui.png',
+		icon: '/images/home_tab.png',
 		backgroundColor: global.colors.dark,
 		window: win1
 	});
@@ -28,7 +28,7 @@ function ApplicationTabGroup() {
 	win2.containingTab = tab2;
 	
 	var tab3 = Ti.UI.createTab({
-		title: 'Check-Ins',
+		title: 'Check-In',
 		icon: '/images/KS_nav_views.png',
 		backgroundColor: global.colors.dark,
 		window: win3
