@@ -9,7 +9,7 @@ module.exports = function(w)
 	});
 	tmp.addEventListener('blur', function(){
 		global.api.search(tmp.value, function(result){
-			alert(result.Products);
+			Ti.API.inf(result.Products);
 			var tbl_data = [];
 			for(var wine in result.Products.List){
 				alert(wine);
