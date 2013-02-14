@@ -50,7 +50,7 @@ var lbl_date = Ti.UI.createLabel({
 
 	// This image will be the image of the wine
 var image = Ti.UI.createImageView({ 		
-  	height: 120,
+  	height: 100,
   	width: 100,
   	left: '5%',
   	top:'20%',
