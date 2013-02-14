@@ -214,6 +214,14 @@ for (var i = 0; i < 5; i++) {
 	row.add(wine_name);
 	row.add(wine_location);
 	row.add(lbl_date);
+	
+	
+	row.addEventListener('click', function() {
+	var win_review = require('ui/handheld/WineReview');
+		self.containingTab.open(win_review());			
+	});
+	
+	
 	tbl_data.push(row);
 }
 	
