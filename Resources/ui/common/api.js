@@ -19,6 +19,8 @@ module.exports.editProfile = function(){
 	
 }
 
+module.exports.search_results = require('ui/common/elements/search_results');
+
 module.exports.search = function(query, callback){
 	query = query.replace(' ', '+');
 	getResponse(
