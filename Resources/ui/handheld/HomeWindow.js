@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //	***********************************************
 //	WINE LIFE
 //	HOME WINDOW  - HomeWindow.js
@@ -18,19 +17,6 @@ function HomeWindow(title)
 	// Create an array of explicitly defined custom TableViewRows
 	var tbl_data = [];
 	for (var i = 0; i < 10; i++)
-=======
-function HomeWindow(title) {
-
-	var win = Titanium.UI.createWindow();
-	// Change the bar color
-	win.barColor = '#000';
-	
-	var tableView;
-	var data = [];
-	
-	// Create update row (used when the user clicks on the row)
-	function createUpdateRow(text)
->>>>>>> 3bbc1d7b2d7875312ad5e24bec6cbb2cb0c5a95d
 	{
 		var row = Ti.UI.createTableViewRow
 		({
@@ -104,12 +90,8 @@ function HomeWindow(title) {
 	});
 	self.add(table);
 
-<<<<<<< HEAD
 	global.outputHook(self);
 	return self;
-=======
-	return win;
->>>>>>> 3bbc1d7b2d7875312ad5e24bec6cbb2cb0c5a95d
 };
 
 module.exports = HomeWindow;
