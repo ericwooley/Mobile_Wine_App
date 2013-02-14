@@ -1,6 +1,6 @@
 
 // WineReview.js
-// Author: Matthew Johnson
+// Author: Matthew Johnson  & David Wells
 
 function WineReview(){
  var global = require('ui/common/globals');	

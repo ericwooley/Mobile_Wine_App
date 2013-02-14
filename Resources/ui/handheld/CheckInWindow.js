@@ -1,13 +1,3 @@
-//	***********************************************
-//	WINE LIFE
-//	CHECK-IN WINDOW  - CheckInWindow.js
-//	
-//	MEN+1
-//	Programmer:  Ivan Rodriguez & David Wells
-//	***********************************************
-
-
-
 function CheckInsWindow(title) {
 	var global = require('ui/common/globals');
 	// Creates the default window with global color scheme
@@ -71,13 +61,7 @@ function CheckInsWindow(title) {
 	var btn = Titanium.UI.createButton({
 		color:'#000',
 		title:"Look-Up",
-		color: global.colors.dark,
-		borderColor: global.colors.dark,
-		borderRadius: 5,
-		borderWidth: 1,
-		backgroundColor: global.colors.lightest,
-		backgroundImage: 'none',
-		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+		font:{fontSize:18},
 		top: 70,
 		width:'80%',
 		height:35
@@ -88,13 +72,7 @@ function CheckInsWindow(title) {
 	var btn2 = Titanium.UI.createButton({
 		color:'#000',
 		title:"Browse",
-		color: global.colors.dark,
-		borderColor: global.colors.dark,
-		borderRadius: 5,
-		borderWidth: 1,
-		backgroundColor: global.colors.lightest,
-		backgroundImage: 'none',
-		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+		font:{fontSize:18},
 		bottom:120,
 		width:'80%',
 		height:35
