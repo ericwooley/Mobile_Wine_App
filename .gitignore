@@ -1,16 +1,6 @@
 .DS_Store
 tmp
-android/
-iphone/
 .fastdev.lock
 build.log
 *.log
-ui/common/config.js
-Resources/ui/common/config.js
 build.log
-
-<<<<<<< HEAD
-*.log
-=======
-build.log
->>>>>>> 3bbc1d7b2d7875312ad5e24bec6cbb2cb0c5a95d
