@@ -1,100 +1,17 @@
 Logfile initialized
 [INFO] logfile = /Users/Mattius/WineApp/Mobile_Wine_App/build.log
-[DEBUG] /Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py simulator Mobile_Web_App /Users/Mattius/AndroidSDK /Users/Mattius/WineApp/Mobile_Wine_App com.menplusone.WineApp 2 WVGA854 
+[DEBUG] /Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py simulator Mobile_Web_App /Users/Mattius/AndroidSDK /Users/Mattius/WineApp/Mobile_Wine_App com.menplusone.WineApp 2 WVGA854 /127.0.0.1:53289
 [INFO] Building Mobile_Web_App for Android ... one moment
 [INFO] Titanium SDK version: 3.0.0 (12/12/12 18:49 a5894b3)
 [DEBUG] Waiting for device to be ready ...
+[TRACE] adb devices returned 0 devices/emulators
 [TRACE] adb devices returned 1 devices/emulators
-[DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.047499 seconds on emulator to get ready
-[DEBUG] com.menplusone.WineApp installed? False
-[DEBUG] com.menplusone.WineApp installed? False
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
 [INFO] Android Emulator has exited
-[DEBUG] com.menplusone.WineApp installed? False
-[ERROR] Exception occured while building Android project:
-[ERROR] Traceback (most recent call last):
-[ERROR]   File "/Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py", line 2376, in <module>
-[ERROR]     builder.build_and_run(False, avd_id, debugger_host=debugger_host)
-[ERROR]   File "/Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py", line 2022, in build_and_run
-[ERROR]     self.tiapp = TiAppXML(finalxml)
-[ERROR]   File "/Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/tiapp.py", line 54, in __init__
-[ERROR]     self.dom = parseString(data.read().encode('utf-8'))
-[ERROR]   File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/xml/dom/minidom.py", line 1924, in parseString
-[ERROR]   File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/xml/dom/expatbuilder.py", line 940, in parseString
-[ERROR]   File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/xml/dom/expatbuilder.py", line 223, in parseString
-[ERROR] ExpatError: no element found: line 2, column 0
-[INFO] Copying CommonJS modules...
-[INFO] Copying CommonJS modules...
-[INFO] Copying project resources..
-[INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /Users/Mattius/WineApp/Mobile_Wine_App/Resources/ui/handheld/WineReview.js => /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/ui/handheld/WineReview.js
-[TRACE] Generating Java Classes
-[INFO] Tiapp.xml unchanged, skipping class generation
-[DEBUG] Processing Android resource drawables
-[DEBUG] copying app icon: /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/appicon.png
-[DEBUG] generating theme.xml
-[DEBUG] found drawable-long-land-hdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-land-hdpi/default.png
-[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-land-hdpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-long-land-hdpi/background.png
-[DEBUG] found drawable-long-land-ldpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-land-ldpi/default.png
-[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-land-ldpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-long-land-ldpi/background.png
-[DEBUG] found drawable-long-port-hdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-port-hdpi/default.png
-[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-port-hdpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-long-port-hdpi/background.png
-[DEBUG] found drawable-long-port-ldpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-port-ldpi/default.png
-[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-port-ldpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-long-port-ldpi/background.png
-[DEBUG] found drawable-notlong-land-hdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-hdpi/default.png
-[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-hdpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-land-hdpi/background.png
-[DEBUG] found drawable-notlong-land-ldpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-ldpi/default.png
-[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-ldpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-land-ldpi/background.png
-[DEBUG] found drawable-notlong-land-mdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-mdpi/default.png
-[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-mdpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-land-mdpi/background.png
-[DEBUG] found drawable-notlong-port-hdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-hdpi/default.png
-[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-hdpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-port-hdpi/background.png
-[DEBUG] found drawable-notlong-port-ldpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-ldpi/default.png
-[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-ldpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-port-ldpi/background.png
-[DEBUG] found drawable-notlong-port-mdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-mdpi/default.png
-[DEBUG] copying /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-mdpi/default.png splash screen to /Users/Mattius/WineApp/Mobile_Wine_App/build/android/res/drawable-notlong-port-mdpi/background.png
-[DEBUG] found splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/build/android/bin/assets/Resources/default.png
-[TRACE] Writing out AndroidManifest.xml
-[DEBUG] Processing Android resource drawables
-[DEBUG] found drawable-long-land-hdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-land-hdpi/default.png
-[DEBUG] found drawable-long-land-ldpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-land-ldpi/default.png
-[DEBUG] found drawable-long-port-hdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-port-hdpi/default.png
-[DEBUG] found drawable-long-port-ldpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-long-port-ldpi/default.png
-[DEBUG] found drawable-notlong-land-hdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-hdpi/default.png
-[DEBUG] found drawable-notlong-land-ldpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-ldpi/default.png
-[DEBUG] found drawable-notlong-land-mdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-land-mdpi/default.png
-[DEBUG] found drawable-notlong-port-hdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-hdpi/default.png
-[DEBUG] found drawable-notlong-port-ldpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-ldpi/default.png
-[DEBUG] found drawable-notlong-port-mdpi splash screen at /Users/Mattius/WineApp/Mobile_Wine_App/Resources/android/images/res-notlong-port-mdpi/default.png
-[DEBUG] adding /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appActivity.java to javac build list
-[DEBUG] adding /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appAppInfo.java to javac build list
-[DEBUG] adding /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appApplication.java to javac build list
-[DEBUG] adding /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/R.java to javac build list
-[DEBUG] Building Java Sources: "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appActivity.java" "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appAppInfo.java" "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appApplication.java" "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/R.java"
-[DEBUG] adding /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appActivity.java to javac build list
-[DEBUG] adding /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appAppInfo.java to javac build list
-[DEBUG] adding /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appApplication.java to javac build list
-[DEBUG] adding /Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/R.java to javac build list
-[DEBUG] Building Java Sources: "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appActivity.java" "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appAppInfo.java" "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/Mobile_web_appApplication.java" "/Users/Mattius/WineApp/Mobile_Wine_App/build/android/gen/com/menplusone/WineApp/R.java"
-[ERROR] Exception occured while building Android project:
-[ERROR] Traceback (most recent call last):
-[ERROR]   File "/Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py", line 2376, in <module>
-[ERROR]     builder.build_and_run(False, avd_id, debugger_host=debugger_host)
-[ERROR]   File "/Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py", line 2146, in build_and_run
-[ERROR]     self.push_deploy_json()
-[ERROR]   File "/Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py", line 1825, in push_deploy_json
-[ERROR]     sdcard_available = self.wait_for_sdcard()
-[ERROR]   File "/Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py", line 1780, in wait_for_sdcard
-[ERROR]     if 'SDCARD READY' in output:
-[ERROR] TypeError: argument of type 'NoneType' is not iterable
-[ERROR] Exception occured while building Android project:
-[ERROR] Traceback (most recent call last):
-[ERROR]   File "/Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py", line 2376, in <module>
-[ERROR]     builder.build_and_run(False, avd_id, debugger_host=debugger_host)
-[ERROR]   File "/Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py", line 2146, in build_and_run
-[ERROR]     self.push_deploy_json()
-[ERROR]   File "/Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py", line 1825, in push_deploy_json
-[ERROR]     sdcard_available = self.wait_for_sdcard()
-[ERROR]   File "/Users/Mattius/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py", line 1780, in wait_for_sdcard
-[ERROR]     if 'SDCARD READY' in output:
-[ERROR] TypeError: argument of type 'NoneType' is not iterable
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[TRACE] adb devices returned 0 devices/emulators
+[ERROR] Timed out waiting for emulator to be ready, you may need to close the emulator and try again
