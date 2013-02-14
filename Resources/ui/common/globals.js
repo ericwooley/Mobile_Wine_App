@@ -84,10 +84,10 @@ function outputHook(win){
 	settingsButton.addEventListener('click', function() {
 		//containingTab attribute must be set by parent tab group on
 		//the window for this work
-		win.containingTab.open(Ti.UI.createWindow({
-			title: L('Settings'),
-			backgroundImage: 'images/lightpaperfibers.png'
-		}));
+		var settingsWindow = createWindow('settings');
+		var createSettingsPage = require('ui/common/settings');
+		createSettingsPage(settingsWindow);
+		win.containingTab.open(settingsWindow);
 	});
 }
 module.exports.outputHook = outputHook;

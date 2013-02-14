@@ -1,13 +1,35 @@
 
 module.exports.login = function(email, password, callback){
-	getResponse('http://winelife.ericwooley.com/login/user_login/', {email: email, password:password}, callback);
+	getResponse('http://winelife.ericwooley.com/user/login/', {email: email, password:password}, callback);
 }
 
 module.exports.register = function(email, password, callback){
-	getResponse('http://winelife.ericwooley.com/login/create_user/', {email: email, password:password}, callback);
+	getResponse('http://winelife.ericwooley.com/user/register/', {email: email, password:password}, callback);
 }
 
+module.exports.profileInformation = function(){
+	var return_data;
+	getResponse('http://winelife.ericwooley.com/user/profile/', function(data){
+		return_data = data;
+	});
+	alert(return_data);
+}
 
+module.exports.editProfile = function(){
+	
+}
+
+module.exports.search = function(query, callback){
+	query = query.replace(' ', '+');
+	getResponse(
+		'http://winelife.ericwooley.com/search/wine_search/',
+		{
+			query: query,
+			size: 1
+		},
+		callback
+	);
+}
 
 
 

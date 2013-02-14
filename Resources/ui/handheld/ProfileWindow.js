@@ -64,6 +64,14 @@ function ProfileWindow(title) {
 	//self.add(userFullName)
 
 
+//create label & text field in same place.
+//set text field to hidden
+//add event listener to the label
+//in event listener function, hide label, and show text field
+//copy text from label into text field
+
+
+
 
 
 	// ABOUT ME TITLE FIELD

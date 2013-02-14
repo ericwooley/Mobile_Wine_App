@@ -13,7 +13,7 @@ function ApplicationTabGroup() {
 	
 	var tab1 = Ti.UI.createTab({
 		title: 'Home',
-		icon: '/images/home_tab.png',
+		icon: '/images/home_tab_reg.png',
 		backgroundColor: global.colors.dark,
 		window: win1
 	});
@@ -21,7 +21,7 @@ function ApplicationTabGroup() {
 	
 	var tab2 = Ti.UI.createTab({
 		title: 'Discover',
-		icon: '/images/KS_nav_views.png',
+		icon: '/images/discover_tab.png',
 		backgroundColor: global.colors.dark,
 		window: win2
 	});
@@ -29,7 +29,7 @@ function ApplicationTabGroup() {
 	
 	var tab3 = Ti.UI.createTab({
 		title: 'Check-In',
-		icon: '/images/KS_nav_views.png',
+		icon: '/images/check-in_tab.png',
 		backgroundColor: global.colors.dark,
 		window: win3
 	});
@@ -37,7 +37,7 @@ function ApplicationTabGroup() {
 	
 	var tab4 = Ti.UI.createTab({
 		title: 'Friends',
-		icon: '/images/KS_nav_views.png',
+		icon: '/images/friends_tab.png',
 		backgroundColor: global.colors.dark,
 		window: win4
 	});
@@ -45,7 +45,7 @@ function ApplicationTabGroup() {
 	
 	var tab5 = Ti.UI.createTab({
 		title: 'Profile',
-		icon: '/images/KS_nav_views.png',
+		icon: '/images/profile_tab.png',
 		backgroundColor: global.colors.dark,
 		window: win5
 	});
