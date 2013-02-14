@@ -19,6 +19,18 @@ module.exports.editProfile = function(){
 	
 }
 
+module.exports.search = function(query, callback){
+	query = query.replace(' ', '+');
+	getResponse(
+		'http://winelife.ericwooley.com/search/wine_search/',
+		{
+			query: query,
+			size: 1
+		},
+		callback
+	);
+}
+
 
 
 
