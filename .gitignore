@@ -3,4 +3,5 @@ tmp
 .fastdev.lock
 build.log
 *.log
+build/
 build.log
