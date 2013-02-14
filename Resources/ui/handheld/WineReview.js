@@ -82,7 +82,7 @@ height: (lbl_Rating.bottom - image.bottom)
 	var lbl_Description = Ti.UI.createLabel({
 	left: image.right,
 	color:global.colors.dark,
-	text: "This is where the description goes. i.e. this tastes like grandma or it was like suckling off the teet of jesus.  you get the idea...",
+	text: "This is where the description goes.",
 	font:{fontSize:14,fontWeight:'normal',fontFamily:'Helvetica Neue'},
 	touchEnabled:true
 });
