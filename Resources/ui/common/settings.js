@@ -12,7 +12,7 @@ module.exports = function(w)
 			alert(result.Products);
 			var tbl_data = [];
 			for(var wine in result.Products.List){
-				alert(typeof wine);
+				alert(wine);
 				/*var row = Ti.UI.createTableViewRow
 				({
 					hasChild:true
