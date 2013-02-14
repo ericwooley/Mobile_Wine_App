@@ -1,4 +1,5 @@
 module.exports = function(w){
+	var global = require('ui/common/globals');
 	
 	var firstname = Ti.UI.createTextField({
 		hintText: "First Name",
@@ -39,6 +40,7 @@ module.exports = function(w){
 		layout: 'vertical'
 	});
 	var pi = global.api.profileInformation(function(pi){
+		//alert(pi);
 		firstname.value = pi.fname;
 		lastname.value = pi.lname;
 		bio.value = pi.bio;

@@ -54,21 +54,24 @@ function getResponse(url, data, callback){
 	{
 		var json = this.responseText;
 		closeMessage(message);
+		alert(json);
 		try{
 			response = JSON.parse(json);
 		}catch(err)
 		{
-			showMessage("Decode Error" + err, 5000);
+			showMessage("Decode Error:" + err, 5000);
 			response = json;
 		}
 		
 		callback(response);
 	}
-	server.onreadystatechange = function(){
+	
+	
+	/*server.onreadystatechange = function(){
 		for(var info in this){
 			Ti.API.info(info);
 		}
-	}
+	}*/
 	
 	server.open('POST', url);
 	server.send(data);
