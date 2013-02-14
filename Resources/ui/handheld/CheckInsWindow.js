@@ -29,10 +29,43 @@ function CheckInsWindow(title) {
 	});
 	
 	
-
+	
+	
+	//window to put results
+	// This is where I am going put all the results.
+	var search_results = global.createWindow(title);
+	
+	
+//******
 	
 	
 	
+	// add my search field to my 
+	search_results.add(wines);
+	
+	// This is the function that fires when someone hides the keyboard.
+	// Maybe a button event or whatever you want.
+	wines.addEventListener('blur', function(){
+		// This is the search api.
+		// The firsty value should be the query followed by an anonymous function
+		// that will be called once the data has been retrieved. This won't be called
+		// if there is a failure. 
+		global.api.search(wines.value, function(result){
+			// get a view with the results.
+			var view = global.api.search_results(result);
+			// Add this view to the view in the whole page.
+			search_results.add(view);
+		});
+	});
+	// add overview to the window.
+	self.add(wines);
+	
+	
+	
+	
+	//self.containingTab.open(search_results)
+	
+//*******
 	
 	// "Year" text field
 	var year = Titanium.UI.createTextField({
