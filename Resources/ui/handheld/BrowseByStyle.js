@@ -16,11 +16,24 @@ function BrowseByStyle(){
 		backgroundColor: 'white',
 		value:'merlot',
 		top: 10,
-		left: 10,
+		left: '5%',
 		width:'60%',
 		height:'10%',
 		style: Ti.UI.INPUT_BORDERSTYLE_BEZEL
 	});
+	
+/*	var btn = Ti.UI.createButton({
+		width:'20%',
+		height:'10%',
+		top:10,
+		right:'5%',
+		borderColor: global.colors.dark,
+		borderRadius: 5,
+		borderWidth: 1,
+		backgroundColor: global.colors.dark,
+		icon: '/images/discover_tab.png'
+}); */
+	
 	var view = Ti.UI.createView({
 		width: Ti.UI.SIZE,
 		height: '80%',
@@ -120,6 +133,7 @@ function BrowseByStyle(){
 	
 
 	self.add(tmp);
+//	self.add(btn);
 //	w.add(view);
  
  
