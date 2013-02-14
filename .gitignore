@@ -8,3 +8,5 @@ build.log
 ui/common/config.js
 Resources/ui/common/config.js
 build.log
+
+*.log
