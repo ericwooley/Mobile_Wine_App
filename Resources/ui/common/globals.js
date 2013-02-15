@@ -77,17 +77,20 @@ function outputHook(win){
 		image:'/images/gearIconCrop.png',
 		layout:'vertical'
 	});
-	//settingsButton.addEventListener('click', function(){
-	//	alert('Settings button was pushed');
-	//});
+	ettingsButton.addEventListener('click', function(){
+		alert('Settings button was pushed');
+	});
 	win.add(settingsButton);
-	settingsButton.addEventListener('click', function() {
+	/*settingsButton.addEventListener('click', function() {
 		//containingTab attribute must be set by parent tab group on
 		//the window for this work
 		var settingsWindow = createWindow('settings');
 		var createSettingsPage = require('ui/common/settings');
 		createSettingsPage(settingsWindow);
-		win.containingTab.open(settingsWindow);
-	});
+		if(Ti.Platform.osname == 'android')
+			settingsWindow.open();
+		else
+			win.containingTab.open(settingsWindow);
+	});*/
 }
 module.exports.outputHook = outputHook;

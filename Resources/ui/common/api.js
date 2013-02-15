@@ -54,7 +54,7 @@ function getResponse(url, data, callback){
 	{
 		var json = this.responseText;
 		closeMessage(message);
-		alert(json);
+		
 		try{
 			response = JSON.parse(json);
 		}catch(err)
@@ -62,7 +62,7 @@ function getResponse(url, data, callback){
 			showMessage("Decode Error:" + err, 5000);
 			response = json;
 		}
-		
+		Ti.API.info('Got to here');
 		callback(response);
 	}
 	

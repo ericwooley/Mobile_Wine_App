@@ -48,13 +48,14 @@ module.exports = function(w){
 		overview.add(lastname);
 		overview.add(bio);
 		overview.add(edit);
-		w.add(overview);
+		
 		edit.addEventListener('click', function(){
 			global.api.editProfile(firstname.value, lastname.value, bio.value, function(result){
 				alert(result);
 			});
 		});
 	});
+	w.add(overview);
 }
 
 
