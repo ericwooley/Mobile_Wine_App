@@ -114,11 +114,9 @@ function LoginWindow() {
 			}
 			else
 			{
-				
-				self.close();
 				var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
 				new ApplicationTabGroup().open();
-				Ti.API.info('login callback success');
+				self.close();
 			}
 		});
 	});	

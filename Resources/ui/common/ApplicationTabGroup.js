@@ -2,7 +2,11 @@ function ApplicationTabGroup() {
 	global = require('ui/common/globals');
 	
 	//create module instance
-	var self = Ti.UI.createTabGroup();
+	var self = Ti.UI.createTabGroup(
+		{
+			exitOnClose: true
+		}
+	);
 	
 	//create app tabs
 	var win1 = require('ui/handheld/HomeWindow')('Home'),
