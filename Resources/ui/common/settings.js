@@ -107,7 +107,7 @@ module.exports = function(w)
 		global.api.search(tmp.value, function(result){
 			// get a view with the results.
 			var view = global.api.search_results(result, function(wine){
-				Ti.API.info(JSON.stringify(wine.all_information));
+				Ti.API.info(JSON.stringify(wine.id));
 				// strings to deal with are, 
 				// wine.name
 				// wine.id

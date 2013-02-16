@@ -24,7 +24,7 @@ module.exports = function(result, callback){
 		});
 		//alert(wine.Appellation.Id);
 		row.wine = {
-			id: wine.Appellation.Id,
+			id: wine.Id,
 			name: name,
 			winetype: winetype,
 			location: location,
