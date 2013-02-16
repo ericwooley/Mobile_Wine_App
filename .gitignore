@@ -1,10 +1,7 @@
 .DS_Store
 tmp
 .fastdev.lock
-build.log
-*.log
 build/
 build/iphone/
 build/android/
 build/mobileweb/
-build.log
