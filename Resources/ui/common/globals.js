@@ -1,35 +1,71 @@
 /**
+ * @class globals
  * This file gives us easy access to things we are probably going to need on every page.
  */
-
-var includes  =
+var globals  =
 {
+	/**
+	 * @cfg {boject} colors
+	 * Our color scheme
+	 */
 	colors: {
 		lightest: '#ffdc95',
 		lighter:'#ffb36f',
 		light: '#ed5f4a',
 		lessDark: '#c42d30',
 		dark: '#3c0017'
-	 },
-	 
+	},
+	/**
+	 * Elements to be added
+	 */
 	elements: {
+		/**
+		 * A simple view for quick creation
+		 */
 		SimpleView: require('ui/common/elements/SimpleView'),
+		/**
+		 * Simple label for quick creation
+		 */
 		SimpleLabel: require('ui/common/elements/SimpleLabel'),
+		/**
+		 * the title bar
+		 */
 		SetTitleBar: require('ui/common/elements/SetTitleBar')
 	},
-	config:require('ui/common/config'),
+	/**
+	 * @cfg {Object} config All of the configuration items
+	 */
+	config:{
+		requireLogin: true,
+		encryptionpw: "20yqn['oqbWY$boqby082bvo1y98hb0']asdfyq4qh5" // Do not change
+	},
+	/**
+	 * Our api to interact with the server.
+	 */
 	api: require('ui/common/api'),
+	/**
+	 * if you want to encrypt or decrypt things, here you go.
+	 */
 	crypt: require('ui/common/crypt')
 };
-module.exports = includes;
+module.exports = globals;
+
+/**
+ * function to check if the user has logged in, unimplemented
+ * @return {Boolean} always returns true
+ */
 module.exports.userIsLoggedIn = function()
 {
 	return true;
-}
+};
 
-//  GLOBAL CREATE WINDOW FUNCTION
-//  One change here will change basic window properties on all windows.
-//  *******************************************************************
+/**
+ * Global creation window function
+ * Use this to create a new window, so that all of our windows will remain standardized
+ * one change here will affect all the windows
+ * @param {String} title
+ * This is the tile of the window that will be returned.
+ */
 function createWindow(title){
 	
 	var self = Ti.UI.createWindow({
@@ -41,13 +77,15 @@ function createWindow(title){
 		backgroundImage:'images/lightpaperfibers.png'
 	});
 	return self;
-}
-
+};
 module.exports.createWindow = createWindow;
-//	End Function
 
-// This should be the last function called before the window is put on the screen.
-// This allows us to add layers ontop of all the content, like the settings button.
+/**
+ * This is the output hook and should be the last thing called by each page.
+ * This allows us to add screen layovers or whatever we want.
+ * @param {Window} win
+ * Pass in the window to be built upon.
+ */
 function outputHook(win){
 	var settingsButton = Ti.UI.createImageView(
 	{	
@@ -62,11 +100,7 @@ function outputHook(win){
 		image:'/images/gearIcon.png',
 		layout:'vertical'
 	});
-	
 
-	/*settingsButton.addEventListener('click', function(){
-		alert('Settings button was pushed');
-	});*/
 	if(Titanium.Platform.osname == 'android'){
 		
 		settingsButton.setImage('/images/gearIconCrop.png');
@@ -76,30 +110,40 @@ function outputHook(win){
 	else{
 	win.setRightNavButton(settingsButton);
 	}
-	//win.add(settingsButton);
 	settingsButton.addEventListener('click', function() {
 		//containingTab attribute must be set by parent tab group on
 		//the window for this work
-		
 		var settingsWindow = createWindow('settings');
 		var createSettingsPage = require('ui/common/settings');
 		createSettingsPage(settingsWindow);
 		
 		win.containingTab.open(settingsWindow);
 	});
-}
+};
 module.exports.outputHook = outputHook;
 
-//Storing local data
-module.exports.store_string = function(name, value)
+/**
+ * Store an encrypted string that will survive application closes
+ * @param {Object} name
+ * The name of the string, so you can get it back out.
+ * @param {Object} value
+ * the value to be encrypted and stored.
+ */
+function store_string(name, value)
 {
-	Ti.App.Properties.setString(name, crypt.encrypt(value, config.encryptionpw));
-}
-
-module.exports.get_string = function(name, value)
+	Ti.App.Properties.setString(name, crypt.encrypt(value, globals.config.encryptionpw));
+};
+module.exports = store_string;
+/**
+ * retrieve and decrypt a stored string.
+ * @param {Object} name
+ * The name of the string to be retrieved.
+ */
+function get_string(name)
 {
 	var text = Ti.App.Properties.getString(name);
 	if(text)
-		return includes.crypt.decrypt(text, includes.config.encryptionpw);
+		return globals.crypt.decrypt(text, globals.config.encryptionpw);
 	return false;
 }
+module.exports = get_string;
