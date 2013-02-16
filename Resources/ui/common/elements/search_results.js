@@ -1,4 +1,5 @@
-module.exports = function(result){
+module.exports = function(result, callback){
+	Ti.API.info("this far");
 	var view = Ti.UI.createView({
 		width: Ti.UI.SIZE,
 		height: Ti.UI.SIZE,
@@ -21,6 +22,15 @@ module.exports = function(result){
 		({
 			hasChild:true
 		});
+		//alert(wine.Appellation.Id);
+		row.wine = {
+			id: wine.Appellation.Id,
+			name: name,
+			winetype: winetype,
+			location: location,
+			all_information: wine
+		};
+		
 		
 		// This image will be the image of the wine
 		var image = Ti.UI.createImageView
@@ -88,6 +98,10 @@ module.exports = function(result){
 		width:'100%',
 		height:'100%',
 		data:tbl_data
+	});
+	table.addEventListener('click', function(data){
+		alert(data.row);
+		callback(data.row.wine);
 	});
 	view.add(table);
 	return view;	

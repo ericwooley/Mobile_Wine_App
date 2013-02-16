@@ -1,3 +1,6 @@
+// This is an example of the edit profile and retreive profile functionality.
+
+/*
 module.exports = function(w){
 	var global = require('ui/common/globals');
 	
@@ -62,8 +65,7 @@ module.exports = function(w){
 
 
 
-
-/* No longer using this, this page is now the testing ground for edit profile.
+/*/
 // For now this is a demo on how to use the search api.
 
 module.exports = function(w)
@@ -104,7 +106,108 @@ module.exports = function(w)
 		// if there is a failure. 
 		global.api.search(tmp.value, function(result){
 			// get a view with the results.
-			var view = global.api.search_results(result);
+			var view = global.api.search_results(result, function(wine){
+				Ti.API.info(JSON.stringify(wine.all_information));
+				// strings to deal with are, 
+				// wine.name
+				// wine.id
+				// wine.winetype
+				// wine.location
+				// wine.all_information - this is one extra bit of data (the motherload)
+				// getting to all the data can be hard, but here is the layout. 
+				// Let me know if you need help.
+				//{
+				//   "Url":"http://www.wine.com/V6/Pedestal-Merlot-2006/wine/98082/detail.aspx",
+				//   "Name":"Pedestal Merlot 2006",
+				//   "Ratings":{
+				//      "List":[
+				//
+				//      ],
+				//      "HighestScore":96
+				//   },
+				//   "ProductAttributes":[
+				//      {
+				//         "Url":"http://www.wine.com/v6/Collectible-Wines/wine/list.aspx?N=7155+36",
+				//         "Name":"Collectible Wines",
+				//         "ImageUrl":"http://cache.wine.com/images/glo_icon_collectable_big.gif",
+				//         "Id":36
+				//      },
+				//      {
+				//         "Url":"http://www.wine.com/v6/Smooth-andamp-Supple/wine/list.aspx?N=7155+611",
+				//         "Name":"Smooth &amp; Supple",
+				//         "ImageUrl":"",
+				//         "Id":611
+				//      }
+				//   ],
+				//   "Id":98082,
+				//   "Varietal":{
+				//      "Url":"http://www.wine.com/v6/Merlot/wine/list.aspx?N=7155+124+138",
+				//      "Name":"Merlot",
+				//      "WineType":{
+				//         "Url":"http://www.wine.com/v6/Red-Wines/wine/list.aspx?N=7155+124",
+				//         "Id":124,
+				//         "Name":"Red Wines"
+				//      },
+				//      "Id":138
+				//   },
+				//   "Appellation":{
+				//      "Url":"http://www.wine.com/v6/Columbia-Valley/wine/list.aspx?N=7155+104+2414",
+				//      "Name":"Columbia Valley",
+				//      "Region":{
+				//         "Url":"http://www.wine.com/v6/Washington/wine/list.aspx?N=7155+104",
+				//         "Name":"Washington",
+				//         "Area":null,
+				//         "Id":104
+				//      },
+				//      "Id":2414
+				//   },
+				//   "Vintage":"",
+				//   "Vintages":{
+				//      "List":[
+				//
+				//      ]
+				//   },
+				//   "Labels":[
+				//      {
+				//         "Url":"http://cache.wine.com/labels/98082m.jpg",
+				//         "Id":"98082m",
+				//         "Name":"thumbnail"
+				//      }
+				//   ],
+				//   "Vineyard":{
+				//      "Url":"http://www.wine.com/v6/Pedestal/learnabout.aspx?winery=17979",
+				//      "Name":"Pedestal",
+				//      "GeoLocation":{
+				//         "Url":"http://www.wine.com/v6/aboutwine/mapof.aspx?winery=17979",
+				//         "Longitude":-360,
+				//         "Latitude":-360
+				//      },
+				//      "ImageUrl":"",
+				//      "Id":6139
+				//   },
+				//   "Description":"",
+				//   "Type":"Wine",
+				//   "Community":{
+				//      "Url":"http://www.wine.com/V6/Pedestal-Merlot-2006/wine/98082/detail.aspx",
+				//      "Reviews":{
+				//         "List":[
+				//
+				//         ],
+				//         "HighestScore":1,
+				//         "Url":"http://www.wine.com/V6/Pedestal-Merlot-2006/wine/98082/detail.aspx?pageType=reviews"
+				//      }
+				//   },
+				//   "PriceMin":44.99,
+				//   "PriceRetail":53.99,
+				//   "PriceMax":61.99,
+				//   "Retail":null,
+				//   "GeoLocation":{
+				//      "Url":"http://www.wine.com/v6/aboutwine/mapof.aspx?winery=17979",
+				//      "Longitude":-360,
+				//      "Latitude":-360
+				//   }
+				//}
+			});
 			// Add this view to the view in the whole page.
 			overview.add(view);
 		});
@@ -112,5 +215,4 @@ module.exports = function(w)
 	// add overview to the window.
 	w.add(overview);
 }
-
-*/
+//*/
