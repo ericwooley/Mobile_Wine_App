@@ -9,6 +9,7 @@ module.exports = function(w){
 		width: 100,
 		style: Ti.UI.INPUT_BORDERSTYLE_BEZEL
 	});
+	
 	var lastname = Ti.UI.createTextField({
 		hintText: "lastName",
 		backgroundColor: 'white',
@@ -30,17 +31,14 @@ module.exports = function(w){
 		width: 100,
 		height: 50
 	 });
-	 var overview = Ti.UI.createWindow({
-		width: Ti.UI.SIZE,
-		height: Ti.UI.SIZE,
+	 var overview = Ti.UI.createView({
+		width: "100%",
+		height: "100%",
 		top: 10,
 		left: 10,
-		width: "100%",
-		height: Ti.UI.SIZE,
 		layout: 'vertical'
 	});
 	var pi = global.api.profileInformation(function(pi){
-		//alert(pi);
 		firstname.value = pi.fname;
 		lastname.value = pi.lname;
 		bio.value = pi.bio;
@@ -48,14 +46,18 @@ module.exports = function(w){
 		overview.add(lastname);
 		overview.add(bio);
 		overview.add(edit);
-		
+		w.add(overview);
 		edit.addEventListener('click', function(){
 			global.api.editProfile(firstname.value, lastname.value, bio.value, function(result){
-				alert(result);
+				// result.fname
+				// result.lname
+				// result.bio
+				// result.imageurl
+				alert(JSON.stringify(result));
 			});
 		});
 	});
-	w.add(overview);
+	
 }
 
 

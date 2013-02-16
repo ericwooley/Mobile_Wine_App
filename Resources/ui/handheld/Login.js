@@ -1,8 +1,9 @@
 function LoginWindow() {
 	var global = require('ui/common/globals');
-	
 	var self = global.createWindow("Login");
 	self.navBarHidden = true;
+	
+	
 	
 	var Body = global.elements.SimpleView('vertical');
 	
@@ -114,6 +115,8 @@ function LoginWindow() {
 			}
 			else
 			{
+				global.store_string('email', emailTextField.value);
+				global.store_string('password', passwordTextField.value);
 				var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
 				new ApplicationTabGroup().open();
 				self.close();
@@ -142,8 +145,9 @@ function LoginWindow() {
 		color: global.colors.dark,
 		font: {fontSize: 12}
 	})
-	function validateFields(e){ 
-		
+	function validateFields(e){
+		//global.store_string('email', emailTextField.value);
+		//Ti.API.info(global.get_string('email'));
 		// Email regex
     	var re = /\S+@\S+\.\S+/;
 		if(re.test(emailTextField.value) && passwordTextField.value.length > 5)
@@ -205,8 +209,6 @@ function LoginWindow() {
 	Ti.addEventListener('user_login', function(e){
 		
 	});
-
-	//global.outputHook(self);
 	return self;
 };
 

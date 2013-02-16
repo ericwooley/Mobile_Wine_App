@@ -15,9 +15,10 @@ function ApplicationTabGroup() {
 		win4 = require('ui/handheld/FriendsWindow')('Friends'),//new Window(L('Friends'))
 		win5 = require('ui/handheld/ProfileWindow')('Profile')//new Window(L('Profile'));
 	
+	var homeImage = Ti.Platform.osname == 'android' ? '/images/android_home_tab.png' : '/images/home_tab_reg.png';
 	var tab1 = Ti.UI.createTab({
 		title: 'Home',
-		icon: '/images/home_tab_reg.png',
+		icon: homeImage,
 		backgroundColor: global.colors.dark,
 		window: win1
 	});

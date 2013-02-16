@@ -8,7 +8,7 @@ module.exports.register = function(email, password, callback){
 }
 
 module.exports.profileInformation = function(callback){
-	getResponse('http://winelife.ericwooley.com/user/profile/',{}, callback);
+	getResponse('http://winelife.ericwooley.com/user/profile/', {}, callback);
 }
 
 module.exports.editProfile = function(fname, lname, bio, callback){
@@ -34,7 +34,15 @@ module.exports.search = function(query, callback){
  * You shouldn't need to use this, unless you want to form a custom request, use the functions
  * above for typical requests
  */
-var server = Ti.Network.createHTTPClient();
+var server = Ti.Network.createHTTPClient(
+	{
+		onerror : function(e) {
+	         Ti.API.debug(e.error);
+	         alert('error');
+	     },
+	     timeout : 5000
+	}
+);
 module.exports.httpInterface = server;
 function getResponse(url, data, callback){
 	var message = showMessage("please wait: connecting to server", 0);
@@ -49,12 +57,13 @@ function getResponse(url, data, callback){
 		return;
 	}
 	
-	var response;
 	server.onload = function()
 	{
+		Ti.API.info("load successful");
+		//Ti.API.info(JSON.stringify(this));
 		var json = this.responseText;
 		closeMessage(message);
-		
+		var response;
 		try{
 			response = JSON.parse(json);
 		}catch(err)
@@ -62,16 +71,9 @@ function getResponse(url, data, callback){
 			showMessage("Decode Error:" + err, 5000);
 			response = json;
 		}
-		Ti.API.info('Got to here');
+		response = JSON.parse(json);
 		callback(response);
 	}
-	
-	
-	/*server.onreadystatechange = function(){
-		for(var info in this){
-			Ti.API.info(info);
-		}
-	}*/
 	
 	server.open('POST', url);
 	server.send(data);

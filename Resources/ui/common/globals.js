@@ -26,17 +26,14 @@ module.exports  =
 		SetTitleBar: require('ui/common/elements/SetTitleBar')
 	}
 };
-
-module.exports.config = require('ui/common/config');
+config = require('ui/common/config');
+module.exports.config = config;
 module.exports.api = require('ui/common/api');
-
+var crypt = require('ui/common/crypt');
+module.exports.crypt = crypt;
 module.exports.userIsLoggedIn = function()
 {
 	return true;
-}
-// Global create setting buttons function
-function createSettingsButton(){
-	
 }
 
 //  GLOBAL CREATE WINDOW FUNCTION
@@ -52,9 +49,6 @@ function createWindow(title){
 		backgroundColor: module.exports.colors.lightest,
 		backgroundImage:'images/lightpaperfibers.png'
 	});
-	
-
-	
 	return self;
 }
 
@@ -84,13 +78,25 @@ function outputHook(win){
 	settingsButton.addEventListener('click', function() {
 		//containingTab attribute must be set by parent tab group on
 		//the window for this work
+		
 		var settingsWindow = createWindow('settings');
 		var createSettingsPage = require('ui/common/settings');
 		createSettingsPage(settingsWindow);
-		if(Ti.Platform.osname == 'android')
-			settingsWindow.open();
-		else
-			win.containingTab.open(settingsWindow);
+		
+		win.containingTab.open(settingsWindow);
 	});
 }
 module.exports.outputHook = outputHook;
+
+//Storing local data
+module.exports.store_string = function(name, value)
+{
+	Ti.App.Properties.setString(name, crypt.encrypt(value, config.encryptionpw));
+}
+module.exports.get_string = function(name, value)
+{
+	var text = Ti.App.Properties.getString(name);
+	if(text)
+		return crypt.decrypt(text, config.encryptionpw);
+	return false;
+}

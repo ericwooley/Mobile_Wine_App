@@ -17,16 +17,39 @@ if (Ti.version < 1.8 ) {
 	//yourself what you consider a tablet form factor for android
 	var isTablet = osname === 'ipad' || (osname === 'android' && (width > 899 || height > 899));
 	
-	//var Window = require('ui/handheld/ApplicationWindow');
-	/* if (isTablet) {
-		Window = require('ui/tablet/ApplicationWindow');
+	loginWindow = require('ui/handheld/Login')();
+	var email = global.get_string('email');
+	var password = global.get_string('password');
+	if(email && password)
+	{
+		
+		var dia = Ti.UI.createAlertDialog({
+			title: "logging you in",
+			message: "one moment..."
+		});
+		dia.show();
+		
+		global.api.login(email, password, function(response){
+			Ti.API.info('We got a login response');
+			Ti.API.info('success: ' + response.success)
+			if(response.success)
+			{
+				Ti.API.info("THis is happening.");
+				var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
+				new ApplicationTabGroup().open();
+			}
+			else
+			{
+				Ti.API.info('Error Happening');
+				var dialog = Ti.UI.createAlertDialog({
+					title: "Login Response",
+					message: response.error
+				});
+				dialog.show();
+			}
+		});
 	}
-	else {
-		Window = require('ui/handheld/ApplicationWindow');
-	}*/
-	// This will open up a window that keeps the others hidden until the user is logged in.
-	if(global.config.requireLogin){
-		var loginWindow = require('ui/handheld/Login')();
+	else if(global.config.requireLogin){
 		loginWindow.open();
 	}
 	else
