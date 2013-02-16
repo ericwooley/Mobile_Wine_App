@@ -1,16 +1,8 @@
-
-
-/* Usage Example
-	var global  = require('ui/common/globals');
-	
-	alert(global.colors.lightest);
-	
-	global.GVUpdate('www.thewarpedcoder.net', 'variable3');
-	
-	alert(VARS.GV.variable3);
+/**
+ * This file gives us easy access to things we are probably going to need on every page.
  */
 
-module.exports  =
+var includes  =
 {
 	colors: {
 		lightest: '#ffdc95',
@@ -24,13 +16,12 @@ module.exports  =
 		SimpleView: require('ui/common/elements/SimpleView'),
 		SimpleLabel: require('ui/common/elements/SimpleLabel'),
 		SetTitleBar: require('ui/common/elements/SetTitleBar')
-	}
+	},
+	config:require('ui/common/config'),
+	api: require('ui/common/api'),
+	crypt: require('ui/common/crypt')
 };
-config = require('ui/common/config');
-module.exports.config = config;
-module.exports.api = require('ui/common/api');
-var crypt = require('ui/common/crypt');
-module.exports.crypt = crypt;
+module.exports = includes;
 module.exports.userIsLoggedIn = function()
 {
 	return true;
@@ -68,7 +59,7 @@ function outputHook(win){
 		borderWidth: 0,
 		contentMode: 'aspectfill',
 		clipsToBounds: false,
-		image:'/images/KS_nav_ui.png',
+		image:'/images/gearIcon.png',
 		layout:'vertical'
 	});
 	
@@ -76,7 +67,7 @@ function outputHook(win){
 	/*settingsButton.addEventListener('click', function(){
 		alert('Settings button was pushed');
 	});*/
-	if(Titanium.Platform.name == 'android'){
+	if(Titanium.Platform.osname == 'android'){
 		
 		settingsButton.setImage('/images/gearIconCrop.png');
 		settingsButton.setRight(0);		
@@ -104,10 +95,11 @@ module.exports.store_string = function(name, value)
 {
 	Ti.App.Properties.setString(name, crypt.encrypt(value, config.encryptionpw));
 }
+
 module.exports.get_string = function(name, value)
 {
 	var text = Ti.App.Properties.getString(name);
 	if(text)
-		return crypt.decrypt(text, config.encryptionpw);
+		return includes.crypt.decrypt(text, includes.config.encryptionpw);
 	return false;
 }

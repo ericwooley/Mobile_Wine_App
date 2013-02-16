@@ -1,5 +1,5 @@
 module.exports = function(result, callback){
-	Ti.API.info("this far");
+	Ti.API.info("loading search results");
 	var view = Ti.UI.createView({
 		width: Ti.UI.SIZE,
 		height: Ti.UI.SIZE,

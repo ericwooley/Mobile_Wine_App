@@ -105,8 +105,11 @@ module.exports = function(w)
 		// that will be called once the data has been retrieved. This won't be called
 		// if there is a failure. 
 		global.api.search(tmp.value, function(result){
+			Ti.API.info('search callback was called');
+			alert(result);
 			// get a view with the results.
 			var view = global.api.search_results(result, function(wine){
+				Ti.API.info('Settings callback was successful');
 				Ti.API.info(JSON.stringify(wine.id));
 				// strings to deal with are, 
 				// wine.name
