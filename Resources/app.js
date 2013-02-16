@@ -30,22 +30,15 @@ if (Ti.version < 1.8 ) {
 		dia.show();
 		
 		global.api.login(email, password, function(response){
-			Ti.API.info('We got a login response');
-			Ti.API.info('success: ' + response.success)
+			dia.hide();
 			if(response.success)
 			{
-				Ti.API.info("THis is happening.");
 				var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
 				new ApplicationTabGroup().open();
 			}
 			else
 			{
-				Ti.API.info('Error Happening');
-				var dialog = Ti.UI.createAlertDialog({
-					title: "Login Response",
-					message: response.error
-				});
-				dialog.show();
+				loginWindow.open();
 			}
 		});
 	}
