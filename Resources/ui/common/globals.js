@@ -71,10 +71,20 @@ function outputHook(win){
 		image:'/images/KS_nav_ui.png',
 		layout:'vertical'
 	});
+	
+
 	/*settingsButton.addEventListener('click', function(){
 		alert('Settings button was pushed');
 	});*/
+	if(Titanium.Platform.name == 'android'){
+		
+		settingsButton.setImage('/images/gearIconCrop.png');
+		settingsButton.setRight(0);		
+		win.add(settingsButton);
+	}
+	else{
 	win.setRightNavButton(settingsButton);
+	}
 	//win.add(settingsButton);
 	settingsButton.addEventListener('click', function() {
 		//containingTab attribute must be set by parent tab group on
