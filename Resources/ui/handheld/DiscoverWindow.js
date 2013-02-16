@@ -55,7 +55,7 @@ for (var i = 0; i < 10; i++) {
 	
 	});
 
-	// This is the Label for the location of the wine within the row
+	// This is the Label for the location of the date within the row
 	var lbl_date = Ti.UI.createLabel({
 		right:5,
 		top:5,
