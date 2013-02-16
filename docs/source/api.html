@@ -104,12 +104,13 @@ api.search = function(query, callback){
 
 
 <span id='api-method-catagory'>/**
-</span> * search for a catagories, please note that these catagories need to line up with the wine api catagories. For more information: http://api.wine.com.
+</span> * search for wine by catagories, please note that these catagories need to line up with the wine api catagories. For more information: http://api.wine.com.
  * @param {String} cat
  * catagory id's should be space seperated or + seperated.
  *     @example
  *     &quot;124 254 861&quot;
  *     &quot;124+254+861&quot;
+ * 
  * @param {Function} callback
  * callback function that will be given the results. It is recommended that you format this data using api.search_results
  *     @example
@@ -133,6 +134,7 @@ api.catagory = function(cat, callback){
  *     @example
  *     &quot;124 254 861&quot;
  *     &quot;124+254+861&quot;
+ * 
  * @param {Function} callback
  * callback function that will be given the results. It is recommended that you format this data using api.search_results
  *     @example

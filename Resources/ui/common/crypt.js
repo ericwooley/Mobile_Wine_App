@@ -1,20 +1,11 @@
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-/*  Block TEA (xxtea) Tiny Encryption Algorithm implementation in JavaScript                      */
-/*     (c) Chris Veness 2002-2012: www.movable-type.co.uk/tea-block.html                          */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-/*  Algorithm: David Wheeler & Roger Needham, Cambridge University Computer Lab                   */
-/*             http://www.cl.cam.ac.uk/ftp/papers/djw-rmn/djw-rmn-tea.html (1994)                 */
-/*             http://www.cl.cam.ac.uk/ftp/users/djw3/xtea.ps (1997)                              */
-/*             http://www.cl.cam.ac.uk/ftp/users/djw3/xxtea.ps (1998)                             */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-
+/**
+ * @class Tea
+ * Encryption algorithm from www.movable-type.co.uk/tea-block.html 
+ */
 var Tea = {};  // Tea namespace
-module.exports = Tea;
+
 /*
  * encrypt text using Corrected Block TEA (xxtea) algorithm
- *
  * @param {string} plaintext String to be encrypted (multi-byte safe)
  * @param {string} password  Password to be used for encryption (1st 16 chars)
  * @returns {string} encrypted text
@@ -49,7 +40,7 @@ Tea.encrypt = function(plaintext, password) {
     var ciphertext = Tea.longsToStr(v);
     
     return Base64.encode(ciphertext);
-}
+};
 
 /*
  * decrypt text using Corrected Block TEA (xxtea) algorithm
@@ -87,7 +78,7 @@ Tea.decrypt = function(ciphertext, password) {
     plaintext = plaintext.replace(/\0+$/,'');
 
     return Utf8.decode(plaintext);
-}
+};
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
@@ -103,7 +94,7 @@ Tea.strToLongs = function(s) {  // convert string to array of longs, each contai
                (s.charCodeAt(i*4+2)<<16) + (s.charCodeAt(i*4+3)<<24);
     }
     return l;  // note running off the end of the string generates nulls since 
-}              // bitwise operators treat NaN as 0
+};              // bitwise operators treat NaN as 0
 
 Tea.longsToStr = function(l) {  // convert array of longs back to string
     var a = new Array(l.length);
@@ -112,7 +103,7 @@ Tea.longsToStr = function(l) {  // convert array of longs back to string
                                    l[i]>>>16 & 0xFF, l[i]>>>24 & 0xFF);
     }
     return a.join('');  // use Array.join() rather than repeated string appends for efficiency in IE
-}
+};
 
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
@@ -165,7 +156,7 @@ Base64.encode = function(str, utf8encode) {  // http://tools.ietf.org/html/rfc46
   coded = coded.slice(0, coded.length-pad.length) + pad;
    
   return coded;
-}
+};
 
 /**
  * Decode string from Base64, as defined by RFC 4648 [http://tools.ietf.org/html/rfc4648]
@@ -204,7 +195,7 @@ Base64.decode = function(str, utf8decode) {
   plain = d.join('');  // join() is far faster than repeated string concatenation in IE
    
   return utf8decode ? Utf8.decode(plain) : plain; 
-}
+};
 
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
@@ -239,7 +230,7 @@ Utf8.encode = function(strUni) {
         return String.fromCharCode(0xe0 | cc>>12, 0x80 | cc>>6&0x3F, 0x80 | cc&0x3f); }
     );
   return strUtf;
-}
+};
 
 /**
  * Decode utf-8 encoded string back into multi-byte Unicode characters
@@ -262,4 +253,16 @@ Utf8.decode = function(strUtf) {
         return String.fromCharCode(cc); }
     );
   return strUni;
-}
+};
+module.exports = Tea;
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+/*  Block TEA (xxtea) Tiny Encryption Algorithm implementation in JavaScript                      */
+/*     (c) Chris Veness 2002-2012: www.movable-type.co.uk/tea-block.html                          */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+/*  Algorithm: David Wheeler & Roger Needham, Cambridge University Computer Lab                   */
+/*             http://www.cl.cam.ac.uk/ftp/papers/djw-rmn/djw-rmn-tea.html (1994)                 */
+/*             http://www.cl.cam.ac.uk/ftp/users/djw3/xtea.ps (1997)                              */
+/*             http://www.cl.cam.ac.uk/ftp/users/djw3/xxtea.ps (1998)                             */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */

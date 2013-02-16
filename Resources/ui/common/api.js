@@ -59,6 +59,7 @@ api.editProfile = function(fname, lname, bio, callback){
 
 /**
  * creates a view containing a table with all the search results already formatted.
+ * for an example, see search
  * @param {Object} search_results
  * All of the search data. It is easiest to just drop in the results from one of the search functions
  * @param {Function} callback
@@ -87,12 +88,13 @@ api.search = function(query, callback){
 
 
 /**
- * search for a catagories, please note that these catagories need to line up with the wine api catagories. For more information: http://api.wine.com.
+ * search for wine by catagories, please note that these catagories need to line up with the wine api catagories. For more information: http://api.wine.com.
  * @param {String} cat
  * catagory id's should be space seperated or + seperated.
  *     @example
  *     "124 254 861"
  *     "124+254+861"
+ * 
  * @param {Function} callback
  * callback function that will be given the results. It is recommended that you format this data using api.search_results
  *     @example
@@ -116,6 +118,7 @@ api.catagory = function(cat, callback){
  *     @example
  *     "124 254 861"
  *     "124+254+861"
+ * 
  * @param {Function} callback
  * callback function that will be given the results. It is recommended that you format this data using api.search_results
  *     @example
