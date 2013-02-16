@@ -63,18 +63,19 @@ function outputHook(win){
 		height: 30,
 		width: 30,
 		top: 0,
-		right: 0,
+		right: '10%',
 		borderColor: 'black',
 		borderWidth: 0,
 		contentMode: 'aspectfill',
 		clipsToBounds: false,
-		image:'/images/gearIconCrop.png',
+		image:'/images/KS_nav_ui.png',
 		layout:'vertical'
 	});
 	/*settingsButton.addEventListener('click', function(){
 		alert('Settings button was pushed');
 	});*/
-	win.add(settingsButton);
+	win.setRightNavButton(settingsButton);
+	//win.add(settingsButton);
 	settingsButton.addEventListener('click', function() {
 		//containingTab attribute must be set by parent tab group on
 		//the window for this work
