@@ -23,7 +23,14 @@ module.exports.search_results = require('ui/common/elements/search_results');
 
 module.exports.search = function(query, callback){
 	query = query.replace(' ', '+');
-	getResponse( 'http://winelife.ericwooley.com/search/wine_search/', { query: query, size: 1}, callback );
+	getResponse( 'http://winelife.ericwooley.com/search/wine_search/', { query: query, size: 10}, callback );
+}
+
+
+
+module.exports.catagory = function(cat, callback){
+	cat = cat.replace(' ', '+');
+	getResponse( 'http://winelife.ericwooley.com/search/wine_search/', { cat: cat, size: 10}, callback );
 }
 
 
