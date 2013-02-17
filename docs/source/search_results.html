@@ -17,13 +17,6 @@
 <body onload="prettyPrint(); highlight();">
   <pre class="prettyprint lang-js">module.exports = function(result, callback){
 	Ti.API.info(&quot;loading search results&quot;);
-	var view = Ti.UI.createView({
-		width: Ti.UI.SIZE,
-		height: Ti.UI.SIZE,
-		top: 0,
-		left: 0,
-		layout: 'vertical'
-	});
 	var tbl_data = [];
 	//result.Products.List
 	var pl = result.Products.List;
@@ -119,8 +112,7 @@
 	table.addEventListener('click', function(data){
 		callback(data.row.wine);
 	});
-	view.add(table);
-	return view;	
+	return table;	
 }
 
 </pre>

@@ -143,7 +143,10 @@ module.exports = function(w)
 			table = global.api.search_results(result, function(wine){
 				Ti.API.info('Settings callback was successful');
 				Ti.API.info(JSON.stringify(wine.id));
-				alert("You clicked on wine: "+ wine.id);
+				alert("You clicked on wine: "+ wine.id +" Getting more information about that wine.");
+				global.api.get_wine_by_id(wine.id, function(wine){
+					alert("got data on the wine by id" + JSON.stringify(wine));
+				});
 				// strings to deal with are, 
 				// wine.name
 				// wine.id

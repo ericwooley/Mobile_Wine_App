@@ -152,6 +152,16 @@ api.search_with_filter = function(query, cat, callback){
 	getResponse( 'http://winelife.ericwooley.com/search/wine_search/', { query: query, cat: cat, size: 10}, callback );
 };
 
+
+<span id='api-method-get_wine_by_id'>/**
+</span> * Grabs the data about a specific wine based on it's id.
+ * @param {Integer/String} id the id of the wine you want information for.
+ * @param {Function} callback The callback function to be called upon success
+ */
+api.get_wine_by_id = function(id, callback){
+	getResponse('http://winelife.ericwooley.com/search/get_wine/', {wine_id: id}, callback);
+};
+
 // not really relevant to anyone outside of this page
 api.httpInterface = Ti.Network.createHTTPClient(
 	{
