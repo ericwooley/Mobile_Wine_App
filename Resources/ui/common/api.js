@@ -29,6 +29,7 @@ api.login = function(email, password, callback){
 api.register = function(email, password, callback){
 	getResponse('http://winelife.ericwooley.com/user/register/', {email: email, password:password}, callback);
 };
+
 /**
  * Get the user profile information
  * @param {Function} callback

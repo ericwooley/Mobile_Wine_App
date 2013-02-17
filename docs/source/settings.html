@@ -123,11 +123,11 @@ module.exports = function(w)
 		// if there is a failure. 
 		global.api.search(tmp.value, function(result){
 			Ti.API.info('search callback was called');
-			alert(result);
 			// get a view with the results.
 			var view = global.api.search_results(result, function(wine){
 				Ti.API.info('Settings callback was successful');
 				Ti.API.info(JSON.stringify(wine.id));
+				alert(&quot;You clicked on wine: &quot;+ wine.id);
 				// strings to deal with are, 
 				// wine.name
 				// wine.id

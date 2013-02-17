@@ -1,12 +1,5 @@
 module.exports = function(result, callback){
 	Ti.API.info("loading search results");
-	var view = Ti.UI.createView({
-		width: Ti.UI.SIZE,
-		height: Ti.UI.SIZE,
-		top: 0,
-		left: 0,
-		layout: 'vertical'
-	});
 	var tbl_data = [];
 	//result.Products.List
 	var pl = result.Products.List;
@@ -100,10 +93,8 @@ module.exports = function(result, callback){
 		data:tbl_data
 	});
 	table.addEventListener('click', function(data){
-		alert(data.row);
 		callback(data.row.wine);
 	});
-	view.add(table);
-	return view;	
+	return table;	
 }
 

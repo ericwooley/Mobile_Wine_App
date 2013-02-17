@@ -33,12 +33,9 @@ var globals  =
 		SetTitleBar: require('ui/common/elements/SetTitleBar')
 	},
 	/**
-	 * @cfg {Object} config All of the configuration items
+	 * The config for our app
 	 */
-	config:{
-		requireLogin: true,
-		encryptionpw: "20yqn['oqbWY$boqby082bvo1y98hb0']asdfyq4qh5" // Do not change
-	},
+	config: require('ui/common/config'),
 	/**
 	 * Our api to interact with the server.
 	 */
@@ -114,9 +111,10 @@ function outputHook(win){
 		//containingTab attribute must be set by parent tab group on
 		//the window for this work
 		var settingsWindow = createWindow('settings');
+		settingsWindow.exitOnClose = false;
+		Ti.API.info("opening settings window");
 		var createSettingsPage = require('ui/common/settings');
 		createSettingsPage(settingsWindow);
-		
 		win.containingTab.open(settingsWindow);
 	});
 };
@@ -131,9 +129,10 @@ module.exports.outputHook = outputHook;
  */
 function store_string(name, value)
 {
-	Ti.App.Properties.setString(name, crypt.encrypt(value, globals.config.encryptionpw));
+	Ti.App.Properties.setString(name, globals.crypt.encrypt(value, globals.config.encryptionpw));
 };
-module.exports = store_string;
+module.exports.store_string = store_string;
+
 /**
  * retrieve and decrypt a stored string.
  * @param {Object} name
@@ -146,4 +145,4 @@ function get_string(name)
 		return globals.crypt.decrypt(text, globals.config.encryptionpw);
 	return false;
 }
-module.exports = get_string;
+module.exports.get_string = get_string;

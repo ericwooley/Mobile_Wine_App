@@ -46,6 +46,7 @@ api.login = function(email, password, callback){
 api.register = function(email, password, callback){
 	getResponse('http://winelife.ericwooley.com/user/register/', {email: email, password:password}, callback);
 };
+
 <span id='api-method-profileInformation'>/**
 </span> * Get the user profile information
  * @param {Function} callback
@@ -76,6 +77,7 @@ api.editProfile = function(fname, lname, bio, callback){
 
 <span id='api-method-search_results'>/**
 </span> * creates a view containing a table with all the search results already formatted.
+ * for an example, see search
  * @param {Object} search_results
  * All of the search data. It is easiest to just drop in the results from one of the search functions
  * @param {Function} callback

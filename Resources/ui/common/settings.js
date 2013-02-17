@@ -74,7 +74,7 @@ module.exports = function(w)
 	
 	// Do whatever you want to get the search query
 	// I added a textfield
-	var tmp = Ti.UI.createTextField({
+	var sf = Ti.UI.createTextField({
 		hintText: "Enter something here",
 		backgroundColor: 'white',
 		value:'merlot',
@@ -83,8 +83,24 @@ module.exports = function(w)
 		style: Ti.UI.INPUT_BORDERSTYLE_BEZEL
 	});
 	
+	var sb = Ti.UI.createButton({
+		title: "search",
+		height: 'auto',
+		width: 'auto',
+		right: 0,
+		left: 10
+	});
+	
+	var tmp = Ti.UI.createView({
+		layout: 'horizontal',
+		height: Ti.UI.SIZE,
+		width: Ti.UI.SIZE
+	});
+	
+	tmp.add(sf);
+	tmp.add(sb);
 	// This is where I am going put the with all the results.
-	var overview = Ti.UI.createWindow({
+	var overview = Ti.UI.createView({
 		width: Ti.UI.SIZE,
 		height: Ti.UI.SIZE,
 		top: 10,
@@ -96,21 +112,38 @@ module.exports = function(w)
 	
 	// add my search field to my 
 	overview.add(tmp);
-	
+	// These are here for scoping, so we can refer to them across inbetween function calls
+	// This is so that we can remove and readd if they search again.
+	var view = null;
+	var table = null;
 	// This is the function that fires when someone hides the keyboard.
 	// Maybe a button event or whatever you want.
-	tmp.addEventListener('blur', function(){
+	sb.addEventListener('click', function(){
+		// If the view is not null, there is already a view and table in place, we want to get rid of those.
+		if(view)
+		{
+			overview.remove(view);
+			if(table)	
+				view.remove(table);
+		}
 		// This is the search api.
 		// The firsty value should be the query followed by an anonymous function
 		// that will be called once the data has been retrieved. This won't be called
 		// if there is a failure. 
-		global.api.search(tmp.value, function(result){
+		global.api.search(sf.value, function(result){
 			Ti.API.info('search callback was called');
-			alert(result);
 			// get a view with the results.
-			var view = global.api.search_results(result, function(wine){
+			view = Ti.UI.createView({
+				width: Ti.UI.SIZE,
+				height: Ti.UI.SIZE,
+				top: 0,
+				left: 0,
+				layout: 'vertical'
+			});
+			table = global.api.search_results(result, function(wine){
 				Ti.API.info('Settings callback was successful');
 				Ti.API.info(JSON.stringify(wine.id));
+				alert("You clicked on wine: "+ wine.id);
 				// strings to deal with are, 
 				// wine.name
 				// wine.id
@@ -211,6 +244,8 @@ module.exports = function(w)
 				//   }
 				//}
 			});
+			// add the table to our view.
+			view.add(table);
 			// Add this view to the view in the whole page.
 			overview.add(view);
 		});
