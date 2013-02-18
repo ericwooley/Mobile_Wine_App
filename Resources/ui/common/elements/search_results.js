@@ -1,5 +1,6 @@
 module.exports = function(result, callback){
-	Ti.API.info("loading search results");
+	Ti.API.info("loading search results: ");
+	Ti.API.info(JSON.stringify(result));
 	var tbl_data = [];
 	//result.Products.List
 	var pl = result.Products.List;

@@ -145,6 +145,15 @@ api.get_wine_by_id = function(id, callback){
 	getResponse('http://winelife.ericwooley.com/search/get_wine/', {wine_id: id}, callback);
 };
 
+/**
+ * Gets the data to be displayed on the homepage.
+ * @param {Function} callback function to be called on success
+ */
+api.get_home_results = function(callback){
+	Ti.API.info("get_home_results etc");
+	getResponse('http://winelife.ericwooley.com/user/', {}, callback);
+	
+}
 // not really relevant to anyone outside of this page
 api.httpInterface = Ti.Network.createHTTPClient(
 	{
@@ -197,7 +206,6 @@ function getResponse(url, data, callback){
 			showMessage("Decode Error:" + err, 5000);
 			response = json;
 		}
-		//response = JSON.parse(json);
 		Ti.API.info('executing load callback');
 		callback(response);
 	}

@@ -12,84 +12,25 @@ function HomeWindow(title)
 
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
-	
-	// create an array of anonymous objects
-	// Create an array of explicitly defined custom TableViewRows
-	var tbl_data = [];
-	for (var i = 0; i < 10; i++)
-	{
-		var row = Ti.UI.createTableViewRow
-		({
-			hasChild:true,
-			height: 90
+	var text = global.elements.SimpleLabel('Home Page');
+	var view = Ti.UI.createView({
+				width: Ti.UI.SIZE,
+				height: Ti.UI.SIZE,
+				top: 0,
+				left: 0,
+				layout: 'vertical'
+			});
+	view.add(text);
+	global.api.get_home_results(function(data){
+		Ti.API.info(data);
+		var table = global.api.search_results(data, function(wine){
+			var win_review = require('ui/handheld/WineReview');
+			self.containingTab.open(win_review(wine));
 		});
-		
-		// This image will be the image of the wine
-		var image = Ti.UI.createImageView({ 		
-  		height: 80,
-  		width: 80,
-  		left: 10,
-  		top:5,
-  		borderColor: 'black',
-		borderWidth: 1,
-  		//contentMode: 'aspectfill',
-  		clipsToBounds: false,
-  		image:'/images/logo.png',
-  		layout:'vertical'
+		view.add(table);
 	});
 	
-		// Label for the location of the wine within the row
-		var lbl_location = Ti.UI.createLabel
-		({
-			left:'40%',
-			color:'black',
-			bottom:10,
-			text: "Wine Location",
-			font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'},
-			touchEnabled:false
-		});
-		
-		// Label for the type of wine within the row
-		var lbl_type = Ti.UI.createLabel
-		({
-			left:'40%',
-			color:'black',
-			text: "Wine Type",
-			bottom:lbl_location.top,
-			font:{fontSize:18,fontWeight:'bold',fontFamily:'Helvetica Neue'},
-			touchEnabled:false
-		
-		});	
-
-		// Label for the date within the row
-		var lbl_date = Ti.UI.createLabel
-		({
-			right:5,
-			top:5,
-			color:'black',
-			text: "Date",
-			font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
-			touchEnabled:false
-		});
-
-		// Add each of these features to the row, then push the row
-		row.add(image);
-		row.add(lbl_location);
-		row.add(lbl_type);
-		row.add(lbl_date);
-		tbl_data.push(row);
-	}
-	
-	// Create a tableview and add it to the window
-	var table = Titanium.UI.createTableView
-	({
-		backgroundColor:'transparent',
-		top:0,
-		width:'100%',
-		height:'100%',
-		data:tbl_data
-	});
-	self.add(table);
+	self.add(view);
 
 	global.outputHook(self);
 	return self;
