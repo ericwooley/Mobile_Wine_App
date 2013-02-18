@@ -16,7 +16,8 @@
 </head>
 <body onload="prettyPrint(); highlight();">
   <pre class="prettyprint lang-js">module.exports = function(result, callback){
-	Ti.API.info(&quot;loading search results&quot;);
+	Ti.API.info(&quot;loading search results: &quot;);
+	Ti.API.info(JSON.stringify(result));
 	var tbl_data = [];
 	//result.Products.List
 	var pl = result.Products.List;
