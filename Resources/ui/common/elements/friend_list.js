@@ -1,4 +1,4 @@
-module.exports = function(fl){
+module.exports = function(fl, callback){
 	Ti.API.info("loading friendlist: ");
 	Ti.API.info(JSON.stringify(fl));
 	var tbl_data = [];
@@ -82,9 +82,7 @@ module.exports = function(fl){
 		data:tbl_data
 	});
 	
-	table.addEventListener('click', function(data){
-		alert('you clicked me!');
-	});
+	table.addEventListener('click', callback);
 	return table;	
 }
 

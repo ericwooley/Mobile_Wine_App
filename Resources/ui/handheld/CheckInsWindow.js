@@ -26,7 +26,6 @@ function CheckInsWindow(title) {
 		borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 		keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
 		backgroundColor:'transparent'
-
 	});
 	
 	

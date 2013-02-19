@@ -49,7 +49,7 @@ api.profileInformation = function(callback){
  * The users first name
  * @param {String} lname
  * The users last name
- * @param {bio} bio
+ * @param {String} bio
  * The users biography text
  * @param {Function} callback
  * The callback function to be used 
@@ -61,6 +61,21 @@ api.editProfile = function(fname, lname, bio, callback){
 		bio: bio
 	}, callback);
 };
+
+/**
+ * Send the server an updated profile
+ * @param {String} wine_id
+ * The id of the wine we are checking into.
+ * @param {String} comment
+ * The users comment on the wine
+ * @param {Integer} rating
+ * The users rating of the one, should be 1 - 5
+ * @param {Function} callback
+ * The callback function to be used on load 
+ */
+api.checkin = function(wine_id, comment, rating, callback){
+	getResponse('http://winelife.ericwooley.com/user/update_profile/',{Wine_id: wine_id, comment: comment, rating: rating}, callback);
+}
 
 /**
  * creates a view containing a table with all the search results already formatted.
@@ -96,12 +111,15 @@ api.search = function(query, callback){
  * 
  * @param {Function} callback
  * callback function that will be given the results.
+ * 
+ * @param {Function} onclickCallback
+ * The function to be called when a user clicks on a row.
  */
-api.load_friend_list = function(callback){
+api.load_friend_list = function(callback, onclickCallback){
 	getResponse('http://winelife.ericwooley.com/user/friendlist/', {}, function(data){
 		Ti.API.info('Got to first maker');
 		var table = require('ui/common/elements/friend_list');
-		table = table(data);
+		table = table(data, onclickCallback);
 		Ti.API.info('Got to second marker');
 		callback(table);
 	});
