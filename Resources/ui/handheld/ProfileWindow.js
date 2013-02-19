@@ -20,7 +20,7 @@ function ProfileWindow(title) {
 	var tbl_data = [];
 	
 	var profile_row = Ti.UI.createTableViewRow({
-		hasChild:true
+		hasChild:false
 		
 	});
 	
@@ -69,8 +69,6 @@ function ProfileWindow(title) {
 //add event listener to the label
 //in event listener function, hide label, and show text field
 //copy text from label into text field
-
-
 
 
 
