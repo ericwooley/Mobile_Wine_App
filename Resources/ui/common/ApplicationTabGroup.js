@@ -33,7 +33,7 @@ function ApplicationTabGroup() {
 	});
 	win2.containingTab = tab2;
 	
-	var checkinImage = Ti.Platform.osname == 'android' ? '/images/android_home_tab.png' : '/images/check-in_tab.png';
+	var checkinImage = Ti.Platform.osname == 'android' ? '/images/android_checkin_tab.png' : '/images/check-in_tab.png';
 	var tab3 = Ti.UI.createTab({
 		title: 'Check-In',
 		icon: checkinImage,
@@ -42,7 +42,7 @@ function ApplicationTabGroup() {
 	});
 	win3.containingTab = tab3;
 	
-	var friendsImage = Ti.Platform.osname == 'android' ? '/images/android_home_tab.png' : '/images/friends_tab_reg.png';
+	var friendsImage = Ti.Platform.osname == 'android' ? '/images/android_friends_tab.png' : '/images/friends_tab_reg.png';
 	var tab4 = Ti.UI.createTab({
 		title: 'Friends',
 		icon: friendsImage,
@@ -51,7 +51,7 @@ function ApplicationTabGroup() {
 	});
 	win4.containingTab = tab4;
 	
-	var profileImage = Ti.Platform.osname == 'android' ? '/images/android_home_tab.png' : '/images/profile_tab.png';
+	var profileImage = Ti.Platform.osname == 'android' ? '/images/android_profile_tab.png' : '/images/profile_tab.png';
 	var tab5 = Ti.UI.createTab({
 		title: 'Profile',
 		icon: profileImage,
