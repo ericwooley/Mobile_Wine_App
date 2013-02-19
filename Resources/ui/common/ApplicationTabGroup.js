@@ -42,7 +42,7 @@ function ApplicationTabGroup() {
 	});
 	win3.containingTab = tab3;
 	
-	var friendsImage = Ti.Platform.osname == 'android' ? '/images/android_friends_tab.png' : '/images/friends_tab_reg.png';
+	var friendsImage = Ti.Platform.osname == 'android' ? '/images/android_friends_tab.png' : '/images/friends_tab.png';
 	var tab4 = Ti.UI.createTab({
 		title: 'Friends',
 		icon: friendsImage,
