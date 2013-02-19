@@ -12,7 +12,7 @@ function HomeWindow(title)
 
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
-	var text = global.elements.SimpleLabel('Home Page');
+	//var text = global.elements.SimpleLabel('Home Page');
 	var view = Ti.UI.createView({
 				width: Ti.UI.SIZE,
 				height: Ti.UI.SIZE,
@@ -20,7 +20,7 @@ function HomeWindow(title)
 				left: 0,
 				layout: 'vertical'
 			});
-	view.add(text);
+	//view.add(text);
 	global.api.get_home_results(function(data){
 		Ti.API.info(data);
 		var table = global.api.search_results(data, function(wine){
