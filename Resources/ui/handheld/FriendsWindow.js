@@ -58,6 +58,9 @@ function FriendsWindow(title) {
 				function(list){
 					friend_list = list;
 					view.add(list);
+				},
+				function(data){
+					alert(data);
 				}
 			);
 		});
