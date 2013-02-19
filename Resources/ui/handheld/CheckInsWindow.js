@@ -6,7 +6,8 @@
 //	Programmer:  Ivan Rodriguez & David Wells
 //	***********************************************
 
-
+//red wine = category 124
+//white wine = category 125
 
 function CheckInsWindow(title) {
 	var global = require('ui/common/globals');
