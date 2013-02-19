@@ -139,7 +139,17 @@ api.search_with_filter = function(query, cat, callback){
 	getResponse( 'http://winelife.ericwooley.com/search/wine_search/', { query: query, cat: cat, size: 10}, callback );
 };
 
-
+/**
+ * follow a friend, based on their email address
+ * @param {String} friends_email
+ * A search query basically words that will be sent to the server.
+ * 
+ * @param {Function} callback
+ * callback function that will be given the results.
+ */
+api.befriend = function(friends_email, callback){
+	getResponse('http://winelife.ericwooley.com/user/befriend/', {fr_email: friends_email}, callback);
+};
 /**
  * Grabs the data about a specific wine based on it's id.
  * @param {Integer/String} id the id of the wine you want information for.
