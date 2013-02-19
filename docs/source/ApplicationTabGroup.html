@@ -41,33 +41,37 @@
 	});
 	win1.containingTab = tab1;
 	
+	var discoverImage = Ti.Platform.osname == 'android' ? '/images/android_discover_tab.png' : '/images/discover_tab.png';
 	var tab2 = Ti.UI.createTab({
 		title: 'Discover',
-		icon: '/images/discover_tab.png',
+		icon: discoverImage,
 		backgroundColor: global.colors.dark,
 		window: win2
 	});
 	win2.containingTab = tab2;
 	
+	var checkinImage = Ti.Platform.osname == 'android' ? '/images/android_checkin_tab.png' : '/images/check-in_tab.png';
 	var tab3 = Ti.UI.createTab({
 		title: 'Check-In',
-		icon: '/images/check-in_tab.png',
+		icon: checkinImage,
 		backgroundColor: global.colors.dark,
 		window: win3
 	});
 	win3.containingTab = tab3;
 	
+	var friendsImage = Ti.Platform.osname == 'android' ? '/images/android_friends_tab.png' : '/images/friends_tab_reg.png';
 	var tab4 = Ti.UI.createTab({
 		title: 'Friends',
-		icon: '/images/friends_tab.png',
+		icon: friendsImage,
 		backgroundColor: global.colors.dark,
 		window: win4
 	});
 	win4.containingTab = tab4;
 	
+	var profileImage = Ti.Platform.osname == 'android' ? '/images/android_profile_tab.png' : '/images/profile_tab.png';
 	var tab5 = Ti.UI.createTab({
 		title: 'Profile',
-		icon: '/images/profile_tab.png',
+		icon: profileImage,
 		backgroundColor: global.colors.dark,
 		window: win5
 	});

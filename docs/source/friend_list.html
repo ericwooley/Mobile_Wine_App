@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js">module.exports = function(fl){
+	Ti.API.info(&quot;loading friendlist: &quot;);
+	Ti.API.info(JSON.stringify(fl));
+	var tbl_data = [];
+	//result.Products.List
+	for(var i = 0; i &lt; fl.length; ++i)
+	{
+		f = fl[i];
+		var row = Ti.UI.createTableViewRow
+		({
+			hasChild:true
+		});
+		
+		// This image will be the image of the wine
+		var image = Ti.UI.createImageView
+		({ 		
+  			height: 90,
+  			width: 90,
+  			left: 10,
+  			top: 5,
+  			bottom: 5,
+  			borderRadius: 10,
+  			borderColor: 'black',
+			borderWidth: 1,
+  			contentMode: 'aspectfill',
+  			clipsToBounds: false,
+  			image: f.picture_url,
+  			layout:'vertical'
+		});
+		
+		// Label for the location of the wine within the row
+		var lbl_location = Ti.UI.createLabel
+		({
+			left:'40%',
+			color:'black',
+			bottom:5,
+			right: 5,
+			text: &quot;10 checkins&quot;,
+			font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+			touchEnabled:false
+		});
+		
+		
+		// Label for the type of wine within the row
+		var lbl_type = Ti.UI.createLabel
+		({
+			left:'40%',
+			color:'black',
+			text: f.fname + ' ' + f.lname,
+			bottom:lbl_location.top,
+			font:{fontSize:14,fontWeight:'bold',fontFamily:'Helvetica Neue'},
+			touchEnabled:false
+		
+		});	
+
+	
+		
+		/*// Label for the date within the row
+		var lbl_date = Ti.UI.createLabel
+		({
+			right:5,
+			top:5,
+			color:'black',
+			text: winetype,
+			font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+			touchEnabled:false
+		});*/
+
+		// Add each of these features to the row, then push the row
+		row.add(image);
+		row.add(lbl_location);
+		row.add(lbl_type);
+		//row.add(lbl_date);
+		tbl_data.push(row);
+	}
+	var table = Titanium.UI.createTableView
+	({
+		backgroundColor:'transparent',
+		top:10,
+		width:'100%',
+		height:'100%',
+		data:tbl_data
+	});
+	
+	table.addEventListener('click', function(data){
+		alert('you clicked me!');
+	});
+	return table;	
+}
+
+</pre>
+</body>
+</html>
