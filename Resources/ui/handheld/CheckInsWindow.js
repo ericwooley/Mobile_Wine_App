@@ -25,6 +25,7 @@ function CheckInsWindow(title) {
 		paddingRight:8,
 		borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 		keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
+		backgroundColor:'images/lightpaperfibers.png'
 
 	});
 	
@@ -82,6 +83,7 @@ function CheckInsWindow(title) {
 		paddingRight:8,
 		borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 		keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
+		backgroundColor:'images/lightpaperfibers.png'
 
 	});
 	
@@ -97,6 +99,7 @@ function CheckInsWindow(title) {
 		paddingRight:8,
 		borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 		keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
+		backgroundColor:'images/lightpaperfibers.png'
 
 	});
 	
