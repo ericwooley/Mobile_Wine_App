@@ -217,7 +217,7 @@ for (var i = 0; i < 5; i++) {
 	
 	
 	row.addEventListener('click', function() {
-	var win_review = require('ui/handheld/WineReview');
+		var win_review = require('ui/handheld/WineReview');
 		self.containingTab.open(win_review());			
 	});
 	
