@@ -27,7 +27,6 @@ function CheckInsWindow(title) {
 		keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
 		backgroundColor:'transparent'
 
-
 	});
 	
 	
@@ -86,7 +85,6 @@ function CheckInsWindow(title) {
 		keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
 		backgroundColor:'transparent'
 
-
 	});
 	
 	// "Style" text field
@@ -102,8 +100,6 @@ function CheckInsWindow(title) {
 		borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 		keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
 		backgroundColor:'transparent'
-
-
 	});
 	
 	// Creates "Look-Up" button
