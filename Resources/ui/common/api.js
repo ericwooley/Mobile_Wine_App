@@ -91,6 +91,21 @@ api.search = function(query, callback){
 	getResponse( 'http://winelife.ericwooley.com/search/wine_search/', { query: query, size: 10}, callback );
 };
 
+/**
+ * Creates a table of friends and returns it via the callback function
+ * 
+ * @param {Function} callback
+ * callback function that will be given the results.
+ */
+api.load_friend_list = function(callback){
+	getResponse('http://winelife.ericwooley.com/user/friendlist/', {}, function(data){
+		Ti.API.info('Got to first maker');
+		var table = require('ui/common/elements/friend_list');
+		table = table(data);
+		Ti.API.info('Got to second marker');
+		callback(table);
+	});
+};
 
 /**
  * search for wine by catagories, please note that these catagories need to line up with the wine api catagories. For more information: http://api.wine.com.
@@ -148,7 +163,20 @@ api.search_with_filter = function(query, cat, callback){
  * callback function that will be given the results.
  */
 api.befriend = function(friends_email, callback){
-	getResponse('http://winelife.ericwooley.com/user/befriend/', {fr_email: friends_email}, callback);
+	Ti.API.info("Befriending: " + friends_email);
+	getResponse('http://winelife.ericwooley.com/user/befriend/', {fr_email: friends_email}, function(data){
+		Ti.API.info('got to here' + JSON.stringify(data));
+		if(data.success)
+		{
+			Ti.API.info('friend success');
+			callback(data);
+		}
+		else
+		{
+			Ti.API.info('friend error');
+			alert(data.error);
+		}
+	});
 };
 /**
  * Grabs the data about a specific wine based on it's id.
@@ -172,8 +200,11 @@ api.get_home_results = function(callback){
 api.httpInterface = Ti.Network.createHTTPClient(
 	{
 		onerror : function(e) {
-	         Ti.API.debug(e.error);
-	         alert('error');
+			try{
+	         Ti.API.debug(JSON.stringify(e));
+	         alert('Error: '+ JSON.stringify(e));}
+	        catch(e){
+	        	Ti.API.info(JSON.stringify(e));}
 	     },
 	     timeout : 5000
 	}
@@ -193,7 +224,7 @@ var server = api.httpInterface;
  * The callback function to be called on success
  */
 function getResponse(url, data, callback){
-	var message = showMessage("please wait: connecting to server", 0);
+	var message = showMessage("please wait: connecting to server", 5000);
 	
 	if(Ti.Network.networkType == Ti.Network.NETWORK_NONE){
 		closeMessage(message);
