@@ -24,8 +24,8 @@ function HomeWindow(title)
 	global.api.get_home_results(function(data){
 		Ti.API.info(data);
 		var table = global.api.search_results(data, function(wine){
-			var win_review = require('ui/handheld/WineReview');
-			self.containingTab.open(win_review(wine));
+			var wine_review = require('ui/handheld/WineReview');
+			self.containingTab.open(wine_review(wine));
 		});
 		view.add(table);
 	});

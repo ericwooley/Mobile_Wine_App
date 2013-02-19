@@ -46,6 +46,9 @@ function FriendsWindow(title) {
 			function(list){
 				friend_list = list;
 				view.add(list);
+			},
+			function(data){
+				alert(data);
 			}
 		);
 	});
@@ -60,7 +63,7 @@ function FriendsWindow(title) {
 					view.add(list);
 				},
 				function(data){
-					alert(data);
+					alert(JSON.stringify(data));
 				}
 			);
 		});

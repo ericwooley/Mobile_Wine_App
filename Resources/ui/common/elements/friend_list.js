@@ -10,6 +10,12 @@ module.exports = function(fl, callback){
 		({
 			hasChild:true
 		});
+		row.friend ={
+			fname: f.fname,
+			lname: f.lname,
+			bio: f.bio,
+			picture_url: f.picture_url
+		}
 		
 		// This image will be the image of the wine
 		var image = Ti.UI.createImageView
@@ -82,7 +88,9 @@ module.exports = function(fl, callback){
 		data:tbl_data
 	});
 	
-	table.addEventListener('click', callback);
+	table.addEventListener('click',function(data){
+		callback(data.row.friend);
+	});
 	return table;	
 }
 
