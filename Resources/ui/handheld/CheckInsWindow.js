@@ -89,22 +89,24 @@ function CheckInsWindow(title) {
 				overview.remove(results_table);
 		global.api.search(search_bar.value, function(result){
 			results_table = global.api.search_results(result, function(wine){
-				alert('Wine: ' + wine.id);
+				var wine_review = require('ui/handheld/WineReview');
+				self.containingTab.open(wine_review(wine));
 			});
-			results_table.top = -15;
+			
 			
 			if(Ti.Platform.osname == 'android'){
-				alert('got this far');
 				var res_win = global.createWindow("Search_results");
-				alert('got to here');
 				res_win.exitOnClose = false;
 				
 				res_win.add(results_table);
 				
 				self.containingTab.open(res_win);
 			}
-			else
+			else{
+				results_table.top = -15;
 				overview.add(results_table);
+			}
+				
 		});
 
 	};
