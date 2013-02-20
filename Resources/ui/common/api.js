@@ -102,7 +102,8 @@ api.search_results = require('ui/common/elements/search_results');
  *     });
  */
 api.search = function(query, callback){
-	query = query.replace(' ', '+');
+	query = query.replace(/ /g, '+');
+	Ti.API.info('Searching for : ' + query)
 	getResponse( 'http://winelife.ericwooley.com/search/wine_search/', { query: query, size: 10}, callback );
 };
 
@@ -143,7 +144,7 @@ api.load_friend_list = function(callback, onclickCallback){
  *     });
  */
 api.catagory = function(cat, callback){
-	cat = cat.replace(' ', '+');
+	cat = cat.replace(/ /g, '+');
 	getResponse( 'http://winelife.ericwooley.com/search/wine_search/', { cat: cat, size: 10}, callback );
 };
 
@@ -160,15 +161,15 @@ api.catagory = function(cat, callback){
  * @param {Function} callback
  * callback function that will be given the results. It is recommended that you format this data using api.search_results
  *     @example
- *     api.search("124 ", function(search_results){
+ *     api.search("search terms", "124 ", function(search_results){
  *         	Ti.API.info('Here are some search results in json format');
  *          Ti.API.info(JSON.stringify(search_results)); // Check the login for an example of how this object is formatted.
  *          var preformatteedView = api.search_results(search_results); // Add this view to whatever you want!
  *     });
  */
 api.search_with_filter = function(query, cat, callback){
-	query = query.replace(' ', '+');
-	cat = cat.replace(' ', '+');
+	query = query.replace(/ /g, '+');
+	cat = cat.replace(/ /g, '+');
 	getResponse( 'http://winelife.ericwooley.com/search/wine_search/', { query: query, cat: cat, size: 10}, callback );
 };
 
