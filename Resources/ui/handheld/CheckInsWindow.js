@@ -25,15 +25,16 @@ function CheckInsWindow(title) {
 		right: 0, 
 		layout: 'vertical',
 		bottom: 0,
+		zIndex: 1
 	});
 	// "Search for wine" text field
 	var search_bar = Ti.UI.createTextField({
-		backgroundColor:'#FFF',
+		//backgroundColor:'#FFF',
 		top:5,
 		width:'80%',
 		height:40,
 		hintText:'  Search for a wine...',
-		backgroundColor:'transparent',
+		//backgroundColor:'transparent',
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});
 	var search_bar_wrapper = Ti.UI.createView({
@@ -49,14 +50,14 @@ function CheckInsWindow(title) {
 	var search_button = Titanium.UI.createButton({
 		color: 'white',
 		title:"Search",
-		borderRadius: 20,
+		borderRadius: 15,
 		borderWidth: 0,
 		backgroundColor: global.colors.dark,
 		backgroundImage: 'none',
 		font:{fontSize:16,fontWeight:'normal',fontFamily:'Helvetica Neue'},
-		top: -20,
-		width:'80%',
-		height:40,
+		top: -15,
+		width:'35%',
+		height:30,
 		//backgroundImage: 'images/wood_texture.png'
 	});
 	
@@ -74,21 +75,38 @@ function CheckInsWindow(title) {
 	var search_view_top = search_view.top;
 	//Ti.API.info("Search height: " + search_view_height);
 	function search(){
-		search_button.removeEventListener('click', search);
-		search_button.addEventListener('click', search_again);
-		search_button.title="Search again";
+		if(Ti.Platform.osname != 'android')
+		{
+			search_button.removeEventListener('click', search);
+			search_button.addEventListener('click', search_again);
+					//search_view.visible = false
+			search_view.animate({
+				top: 0 - search_bar.height - search_bar.top - 10,
+				duration: 500
+			});
+		}
 		if(results_table)
 				overview.remove(results_table);
 		global.api.search(search_bar.value, function(result){
-			results_table = global.api.search_results(result);
-			results_table.top = -3;
-			overview.add(results_table);
+			results_table = global.api.search_results(result, function(wine){
+				alert('Wine: ' + wine.id);
+			});
+			results_table.top = -15;
+			
+			if(Ti.Platform.osname == 'android'){
+				alert('got this far');
+				var res_win = global.createWindow("Search_results");
+				alert('got to here');
+				res_win.exitOnClose = false;
+				
+				res_win.add(results_table);
+				
+				self.containingTab.open(res_win);
+			}
+			else
+				overview.add(results_table);
 		});
-		//search_view.visible = false
-		search_view.animate({
-			top: 0 - search_bar.height - search_bar.top - 10,
-			duration: 500
-		});
+
 	};
 	search_button.addEventListener('click', search);
 	function search_again(e){
@@ -107,5 +125,4 @@ function CheckInsWindow(title) {
 	global.outputHook(self);
 	return self;
 };
-
 module.exports = CheckInsWindow;
