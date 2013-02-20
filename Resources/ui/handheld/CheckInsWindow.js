@@ -21,80 +21,87 @@ function CheckInsWindow(title) {
 	var search_view = Titanium.UI.createView({
 		width: 'auto',
 		height: Ti.UI.SIZE,
-		left: 10,
-		right: 10, 
-		layout: 'vertical'
+		left: 0,
+		right: 0, 
+		layout: 'vertical',
+		bottom: 0,
 	});
 	// "Search for wine" text field
-	var search_bar = Titanium.UI.createTextField({
+	var search_bar = Ti.UI.createTextField({
 		backgroundColor:'#FFF',
-		top:10,
+		top:5,
 		width:'80%',
 		height:40,
 		hintText:'  Search for a wine...',
-		paddingLeft:8,
-		paddingRight:8,
-		borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-		keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
-		backgroundColor:'transparent'
+		backgroundColor:'transparent',
+		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});
-	
-	// Creates "Look-Up" button
+	var search_bar_wrapper = Ti.UI.createView({
+		width: '100%',
+		height: 65,
+		backgroundColor: global.colors.dark,
+		top: 0,
+		left: 0,
+		right: 0, 
+		layout: 'vertical',
+		//backgroundImage: 'images/wood_texture.png'
+	});
 	var search_button = Titanium.UI.createButton({
 		color: 'white',
-		title:"Look-Up",
-		borderRadius: 5,
-		borderWidth: 1,
+		title:"Search",
+		borderRadius: 20,
+		borderWidth: 0,
 		backgroundColor: global.colors.dark,
 		backgroundImage: 'none',
-		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'},
-		top: 10,
+		font:{fontSize:16,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+		top: -20,
 		width:'80%',
-		height:35,
-		zIndex: 1
-		
+		height:40,
+		//backgroundImage: 'images/wood_texture.png'
 	});
 	
-	var show_search_button = Ti.UI.createButton(
-		{
-		top: 0,
-		visible: false,
-		title: 'search again',
-		height: 20
-		}
-	);
+	search_bar_wrapper.add(search_bar);
+	// Creates "Look-Up" button
+	search_view.height = search_bar_wrapper.height + search_button.height + search_button.top;
 	
-	search_view.add(search_bar);
+	search_view.add(search_bar_wrapper);
 	search_view.add(search_button);
-	self.add(show_search_button);
+	
 	overview.add(search_view);
 	
 	var results_table = null;
-	search_button.addEventListener('click', function(){
-		search_view.animate({
-			opacity: 0,
-			duration: 1000
-			}, function(d){
-			show_search_button.visible = true;
-			search_view.normalheight = search_view.height;
-			search_view.height = 0;
-		});
-		global.api.search(search_bar.value, function(result){
-			if(results_table)
+	
+	var search_view_top = search_view.top;
+	//Ti.API.info("Search height: " + search_view_height);
+	function search(){
+		search_button.removeEventListener('click', search);
+		search_button.addEventListener('click', search_again);
+		search_button.title="Search again";
+		if(results_table)
 				overview.remove(results_table);
-				
+		global.api.search(search_bar.value, function(result){
 			results_table = global.api.search_results(result);
+			results_table.top = -3;
 			overview.add(results_table);
 		});
-	});
-	
-	show_search_button.addEventListener('click', function(e){
-		search_view.height = search_view.normalheight;
-		search_view.animate({opacity: 1, duration: 1000}, function(d){
-			show_search_button.visible = false;
-			
+		//search_view.visible = false
+		search_view.animate({
+			top: 0 - search_bar.height - search_bar.top - 10,
+			duration: 500
 		});
-	});
+	};
+	search_button.addEventListener('click', search);
+	function search_again(e){
+		search_button.removeEventListener('click', search_again);
+		search_button.addEventListener('click', search);
+		search_view.animate({
+			top: 0,
+			duration: 500
+		});
+		search_view.bottom = 0;
+		
+		Ti.API.info('Setup animation');
+	};
 	
 	self.add(overview);
 	global.outputHook(self);
