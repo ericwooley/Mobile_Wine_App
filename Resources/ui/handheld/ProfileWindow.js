@@ -15,7 +15,6 @@ function ProfileWindow(title) {
 	
 	
 	
-	//  SCROLL VIEW
 	//  Table view that scrolls the entire contents of the profile page.
 	var tbl_data = [];
 	
@@ -25,6 +24,15 @@ function ProfileWindow(title) {
 	});
 	
 	
+	//  Create a subview for different attributes of users profile information
+	var firstName_subView = global.elements.SimpleView({
+
+	});
+	
+		//  Create a subview for different attributes of users profile information
+	var lastName_subView = global.elements.SimpleView({
+
+	});
 	
 	
 	// USER IMAGE - upper left of view
@@ -47,21 +55,40 @@ function ProfileWindow(title) {
 	
 
 
-	// USER NAME TEXT FIELD
-	var userFullName = Ti.UI.createLabel({
+	//  FIRST NAME TEXT FIELD
+	var firstName = Ti.UI.createLabel({
+		layout: 'absolute',
   		color: global.colors.dark,
   		font: { fontSize:28 },
-  		//shadowColor: '#aaa',
-  		//shadowOffset: {x:5, y:5},
-  		text: 'User Name',
-  		color: global.colors.dark,
-  		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-  		top: 5,
-  		right: 10,
- 		width: 'auto', 
- 		//height: 25,
+
+  		text: 'First',
+
+  		//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  		top: -5,
+  		//right: 10,
+  		height: 'auto',
+  		width: 'auto'
 	});
 	//self.add(userFullName)
+	
+	
+	
+	// LAST NAME TEXT FIELD
+	var lastName = Ti.UI.createLabel({
+		layout: 'absolute',
+  		color: global.colors.dark,
+  		font: { fontSize:28 },
+
+  		text: 'Last',
+
+  		//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+  		top: -5,
+  		right: 70,
+  		height: 'auto',
+  		width: 'auto'
+	});
+	
+	
 
 
 //create label & text field in same place.
@@ -123,11 +150,22 @@ function ProfileWindow(title) {
 	//self.add(recent_check_ins)
 	
 
+	//  Add first and ast names to subviews and then add the subview to the profile row
+	firstName_subView.add(firstName);
+	lastName_subView.add(lastName);
+	//firstName_subView.add(lastName_subView);
 	
+	profile_row.add(firstName_subView);
+	profile_row.add(lastName_subView);
 	
 	// Add User Profile Data to top row of table
 	profile_row.add(user_image);
-	profile_row.add(userFullName);
+	
+
+	//profile_row.add(firstName);
+	//profile_row.add(lastName);
+	
+	
 	profile_row.add(aboutMe);
 	profile_row.add(aboutMe_Text);
 	profile_row.add(recent_check_ins);
