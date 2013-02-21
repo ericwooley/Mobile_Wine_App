@@ -7,7 +7,13 @@ function WineReview(wine){
 	var global = require('ui/common/globals');	
 	var self = global.createWindow('Wine Review');
 	var all = wine.all_information;
-		
+	var rating = require('ui/common/elements/RatingControl');
+	
+	// This is the star rating
+	var star_rating = new rating({
+		left: ''
+	});
+	
 	// This is the Label for the Wine Name / year
 	var lbl_WineName = Ti.UI.createLabel({
 		left:'5%',
@@ -17,8 +23,8 @@ function WineReview(wine){
 		font:{fontSize:20,fontWeight:'bold',fontFamily:'Helvetica Neue'},
 		touchEnabled:false,
 		height:'auto'
-	
 	});
+	
 	// Label for Company Name
 	var lbl_CompanyName = Ti.UI.createLabel({
 		left:'5%',
@@ -27,8 +33,8 @@ function WineReview(wine){
 		text: all.Vineyard.Name,
 		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'},
 		touchEnabled:false
-	
 	});		
+	
 	// Label for Company Location
 	var lbl_CompanyLocation = Ti.UI.createLabel({
 		left:'5%',
@@ -64,31 +70,39 @@ function WineReview(wine){
 	  	image: all.Labels[0].Url,
 	  	layout:'vertical'
 	});
-	// Label for Rating
-	var lbl_Rating = Ti.UI.createLabel({
-		left: image.width + 30,
+	
+	
+	// View to hold description
+	var view_description = Ti.UI.createView({
 		top:'20%',
+		left: image.width + 30,
+		width: Ti.UI.SIZE - image.width - 30,
+		height: image.bottom - image.top,
+		layout: 'vertical'	
+	});
+
+	// Label for Price
+	var lbl_Price = Ti.UI.createLabel({
+		left: 0,
 		color:global.colors.dark,
 		text: "$"+all.PriceMin + " - $" + all.PriceMax,
 		font:{fontSize:16,fontWeight:'bold',fontFamily:'Helvetica Neue'},
 		touchEnabled:false
 	});
-	
-	// View to hold description
-	var view_description = Ti.UI.createView({
-	top:-95,
-	left: image.width + 30,
-	width: Ti.UI.SIZE,
-	height: (lbl_Rating.bottom - image.bottom)		
-	});
+	// Add the price to the description
+	view_description.add(lbl_Price);
+
 	// Label for Description
-		var lbl_Description = Ti.UI.createLabel({
-		left: image.right,
+	var lbl_Likes = Ti.UI.createLabel({
+		left: 0,
 		color:global.colors.dark,
 		text: "10 of your friends have liked this wine!",
 		font:{fontSize:14,fontWeight:'normal',fontFamily:'Helvetica Neue'},
-		touchEnabled:true
+		touchEnabled:false
 	});
+	// Add the likes to the description
+	view_description.add(lbl_Likes);
+	
 	
 	// This is the comment button
 	var btn_comment = Ti.UI.createButton({
@@ -139,14 +153,11 @@ function WineReview(wine){
 	
 	});
 
-	view_description.add(lbl_Description);
 	self.add(lbl_WineName);
 	self.add(lbl_CompanyName);
 	self.add(lbl_CompanyLocation);
 	self.add(lbl_type);
 	self.add(image);
-	self.add(lbl_Rating);
-	self.add(lbl_Description);
 	self.add(view_description);
 	self.add(btn_comment);
 	self.add(btn_share);
