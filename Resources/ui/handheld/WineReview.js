@@ -103,6 +103,9 @@ function WineReview(wine){
 	// Add the likes to the description
 	view_description.add(lbl_Likes);
 	
+	// Create a star rating and add it to the description
+	var my_rating = new rating();
+	view_description.add(my_rating);
 	
 	// This is the comment button
 	var btn_comment = Ti.UI.createButton({
