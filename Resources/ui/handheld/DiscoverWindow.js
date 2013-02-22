@@ -11,8 +11,68 @@ function DiscoverWindow(title) {
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
 	
+	
+	var view = Ti.UI.createView({
+		top:'25%',
+		left:0,
+		width:'100%',
+		height:'75%'
+	});
+	
+	
+	
+	self.addEventListener('open', function(e){
+	
+	 global.api.search_with_filter("merlot", "124 ", function(search_results){
+          	//Ti.API.info('Here are some search results in json format');
+           //Ti.API.info(JSON.stringify(search_results)); // Check the login for an example of how this object is formatted.
+           var table = global.api.search_results(search_results); // Add this view to whatever you want!
+           view.add(table);
+      });
+	});
+	
+	self.add(view);
+	
+	
+	
+	var colorpicker = Ti.UI.createPicker({
+  		top:'5%',
+  		left:'5%'
+	});
+	
+	var typepicker = Ti.UI.createPicker({
+  		top:'5%',
+  		right:'5%'
+	});
+
+	var Color = [];
+	Color[0]=Ti.UI.createPickerRow({title:'Color'});
+	Color[1]=Ti.UI.createPickerRow({title:'Red'});
+	Color[2]=Ti.UI.createPickerRow({title:'White'});
+
+	var Type = [];
+	Type[0]=Ti.UI.createPickerRow({title:'Type'});
+	Type[1]=Ti.UI.createPickerRow({title:'Barbera'});
+	Type[2]=Ti.UI.createPickerRow({title:'Cabernet Sauvignon'});
+	Type[3]=Ti.UI.createPickerRow({title:'Malbec'});
+	Type[4]=Ti.UI.createPickerRow({title:'Merlot'});
+	Type[5]=Ti.UI.createPickerRow({title:'Pinot Noir'});
+	Type[6]=Ti.UI.createPickerRow({title:'Sangiovese'});
+	Type[7]=Ti.UI.createPickerRow({title:'Syrah'});
+	Type[8]=Ti.UI.createPickerRow({title:'Zinfadel'});
+
+
+	colorpicker.add(Color);
+	colorpicker.selectionIndicator = true;
+	typepicker.add(Type);
+	typepicker.selectionIndicator = true;
+
+	self.add(colorpicker);
+	self.add(typepicker);
+	
 // create an array of anonymous objects
 // Create an array of explicitly defined custom TableViewRows
+/*
 var tbl_data = [];
 for (var i = 0; i < 10; i++) {
 	var row = Ti.UI.createTableViewRow({
@@ -90,9 +150,9 @@ var table = Titanium.UI.createTableView({
 });
 	
 	self.add(table);
-	
+*/	
 	// This is the browse by color button
-	var btn_bbc = Ti.UI.createButton({
+/*	var btn_bbc = Ti.UI.createButton({
 		height:'20%',
 		width:'42%',
 		left:20,
@@ -165,7 +225,7 @@ var table = Titanium.UI.createTableView({
 	var win_bbs = require('ui/handheld/BrowseByStyle');
 		self.containingTab.open(win_bbs());			
 	});
-	
+	*/
 	global.outputHook(self);
 	return self;
 };
