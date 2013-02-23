@@ -19,7 +19,8 @@ function ProfileWindow(title) {
 	var tbl_data = [];
 	
 	var profile_row = Ti.UI.createTableViewRow({
-		hasChild:false
+		hasChild:false,
+		
 		
 	});
 	
@@ -60,7 +61,7 @@ function ProfileWindow(title) {
 		layout: 'absolute',
   		color: global.colors.dark,
   		font: { fontSize:28 },
-
+	borderWidth: 1,
   		text: 'First',
 
   		//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
@@ -78,7 +79,7 @@ function ProfileWindow(title) {
 		layout: 'absolute',
   		color: global.colors.dark,
   		font: { fontSize:28 },
-
+		borderWidth: 1,
   		text: 'Last',
 
   		//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
@@ -106,6 +107,8 @@ function ProfileWindow(title) {
   		//shadowColor: '#aaa',
   		//shadowOffset: {x:5, y:5},
   		text: 'About Me',
+  		
+  		borderWidth: 1,
   		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   		top: 40,
   		right: 10,
@@ -123,6 +126,8 @@ function ProfileWindow(title) {
   		font: { fontSize:12 },
   		//shadowColor: '#aaa',
   		//shadowOffset: {x:5, y:5},
+  		borderWidth: 1,
+  		
   		text: 'About me text goes here... Welcome to my profile! These are all of the wines I have tasted.',
   		textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
   		top: 60,
@@ -140,6 +145,8 @@ function ProfileWindow(title) {
   		font: { fontSize:18, fontWeight: 'bold' },
   		//shadowColor: '#aaa',
   		//shadowOffset: {x:5, y:5},
+  		borderWidth: 1,
+  		
   		text: 'Recent Check-Ins',
   		//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   		top: 120,
@@ -181,7 +188,8 @@ function ProfileWindow(title) {
 for (var i = 0; i < 5; i++) {
 	var row = Ti.UI.createTableViewRow({
 		hasChild:true,
-		height:90
+		height:90,
+		
 	});
 	
 	
@@ -254,7 +262,7 @@ for (var i = 0; i < 5; i++) {
 	
 	row.addEventListener('click', function() {
 		var win_review = require('ui/handheld/WineReview');
-		self.containingTab.open(win_review());			
+		self.containingTab.open(wine_review(wine));			
 	});
 	
 	
@@ -272,7 +280,7 @@ for (var i = 0; i < 5; i++) {
 		top:0,
 		width:'100%',
 		height:'100%',
-	
+
 		data: tbl_data
 		
 	});
