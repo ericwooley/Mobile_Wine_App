@@ -1,11 +1,11 @@
 function header(name, winery, location, region, label_url ){
-	
+	global = require('ui/common/globals');
 	// function that abreviates the state.
 	var st2ab = require('ui/handheld/Wine_Review/abrev_state');
 	// Header overview
 	var h = Ti.UI.createView({
 		layout: 'horizontal',
-		width: '100%',
+		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE,
 		top: 10,
 		left: 10,
@@ -58,12 +58,21 @@ function header(name, winery, location, region, label_url ){
 		font:{fontSize:14,fontWeight:'italic',fontFamily:'Helvetica Neue'},
 	});
 	
+	var checkin_button = Ti.UI.createButton({
+		title: 'Checkin',
+		width: Ti.UI.FILL,
+		height: 50,
+		top: 10,
+		color: 'white',
+		backgroundColor: global.colors.dark
+	});
 	right_text_view.add(name_lbl);
 	right_text_view.add(winery_lbl);
 	right_text_view.add(loc_lbl);
 	
 	h.add(bottle_label);
 	h.add(right_text_view);
+	h.add(checkin_button);
 	
 	return h;
 	
