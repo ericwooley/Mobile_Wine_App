@@ -38,7 +38,8 @@ function header(name, winery, location, region, label_url, wine_info ){
 		height: Ti.UI.SIZE,
 		width: Ti.UI.SIZE,
 		left: 0,
-		top: 0
+		top: 0,
+		color: 'white'
 	});
 	
 	var winery_lbl = Ti.UI.createLabel({
@@ -58,31 +59,13 @@ function header(name, winery, location, region, label_url, wine_info ){
 		font:{fontSize:14,fontWeight:'italic',fontFamily:'Helvetica Neue'},
 	});
 	
-	var checkin_button = Ti.UI.createButton({
-		title: 'Checkin',
-		width: Ti.UI.FILL,
-		height: 50,
-		top: 10,
-		color: 'white',
-		backgroundColor: global.colors.dark,
-		backgroundImage: 'none',
-		borderRadius: 10,
-		
-	});
 	right_text_view.add(name_lbl);
 	right_text_view.add(winery_lbl);
 	right_text_view.add(loc_lbl);
 	
 	h.add(bottle_label);
 	h.add(right_text_view);
-	h.add(checkin_button);
-	
-	checkin_button.addEventListener('click', function(data){
-		get_checkin_window = require('ui/handheld/Wine_Review/Checkin');
-		var win = get_checkin_window(wine_info, label_url);
-		win.open();
-	});
-	
+
 	return h;
 	
 	
