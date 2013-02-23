@@ -25,6 +25,7 @@ function HomeWindow(title)
 		Ti.API.info(data);
 		var table = global.api.search_results(data, function(wine){
 			var wine_review = require('ui/handheld/WineReview');
+			
 			self.containingTab.open(wine_review(wine));
 		});
 		view.add(table);

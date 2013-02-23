@@ -1,4 +1,4 @@
-function header(name, winery, location, region, label_url ){
+function header(name, winery, location, region, label_url, wine_info ){
 	global = require('ui/common/globals');
 	// function that abreviates the state.
 	var st2ab = require('ui/handheld/Wine_Review/abrev_state');
@@ -64,7 +64,10 @@ function header(name, winery, location, region, label_url ){
 		height: 50,
 		top: 10,
 		color: 'white',
-		backgroundColor: global.colors.dark
+		backgroundColor: global.colors.dark,
+		backgroundImage: 'none',
+		borderRadius: 10,
+		
 	});
 	right_text_view.add(name_lbl);
 	right_text_view.add(winery_lbl);
@@ -73,6 +76,12 @@ function header(name, winery, location, region, label_url ){
 	h.add(bottle_label);
 	h.add(right_text_view);
 	h.add(checkin_button);
+	
+	checkin_button.addEventListener('click', function(data){
+		get_checkin_window = require('ui/handheld/Wine_Review/Checkin');
+		var win = get_checkin_window(wine_info, label_url);
+		win.open();
+	});
 	
 	return h;
 	

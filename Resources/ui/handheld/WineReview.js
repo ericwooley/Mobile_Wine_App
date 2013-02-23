@@ -3,7 +3,6 @@
 // Author: Matthew Johnson  & David Wells
 
 function WineReview(wine){
-	
 	var global = require('ui/common/globals');	
 	var self = global.createWindow('Wine Review');
 	var all = wine.all_information;
@@ -21,7 +20,8 @@ function WineReview(wine){
 			all.Vineyard.Name,
 			all.Appellation.Name,
 			all.Appellation.Region.Name,
-			all.Labels[0].Url
+			all.Labels[0].Url,
+			all
 		)
 	);
 	

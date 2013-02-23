@@ -15,6 +15,7 @@ var globals  =
 		lessDark: '#c42d30',
 		dark: '#3c0017'
 	},
+	android: Ti.Platform.osname == 'android',
 	/**
 	 * Elements to be added
 	 */

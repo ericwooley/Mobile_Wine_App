@@ -1,5 +1,22 @@
-/**
- * Simple star based rating control. 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The source code</title>
+  <link href="../resources/prettify/prettify.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="../resources/prettify/prettify.js"></script>
+  <style type="text/css">
+    .highlight { display: block; background-color: #ddd; }
+  </style>
+  <script type="text/javascript">
+    function highlight() {
+      document.getElementById(location.hash.replace(/#/, "")).className = "highlight";
+    }
+  </script>
+</head>
+<body onload="prettyPrint(); highlight();">
+  <pre class="prettyprint lang-js"><span id='RatingControl'>/**
+</span> * Simple star based rating control. 
  * @class
  */
 
@@ -28,20 +45,20 @@ function RatingControl() {
  
  
  
-    for(var i = 0; i < numberOfStars; i++) {
+    for(var i = 0; i &lt; numberOfStars; i++) {
         star = Ti.UI.createImageView({
             rating: i + 1,
             image: starOffImgSrc,
             left: i * starWidth
         });
         rateView.addEventListener('click', function(e) {
-            for(var i = 0; i < stars.length; i++) {     
-                stars[i].image = (e.x >= stars[i].left) ? starOnImgSrc : starOffImgSrc;
+            for(var i = 0; i &lt; stars.length; i++) {     
+                stars[i].image = (e.x &gt;= stars[i].left) ? starOnImgSrc : starOffImgSrc;
             }           
         });             
         rateView.addEventListener('touchmove', function(e) {
-            for(var i = 0; i < stars.length; i++) {     
-                stars[i].image = (e.x >= stars[i].left) ? starOnImgSrc : starOffImgSrc;
+            for(var i = 0; i &lt; stars.length; i++) {     
+                stars[i].image = (e.x &gt;= stars[i].left) ? starOnImgSrc : starOffImgSrc;
             }           
         }); 
         stars.push(star);
@@ -49,12 +66,12 @@ function RatingControl() {
     }
  
     rateView.add(coverView);
- 	/**
- 	 * Get the current star value
+<span id='RatingControl-method-getValue'> 	/**
+</span> 	 * Get the current star value
  	 */
     rateView.getValue = function() {
         var value = 0;
-        for(var i = 0; i < stars.length; i++) {
+        for(var i = 0; i &lt; stars.length; i++) {
             value = (stars[i].image == starOnImgSrc) ? stars[i].rating : value;
         }
         return value;
@@ -63,4 +80,6 @@ function RatingControl() {
     return rateView;
 }
  
-module.exports = RatingControl;
+module.exports = RatingControl;</pre>
+</body>
+</html>
