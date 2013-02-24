@@ -20,6 +20,7 @@ module.exports = function(wine){
 		width: Ti.UI.SIZE,
 		left: 10,
 		top: 10,
+		color: 'white'
 	});
 
 	

@@ -31,24 +31,6 @@ function WineReview(wine){
 	dd(chview, self, "Finish Checkin", "Check In", "up", function(){
 		alert("Hooray");
 	});
-	/*
-	head.checkin_button.addEventListener('click', function(data){
-		get_checkin_view = require('ui/handheld/Wine_Review/Checkin');
-		var chview = get_checkin_view(all);
-		if(global.android)
-		{
-			var win = global.createWindow('Checkin');
-			win.add(chview);
-			win.open();
-		}
-		else
-		{
-			head.animate({
-				top: -head.size.height
-			});
-			overview.add(chview);
-		}
-	});*/
 	
 	self.add(overview);
 	return self;

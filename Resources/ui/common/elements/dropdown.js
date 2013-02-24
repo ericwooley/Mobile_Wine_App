@@ -28,50 +28,64 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 		
 	});
 
-	var drop_button = Titanium.UI.createButton({
-		color: 'white',
-		title: start_down? down_button_text: up_button_text,
+	var drop_button = Titanium.UI.createView({
+		//color: 'white',
+		//title: start_down? down_button_text: up_button_text,
 		borderRadius: 15,
 		borderWidth: 0,
 		backgroundColor: global.colors.dark,
 		backgroundImage: 'none',
 		font:{fontSize:16,fontWeight:'normal',fontFamily:'Helvetica Neue'},
 		top: -30,
-		width:'35%',
+		width: Ti.UI.SIZE,
 		height:30,
 		zIndex: 1
 		//backgroundImage: 'images/wood_texture.png'
 	});
 	
+	var db_text = Ti.UI.createLabel({
+		height: Ti.UI.SIZE,
+		width: Ti.UI.SIZE,
+		left: 20,
+		right: 20,
+		color: 'white',
+		text: start_down? down_button_text: up_button_text
+	});
+	drop_button.add(db_text);
 	
 	drop_view.add(in_view);
 	drop_view_w.add(drop_view);
 	drop_view_w.add(drop_button);
 	win.add(drop_view_w);
 	
-	
-	
+	var raise_lock = false;
 	function raise_call(){
+		if(raise_lock)
+			return;
+		raise_lock = true;
 		drop_button.removeEventListener('click', raise_call);
 		drop_button.addEventListener('click', drop);
-				//search_view.visible = false
 		drop_view_w.animate({
 			top: 0 - in_view.size.height - in_view.top,
 			duration: 500
 		},function(e){
-			drop_button.title = down_button_text;
+			db_text.text = up_button_text;
 			callback();
+			
 		});
+		
 	};
+
 	
 	function drop(e){
+		raise_lock = false;
 		drop_button.removeEventListener('click', drop);
 		drop_button.addEventListener('click', raise_call);
 		drop_view_w.animate({
 			top: 0,
 			duration: 500
 		}, function(){
-			drop_button.title = up_button_text;
+			db_text.text = down_button_text;
 		});
 	};
 	

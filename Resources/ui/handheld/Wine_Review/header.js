@@ -7,9 +7,10 @@ function header(name, winery, location, region, label_url, wine_info ){
 		layout: 'horizontal',
 		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE,
-		top: 10,
+		top: 35,
 		left: 10,
-		right: 10
+		right: 10,
+		//backgroundColor: 'blue'
 	});
 	// The label image.
 	var bottle_label = Ti.UI.createImageView({ 		
@@ -25,21 +26,22 @@ function header(name, winery, location, region, label_url, wine_info ){
 	
 	var right_text_view = Ti.UI.createView({
 		layout: 'vertical',
-		width: Ti.UI.FILL,
+		width: Ti.UI.SIZE,
 		height: Ti.UI.SIZE,
 		left: 10,
-		top: 0
+		top: 0,
+		//backgroundColor: 'red'
 	});
 	
 	// The text to the right of the image
-	Ti.API.info('name: '+name);
 	var name_lbl = Ti.UI.createLabel({
 		text: name,
 		height: Ti.UI.SIZE,
 		width: Ti.UI.SIZE,
 		left: 0,
 		top: 0,
-		color: 'white'
+		color: 'black',
+		//backgroundColor: 'green'
 	});
 	
 	var winery_lbl = Ti.UI.createLabel({
