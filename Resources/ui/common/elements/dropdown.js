@@ -59,6 +59,7 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 			top: 0 - in_view.size.height - in_view.top,
 			duration: 500
 		},function(e){
+			drop_button.title = down_button_text;
 			callback();
 		});
 	};
@@ -69,26 +70,25 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 		drop_view_w.animate({
 			top: 0,
 			duration: 500
+		}, function(){
+			drop_button.title = up_button_text;
 		});
 	};
 	
-	win.addEventListener('open', function(){
+	win.addEventListener('focus', init);
+	function init(e){
+		// We only want this called the first time the window is focused on.
+		win.removeEventListener('focus', init);
 		if(start_down)
 		{
 			drop_button.addEventListener('click', raise_call);
 		}
 		else
 		{
-			Ti.API.info('this happens');
 			drop_button.addEventListener('click', drop);
-			drop_view_w.animate({
-				top: 0 - in_view.size.height - in_view.top,
-				duration: 1
-			});
-			Ti.API.info('this happens');
+			drop_view_w.top = 0 - in_view.size.height - in_view.top;
 		}
-	});
-
+	}
 	
 	return win;
 	

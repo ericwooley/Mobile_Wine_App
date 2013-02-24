@@ -32,7 +32,6 @@ module.exports = function(wine){
 		height: 60,
 		width: Ti.UI.FILL,
 		color: '#888',
-		returnKeyType: Ti.UI.RETURNKEY_GO,
 		textAlign: 'left',
 		value: 'Leave a comment about this wine'
 	});
@@ -43,23 +42,12 @@ module.exports = function(wine){
 		title: "Rating: ",
 		values: ['1: I hated it.', '2: I disliked It.', '3: It was mediocre.', '4: I would drink it again.', '5: I LOVED it!']
 	});
-	var complete_button = Ti.UI.createButton({
-		title: 'finish checkin',
-		height: 50,
-		width: Ti.UI.FILL,
-		left: 10,
-		right: 10,
-		bottom: 10,
-		borderRadius: 10,
-		backgroundColor: global.colors.dark
-	});
 
 	
 	overview.add(name_lbl);
 	overview.add(rating);
 	
 	overview.add(textArea);
-	overview.add(complete_button);
 
 	textArea._hintText = textArea.value;
 	textArea.addEventListener('focus',function(e){
