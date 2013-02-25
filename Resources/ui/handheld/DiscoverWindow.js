@@ -42,8 +42,8 @@ function DiscoverWindow(title) {
 	
 	var search_bar = Ti.UI.createTextField({
 		//backgroundColor:'#FFF',
-		//top:'5%',
-		bottom:'50%',
+		top:'1%',
+		//bottom:'50%',
 		width:'70%',
 		left:'2%',
 		height:'15%',
@@ -55,16 +55,16 @@ function DiscoverWindow(title) {
 
 	
 	var colorpicker = Ti.UI.createPicker({
-  		//top:'16%',
+  		top:'16%',
   		left:'2%',
   		width:'47%',
-  		bottom:'5%'
+  		//bottom:'5%'
   				
 	});
 	
 		var btn_search = Ti.UI.createButton({
-		//top:'5%',
-		bottom:'40%',
+		top:'1%',
+	//	bottom:'40%',
 		width:'20%',
 		height:'14%',
 		left:'72%',
@@ -77,19 +77,10 @@ function DiscoverWindow(title) {
 		//font:{fontSize:16,fontWeight:'normal',fontFamily:'Helvetica Neue'},
 	});
 	
-	var colorpickerview = Ti.UI.createView({
-		top:'16%',
-		left:'2%',
-		width:'47%%',
-		height:'12%',
-		hasChild:true,
-		//backgroundColor:global.colors.dark
-		
-	});
-	
+
 	var typepicker = Ti.UI.createPicker({
-  		//top:'16%',
-  		bottom:'5%',
+  		top:'16%',
+  		//bottom:'5%',
   		right:'2%',
   		width:'47%',
   		color:global.colors.dark,
@@ -118,11 +109,11 @@ function DiscoverWindow(title) {
 	typepicker.add(WineType);
 	typepicker.selectionIndicator = true;
 
-	searchview.add(colorpicker);
-	searchview.add(typepicker);
-	searchview.add(search_bar);
-	searchview.add(btn_search);
-	self.add(searchview);
+	self.add(colorpicker);
+	self.add(typepicker);
+	self.add(search_bar);
+	self.add(btn_search);
+	//self.add(searchview);
 // create an array of anonymous objects
 // Create an array of explicitly defined custom TableViewRows
 /*
