@@ -19,6 +19,14 @@ function DiscoverWindow(title) {
 		height:'75%'
 	});
 	
+	var searchview = Ti.UI.createView({
+		top:0,
+		left:0,
+		width:'100%',
+		height:'25%',
+		backgroundColor:global.colors.dark
+	});
+	
 	
 	
 	self.addEventListener('open', function(e){
@@ -30,46 +38,91 @@ function DiscoverWindow(title) {
            view.add(table);
       });
 	});
-	
 	self.add(view);
 	
+	var search_bar = Ti.UI.createTextField({
+		//backgroundColor:'#FFF',
+		//top:'5%',
+		bottom:'50%',
+		width:'70%',
+		left:'2%',
+		height:'15%',
+		hintText:'  Discover wine...',
+		//backgroundColor:'transparent',
+		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
+	});
 	
+
 	
 	var colorpicker = Ti.UI.createPicker({
-  		top:'5%',
-  		left:'5%'
+  		//top:'16%',
+  		left:'2%',
+  		width:'47%',
+  		bottom:'5%'
+  				
+	});
+	
+		var btn_search = Ti.UI.createButton({
+		//top:'5%',
+		bottom:'40%',
+		width:'20%',
+		height:'14%',
+		left:'72%',
+		title:'Go',
+		//color: 'white',
+	//	borderRadius: 3,
+	//	borderWidth: 0,
+	//	backgroundColor: global.colors.dark,
+	//	backgroundImage: 'none',
+		//font:{fontSize:16,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+	});
+	
+	var colorpickerview = Ti.UI.createView({
+		top:'16%',
+		left:'2%',
+		width:'47%%',
+		height:'12%',
+		hasChild:true,
+		//backgroundColor:global.colors.dark
+		
 	});
 	
 	var typepicker = Ti.UI.createPicker({
-  		top:'5%',
-  		right:'5%'
+  		//top:'16%',
+  		bottom:'5%',
+  		right:'2%',
+  		width:'47%',
+  		color:global.colors.dark,
+  		// title : 'red'
 	});
 
-	var Color = [];
-	Color[0]=Ti.UI.createPickerRow({title:'Color'});
-	Color[1]=Ti.UI.createPickerRow({title:'Red'});
-	Color[2]=Ti.UI.createPickerRow({title:'White'});
+	var WineColor = [];
+	WineColor[0]=Ti.UI.createPickerRow({title:'Color'});
+	WineColor[1]=Ti.UI.createPickerRow({title:'Red'});
+	WineColor[2]=Ti.UI.createPickerRow({title:'White'});
 
-	var Type = [];
-	Type[0]=Ti.UI.createPickerRow({title:'Type'});
-	Type[1]=Ti.UI.createPickerRow({title:'Barbera'});
-	Type[2]=Ti.UI.createPickerRow({title:'Cabernet Sauvignon'});
-	Type[3]=Ti.UI.createPickerRow({title:'Malbec'});
-	Type[4]=Ti.UI.createPickerRow({title:'Merlot'});
-	Type[5]=Ti.UI.createPickerRow({title:'Pinot Noir'});
-	Type[6]=Ti.UI.createPickerRow({title:'Sangiovese'});
-	Type[7]=Ti.UI.createPickerRow({title:'Syrah'});
-	Type[8]=Ti.UI.createPickerRow({title:'Zinfadel'});
+	var WineType = [];
+	WineType[0]=Ti.UI.createPickerRow({title:'Type'});
+	WineType[1]=Ti.UI.createPickerRow({title:'Barbera'});
+	WineType[2]=Ti.UI.createPickerRow({title:'Cabernet Sauvignon'});
+	WineType[3]=Ti.UI.createPickerRow({title:'Malbec'});
+	WineType[4]=Ti.UI.createPickerRow({title:'Merlot'});
+	WineType[5]=Ti.UI.createPickerRow({title:'Pinot Noir'});
+	WineType[6]=Ti.UI.createPickerRow({title:'Sangiovese'});
+	WineType[7]=Ti.UI.createPickerRow({title:'Syrah'});
+	WineType[8]=Ti.UI.createPickerRow({title:'Zinfadel'});
 
 
-	colorpicker.add(Color);
+	colorpicker.add(WineColor);
 	colorpicker.selectionIndicator = true;
-	typepicker.add(Type);
+	typepicker.add(WineType);
 	typepicker.selectionIndicator = true;
 
-	self.add(colorpicker);
-	self.add(typepicker);
-	
+	searchview.add(colorpicker);
+	searchview.add(typepicker);
+	searchview.add(search_bar);
+	searchview.add(btn_search);
+	self.add(searchview);
 // create an array of anonymous objects
 // Create an array of explicitly defined custom TableViewRows
 /*
