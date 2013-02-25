@@ -101,7 +101,7 @@ self.add(search_bar);
 self.add(btn_search);
 
 
-	});
+	
 	
 	self.add(view);
 	
