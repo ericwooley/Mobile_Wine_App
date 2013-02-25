@@ -74,7 +74,7 @@ api.editProfile = function(fname, lname, bio, callback){
  * The callback function to be used on load 
  */
 api.checkin = function(wine_id, comment, rating, callback){
-	getResponse('http://winelife.ericwooley.com/user/update_profile/',{Wine_id: wine_id, comment: comment, rating: rating}, callback);
+	getResponse('http://winelife.ericwooley.com/user/checkin/',{wine_id: wine_id, comment: comment, rating: rating}, callback);
 }
 
 /**
