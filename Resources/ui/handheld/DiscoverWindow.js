@@ -10,8 +10,7 @@ function DiscoverWindow(title) {
 	var global = require('ui/common/globals');
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
-	
-	
+		
 	var view = Ti.UI.createView({
 		top:'25%',
 		left:0,
@@ -19,72 +18,50 @@ function DiscoverWindow(title) {
 		height:'75%'
 	});
 	
-	var searchview = Ti.UI.createView({
-		top:0,
-		left:0,
-		width:'100%',
-		height:'25%',
-		backgroundColor:global.colors.dark
-	});
-	
+
 	
 	
 	self.addEventListener('open', function(e){
 	
-	 global.api.search_with_filter("merlot", "124 ", function(search_results){
-          	//Ti.API.info('Here are some search results in json format');
-           //Ti.API.info(JSON.stringify(search_results)); // Check the login for an example of how this object is formatted.
-           var table = global.api.search_results(search_results); // Add this view to whatever you want!
-           view.add(table);
-      });
+	 global.api.search_with_filter("merlot", "124 ", function(search_results);
+     var table = global.api.search_results(search_results); // Add this view to whatever you want!
+     view.add(table);
+
 	});
+	
 	self.add(view);
 	
 	var search_bar = Ti.UI.createTextField({
-		//backgroundColor:'#FFF',
 		top:'1%',
-		//bottom:'50%',
 		width:'70%',
 		left:'2%',
 		height:'15%',
-		hintText:'  Discover wine...',
-		//backgroundColor:'transparent',
+		hintText:'  Discover wine...',		
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
-	});
-	
 
-	
-	var colorpicker = Ti.UI.createPicker({
-  		top:'16%',
-  		left:'2%',
-  		width:'47%',
-  		//bottom:'5%'
-  				
 	});
 	
-		var btn_search = Ti.UI.createButton({
+	var btn_search = Ti.UI.createButton({
 		top:'1%',
-	//	bottom:'40%',
 		width:'20%',
 		height:'14%',
 		left:'72%',
 		title:'Go',
-		//color: 'white',
-	//	borderRadius: 3,
-	//	borderWidth: 0,
-	//	backgroundColor: global.colors.dark,
-	//	backgroundImage: 'none',
-		//font:{fontSize:16,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+	});
+	
+	var colorpicker = Ti.UI.createPicker({
+  		top:'16%',
+  		left:'2%',
+  		width:'47%',				
 	});
 	
 
 	var typepicker = Ti.UI.createPicker({
   		top:'16%',
-  		//bottom:'5%',
   		right:'2%',
   		width:'47%',
   		color:global.colors.dark,
-  		// title : 'red'
+
 	});
 
 	var WineColor = [];
@@ -113,7 +90,7 @@ function DiscoverWindow(title) {
 	self.add(typepicker);
 	self.add(search_bar);
 	self.add(btn_search);
-	//self.add(searchview);
+
 // create an array of anonymous objects
 // Create an array of explicitly defined custom TableViewRows
 /*
