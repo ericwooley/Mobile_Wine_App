@@ -103,10 +103,7 @@ self.add(btn_search);
 
 	
 	
-	self.add(view);
 	
-
-
 // create an array of anonymous objects
 // Create an array of explicitly defined custom TableViewRows
 /*
