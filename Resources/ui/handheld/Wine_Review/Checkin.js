@@ -64,5 +64,10 @@ module.exports = function(wine){
 	    }
 	});
 	
-	return overview;
+	var ret = {
+		rating: rating,
+		ta: textArea,
+		view: overview
+	};
+	return ret;
 }

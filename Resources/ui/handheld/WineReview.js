@@ -25,11 +25,16 @@ function WineReview(wine){
 	);
 	overview.add(head);
 	get_checkin_view = require('ui/handheld/Wine_Review/Checkin');
-	var chview = get_checkin_view(all);
-	
+
+	var ch = get_checkin_view(all);
+	var rating;
+	self.addEventListener('TUchange', function(v){
+		rating = v.value;
+	});
 	var dd = require('ui/common/elements/dropdown');
-	dd(chview, self, "Finish Checkin", "Check In", "up", function(){
-		alert("Hooray");
+	dd(ch.view, self, "Finish Checkin", "Check In", "up", function(){
+		alert("CHeckin: " + ch.ta.value + " - " + rating);
+		//global.api.checkin(wine.id, 5, "this is a comment", function(){});
 	});
 	
 	self.add(overview);
