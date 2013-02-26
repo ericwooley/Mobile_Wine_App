@@ -30,7 +30,7 @@ function WineReview(wine){
 	var rating = "1";
 	self.addEventListener('TUchange', function(v){
 		rating = v.value;
-	});
+	}); 
 	var dd = require('ui/common/elements/dropdown');
 	dd(ch.view, self, "Finish Checkin", "Check In", "up", function(){
 		alert("wine: "+ all.Id + " "+ ch.ta.value + " - " + rating.charAt(0));
