@@ -47,7 +47,7 @@ function ProfileWindow(title) {
 		borderWidth: 1,
   		contentMode: 'aspectfill',
   		clipsToBounds: false,
-  		image:'/images/user_image.png',
+  		image:'/images/user_david.jpg',
   		layout:'vertical'
 	});
 	profile_row.add(user_image);
