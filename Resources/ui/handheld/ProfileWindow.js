@@ -19,22 +19,21 @@ function ProfileWindow(title) {
 	var tbl_data = [];
 	
 	var profile_row = Ti.UI.createTableViewRow({
-		hasChild:false,
-		
-		
+		hasChild:false,	
 	});
 	
 	
-	//  Create a subview for different attributes of users profile information
-	var firstName_subView = global.elements.SimpleView({
+	
+	
+	var fname = global.api.profileInformation = function(callback){
+		getResponse('http://winelife.ericwooley.com/user/profile/', fname, callback);
+	};
+	
+	
+	
+	
+	
 
-	});
-	
-		//  Create a subview for different attributes of users profile information
-	var lastName_subView = global.elements.SimpleView({
-
-	});
-	
 	
 	// USER IMAGE - upper left of view
 	// Will be populated with image data from user's account in database. 
@@ -51,44 +50,44 @@ function ProfileWindow(title) {
   		image:'/images/user_image.png',
   		layout:'vertical'
 	});
-	//self.add(image)
+	profile_row.add(user_image);
 	
 	
 
 
 	//  FIRST NAME TEXT FIELD
 	var firstName = Ti.UI.createLabel({
-		layout: 'absolute',
+		layout: 'relative',
   		color: global.colors.dark,
   		font: { fontSize:28 },
-	borderWidth: 1,
-  		text: 'First',
+		//borderWidth: 1,
+  		text: 'David',
 
   		//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-  		top: -5,
+  		top: 10,
   		//right: 10,
   		height: 'auto',
-  		width: 'auto'
+  		width: '25%'
 	});
-	//self.add(userFullName)
-	
+	profile_row.add(firstName);
 	
 	
 	// LAST NAME TEXT FIELD
 	var lastName = Ti.UI.createLabel({
-		layout: 'absolute',
+		layout: 'relative',
   		color: global.colors.dark,
   		font: { fontSize:28 },
-		borderWidth: 1,
-  		text: 'Last',
+		//borderWidth: 1,
+  		text: 'Wells',
 
   		//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-  		top: -5,
-  		right: 70,
+  		top: 10,
+  		//right: 70,
+  		left: 200,
   		height: 'auto',
-  		width: 'auto'
+  		width: '25%'
 	});
-	
+	profile_row.add(lastName);
 	
 
 
@@ -108,14 +107,14 @@ function ProfileWindow(title) {
   		//shadowOffset: {x:5, y:5},
   		text: 'About Me',
   		
-  		borderWidth: 1,
+  		//borderWidth: 1,
   		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
   		top: 40,
   		right: 10,
  		width: 'auto', 
  		//height: 'auto',
 	});
-	//self.add(aboutMe)
+	profile_row.add(aboutMe);
 
 
 
@@ -126,7 +125,7 @@ function ProfileWindow(title) {
   		font: { fontSize:12 },
   		//shadowColor: '#aaa',
   		//shadowOffset: {x:5, y:5},
-  		borderWidth: 1,
+  		//borderWidth: 1,
   		
   		text: 'About me text goes here... Welcome to my profile! These are all of the wines I have tasted.',
   		textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
@@ -135,8 +134,7 @@ function ProfileWindow(title) {
  		width: '55%', 
  		height: 'auto',
 	});
-	//self.add(aboutMe_Text)
-	
+	profile_row.add(aboutMe_Text);
 	
 	
 	// RECENT CHECK-INS LABEL
@@ -145,7 +143,7 @@ function ProfileWindow(title) {
   		font: { fontSize:18, fontWeight: 'bold' },
   		//shadowColor: '#aaa',
   		//shadowOffset: {x:5, y:5},
-  		borderWidth: 1,
+  		//borderWidth: 1,
   		
   		text: 'Recent Check-Ins',
   		//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
@@ -154,32 +152,15 @@ function ProfileWindow(title) {
  		//width: 'auto', 
  		//height: 'auto',
 	});
-	//self.add(recent_check_ins)
-	
+	profile_row.add(recent_check_ins);
 
-	//  Add first and ast names to subviews and then add the subview to the profile row
-	firstName_subView.add(firstName);
-	lastName_subView.add(lastName);
-	//firstName_subView.add(lastName_subView);
-	
-	profile_row.add(firstName_subView);
-	profile_row.add(lastName_subView);
-	
+
 	// Add User Profile Data to top row of table
 	profile_row.add(user_image);
 	
 
-	//profile_row.add(firstName);
-	//profile_row.add(lastName);
-	
-	
-	profile_row.add(aboutMe);
-	profile_row.add(aboutMe_Text);
-	profile_row.add(recent_check_ins);
 	tbl_data.push(profile_row);
 
-
-	
 	
 	
 // create an array of anonymous objects
