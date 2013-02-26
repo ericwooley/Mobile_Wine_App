@@ -25,8 +25,8 @@ function ProfileWindow(title) {
 	
 	
 	
-	var fname = global.api.profileInformation = function(callback){
-		getResponse('http://winelife.ericwooley.com/user/profile/', fname, callback);
+	var user = global.api.profileInformation = function(callback){
+		getResponse('http://winelife.ericwooley.com/user/profile/', {}, callback);
 	};
 	
 	
