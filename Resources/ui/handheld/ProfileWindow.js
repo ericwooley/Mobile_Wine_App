@@ -16,6 +16,9 @@ function ProfileWindow(title) {
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
 		
+		
+//	EDIT PROFILE VIEW
+//	***********************************************	
 	var edit_prof = Ti.UI.createView(
 		{
 			width: Ti.UI.FILL,
@@ -25,7 +28,76 @@ function ProfileWindow(title) {
 			right: 10
 		}
 	);
+//	***********************************************	
+
+
+
+
+
+//	PROFILE INFO VIEWS & SUBVIEWS
+//	***********************************************	
+	var profile_info = Ti.UI.createView({
+		layout: 'vertical',
+		height: Ti.UI.SIZE,
+		width: Ti.UI.FILL,
+		top: 35,
+		//backgroundColor: 'red'
+	});
 	
+	
+	var header = Ti.UI.createView({
+		layout: 'horizontal',
+		width: Ti.UI.FILL,
+		height: Ti.UI.SIZE,
+		left: 10,
+		right: 10
+		
+	});
+	profile_info.add(header);
+//	***********************************************	
+
+
+
+
+	//  USER IMAGE - upper left of view
+	//	***********************************************	
+	var user_image = Ti.UI.createImageView({
+  		
+  		height: 100,
+  		width: 100,
+		top: 0,
+  		
+		borderWidth: 1,
+		borderRadius: 10,
+  		contentMode: 'aspectfill',
+  		clipsToBounds: false,
+  		image:'images/user_david.jpg',
+  		
+	});
+	header.add(user_image);
+
+
+
+
+
+	
+	var content = Ti.UI.createView({
+		layout: 'vertical',
+		width: Ti.UI.FILL,
+		height: Ti.UI.SIZE
+	});
+	header.add(content);
+	
+	
+	
+	
+	
+	
+//***********************************************************
+//EDIT PROFILE POP-DOWN
+//***********************************************************
+
+	//  ADD FIRST NAME - FIELD
 	var fname = Ti.UI.createTextField({
 		hintText: 'First Name',
 		width: Ti.UI.FILL,
@@ -33,109 +105,124 @@ function ProfileWindow(title) {
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});
 	edit_prof.add(fname);
+	
+	//  ADD LAST NAME - FIELD
+	var lname = Ti.UI.createTextField({
+		hintText: 'Last Name',
+		width: Ti.UI.FILL,
+		height: 50,
+		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
+	});
+	edit_prof.add(lname);
+	
+	//  ADD BIO/ ABOUT ME INFO - FIELD
+	var about_me = Ti.UI.createTextArea({
+		value: 'About me text',
+		width: Ti.UI.FILL,
+		top: 2,
+		font: {fontSize: 18},
+		height: 100,
+		color: '#AAA',
+		borderRadius: 10
+	});
+	Ti.API.info("got to here");
+	about_me._hintText = about_me.value;
+	about_me.addEventListener('focus',function(e){
+	    if(e.source.value == e.source._hintText){
+	        e.source.value = "";
+	        e.source.color = 'black';
+	    }
+	});
+	about_me.addEventListener('blur',function(e){
+	    if(e.source.value==""){
+	        e.source.value = e.source._hintText;
+	        e.source.color = '#AAA';
+	    }
+	});
+	edit_prof.add(about_me);
+	
+	
+	
 	dropdown(edit_prof, self, "Save Changes", "Edit Profile", "up", function(){
 		alert('we pressed save!');
 	});
 	
 	
-	
-	//  Table view that scrolls the entire contents of the profile page.
-	var tbl_data = [];
-	
-	var profile_row = Ti.UI.createTableViewRow({
-		hasChild:false,	
-	});
-	
-	
+//***********************************************************
+// END EDIT PROFILE POP-DOWN
+//***********************************************************
+
 	
 
 	
-	
-	
-	
-	
 
-	
-	// USER IMAGE - upper left of view
-	// Will be populated with image data from user's account in database. 
-	var user_image = Ti.UI.createImageView({
-  		
-  		height: 100,
-  		width: 100,
-  		top: 10,
+
+	//  USER NAME TEXT FIELD
+	var userName = Ti.UI.createLabel({
+  		color: global.colors.dark,
+  		font: { fontSize:28 },
+  		text: 'Loading',
+  		top: 0,
   		left: 10,
-  		color: global.colors.dark,
-		borderWidth: 1,
-  		contentMode: 'aspectfill',
-  		clipsToBounds: false,
-  		image:'/images/user_david.jpg',
-  		layout:'vertical'
+  		height: Ti.UI.SIZE,
+  		width: Ti.UI.FILL
 	});
-	profile_row.add(user_image);
-	
+	content.add(userName);
 	
 
-
-	//  FIRST NAME TEXT FIELD
-	var firstName = Ti.UI.createLabel({
-		layout: 'relative',
+	
+	//  CHECK-INS FIELD
+	var check_ins = Ti.UI.createLabel({
   		color: global.colors.dark,
-  		font: { fontSize:28 },
-		//borderWidth: 1,
-  		text: 'David',
-
-  		//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-  		top: 10,
-  		//right: 10,
-  		height: 'auto',
-  		width: '25%'
+  		font: { fontSize: 12 },
+  		text: 'Total Check-ins: 10',
+  		top: 0,
+  		left: 10,
+  		height: Ti.UI.SIZE,
+  		width: Ti.UI.FILL
 	});
-	profile_row.add(firstName);
+	content.add(check_ins);
 	
-	
-	// LAST NAME TEXT FIELD
-	var lastName = Ti.UI.createLabel({
-		layout: 'relative',
+	//  FOLLOWERS TEXT FIELD
+	var followers = Ti.UI.createLabel({
   		color: global.colors.dark,
-  		font: { fontSize:28 },
-		//borderWidth: 1,
-  		text: 'Wells',
-
-  		//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-  		top: 10,
-  		//right: 70,
-  		left: 200,
-  		height: 'auto',
-  		width: '25%'
+  		font: { fontSize: 12 },
+  		text: 'Followers: 3000',
+  		top: 0,
+  		left: 10,
+  		height: Ti.UI.SIZE,
+  		width: Ti.UI.FILL
 	});
-	profile_row.add(lastName);
+	content.add(followers);
 	
-
-
-//create label & text field in same place.
-//set text field to hidden
-//add event listener to the label
-//in event listener function, hide label, and show text field
-//copy text from label into text field
-
+	
+	//  FOLLOWING TEXT FIELD
+	var following = Ti.UI.createLabel({
+  		color: global.colors.dark,
+  		font: { fontSize: 12 },
+  		text: 'Following: 4',
+  		top: 0,
+  		left: 10,
+  		height: Ti.UI.SIZE,
+  		width: Ti.UI.FILL
+	});
+	content.add(following);
+	
+	
 
 
 	// ABOUT ME TITLE FIELD
 	var aboutMe = Ti.UI.createLabel({
   		color: global.colors.dark,
   		font: { fontSize:18 },
-  		//shadowColor: '#aaa',
-  		//shadowOffset: {x:5, y:5},
-  		text: 'About Me',
-  		
-  		//borderWidth: 1,
-  		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-  		top: 40,
-  		right: 10,
- 		width: 'auto', 
- 		//height: 'auto',
+  		text: 'About Me:',
+  		textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+  		top: 10,
+  		left: 10,
+ 		height: Ti.UI.SIZE,
+  		width: Ti.UI.FILL
 	});
-	profile_row.add(aboutMe);
+	profile_info.add(aboutMe);
 
 
 
@@ -143,158 +230,58 @@ function ProfileWindow(title) {
 	// ABOUT ME TEXT FIELD
 	var aboutMe_Text = Ti.UI.createLabel({
   		color: global.colors.dark,
-  		font: { fontSize:12 },
-  		//shadowColor: '#aaa',
-  		//shadowOffset: {x:5, y:5},
-  		//borderWidth: 1,
-  		
+  		font: { fontSize:14 },
   		text: 'Hi, my name is David. I love all wines!  Current favorite is Cabernet Sauvignon.  Follow me to see which wines I am drinking.',
-  		textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
-  		top: 60,
-  		right: 10,
- 		width: '55%', 
- 		height: 'auto',
+  		textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+  		top: 0,
+  		left: 10,
+ 		height: Ti.UI.SIZE,
+  		width: Ti.UI.FILL
 	});
-	profile_row.add(aboutMe_Text);
+	profile_info.add(aboutMe_Text);
 	
 	
 	// RECENT CHECK-INS LABEL
 	var recent_check_ins = Ti.UI.createLabel({
   		color: global.colors.dark,
   		font: { fontSize:18, fontWeight: 'bold' },
-  		//shadowColor: '#aaa',
-  		//shadowOffset: {x:5, y:5},
-  		//borderWidth: 1,
-  		
   		text: 'Recent Check-Ins',
-  		//textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-  		top: 120,
+  		top: 10,
   		left: 10,
- 		//width: 'auto', 
- 		//height: 'auto',
+  		height: Ti.UI.SIZE,
+  		width: Ti.UI.FILL
+
 	});
-	profile_row.add(recent_check_ins);
+	profile_info.add(recent_check_ins);
 
 
 	// Add User Profile Data to top row of table
-	profile_row.add(user_image);
+	//profile_info.add(user_image);
 	
 
-	tbl_data.push(profile_row);
 
-	
-	
-// create an array of anonymous objects
-// Create an array of explicitly defined custom TableViewRows
-
-for (var i = 0; i < 5; i++) {
-	var row = Ti.UI.createTableViewRow({
-		hasChild:true,
-		height:90,
-		
-	});
-	
-	
-	
-	// Wine Picture
-	var wine_image = Ti.UI.createImageView({ 		
-  		height: 80,
-  		width: 80,
-  		left: 10,
-  		borderColor: 'black',
-		borderWidth: 1,
-  		contentMode: 'aspectfill',
-  		clipsToBounds: false,
-  		image:'/images/logo.png',
-  		layout:'vertical',
-  		width: 70,
-  		height: 70
-	});
-	
-	
 	
 	
 
 	
-	
-	
-	// This is the Label for the location of the wine within the row
-	var wine_location = Ti.UI.createLabel({
-		left:'30%',
-		bottom:10,
-		text: "Wine Location",
-		color: global.colors.dark,
-		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'},
-		touchEnabled:false
-	});
-	
-	
-	
-	// This is the label of the type of wine within the row
-	var wine_name = Ti.UI.createLabel({
-		left:'30%',
-		text: 'Wine Name and year',
-		bottom:wine_location.top,
-		font:{fontSize:18,fontWeight:'bold',fontFamily:'Helvetica Neue'},
-		color: global.colors.dark,
-		touchEnabled:false
-	
-	});
-
-
-
-	// This is the Label for the location of the wine within the row
-	var lbl_date = Ti.UI.createLabel({
-		right:5,
-		top:5,
-		text: "Date",
-		font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
-		color: global.colors.dark,
-		touchEnabled:false
-	});
-
-
-
-	// Add objects to each row
-	row.add(wine_image);
-	row.add(wine_name);
-	row.add(wine_location);
-	row.add(lbl_date);
-	
-	
-	row.addEventListener('click', function() {
-		var win_review = require('ui/handheld/WineReview');
-		self.containingTab.open(wine_review(wine));			
-	});
-	
-	
-	tbl_data.push(row);
-}
-	
-	
-	/*self.addEventListener('focus', function(e){
+	function load_data(){
+		self.removeEventListener('focus', load_data);
 		global.api.profileInformation(function(data){
-			firstname.text = data.fname;
+			userName.text = data.fname + ' ' + data.lname;
  		});
 		
-	});*/
+	};
+	self.addEventListener('focus', load_data);
 	
 
 	
-	// SCROLLING TABLE VIEW FOR ENTIRE PROFILE PAGE
-	var table = Titanium.UI.createTableView({
-		backgroundColor:'transparent',
-		top:0,
-		width:'100%',
-		height:'100%',
 
-		data: tbl_data
-		
-	});
-	self.add(table);
+	
+	self.add(profile_info);
+
 	
 	
-	
+	//self.add(profile_info);
 	
 
 	global.outputHook(self);
