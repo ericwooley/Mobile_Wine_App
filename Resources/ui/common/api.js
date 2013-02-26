@@ -41,7 +41,7 @@ api.register = function(email, password, callback){
  *     @example
  *     api.profileInformation(function(data){
  * 	       alert(JSON.stringify(data));
- *     };)
+ *     });
  */
 api.profileInformation = function(callback){
 	getResponse('http://winelife.ericwooley.com/user/profile/', {}, callback);

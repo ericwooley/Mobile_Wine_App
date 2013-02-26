@@ -24,10 +24,13 @@ function ProfileWindow(title) {
 	
 	
 	
-	
-	var user = global.api.profileInformation = function(callback){
-		getResponse('http://winelife.ericwooley.com/user/profile/', {}, callback);
-	};
+	self.addEventListener('focus', function(e){
+		alert(JSON.stringify(e));
+		global.api.profileInformation(function(data){
+			//alert(JSON.stringify(data));
+ 		});
+		
+	});
 	
 	
 	
