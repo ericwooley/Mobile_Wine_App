@@ -23,16 +23,14 @@ function DiscoverWindow(title) {
 	
 
 
-	var view_discover = Ti.UI.createView(
-		{
+	var view_discover = Ti.UI.createView({
 			width: Ti.UI.FILL,
 			height: Ti.UI.SIZE,
 			layout: 'vertical',
 			left: 10,
 			right: 10,
-			backgroundColor:'green'
-		}
-	);
+			backgroundColor:'orange'
+		});
 	
 
 	
@@ -70,18 +68,34 @@ function DiscoverWindow(title) {
 		left: '5%',
 		right: '5%',
 		title: "Color",
-		values: ['Color', 'Red', 'White']
+		values: ['Color','Red', 'White']
 	});
+	
+	var picker_type = TU.UI.createSimplePicker ({
+		left: '5%',
+		right: '5%',
+		title: "Type",
+		values: ['Type','Barbera', 'Cabernet Sauvignon', 'Malbec', 'Merlot', 'Pinot Noir', 'Sangiovese', 'Syrah', 'Zinfadel']
+	});
+	
 
 	var winecolor = null;
+	var winetype = null;
+	
 	picker_color.addEventListener ('TUchange', function (e) {
 	winecolor =  e.value;
+	alert(winecolor);
+	});
+	
+	picker_type.addEventListener ('TUchange', function (e) {
+	winetype =  e.value;
 	alert(winecolor);
 	});
 	
 	
 	view_discover.add(search_bar);
 	view_discover.add(picker_color);
+	view_discover.add(picker_type);
 
 /*
 
