@@ -5,54 +5,29 @@ function FriendsWindow(title) {
 	var view = Ti.UI.createView({
 		height: '100%',
 		width: '100%',
-		top: 0,
+		top: 15,
 		left: 0,
 		layout: 'vertical'
 	});
 	var Friend_view = Ti.UI.createView({
-		width: '100%',
+		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE,
-		top: 30,
-		layout: 'horizontal'
+		left: 10,
+		right: 10,
+		layout: 'verital'
 	});
 	
 	var email_field = Ti.UI.createTextField({
 		hintText: 'A new friends Email',
 		left: 10,
-		width: '60%',
+		width: Ti.UI.FILL,
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});
-	var button = Ti.UI.createButton({
-		height:35,
-		width: Ti.UI.FILL,
-		left: 10,
-		right: 10,
-		title:'follow',
-		color: 'black',
-		borderColor: 'black',
-		borderRadius: 10,
-		borderWidth: 1,
-		backgroundColor: global.colors.dark,
-		backgroundImage: 'none',
-		color:'white'
-	});
+
 	Friend_view.add(email_field);
-	Friend_view.add(button);
-	view.add(Friend_view);
-	self.add(view);
-	var friend_list;
-	self.addEventListener('open', function(e){
-		global.api.load_friend_list(
-			function(list){
-				friend_list = list;
-				view.add(list);
-			},
-			function(data){
-				alert(data);
-			}
-		);
-	});
-	button.addEventListener('click', function() {
+	var dropdown = require('ui/common/elements/dropdown');
+	
+	dropdown(Friend_view, self, "Add Friend", "Find Friend", "up", function() {
 		global.api.befriend(email_field.value, function(result){
 			Ti.API.info('Removing old friend list');
 			view.remove(friend_list);
@@ -67,6 +42,20 @@ function FriendsWindow(title) {
 				}
 			);
 		});
+	});
+	
+	self.add(view);
+	var friend_list;
+	self.addEventListener('open', function(e){
+		global.api.load_friend_list(
+			function(list){
+				friend_list = list;
+				view.add(list);
+			},
+			function(data){
+				alert(data);
+			}
+		);
 	});
 	
 	
