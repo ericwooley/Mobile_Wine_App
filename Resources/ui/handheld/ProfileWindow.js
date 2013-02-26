@@ -9,9 +9,33 @@
 
 function ProfileWindow(title) {
 	var global = require('ui/common/globals');
+	var dropdown = require('ui/common/elements/dropdown');
+
+
 	
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
+		
+	var edit_prof = Ti.UI.createView(
+		{
+			width: Ti.UI.FILL,
+			height: Ti.UI.SIZE,
+			layout: 'vertical',
+			left: 10,
+			right: 10,
+			backgroundColor: global.colors.dark
+		}
+	);
+	
+	var fname = Ti.UI.createTextField({
+		hintText: 'First Name',
+		width: Ti.UI.FILL,
+		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
+	});
+	
+	dropdown(edit_prof, self, "Save Changes", "Edit Profile", "down", function(){
+		alert('we pressed save!');
+	});
 	
 	
 	
@@ -24,13 +48,7 @@ function ProfileWindow(title) {
 	
 	
 	
-	self.addEventListener('focus', function(e){
-		alert(JSON.stringify(e));
-		global.api.profileInformation(function(data){
-			//alert(JSON.stringify(data));
- 		});
-		
-	});
+
 	
 	
 	
@@ -254,7 +272,12 @@ for (var i = 0; i < 5; i++) {
 }
 	
 	
-	
+	/*self.addEventListener('focus', function(e){
+		global.api.profileInformation(function(data){
+			firstname.text = data.fname;
+ 		});
+		
+	});*/
 	
 
 	

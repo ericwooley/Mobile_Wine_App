@@ -4,6 +4,7 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 	var start_down = starting == "down"? true: false;
 	var global = require('ui/common/globals');
 	in_view.bottom = 15;
+	Ti.API.info('Height', in_view.size.height);
 	var drop_view = Titanium.UI.createView({
 		width: 'auto',
 		height: Ti.UI.SIZE,
@@ -54,6 +55,7 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 	drop_button.add(db_text);
 	
 	drop_view.add(in_view);
+	Ti.API.info("Height at end: "+in_view.size.height);
 	drop_view_w.add(drop_view);
 	drop_view_w.add(drop_button);
 	win.add(drop_view_w);
