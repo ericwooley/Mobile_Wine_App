@@ -54,6 +54,7 @@ function DiscoverWindow(title) {
    		top:'16%',
    		left:'2%',
    		width:'47%',
+   		height:'8%'
   
 	});
 
@@ -61,7 +62,8 @@ function DiscoverWindow(title) {
    		top:'16%',
    		right:'2%',
    		width:'47%',
-   		color:global.colors.dark
+   		height:'8%'
+   		//color:global.colors.dark
 	});
 
 	var WineColor = [];
