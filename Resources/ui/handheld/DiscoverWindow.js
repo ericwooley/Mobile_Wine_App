@@ -7,17 +7,39 @@
 // ***********************************************
 
 function DiscoverWindow(title) {
+	
 	var global = require('ui/common/globals');
-	// Creates the default window with global color scheme
+	var dropdown = require('ui/common/elements/dropdown');
 	var self = global.createWindow(title);
+	var TU = require ('/TitanUp/TitanUp');
 
 
 	var view = Ti.UI.createView({
-		top:'25%',
+		top:'5%',
 		left:0,
 		width:'100%',
-		height:'75%'
+		height:'95%'
 	});
+	
+
+
+	var view_discover = Ti.UI.createView(
+		{
+			width: Ti.UI.FILL,
+			height: Ti.UI.SIZE,
+			layout: 'vertical',
+			left: 10,
+			right: 10,
+			backgroundColor:'green'
+		}
+	);
+	
+
+	
+	dropdown(view_discover, self, "Search", "Discover", "up", function(){
+		alert('Im sexy and I know it!');
+	});
+	
 
 
 
@@ -37,21 +59,31 @@ function DiscoverWindow(title) {
 	self.add(view);
 
 	var search_bar = Ti.UI.createTextField({
-		top:'1%',
-		width:'70%',
-		left:'2%',
-		height:'15%',
+		top:0,
+		width:'90%',
+		left:'5%',
 		hintText:' Discover wine...',
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});
-
-	var btn_search = Ti.UI.createButton({
-		top:'1%',
-		width:'20%',
-		height:'14%',
-		left:'72%',
-		title:'Go',
+	
+	var picker_color = TU.UI.createSimplePicker ({
+		left: '5%',
+		right: '5%',
+		title: "Color",
+		values: ['Color', 'Red', 'White']
 	});
+
+	var winecolor = null;
+	picker_color.addEventListener ('TUchange', function (e) {
+	winecolor =  e.value;
+	alert(winecolor);
+	});
+	
+	
+	view_discover.add(search_bar);
+	view_discover.add(picker_color);
+
+/*
 
 	var colorpicker = Ti.UI.createPicker({
    		top:'16%',
@@ -90,12 +122,12 @@ function DiscoverWindow(title) {
 	colorpicker.selectionIndicator = true;
 	typepicker.add(WineType);
 	typepicker.selectionIndicator = true;
-
+*/
 //	self.add(colorpicker);
 //	self.add(typepicker);
-	self.add(search_bar);
-	self.add(btn_search);
-
+//	self.add(search_bar);
+//	self.add(btn_search);
+	view_discover.add(search_bar);
 
 	
 	
