@@ -22,18 +22,18 @@ function ProfileWindow(title) {
 			height: Ti.UI.SIZE,
 			layout: 'vertical',
 			left: 10,
-			right: 10,
-			backgroundColor: global.colors.dark
+			right: 10
 		}
 	);
 	
 	var fname = Ti.UI.createTextField({
 		hintText: 'First Name',
 		width: Ti.UI.FILL,
+		height: 50,
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});
-	
-	dropdown(edit_prof, self, "Save Changes", "Edit Profile", "down", function(){
+	edit_prof.add(fname);
+	dropdown(edit_prof, self, "Save Changes", "Edit Profile", "up", function(){
 		alert('we pressed save!');
 	});
 	
