@@ -127,7 +127,7 @@ function ProfileWindow(title) {
   		//shadowOffset: {x:5, y:5},
   		//borderWidth: 1,
   		
-  		text: 'About me text goes here... Welcome to my profile! These are all of the wines I have tasted.',
+  		text: 'Hi, my name is David. I love all wines!  Current favorite is Cabernet Sauvignon.  Follow me to see which wines I am drinking.',
   		textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
   		top: 60,
   		right: 10,
