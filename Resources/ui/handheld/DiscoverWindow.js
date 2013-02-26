@@ -26,7 +26,10 @@ function DiscoverWindow(title) {
 
 	// This original view can show featured wines.
 	global.api.search_with_filter("merlot", "124 ", function(search_results){
-           var table = global.api.search_results(search_results); 
+           var table = global.api.search_results(search_results, function(wine){
+				var wine_review = require('ui/handheld/WineReview');
+				self.containingTab.open(wine_review(wine));
+			}); 
            view.add(table);
       });
 	});
