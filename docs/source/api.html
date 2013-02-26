@@ -55,6 +55,10 @@ api.register = function(email, password, callback){
 </span> * Get the user profile information
  * @param {Function} callback
  * Callback function, to be called upon success.
+ *     @example
+ *     api.profileInformation(function(data){
+ * 	       alert(JSON.stringify(data));
+ *     };)
  */
 api.profileInformation = function(callback){
 	getResponse('http://winelife.ericwooley.com/user/profile/', {}, callback);
@@ -91,7 +95,7 @@ api.editProfile = function(fname, lname, bio, callback){
  * The callback function to be used on load 
  */
 api.checkin = function(wine_id, comment, rating, callback){
-	getResponse('http://winelife.ericwooley.com/user/update_profile/',{Wine_id: wine_id, comment: comment, rating: rating}, callback);
+	getResponse('http://winelife.ericwooley.com/user/checkin/',{wine_id: wine_id, comment: comment, rating: rating}, callback);
 }
 
 <span id='api-method-'>/**
