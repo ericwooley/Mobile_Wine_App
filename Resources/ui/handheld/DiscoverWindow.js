@@ -88,8 +88,8 @@ function DiscoverWindow(title) {
 	typepicker.add(WineType);
 	typepicker.selectionIndicator = true;
 
-	self.add(colorpicker);
-	self.add(typepicker);
+//	self.add(colorpicker);
+//	self.add(typepicker);
 	self.add(search_bar);
 	self.add(btn_search);
 
