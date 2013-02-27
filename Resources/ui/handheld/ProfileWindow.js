@@ -143,8 +143,22 @@ function ProfileWindow(title) {
 	
 	
 	
+	
+	
+	global.api.editProfile = function(fname, lname, bio, callback){
+	getResponse('http://winelife.ericwooley.com/user/update_profile/',{
+		fname: fname,
+		lname: lname,
+		bio: bio
+	}, callback);
+};
+
+	
+	
+	
+	
 	dropdown(edit_prof, self, "Save Changes", "Edit Profile", "up", function(){
-		alert('we pressed save!');
+		alert('Profile Updated!');
 	});
 	
 	
@@ -245,7 +259,7 @@ function ProfileWindow(title) {
 	var recent_check_ins = Ti.UI.createLabel({
   		color: global.colors.dark,
   		font: { fontSize:18, fontWeight: 'bold' },
-  		text: 'Recent Check-Ins',
+  		text: 'My Cellar',
   		top: 10,
   		left: 10,
   		height: Ti.UI.SIZE,
@@ -273,6 +287,8 @@ function ProfileWindow(title) {
 		
 	};
 	self.addEventListener('focus', load_data);
+	
+	
 	
 
 	
