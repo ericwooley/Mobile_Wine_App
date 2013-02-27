@@ -268,7 +268,7 @@ function ProfileWindow(title) {
 		self.removeEventListener('focus', load_data);
 		global.api.profileInformation(function(data){
 			userName.text = data.fname + ' ' + data.lname;
-			aboutMe_Text = data.bio;
+			aboutMe_Text.text = data.bio;
  		});
 		
 	};
