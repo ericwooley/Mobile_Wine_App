@@ -160,7 +160,7 @@ function ProfileWindow(title) {
 	//  USER NAME TEXT FIELD
 	var userName = Ti.UI.createLabel({
   		color: global.colors.dark,
-  		font: { fontSize:28 },
+  		font: { fontSize:24 },
   		text: 'Loading',
   		top: 0,
   		left: 10,
@@ -268,6 +268,7 @@ function ProfileWindow(title) {
 		self.removeEventListener('focus', load_data);
 		global.api.profileInformation(function(data){
 			userName.text = data.fname + ' ' + data.lname;
+			aboutMe_Text = data.bio;
  		});
 		
 	};
