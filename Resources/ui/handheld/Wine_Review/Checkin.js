@@ -36,18 +36,57 @@ module.exports = function(wine){
 		textAlign: 'left',
 		value: 'Leave a comment about this wine'
 	});
-	var rating = TU.UI.createSimplePicker ({
-		left: margin,
-		right: margin,
-		top: margin,
-		title: "Rating: ",
-		values: ['1: I hated it.', '2: I disliked It.', '3: It was mediocre.', '4: I would drink it again.', '5: I LOVED it!']
+
+
+	// Create a basic slider
+	var basicSlider = Titanium.UI.createSlider({
+		min:0,
+		max:100,
+		value:5,
+		width:300,
+		height:'auto',
+		top:30
+		//selectedThumbImage:'/images/staron.ico',
+		//highlightedThumbImage:'/images/staron.ico'
+	});
+	
+	// Create a label for the slider
+	var basicSliderLabel = Titanium.UI.createLabel({
+		text:'My Rating' ,
+		color:'#999',
+		font:{
+			fontSize:20
+		},
+		textAlign:'center',
+		top:margin,
+		width:300,
+		height:'auto'
+	});	
+	
+	// Record the values as they are changing
+	basicSlider.addEventListener('change',function(e)
+	{
+		basicSliderLabel.text = Math.round(basicSlider.value) + ' points';
 	});
 
+	// Record where the drag started
+	basicSlider.addEventListener('touchstart', function(e)
+	{
+		Ti.API.info('Touch started: '+e.value);
+	});
 	
+	// Record where the drag ended
+	basicSlider.addEventListener('touchend', function(e)
+	{
+		Ti.API.info('Touch ended: '+e.value);
+	});
+	
+	basicSlider.value = 0; // For regression test purposes
+
+
+	overview.add(basicSliderLabel);
+	overview.add(basicSlider);
 	overview.add(name_lbl);
-	overview.add(rating);
-	
 	overview.add(textArea);
 
 	textArea._hintText = textArea.value;
@@ -65,7 +104,6 @@ module.exports = function(wine){
 	});
 	
 	var ret = {
-		rating: rating,
 		ta: textArea,
 		view: overview
 	};
