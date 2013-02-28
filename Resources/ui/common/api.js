@@ -32,6 +32,31 @@ api.logout = function(callback){
 };
 
 /**
+ * @param {String/Integer} fb_id
+ * The users facebook id
+ * @param {Function} callback
+ * A callback function to be called upon success.
+ */
+api.fb_integrate = function(fb_id, callback){
+	Ti.API.info('fb_integrate api call started');
+	getResponse('http://winelife.ericwooley.com/user/fb_integrate/', {fb_id: fb_id}, callback);
+	
+};
+
+/**
+ * @param {array} friends
+ * The users facebook id
+ * @param {Function} callback
+ * A callback function to be called upon success.
+ */
+api.find_fb_friends = function(friends, callback){
+	Ti.API.info('friendList' + JSON.stringify(friends));
+	friends = JSON.stringify(friends);
+	getResponse('http://winelife.ericwooley.com/user/fb_friends/', {friends: friends}, callback);
+	
+};
+
+/**
  * The user registration function
  * @param {String} email
  * the email address to register with
@@ -234,8 +259,8 @@ api.httpInterface = Ti.Network.createHTTPClient(
 	{
 		onerror : function(e) {
 			try{
-	         Ti.API.debug(JSON.stringify(e));
-	         alert('Error: '+ JSON.stringify(e));}
+	         Ti.API.debug("Connection error: " +JSON.stringify(e));
+	         alert('Connection Error: '+ JSON.stringify(e));}
 	        catch(e){
 	        	Ti.API.info(JSON.stringify(e));}
 	     },
@@ -281,8 +306,10 @@ function getResponse(url, data, callback){
 			response = JSON.parse(json);
 		}catch(err)
 		{
+			
+			Ti.API.info("Decode Error:" + err);
 			Ti.API.info(json);
-			showMessage("Decode Error:" + err, 5000);
+			alert(json);
 			response = json;
 		}
 		Ti.API.info('executing load callback');

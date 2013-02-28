@@ -90,7 +90,19 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 			db_text.text = down_button_text;
 		});
 	};
-	
+	Ti.App.addEventListener('raise_shade', function(data){
+		if(raise_lock)
+			return;
+		raise_lock = true;
+		drop_button.addEventListener('click', drop);
+		drop_view_w.animate({
+			top: 0 - in_view.size.height - in_view.top,
+			duration: 500
+		},function(e){
+			db_text.text = up_button_text;
+			//callback();
+		});
+	});
 	win.addEventListener('focus', init);
 	function init(e){
 		// We only want this called the first time the window is focused on.
