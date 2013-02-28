@@ -142,25 +142,32 @@ function ProfileWindow(title) {
 	edit_prof.add(about_me);
 	
 	
-	
-	
-	
-	global.api.editProfile = function(fname, lname, bio, callback){
-	getResponse('http://winelife.ericwooley.com/user/update_profile/',{
-		fname: fname,
-		lname: lname,
-		bio: bio
-	}, callback);
-};
 
 	
 	
 	
 	
 	dropdown(edit_prof, self, "Save Changes", "Edit Profile", "up", function(){
-		alert('Profile Updated!');
+		
+		global.api.editProfile(fname.value, lname.value, about_me.value, function(){
+			
+			//username.text = fname.value + ' ' + lname.value;
+			userName.text = data.fname + ' ' + data.lname;
+			aboutMe_Text.text = data.about_me;
+			alert('Profile Updated!');
+		});
+		
+		function load_data(){
+		self.removeEventListener('focus', load_data);
+		global.api.profileInformation(function(data){
+			userName.text = data.fname + ' ' + data.lname;
+			aboutMe_Text.text = data.bio;
+ 		});
+		
+	};
+	self.addEventListener('focus', load_data);
+		
 	});
-	
 	
 //***********************************************************
 // END EDIT PROFILE POP-DOWN
