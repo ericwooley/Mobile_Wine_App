@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
+	<property name="ti.facebook.appid">591074907588038</property >
     <property name="acs-oauth-secret-production" type="string">iTHIbBoo0Agauy1VaOOZ4XgDIWYUopzR</property>
     <property name="acs-oauth-key-production" type="string">gflksmunLeoLaiPgR0XI3VI0m58P1SKa</property>
     <property name="acs-api-key-production" type="string">MPWqQnoSxNIpLmzeKvhPDsSk57Rg9Bhe</property>

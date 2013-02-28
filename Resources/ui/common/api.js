@@ -21,6 +21,16 @@ api.login = function(email, password, callback){
 	getResponse('http://winelife.ericwooley.com/user/login/', {email: email, password:password}, callback);
 };
 
+
+/**
+ * @param {Function} callback
+ * A callback function to be called upon success.
+ */
+api.logout = function(callback){
+	getResponse('http://winelife.ericwooley.com/user/logout/', {}, callback);
+	
+};
+
 /**
  * The user registration function
  * @param {String} email

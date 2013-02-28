@@ -48,6 +48,10 @@ var globals  =
 };
 module.exports = globals;
 
+Ti.Facebook.appid = 591074907588038;
+Ti.Facebook.permissions = ['email'];
+//$.socialWin.open();
+
 /**
  * function to check if the user has logged in, unimplemented
  * @return {Boolean} always returns true

@@ -25,7 +25,11 @@ if (Ti.version < 1.8 ) {
 	loginWindow = require('ui/handheld/Login')();
 	var email = global.get_string('email');
 	var password = global.get_string('password');
-	if(email && password)
+	var facebook = Ti.App.Properties.getBool('facebook');
+	var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
+	
+	var atg =  ApplicationTabGroup();
+	if(email && password || (email == '' || password == ''))
 	{
 		
 		var dia = Ti.UI.createAlertDialog({
@@ -52,7 +56,14 @@ if (Ti.version < 1.8 ) {
 	}
 	else
 	{
-		var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
-		new ApplicationTabGroup().open();
+		atg.open();
 	}
+	Ti.App.addEventListener('user_logout', function(data){
+		Ti.App.Properties.removeProperty('email');
+		Ti.App.Properties.removeProperty('password');
+		Ti.App.Properties.removeProperty('facebook');
+		Ti.Facebook.logout();
+		atg.close();
+		loginWindow.open();
+	});
 })();
