@@ -2,11 +2,8 @@
 // HERE WE GO 
 //bootstrap and check dependencies
 // Tandra is editing some things
-<<<<<<< HEAD
 // This is a cool comment
-=======
 // Erics is stupid head
->>>>>>> Eric is stupid!
 if (Ti.version < 1.8 ) {
 	alert('Sorry - this application template requires Titanium Mobile SDK 1.8 or later');
 }
