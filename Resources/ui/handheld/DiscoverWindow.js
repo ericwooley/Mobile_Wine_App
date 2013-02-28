@@ -29,14 +29,22 @@ function DiscoverWindow(title) {
 			layout: 'vertical',
 			left: 10,
 			right: 10,
-			backgroundColor:'orange'
+			//backgroundColor:'orange'
 		});
 	
 
 	
-	dropdown(view_discover, self, "Search", "Discover", "up", function(){
-		alert('Im sexy and I know it!');
+	dropdown(view_discover, self, "Find", "Discover", "up", function(){
+		//global.api.search_with_filter(search_bar.value, '124', function(search_results){
+         //  var filteredtable = global.api.search_results(search_results, function(wine){
+		//		var wine_review2 = require('ui/handheld/WineReview');
+		//		self.containingTab.open(wine_review2(wine));
+		//	}); 
+		//	view.remove(table);
+         //  view.add(filteredtable);
+      //});
 	});
+	
 	
 
 
@@ -84,12 +92,10 @@ function DiscoverWindow(title) {
 	
 	picker_color.addEventListener ('TUchange', function (e) {
 	winecolor =  e.value;
-	alert(winecolor);
 	});
 	
 	picker_type.addEventListener ('TUchange', function (e) {
 	winetype =  e.value;
-	alert(winecolor);
 	});
 	
 	
