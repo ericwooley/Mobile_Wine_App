@@ -309,7 +309,7 @@ function getResponse(url, data, callback){
 			
 			Ti.API.info("Decode Error:" + err);
 			Ti.API.info(json);
-			alert(json);
+			//alert(json);
 			response = json;
 		}
 		Ti.API.info('executing load callback');

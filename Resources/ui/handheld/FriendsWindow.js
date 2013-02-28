@@ -92,7 +92,7 @@ function FriendsWindow(title) {
 									view.add(list);
 								},
 								function(data){
-									//alert(JSON.stringify(data));
+									alert(JSON.stringify(data));
 								}
 							);
 						});
