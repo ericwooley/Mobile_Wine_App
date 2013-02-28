@@ -32,17 +32,21 @@ function DiscoverWindow(title) {
 			//backgroundColor:'orange'
 		});
 	
-
+var wine_review = null;
+var table = null;
 	
 	dropdown(view_discover, self, "Find", "Discover", "up", function(){
-		//global.api.search_with_filter(search_bar.value, '124', function(search_results){
-         //  var filteredtable = global.api.search_results(search_results, function(wine){
-		//		var wine_review2 = require('ui/handheld/WineReview');
-		//		self.containingTab.open(wine_review2(wine));
-		//	}); 
-		//	view.remove(table);
-         //  view.add(filteredtable);
-      //});
+		view.remove(table);
+		table = null;
+		self.remove(view);
+		global.api.search_with_filter(search_bar.value, '124', function(search_results){
+         table = global.api.search_results(search_results, function(wine){
+			 wine_review = require('ui/handheld/WineReview');
+			self.containingTab.open(wine_review(wine));
+		}); 		
+        view.add(table);
+        self.add(view);
+      });
 	});
 	
 	
@@ -54,8 +58,8 @@ function DiscoverWindow(title) {
 
 	// This original view can show featured wines.
 	global.api.search_with_filter("merlot", "124 ", function(search_results){
-           var table = global.api.search_results(search_results, function(wine){
-				var wine_review = require('ui/handheld/WineReview');
+            table = global.api.search_results(search_results, function(wine){
+				wine_review = require('ui/handheld/WineReview');
 				self.containingTab.open(wine_review(wine));
 			}); 
            view.add(table);
