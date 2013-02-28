@@ -147,7 +147,7 @@ function DiscoverWindow(title) {
 //	self.add(typepicker);
 //	self.add(search_bar);
 //	self.add(btn_search);
-	view_discover.add(search_bar);
+	//view_discover.add(search_bar);
 
 	
 	
