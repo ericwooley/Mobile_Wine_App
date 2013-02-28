@@ -142,11 +142,32 @@ function ProfileWindow(title) {
 	edit_prof.add(about_me);
 	
 	
+
+	
+	
+	
 	
 	dropdown(edit_prof, self, "Save Changes", "Edit Profile", "up", function(){
-		alert('we pressed save!');
+		
+		global.api.editProfile(fname.value, lname.value, about_me.value, function(){
+			
+			//username.text = fname.value + ' ' + lname.value;
+			userName.text = data.fname + ' ' + data.lname;
+			aboutMe_Text.text = data.about_me;
+			alert('Profile Updated!');
+		});
+		
+		function load_data(){
+		self.removeEventListener('focus', load_data);
+		global.api.profileInformation(function(data){
+			userName.text = data.fname + ' ' + data.lname;
+			aboutMe_Text.text = data.bio;
+ 		});
+		
+	};
+	self.addEventListener('focus', load_data);
+		
 	});
-	
 	
 //***********************************************************
 // END EDIT PROFILE POP-DOWN
@@ -245,7 +266,7 @@ function ProfileWindow(title) {
 	var recent_check_ins = Ti.UI.createLabel({
   		color: global.colors.dark,
   		font: { fontSize:18, fontWeight: 'bold' },
-  		text: 'Recent Check-Ins',
+  		text: 'My Cellar',
   		top: 10,
   		left: 10,
   		height: Ti.UI.SIZE,
@@ -273,6 +294,8 @@ function ProfileWindow(title) {
 		
 	};
 	self.addEventListener('focus', load_data);
+	
+	
 	
 
 	

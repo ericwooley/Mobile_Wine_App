@@ -1,5 +1,4 @@
 
-
 module.exports = function(in_view, win, down_button_text,  up_button_text, starting, callback){
 	var start_down = starting == "down"? true: false;
 	var global = require('ui/common/globals');

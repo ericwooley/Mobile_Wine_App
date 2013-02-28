@@ -3,8 +3,8 @@ function FriendsWindow(title) {
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
 	var view = Ti.UI.createView({
-		height: '100%',
-		width: '100%',
+		height: Ti.UI.FILL,
+		width: Ti.UI.FILL,
 		top: 15,
 		left: 0,
 		layout: 'vertical'
@@ -14,7 +14,7 @@ function FriendsWindow(title) {
 		height: Ti.UI.SIZE,
 		left: 10,
 		right: 10,
-		layout: 'verital'
+		layout: 'vertical'
 	});
 	
 	var email_field = Ti.UI.createTextField({
@@ -28,7 +28,13 @@ function FriendsWindow(title) {
 	var dropdown = require('ui/common/elements/dropdown');
 	
 	dropdown(Friend_view, self, "Add Friend", "Find Friend", "up", function() {
+		if(email_field.getValue().length < 1){
+				
+			return;
+		}
 		global.api.befriend(email_field.value, function(result){
+			
+			
 			Ti.API.info('Removing old friend list');
 			view.remove(friend_list);
 			email_field.setValue('');
@@ -42,6 +48,7 @@ function FriendsWindow(title) {
 				}
 			);
 		});
+
 	});
 	
 	self.add(view);

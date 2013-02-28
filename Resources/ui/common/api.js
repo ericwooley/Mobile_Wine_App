@@ -248,7 +248,7 @@ var server = api.httpInterface;
  */
 function getResponse(url, data, callback){
 	var message = showMessage("please wait: connecting to server", 5000);
-	
+	Ti.API.info('Connecting To: '+ url);
 	if(Ti.Network.networkType == Ti.Network.NETWORK_NONE){
 		closeMessage(message);
 		var dialog = Ti.UI.createAlertDialog({
@@ -267,6 +267,7 @@ function getResponse(url, data, callback){
 		closeMessage(message);
 		var response;
 		try{
+			Ti.API.info('call returned: ' + json)
 			response = JSON.parse(json);
 		}catch(err)
 		{
