@@ -15,7 +15,7 @@ function ApplicationTabGroup() {
 		win4 = require('ui/handheld/FriendsWindow')('Friends'),//new Window(L('Friends'))
 		win5 = require('ui/handheld/ProfileWindow')('Profile')//new Window(L('Profile'));
 	
-	var homeImage = Ti.Platform.osname == 'android' ? '/images/android_home_tab.png' : '/images/home_tab_reg.png';
+	var homeImage = Ti.Platform.osname == 'android' ? '/images/android_home_tab.png' : '/images/iphone_grapevine_tab.png';
 	var tab1 = Ti.UI.createTab({
 		title: 'Grapevine',
 		icon: homeImage,
@@ -24,7 +24,7 @@ function ApplicationTabGroup() {
 	});
 	win1.containingTab = tab1;
 	
-	var discoverImage = Ti.Platform.osname == 'android' ? '/images/android_discover_tab.png' : '/images/discover_tab.png';
+	var discoverImage = Ti.Platform.osname == 'android' ? '/images/android_discover_tab.png' : '/images/iphone_discover_tab.png';
 	var tab2 = Ti.UI.createTab({
 		title: 'Discover',
 		icon: discoverImage,
@@ -33,7 +33,7 @@ function ApplicationTabGroup() {
 	});
 	win2.containingTab = tab2;
 	
-	var checkinImage = Ti.Platform.osname == 'android' ? '/images/android_checkin_tab.png' : '/images/check-in_tab.png';
+	var checkinImage = Ti.Platform.osname == 'android' ? '/images/android_checkin_tab.png' : '/images/iphone_check-in_tab.png';
 	var tab3 = Ti.UI.createTab({
 		title: 'Check-In',
 		icon: checkinImage,
@@ -42,7 +42,7 @@ function ApplicationTabGroup() {
 	});
 	win3.containingTab = tab3;
 	
-	var friendsImage = Ti.Platform.osname == 'android' ? '/images/android_friends_tab.png' : '/images/friends_tab.png';
+	var friendsImage = Ti.Platform.osname == 'android' ? '/images/android_friends_tab.png' : '/images/iphone_friends_tab_new.png';
 	var tab4 = Ti.UI.createTab({
 		title: 'Friends',
 		icon: friendsImage,
@@ -51,7 +51,7 @@ function ApplicationTabGroup() {
 	});
 	win4.containingTab = tab4;
 	
-	var profileImage = Ti.Platform.osname == 'android' ? '/images/android_profile_tab.png' : '/images/profile_tab.png';
+	var profileImage = Ti.Platform.osname == 'android' ? '/images/android_profile_tab.png' : '/images/iphone_profile_tab.png';
 	var tab5 = Ti.UI.createTab({
 		title: 'Profile',
 		icon: profileImage,
