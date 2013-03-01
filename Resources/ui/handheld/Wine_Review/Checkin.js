@@ -4,7 +4,6 @@ module.exports = function(wine){
 	var global = require('ui/common/globals');
 	var margin = TU.UI.Sizer.getDimension (10);
 	
-	
 	var overview = Ti.UI.createView({
 		top: 10,
 		right: 10,
@@ -22,7 +21,6 @@ module.exports = function(wine){
 		top: 10,
 		color: 'white'
 	});
-
 	
 	var textArea = Ti.UI.createTextArea({
 		borderRadius: 5,
@@ -45,15 +43,15 @@ module.exports = function(wine){
 		value:5,
 		width:300,
 		height:'auto',
-		top:30
+		top:'auto'
 		//selectedThumbImage:'/images/staron.ico',
 		//highlightedThumbImage:'/images/staron.ico'
 	});
 	
 	// Create a label for the slider
 	var basicSliderLabel = Titanium.UI.createLabel({
-		text:'My Rating' ,
-		color:'#999',
+		text:'My Rating: ' + Math.round(basicSlider.value) + ' points' ,
+		color:'white',
 		font:{
 			fontSize:20
 		},
@@ -66,7 +64,7 @@ module.exports = function(wine){
 	// Record the values as they are changing
 	basicSlider.addEventListener('change',function(e)
 	{
-		basicSliderLabel.text = Math.round(basicSlider.value) + ' points';
+		basicSliderLabel.text = 'My rating: ' + Math.round(basicSlider.value) + ' points';
 	});
 
 	// Record where the drag started
@@ -80,8 +78,7 @@ module.exports = function(wine){
 	{
 		Ti.API.info('Touch ended: '+e.value);
 	});
-	
-	basicSlider.value = 0; // For regression test purposes
+
 
 
 	overview.add(basicSliderLabel);
