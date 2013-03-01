@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:app xmlns:ti="http://ti.appcelerator.org">
-	<property name="ti.facebook.appid">591074907588038</property >
+    <property name="ti.facebook.appid">591074907588038</property>
     <property name="acs-oauth-secret-production" type="string">iTHIbBoo0Agauy1VaOOZ4XgDIWYUopzR</property>
     <property name="acs-oauth-key-production" type="string">gflksmunLeoLaiPgR0XI3VI0m58P1SKa</property>
     <property name="acs-api-key-production" type="string">MPWqQnoSxNIpLmzeKvhPDsSk57Rg9Bhe</property>
@@ -8,7 +8,7 @@
     <property name="acs-oauth-key-development" type="string">1JxfWLSHFRS4DhaKROwV5zDLRoUvpVFN</property>
     <property name="acs-api-key-development" type="string">XWnaxCijaw9Y0oLkKhOJIwUWoyhJiz7M</property>
     <property name="ti.android.fastdev" type="bool">false</property>
-    <id>com.menplusone.WineApp</id>
+    <id>V42H7K5MGR.com.winelife</id>
     <name>Mobile_Web_App</name>
     <version>1.0</version>
     <publisher>ericwooley</publisher>

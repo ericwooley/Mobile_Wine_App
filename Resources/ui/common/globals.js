@@ -76,7 +76,7 @@ function createWindow(title){
 		width: '100%',
 		barColor: module.exports.colors.dark,
 		backgroundColor: module.exports.colors.lightest,
-		backgroundImage:'images/lightpaperfibers.png'
+		backgroundImage:'images/BKGD_Texture.png'
 	});
 	return self;
 };
