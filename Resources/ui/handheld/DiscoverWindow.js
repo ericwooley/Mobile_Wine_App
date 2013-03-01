@@ -13,51 +13,21 @@ function DiscoverWindow(title) {
 	var self = global.createWindow(title);
 	var TU = require ('/TitanUp/TitanUp');
 
-
+	// This view holds the wine list
 	var view = Ti.UI.createView({
 		top:'5%',
 		left:0,
 		width:'100%',
-		height:'95%'
-	});
-	
-
-
-	var view_discover = Ti.UI.createView({
-			width: Ti.UI.FILL,
-			height: Ti.UI.SIZE,
-			layout: 'vertical',
-			left: 10,
-			right: 10,
-			//backgroundColor:'orange'
-		});
-	
-var wine_review = null;
-var table = null;
-	
-	dropdown(view_discover, self, "Find", "Discover", "up", function(){
-		view.remove(table);
-		table = null;
-		self.remove(view);
-		global.api.search_with_filter(search_bar.value, '124', function(search_results){
-         table = global.api.search_results(search_results, function(wine){
-			 wine_review = require('ui/handheld/WineReview');
-			self.containingTab.open(wine_review(wine));
-		}); 		
-        view.add(table);
-        self.add(view);
-      });
+		height:'95%',
+		layout: 'vertical'
 	});
 	
 	
-
-
-
+//***********************************************************************************
+//  This original list in the future will display advertised wines / picks of the day
+//***********************************************************************************		
 	self.addEventListener('open', function(e){
-
-
-	// This original view can show featured wines.
-	global.api.search_with_filter("merlot", "124 ", function(search_results){
+		global.api.search_with_filter("sweet", '124', function(search_results){
             table = global.api.search_results(search_results, function(wine){
 				wine_review = require('ui/handheld/WineReview');
 				self.containingTab.open(wine_review(wine));
@@ -67,7 +37,21 @@ var table = null;
 	});
 
 	self.add(view);
-
+	
+// Drop down view
+	var view_discover = Ti.UI.createView({
+			width: Ti.UI.FILL,
+			height: Ti.UI.SIZE,
+			layout: 'vertical',
+			left: 10,
+			right: 10,
+		});
+	
+	
+	var wine_review = null; 
+	var table = null;
+	
+	// Dropdown menu components
 	var search_bar = Ti.UI.createTextField({
 		top:0,
 		width:'90%',
@@ -87,15 +71,36 @@ var table = null;
 		left: '5%',
 		right: '5%',
 		title: "Type",
-		values: ['Type','Barbera', 'Cabernet Sauvignon', 'Malbec', 'Merlot', 'Pinot Noir', 'Sangiovese', 'Syrah', 'Zinfadel']
+		values: ['Type','Barbera', 'Cabernet Sauvignon', 'Malbec', 'Merlot', 'Pinot Noir', 'Sangiovese', 'Syrah', 'Zinfandel']
 	});
 	
-
+	// These store picker values
 	var winecolor = null;
 	var winetype = null;
 	
+/*	var wines = new Object;
+	wines.Amarone = '145';
+	wines.Australian = '145';
+	wines.Barolo = '170';
+	wines.Blanc = '142+123+144';
+	wines.Bordeaux = '160+128';
+	wines.Cabernet = '139';
+	wines.Carmenere = '10081';
+*/	
+	
+	
 	picker_color.addEventListener ('TUchange', function (e) {
-	winecolor =  e.value;
+		if(e.value == 'Red'){
+			winecolor = '124';
+		}	
+		else if(e.value == "White"){
+			winecolor = '125'
+		}
+		else{
+			alert('Didnt work');
+			winecolor = null;
+		}
+	
 	});
 	
 	picker_type.addEventListener ('TUchange', function (e) {
@@ -106,6 +111,22 @@ var table = null;
 	view_discover.add(search_bar);
 	view_discover.add(picker_color);
 	view_discover.add(picker_type);
+	
+	// Dropdown menu
+		dropdown(view_discover, self, "Find", "Discover", "up", function(){
+		view.remove(table);
+		table = null;
+		self.remove(view);
+		global.api.search_with_filter(search_bar.value, '124', function(search_results){
+         table = global.api.search_results(search_results, function(wine){
+			 wine_review = require('ui/handheld/WineReview');
+			self.containingTab.open(wine_review(wine));
+		}); 		
+        view.add(table);
+        self.add(view);
+      });
+	});
+	
 
 /*
 
