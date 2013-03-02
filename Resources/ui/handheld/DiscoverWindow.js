@@ -78,15 +78,42 @@ function DiscoverWindow(title) {
 	var winecolor = null;
 	var winetype = null;
 	
-/*	var wines = new Object;
-	wines.Amarone = '145';
-	wines.Australian = '145';
-	wines.Barolo = '170';
-	wines.Blanc = '142+123+144';
-	wines.Bordeaux = '160+128';
-	wines.Cabernet = '139';
-	wines.Carmenere = '10081';
-*/	
+	var wines = new Object;
+	
+//	wines['Bordeaux'] = '160+128';
+	
+	wines['Amarone'] = '145';
+	wines['Australian'] = '145';
+	wines['Barolo'] = '170';
+	wines['Blanc'] = '142+123+144';
+	wines['Bordeaux'] = '160+128';
+	wines['Cabernet'] = '139';
+	wines['Carmenere'] = '10081';
+	wines['Chenin'] = '165+128';
+	wines['Chile'] = '10081';
+	wines['Chianti'] = '152+163';
+	wines['Grand'] = '10082';
+	wines['Grenache'] = '10080';
+	wines['Grigio'] = '194';
+	wines['Gris'] = '194';
+	wines['Merlot'] = '138';
+	wines['Murray'] = '162';
+	wines['Muscat'] = '173';
+	wines['Pinot Noir'] = '143';
+	wines['Riesling'] = '153';
+	wines['Rose'] = '147+123';
+	wines['Sangiovese'] = '163';
+	wines['Shiraz'] = '146+145';
+	wines['Syrah'] = '146';
+	wines['Traminer'] = '148';
+	wines['Verdicchio'] = '148';
+	wines['Zinfandel'] = '141';
+	
+	
+	
+	
+
+//  winetype = wines['Cabernet'];	
 	
 	
 	picker_color.addEventListener ('TUchange', function (e) {
@@ -104,7 +131,8 @@ function DiscoverWindow(title) {
 	});
 	
 	picker_type.addEventListener ('TUchange', function (e) {
-	winetype =  e.value;
+//	winetype =  e.value;
+// alert(winetype);
 	});
 	
 	
