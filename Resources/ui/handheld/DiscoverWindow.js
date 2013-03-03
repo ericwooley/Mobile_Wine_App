@@ -38,6 +38,9 @@ function DiscoverWindow(title) {
 
 	self.add(view);
 
+//************************************************************************
+// Arrays with wines for picker menu's
+//************************************************************************
 
  var allwines = ['Type', 'Amarone', 'Australia', 'Barolo', 'Blanc', 'Bordeaux', 'Cabernet', 'Carmenere', 'Chenin',
  'Chile', 'Chianti', 'Grand', 'Grenache', 'Grigio', 'Gris', 'Merlot', 'Murray', 'Muscat', 'Pinot Noir', 'Riesling',
@@ -102,13 +105,17 @@ function DiscoverWindow(title) {
 		values: whitewines 
 	});
 	
-	//['Type','Barbera', 'Cabernet Sauvignon', 'Malbec', 'Merlot', 'Pinot Noir', 'Sangiovese', 'Syrah', 'Zinfandel']
+	
 	
 	// These store picker values
 	var winecolor = null;
 	var winetype = null;
+
+//*****************************************************************
+//  Associative array used for server query filtering
+//*****************************************************************
+
 	var wines = new Object;
-	
 	wines['Amarone'] = '145';
 	wines['Australian'] = '145';
 	wines['Barolo'] = '170';
@@ -148,7 +155,6 @@ function DiscoverWindow(title) {
 			
 		picker_redwines.addEventListener ('TUchange', function (e) {
 		winetype =  e.value;
-	    alert(winetype);
 		});
 			
 		}	
@@ -160,7 +166,6 @@ function DiscoverWindow(title) {
 			
 			picker_whitewines.addEventListener ('TUchange', function (e) {
 			winetype =  e.value;
-	    	alert(winetype);
 			});
 		}
 		else{
@@ -171,7 +176,6 @@ function DiscoverWindow(title) {
 			
 			picker_allwines.addEventListener ('TUchange', function (e) {
 			winetype =  e.value;
-	    	alert(winetype);
 			});
 		}
 	
@@ -179,7 +183,6 @@ function DiscoverWindow(title) {
 	
 	picker_allwines.addEventListener ('TUchange', function (e) {
 	winetype =  e.value;
-// alert(winetype);
 	});
 	
 	
@@ -188,18 +191,63 @@ function DiscoverWindow(title) {
 	view_discover.add(picker_allwines);
 	
 	// Dropdown menu
-		dropdown(view_discover, self, "Find", "Discover", "up", function(){
+	dropdown(view_discover, self, "Find", "Discover", "up", function(){
+			
+		if(search_bar.value != null){
 		view.remove(table);
-		table = null;
 		self.remove(view);
-		global.api.search_with_filter(search_bar.value, '124', function(search_results){
-         table = global.api.search_results(search_results, function(wine){
-			 wine_review = require('ui/handheld/WineReview');
-			self.containingTab.open(wine_review(wine));
-		}); 		
-        view.add(table);
+		
+		
+		if(winetype == 'Type'){winetype = null;}
+		
+			if(winecolor != null && winetype != null)
+			{
+				global.api.search_with_filter(search_bar.value, winecolor + '+' + wines[winetype], function(search_results){
+         		table = global.api.search_results(search_results, function(wine){
+				wine_review = require('ui/handheld/WineReview');
+				self.containingTab.open(wine_review(wine));
+				});
+				view.add(table);
+			  });	 
+			}
+			else if(winecolor == null && winetype != null)
+			{
+				global.api.search_with_filter(search_bar.value, wines[winetype], function(search_results){
+         		table = global.api.search_results(search_results, function(wine){
+				wine_review = require('ui/handheld/WineReview');
+				self.containingTab.open(wine_review(wine));
+				}); 
+				view.add(table);
+			  });	 
+			}
+			else if(winecolor != null && winetype == null)
+			{
+				global.api.search_with_filter(search_bar.value, winecolor, function(search_results){
+         		table = global.api.search_results(search_results, function(wine){
+				wine_review = require('ui/handheld/WineReview');
+				self.containingTab.open(wine_review(wine));
+				});
+				view.add(table);
+			 });
+			}
+			else
+			{
+				global.api.search(search_bar.value, function(search_results){
+         		table = global.api.search_results(search_results, function(wine){
+				wine_review = require('ui/handheld/WineReview');
+				self.containingTab.open(wine_review(wine));
+				});
+				view.add(table);
+			 });
+			}
+			 		
+        //view.add(table);
         self.add(view);
-      });
+     
+     }
+     else{
+     	alert('Please enter a wine name to search for');
+     }
 	});
 	
 
