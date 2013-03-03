@@ -37,6 +37,20 @@ function DiscoverWindow(title) {
 	});
 
 	self.add(view);
+
+
+ var allwines = ['Type', 'Amarone', 'Australia', 'Barolo', 'Blanc', 'Bordeaux', 'Cabernet', 'Carmenere', 'Chenin',
+ 'Chile', 'Chianti', 'Grand', 'Grenache', 'Grigio', 'Gris', 'Merlot', 'Murray', 'Muscat', 'Pinot Noir', 'Riesling',
+ 'Rose', 'Sangiovese', 'Shiraz', 'Syrah', 'Traminer', 'Verdicchio', 'Zinfandel'];
+ 
+ var redwines =  ['Type','Amarone', 'Australia', 'Barolo', 'Cabernet', 'Carmenere',
+ 'Chile', 'Chianti', 'Grand', 'Grenache', 'Merlot', 'Pinot Noir',
+  'Sangiovese', 'Shiraz', 'Syrah', 'Zinfandel'];
+  
+ var whitewines = ['Type','Blanc','Bordeaux', 'Chenin',
+  'Grigio', 'Gris', 'Murray', 'Muscat', 'Riesling',
+ 'Rose', 'Traminer', 'Verdicchio'];
+
 	
 // Drop down view
 	var view_discover = Ti.UI.createView({
@@ -67,12 +81,28 @@ function DiscoverWindow(title) {
 		values: ['Color','Red', 'White']
 	});
 	
-	var picker_type = TU.UI.createSimplePicker ({
+	var picker_allwines = TU.UI.createSimplePicker ({
 		left: '5%',
 		right: '5%',
 		title: "Type",
-		values: ['Type','Barbera', 'Cabernet Sauvignon', 'Malbec', 'Merlot', 'Pinot Noir', 'Sangiovese', 'Syrah', 'Zinfandel']
+		values: allwines 
 	});
+	
+	var picker_redwines = TU.UI.createSimplePicker ({
+		left: '5%',
+		right: '5%',
+		title: "Type",
+		values: redwines 
+	});
+	
+	var picker_whitewines = TU.UI.createSimplePicker ({
+		left: '5%',
+		right: '5%',
+		title: "Type",
+		values: whitewines 
+	});
+	
+	//['Type','Barbera', 'Cabernet Sauvignon', 'Malbec', 'Merlot', 'Pinot Noir', 'Sangiovese', 'Syrah', 'Zinfandel']
 	
 	// These store picker values
 	var winecolor = null;
@@ -106,45 +136,56 @@ function DiscoverWindow(title) {
 	wines['Verdicchio'] = '148';
 	wines['Zinfandel'] = '141';
 			
- var allwines = ['Amarone', 'Australia', 'Barolo', 'Blanc', 'Bordeaux', 'Cabernet', 'Carmenere', 'Chenin',
- 'Chile', 'Chianti', 'Grand', 'Grenache', 'Grigio', 'Gris', 'Merlot', 'Murray', 'Muscat', 'Pinot Noir', 'Riesling',
- 'Rose', 'Sangiovese', 'Shiraz', 'Syrah', 'Traminer', 'Verdicchio', 'Zinfandel'];
- 
- var redwines =  ['Amarone', 'Australia', 'Barolo', 'Cabernet', 'Carmenere',
- 'Chile', 'Chianti', 'Grand', 'Grenache', 'Merlot', 'Pinot Noir',
-  'Sangiovese', 'Shiraz', 'Syrah', 'Zinfandel'];
-  
- var whitewines = ['Blanc','Bordeaux', 'Chenin',
-  'Grigio', 'Gris', 'Murray', 'Muscat', 'Riesling',
- 'Rose', 'Traminer', 'Verdicchio'];
- 
-	
 //  winetype = wines['Cabernet'];	
 	
 	
 	picker_color.addEventListener ('TUchange', function (e) {
 		if(e.value == 'Red'){
 			winecolor = '124';
+			view_discover.remove(picker_allwines);
+			view_discover.remove(picker_whitewines);
+			view_discover.add(picker_redwines);
+			
+		picker_redwines.addEventListener ('TUchange', function (e) {
+		winetype =  e.value;
+	    alert(winetype);
+		});
+			
 		}	
 		else if(e.value == "White"){
 			winecolor = '125'
+			view_discover.remove(picker_allwines);
+			view_discover.remove(picker_redwines);
+			view_discover.add(picker_whitewines);
+			
+			picker_whitewines.addEventListener ('TUchange', function (e) {
+			winetype =  e.value;
+	    	alert(winetype);
+			});
 		}
 		else{
-			alert('Didnt work');
 			winecolor = null;
+			view_discover.remove(picker_whitewines);
+			view_discover.remove(picker_redwines);
+			view_discover.add(picker_allwines);
+			
+			picker_allwines.addEventListener ('TUchange', function (e) {
+			winetype =  e.value;
+	    	alert(winetype);
+			});
 		}
 	
 	});
 	
-	picker_type.addEventListener ('TUchange', function (e) {
-//	winetype =  e.value;
+	picker_allwines.addEventListener ('TUchange', function (e) {
+	winetype =  e.value;
 // alert(winetype);
 	});
 	
 	
 	view_discover.add(search_bar);
 	view_discover.add(picker_color);
-	view_discover.add(picker_type);
+	view_discover.add(picker_allwines);
 	
 	// Dropdown menu
 		dropdown(view_discover, self, "Find", "Discover", "up", function(){
