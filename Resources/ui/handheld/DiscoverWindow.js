@@ -198,7 +198,7 @@ function DiscoverWindow(title) {
 //***********************************************************************************
 	dropdown(view_discover, self, "Find", "Discover", "up", function(){
 			
-		if(search_bar.value != null){
+		if(search_bar.value != null && search_bar.value != ""){
 		view.remove(table);
 		self.remove(view);
 		
