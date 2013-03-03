@@ -77,10 +77,7 @@ function DiscoverWindow(title) {
 	// These store picker values
 	var winecolor = null;
 	var winetype = null;
-	
 	var wines = new Object;
-	
-//	wines['Bordeaux'] = '160+128';
 	
 	wines['Amarone'] = '145';
 	wines['Australian'] = '145';
@@ -108,11 +105,20 @@ function DiscoverWindow(title) {
 	wines['Traminer'] = '148';
 	wines['Verdicchio'] = '148';
 	wines['Zinfandel'] = '141';
+			
+ var allwines = ['Amarone', 'Australia', 'Barolo', 'Blanc', 'Bordeaux', 'Cabernet', 'Carmenere', 'Chenin',
+ 'Chile', 'Chianti', 'Grand', 'Grenache', 'Grigio', 'Gris', 'Merlot', 'Murray', 'Muscat', 'Pinot Noir', 'Riesling',
+ 'Rose', 'Sangiovese', 'Shiraz', 'Syrah', 'Traminer', 'Verdicchio', 'Zinfandel'];
+ 
+ var redwines =  ['Amarone', 'Australia', 'Barolo', 'Cabernet', 'Carmenere',
+ 'Chile', 'Chianti', 'Grand', 'Grenache', 'Merlot', 'Pinot Noir',
+  'Sangiovese', 'Shiraz', 'Syrah', 'Zinfandel'];
+  
+ var whitewines = ['Blanc','Bordeaux', 'Chenin',
+  'Grigio', 'Gris', 'Murray', 'Muscat', 'Riesling',
+ 'Rose', 'Traminer', 'Verdicchio'];
+ 
 	
-	
-	
-	
-
 //  winetype = wines['Cabernet'];	
 	
 	
