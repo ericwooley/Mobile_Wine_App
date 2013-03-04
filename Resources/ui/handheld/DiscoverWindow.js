@@ -15,23 +15,28 @@ function DiscoverWindow(title) {
 
 	// This view holds the wine list
 	var view = Ti.UI.createView({
-		top:'5%',
+		top:'10%',
 		left:0,
 		width:'100%',
-		height:'95%',
+		height:'90%',
 		layout: 'vertical'
 	});
 	
-	
+	var label_title = Ti.UI.createLabel({
+		color: global.colors.dark,
+  		font: { fontSize:18 },
+		text:'Todays Featured Wines'
+	});
 //***********************************************************************************
 //  This original list in the future will display advertised wines / picks of the day
 //***********************************************************************************		
 	self.addEventListener('open', function(e){
-		global.api.search_with_filter("sweet", '124', function(search_results){
+		global.api.search_with_filter("Zinfandel", '124', function(search_results){
             table = global.api.search_results(search_results, function(wine){
 				wine_review = require('ui/handheld/WineReview');
 				self.containingTab.open(wine_review(wine));
-			}); 
+			});
+		   view.add(label_title); 
            view.add(table);
       });
 	});
@@ -200,7 +205,10 @@ function DiscoverWindow(title) {
 			
 		if(search_bar.value != null && search_bar.value != ""){
 		view.remove(table);
+		view.remove(label_title);
 		self.remove(view);
+		label_title.setText("Search Results");
+		view.add(label_title);
 		
 		
 		if(winetype == 'Type'){winetype = null;}
