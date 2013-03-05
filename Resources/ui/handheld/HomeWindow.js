@@ -21,6 +21,11 @@ function HomeWindow(title)
 				layout: 'vertical'
 			});
 	//view.add(text);
+	var top_label = Ti.UI.createLabel({
+		text: 'Friends Recent Check-ins',
+		color: 'black'
+	});
+	view.add(top_label);
 	global.api.get_home_results(function(data){
 		Ti.API.info(data);
 		var table = global.api.search_results(data, function(wine){
