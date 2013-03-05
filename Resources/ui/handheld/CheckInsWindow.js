@@ -16,7 +16,8 @@ function CheckInsWindow(title) {
 	// Search View
 	var sv = Ti.UI.createView({
 		width: Ti.UI.FILL,
-		height: Ti.UI.SIZE
+		height: Ti.UI.SIZE,
+		layout: 'vertical'
 	});
 	
 	var search_bar = Ti.UI.createTextField({
@@ -27,11 +28,21 @@ function CheckInsWindow(title) {
 		height: 40,
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});
+	var camera_button = Ti.UI.createButton({
+		title: 'Scan Barcode',
+		left: 10,
+		right: 10,
+		height: 40,
+		top: 10
+	});
 	
 	sv.add(search_bar);
+	sv.add(camera_button);
 	var results_view;
 	var dd = require('ui/common/elements/dropdown');
-	dd(sv, self, 'Finish Search', 'Search', 'down', function(data){
+	dd(sv, self, 'Search', 'Search Again', 'down', function(data){
+		if(search_bar.value.length < 1)
+			return;
 		global.api.search(search_bar.value, function(data){
 			if(results_view != null)
 				self.remove(results_view);
@@ -42,6 +53,10 @@ function CheckInsWindow(title) {
 		});
 	});
 	
+	camera_button.addEventListener('click', function(){
+		var get_bar_code = require('ui/common/elements/barcode');
+		get_bar_code();
+	});
 	
 	
 	
