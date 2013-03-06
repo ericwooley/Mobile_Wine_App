@@ -1,8 +1,11 @@
-/*
- * A basic starting point for your application showing how to 
- * instantiate and configure the Scandit Barcode Scanner SDK
- *   
- */
+/************************************************
+ * WINE LIFE
+ * iPhone WINDOW - app.js
+ * 
+ * MEN+1
+ * Programmer:  Ivan Rodriguez
+ * UNDER CONSTRUCTION
+ *************************************************/
 
 (function() {
 
@@ -20,8 +23,8 @@
     "height":Ti.Platform.displayCaps.platformHeight
 	});
 
-	// Initialize the barcode picker, remember to paste your own app key here.
-	picker.init("--- ENTER YOUR SCANDIT SDK APP KEY HERE --- SIGN UP AT WWW.SCANDIT.COM", 0);
+	// Initialize the barcode picker. Ivan's key "RHAt6oVvEeKMJTSpdzXv4MRLAXBd2XHZQVIWK+HdL8I"
+	picker.init("RHAt6oVvEeKMJTSpdzXv4MRLAXBd2XHZQVIWK+HdL8I", 0);
 
 	// Set callback functions for when scanning succeedes and for when the 
 	// scanning is canceled.
@@ -37,6 +40,8 @@
 	
 	// Start the scanning process.
 	picker.startScanning();
+	
+	picker.setQrEnabled(true);
 
 	// Create a window to add the picker to and display it. 
 	var window = Titanium.UI.createWindow({  
