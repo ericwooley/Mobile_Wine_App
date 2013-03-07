@@ -38,10 +38,10 @@ module.exports = function(wine){
 
 	// Create a basic slider
 	var basicSlider = Titanium.UI.createSlider({
-		min:0,
-		max:100,
+		min:1,
+		max:10,
 		value:5,
-		width:300,
+		width:'60%',
 		height:'auto',
 		top:'auto'
 		//selectedThumbImage:'/images/staron.ico',
