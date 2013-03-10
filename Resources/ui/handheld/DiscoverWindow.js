@@ -15,10 +15,10 @@ function DiscoverWindow(title) {
 
 	// This view holds the wine list
 	var view = Ti.UI.createView({
-		top:'10%',
+		top:'40%',
 		left:0,
 		width:'100%',
-		height:'90%',
+		height:'55%',
 		layout: 'vertical'
 	});
 	
@@ -201,9 +201,11 @@ function DiscoverWindow(title) {
 // This function controls the dropdown menu and the logic for the pickers and
 // search bar.
 //***********************************************************************************
-	dropdown(view_discover, self, "Find", "Discover", "up", function(){
+	dropdown(view_discover, self, "Find", "Browse", "down", function(){
 			
 		if(search_bar.value != null && search_bar.value != ""){
+		view.setTop('10%');
+		view.setHeight('90%');
 		view.remove(table);
 		view.remove(label_title);
 		self.remove(view);
