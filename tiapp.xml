@@ -9,12 +9,12 @@
     <property name="acs-api-key-development" type="string">XWnaxCijaw9Y0oLkKhOJIwUWoyhJiz7M</property>
     <property name="ti.android.fastdev" type="bool">false</property>
     <id>V42H7K5MGR.com.winelife</id>
-    <name>WineLife</name>
+    <name>Mobile_Web_App</name>
     <version>1.0</version>
-    <publisher>Men+1</publisher>
+    <publisher>ericwooley</publisher>
     <url>http://menplusone.com</url>
     <description>not specified</description>
-    <copyright>2013 by WineLife Inc</copyright>
+    <copyright>2013 by ericwooley</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>
