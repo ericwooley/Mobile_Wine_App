@@ -72,11 +72,11 @@ module.exports = function(wine){
 	{
 		Ti.API.info('Touch started: '+e.value);
 	});
-	
 	// Record where the drag ended
 	basicSlider.addEventListener('touchend', function(e)
 	{
 		Ti.API.info('Touch ended: '+e.value);
+		
 	});
 
 
@@ -102,7 +102,8 @@ module.exports = function(wine){
 	
 	var ret = {
 		ta: textArea,
-		view: overview
+		view: overview,
+		rating: basicSlider
 	};
 	return ret;
 }

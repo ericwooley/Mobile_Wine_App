@@ -30,10 +30,6 @@ function ProfileWindow(title) {
 	);
 //	***********************************************	
 
-
-
-
-
 //	PROFILE INFO VIEWS & SUBVIEWS
 //	***********************************************	
 	var profile_info = Ti.UI.createView({
@@ -143,31 +139,7 @@ function ProfileWindow(title) {
 	
 	
 
-	
-	
-	
-	
-	dropdown(edit_prof, self, "Save Changes", "Edit Profile", "up", function(){
-		
-		global.api.editProfile(fname.value, lname.value, about_me.value, function(){
-			
-			//username.text = fname.value + ' ' + lname.value;
-			userName.text = data.fname + ' ' + data.lname;
-			aboutMe_Text.text = data.about_me;
-			alert('Profile Updated!');
-		});
-		
-		function load_data(){
-		self.removeEventListener('focus', load_data);
-		global.api.profileInformation(function(data){
-			userName.text = data.fname + ' ' + data.lname;
-			aboutMe_Text.text = data.bio;
- 		});
-		
-	};
-	self.addEventListener('focus', load_data);
-		
-	});
+
 	
 //***********************************************************
 // END EDIT PROFILE POP-DOWN
@@ -279,13 +251,35 @@ function ProfileWindow(title) {
 	// Add User Profile Data to top row of table
 	//profile_info.add(user_image);
 	
-
-
-	
-	
-
-	
 	function load_data(){
+		self.removeEventListener('focus', load_data);
+		global.api.profileInformation(function(data){
+			userName.text = data.fname + ' ' + data.lname;
+			aboutMe_Text.text = data.bio;
+			
+			fname.value = data.fname;
+			lname.value = data.lname;
+			about_me.value = data.bio;
+ 		});
+		
+	};
+	self.addEventListener('focus', load_data);
+	
+	self.add(profile_info);
+
+	dropdown(edit_prof, self, "Save Changes", "Edit Profile", "up", function(){
+		if(fname.value.length < 1 || lname.value.lengh < 1 || about_me.value == about_me._hintText){
+			alert('Profile was not updated, a feild was blank');
+			return;
+		}
+		global.api.editProfile(fname.value, lname.value, about_me.value, function(){
+			userName.text = data.fname + ' ' + data.lname;
+			aboutMe_Text.text = data.about_me;
+			alert('Profile Updated!');	
+		});
+	
+	// Commented out because this is being done later in the file
+	/*function load_data(){
 		self.removeEventListener('focus', load_data);
 		global.api.profileInformation(function(data){
 			userName.text = data.fname + ' ' + data.lname;
@@ -293,17 +287,9 @@ function ProfileWindow(title) {
  		});
 		
 	};
-	self.addEventListener('focus', load_data);
-	
-	
-	
-
-	
-
-	
-	self.add(profile_info);
-
-	
+	self.addEventListener('focus', load_data);*/
+		
+	});
 	
 	//self.add(profile_info);
 	
