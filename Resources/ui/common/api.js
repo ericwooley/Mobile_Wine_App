@@ -258,7 +258,7 @@ api.get_wine_by_id = function(id, callback){
  */
 api.get_home_results = function(callback){
 	Ti.API.info("get_home_results etc");
-	getResponse('http://winelife.ericwooley.com/user/', {}, callback);
+	getResponse('http://winelife.ericwooley.com/search/friends_checkins/', {}, callback);
 	
 }
 // not really relevant to anyone outside of this page
