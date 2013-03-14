@@ -112,7 +112,7 @@ function ProfileWindow(title) {
 	edit_prof.add(lname);
 	
 	//  ADD BIO/ ABOUT ME INFO - FIELD
-	var about_me = Ti.UI.createTextArea({
+	/*var about_me = Ti.UI.createTextArea({
 		value: 'About me text',
 		width: Ti.UI.FILL,
 		top: 2,
@@ -135,7 +135,7 @@ function ProfileWindow(title) {
 	        e.source.color = '#AAA';
 	    }
 	});
-	edit_prof.add(about_me);
+	edit_prof.add(about_me);*/
 	
 	
 
@@ -205,7 +205,7 @@ function ProfileWindow(title) {
 
 
 	// ABOUT ME TITLE FIELD
-	var aboutMe = Ti.UI.createLabel({
+	/*var aboutMe = Ti.UI.createLabel({
   		color: global.colors.dark,
   		font: { fontSize:18 },
   		text: 'About Me:',
@@ -215,13 +215,13 @@ function ProfileWindow(title) {
  		height: Ti.UI.SIZE,
   		width: Ti.UI.FILL
 	});
-	profile_info.add(aboutMe);
+	profile_info.add(aboutMe);*/
 
 
 
 
 	// ABOUT ME TEXT FIELD
-	var aboutMe_Text = Ti.UI.createLabel({
+	/*var aboutMe_Text = Ti.UI.createLabel({
   		color: global.colors.dark,
   		font: { fontSize:14 },
   		text: 'Hi, my name is David. I love all wines!  Current favorite is Cabernet Sauvignon.  Follow me to see which wines I am drinking.',
@@ -231,7 +231,7 @@ function ProfileWindow(title) {
  		height: Ti.UI.SIZE,
   		width: Ti.UI.FILL
 	});
-	profile_info.add(aboutMe_Text);
+	profile_info.add(aboutMe_Text);*/
 	
 	
 	// RECENT CHECK-INS LABEL
@@ -255,13 +255,21 @@ function ProfileWindow(title) {
 		self.removeEventListener('focus', load_data);
 		global.api.profileInformation(function(data){
 			userName.text = data.fname + ' ' + data.lname;
-			aboutMe_Text.text = data.bio;
+			//aboutMe_Text.text = data.bio;
 			
 			fname.value = data.fname;
 			lname.value = data.lname;
-			about_me.value = data.bio;
-			about_me.color = "black";
-			about_me._hintText = data.bio;
+			//about_me.value = data.bio;
+			//about_me.color = "black";
+			//about_me._hintText = data.bio;
+			global.api.recent_checkins(function(data){
+				var table = global.api.search_results(data, function(wine){
+					var wine_review = require('ui/handheld/WineReview');
+					
+					self.containingTab.open(wine_review(wine));
+				});
+				profile_info.add(table);
+			});
  		});
 		
 	};
@@ -276,20 +284,9 @@ function ProfileWindow(title) {
 		}
 		global.api.editProfile(fname.value, lname.value, about_me.value, function(){
 			userName.text = data.fname + ' ' + data.lname;
-			aboutMe_Text.text = data.about_me;
+			//aboutMe_Text.text = data.about_me;
 			alert('Profile Updated!');	
 		});
-	
-	// Commented out because this is being done later in the file
-	/*function load_data(){
-		self.removeEventListener('focus', load_data);
-		global.api.profileInformation(function(data){
-			userName.text = data.fname + ' ' + data.lname;
-			aboutMe_Text.text = data.bio;
- 		});
-		
-	};
-	self.addEventListener('focus', load_data);*/
 		
 	});
 	
