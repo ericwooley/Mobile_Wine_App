@@ -47,12 +47,12 @@ function DiscoverWindow(title) {
 // Arrays with wines for picker menu's
 //************************************************************************
 
- var allwines = ['Type', 'Amarone', 'Australia', 'Barolo', 'Blanc', 'Bordeaux', 'Cabernet', 'Carmenere', 'Chenin',
- 'Chile', 'Chianti', 'Grand', 'Grenache', 'Grigio', 'Gris', 'Merlot', 'Murray', 'Muscat', 'Pinot Noir', 'Riesling',
+ var allwines = ['Type', 'Amarone', 'Barolo', 'Blanc', 'Bordeaux', 'Cabernet', 'Carmenere', 'Chenin',
+  'Chianti', 'Grand', 'Grenache', 'Grigio', 'Gris', 'Merlot', 'Murray', 'Muscat', 'Pinot Noir', 'Riesling',
  'Rose', 'Sangiovese', 'Shiraz', 'Syrah', 'Traminer', 'Verdicchio', 'Zinfandel'];
  
- var redwines =  ['Type','Amarone', 'Australia', 'Barolo', 'Cabernet', 'Carmenere',
- 'Chile', 'Chianti', 'Grand', 'Grenache', 'Merlot', 'Pinot Noir',
+ var redwines =  ['Type','Amarone', 'Barolo', 'Cabernet', 'Carmenere',
+  'Chianti', 'Grand', 'Grenache', 'Merlot', 'Pinot Noir',
   'Sangiovese', 'Shiraz', 'Syrah', 'Zinfandel'];
   
  var whitewines = ['Type','Blanc','Bordeaux', 'Chenin',
@@ -113,7 +113,8 @@ function DiscoverWindow(title) {
 	
 	
 	// These variables store picker selected values
-	var winecolor = null;
+	var winecolor = null; // this is for color id to refine search
+	var wineColor = null;  // this is for actual wine color
 	var winetype = null;
 
 //*****************************************************************
@@ -124,7 +125,7 @@ function DiscoverWindow(title) {
 	wines['Amarone'] = '145';
 	wines['Australian'] = '145';
 	wines['Barolo'] = '170';
-	wines['Blanc'] = '142+123+144';
+	wines['Blanc'] = '144';
 	wines['Bordeaux'] = '160+128';
 	wines['Cabernet'] = '139';
 	wines['Carmenere'] = '10081';
@@ -155,6 +156,7 @@ function DiscoverWindow(title) {
 	picker_color.addEventListener ('TUchange', function (e) {
 		if(e.value == 'Red'){
 			winecolor = '124';
+			wineColor = e.value;
 			view_discover.remove(picker_allwines);
 			view_discover.remove(picker_whitewines);
 			view_discover.add(picker_redwines);
@@ -165,7 +167,8 @@ function DiscoverWindow(title) {
 			
 		}	
 		else if(e.value == "White"){
-			winecolor = '125'
+			winecolor = '125';
+			wineColor = e.value;
 			view_discover.remove(picker_allwines);
 			view_discover.remove(picker_redwines);
 			view_discover.add(picker_whitewines);
@@ -176,6 +179,7 @@ function DiscoverWindow(title) {
 		}
 		else{
 			winecolor = null;
+			wineColor = null;
 			view_discover.remove(picker_whitewines);
 			view_discover.remove(picker_redwines);
 			view_discover.add(picker_allwines);
@@ -202,8 +206,7 @@ function DiscoverWindow(title) {
 // search bar.
 //***********************************************************************************
 	dropdown(view_discover, self, "Find", "Browse", "down", function(){
-			
-		if(search_bar.value != null && search_bar.value != ""){
+		
 		view.setTop('10%');
 		view.setHeight('90%');
 		view.remove(table);
@@ -211,6 +214,8 @@ function DiscoverWindow(title) {
 		self.remove(view);
 		label_title.setText("Search Results");
 		view.add(label_title);
+			
+		if(search_bar.value != null && search_bar.value != ""){
 		
 		
 		if(winetype == 'Type'){winetype = null;}
@@ -260,7 +265,45 @@ function DiscoverWindow(title) {
      
      }
      else{
-     	alert('Please enter a wine name to search for');
+     //	if nothing entered in textfield do these
+     	if(winetype == 'Type'){winetype = null;}
+		
+			if(winecolor != null && winetype != null)
+			{
+				global.api.search_with_filter(winetype, winecolor + '+' + wines[winetype], function(search_results){
+         		table = global.api.search_results(search_results, function(wine){
+				wine_review = require('ui/handheld/WineReview');
+				self.containingTab.open(wine_review(wine));
+				});
+				view.add(table);
+			  });	 
+			}
+			else if(winecolor == null && winetype != null)
+			{
+				global.api.search_with_filter(winetype, wines[winetype], function(search_results){
+         		table = global.api.search_results(search_results, function(wine){
+				wine_review = require('ui/handheld/WineReview');
+				self.containingTab.open(wine_review(wine));
+				}); 
+				view.add(table);
+			  });	 
+			}
+			else if(winecolor != null && winetype == null)
+			{
+				global.api.search_with_filter(wineColor, winecolor, function(search_results){
+         		table = global.api.search_results(search_results, function(wine){
+				wine_review = require('ui/handheld/WineReview');
+				self.containingTab.open(wine_review(wine));
+				});
+				view.add(table);
+			 });
+			}
+			else if(winecolor == null && winetype == null)
+			{
+				alert('Please enter a wine or select a filter to search');
+			}
+	
+     	self.add(view);
      }
 	});
 	
