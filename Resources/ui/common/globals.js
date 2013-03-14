@@ -75,8 +75,17 @@ function createWindow(title){
 		height:'100%',
 		width: '100%',
 		barColor: module.exports.colors.dark,
-		backgroundColor: module.exports.colors.lightest,
-		backgroundImage:'images/BKGD_Texture.png'
+		//backgroundColor: "FFFFEE"//module.exports.colors.lightest,
+		//backgroundImage:'images/BKGD_Texture.png'
+		backgroundGradient: {
+	        type: 'radial',
+	        //startPoint: { x: 50, y: 50 },
+	        //endPoint: { x: 50, y: 50 },
+	        colors: [ 'AAAAAA','FFFFFF' ],
+	        startRadius: '90%',
+	        endRadius: 0,
+	        backfillStart: true
+	    }
 	});
 	return self;
 };

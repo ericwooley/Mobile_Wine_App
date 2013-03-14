@@ -32,8 +32,8 @@ module.exports = function(result, callback){
 	({
 		backgroundColor:'transparent',
 		top:10,
-		width:'100%',
-		height:'100%',
+		width:Ti.UI.FILL,
+		height:Ti.UI.FILL,
 		data:tbl_data
 	});
 	if(pl.length > 0)

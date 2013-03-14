@@ -48,7 +48,11 @@ function CheckInsWindow(title) {
 			if(results_view != null)
 				self.remove(results_view);
 			var search_format = require('ui/common/elements/search_results');
-			results_view = search_format(data);
+			results_view = search_format(data, function(wine){
+				var wine_review = require('ui/handheld/WineReview');
+				
+				self.containingTab.open(wine_review(wine));
+			});
 			results_view.top = 15;
 			self.add(results_view);
 		});
