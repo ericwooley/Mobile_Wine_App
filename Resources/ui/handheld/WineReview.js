@@ -35,7 +35,48 @@ function WineReview(wine){
 			alert('You have successfully checked in. Eventually, this will be more graceful');
 		});
 	});
-	
+	//alert("wineid: "+ JSON.stringify(wine));
+	global.api.previous_checkins(wine.id, function(data){
+		
+		
+		var reviews = [];
+		
+		for (var i = 0; i < data.length; i++) {
+			var review = data[i];
+			var r = Ti.UI.createTableViewRow({
+				hasChild:false,
+				selectionStyle: 'none',
+				layout: 'vertical'
+			});
+			
+			var rv = Ti.UI.createView({
+				layout: 'vertical',
+				height: Ti.UI.SIZE,
+				width: Ti.UI.FILL,
+			});
+			r.add(rv);
+			rv.add(Ti.UI.createLabel({
+				text: review.rating,
+				height: Ti.UI.SIZE,
+				width: Ti.UI.FILL
+			}));
+			
+			
+			reviews.push(r);
+			
+		}
+		
+		
+		// create table view
+		var tableview = Titanium.UI.createTableView({
+			data:reviews,
+			width: Ti.UI.FILL,
+			height: Ti.UI.SIZE,
+			backgroundColor:'transparent'
+		});
+		
+		overview.add(tableview);
+	});
 	self.add(overview);
 	return self;
 };

@@ -99,7 +99,8 @@ module.exports = function(wine){
 	        e.source.color = '#888';
 	    }
 	});
-	
+		
+
 	var ret = {
 		ta: textArea,
 		view: overview,

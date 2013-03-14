@@ -260,7 +260,17 @@ api.get_home_results = function(callback){
 	Ti.API.info("get_home_results etc");
 	getResponse('http://winelife.ericwooley.com/search/friends_checkins/', {}, callback);
 	
-}
+};
+
+/**
+ * @param {String/Int} wine_id
+ * The id of the wine you want ratings for.
+ * Gets the data to be displayed on the homepage.
+ * @param {Function} callback function to be called on success
+ */
+api.previous_checkins = function(wine_id, callback){
+	getResponse('http://winelife.ericwooley.com/search/wine_checkins/', {wine_id: wine_id}, callback);
+};
 // not really relevant to anyone outside of this page
 api.httpInterface = Ti.Network.createHTTPClient(
 	{
