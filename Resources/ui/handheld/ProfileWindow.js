@@ -260,6 +260,8 @@ function ProfileWindow(title) {
 			fname.value = data.fname;
 			lname.value = data.lname;
 			about_me.value = data.bio;
+			about_me.color = "black";
+			about_me._hintText = data.bio;
  		});
 		
 	};
