@@ -24,7 +24,7 @@ function ProfileWindow(title) {
 		{
 			width: Ti.UI.FILL,
 			height: Ti.UI.SIZE,
-			layout: 'vertical',
+			layout: 'horizontal',
 			left: 10,
 			right: 10
 		}
@@ -97,8 +97,8 @@ function ProfileWindow(title) {
 	//  ADD FIRST NAME - FIELD
 	var fname = Ti.UI.createTextField({
 		hintText: 'First Name',
-		width: Ti.UI.FILL,
-		height: 50,
+		width: '50%',
+		height: 40,
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});
 	edit_prof.add(fname);
@@ -106,8 +106,8 @@ function ProfileWindow(title) {
 	//  ADD LAST NAME - FIELD
 	var lname = Ti.UI.createTextField({
 		hintText: 'Last Name',
-		width: Ti.UI.FILL,
-		height: 50,
+		width: '50%',
+		height: 40,
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});
 	edit_prof.add(lname);
@@ -279,11 +279,11 @@ function ProfileWindow(title) {
 	self.add(profile_info);
 
 	dropdown(edit_prof, self, "Save Changes", "Edit Profile", "up", function(){
-		if(fname.value.length < 1 || lname.value.lengh < 1 || about_me.value == about_me._hintText){
+		if(fname.value.length < 1 || lname.value.lengh < 1 /*|| about_me.value == about_me._hintText*/){
 			alert('Profile was not updated, a feild was blank');
 			return;
 		}
-		global.api.editProfile(fname.value, lname.value, about_me.value, function(){
+		global.api.editProfile(fname.value, lname.value, ''/*about_me.value*/, function(){
 			userName.text = data.fname + ' ' + data.lname;
 			//aboutMe_Text.text = data.about_me;
 			alert('Profile Updated!');	
