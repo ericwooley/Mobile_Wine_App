@@ -126,12 +126,12 @@ function DiscoverWindow(title) {
 	wines['Australian'] = '145';
 	wines['Barolo'] = '170';
 	wines['Blanc'] = '144';
-	wines['Bordeaux'] = '160+128';
+	wines['Bordeaux'] = '160';
 	wines['Cabernet'] = '139';
 	wines['Carmenere'] = '10081';
-	wines['Chenin'] = '165+128';
+	wines['Chenin'] = '165';
 	wines['Chile'] = '10081';
-	wines['Chianti'] = '152+163';
+	wines['Chianti'] = '152';
 	wines['Grand'] = '10082';
 	wines['Grenache'] = '10080';
 	wines['Grigio'] = '194';
@@ -141,9 +141,9 @@ function DiscoverWindow(title) {
 	wines['Muscat'] = '173';
 	wines['Pinot Noir'] = '143';
 	wines['Riesling'] = '153';
-	wines['Rose'] = '147+123';
+	wines['Rose'] = '147';
 	wines['Sangiovese'] = '163';
-	wines['Shiraz'] = '146+145';
+	wines['Shiraz'] = '146';
 	wines['Syrah'] = '146';
 	wines['Traminer'] = '148';
 	wines['Verdicchio'] = '148';
