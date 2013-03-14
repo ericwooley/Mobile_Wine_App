@@ -81,8 +81,8 @@ function createWindow(title){
 	        type: 'radial',
 	        //startPoint: { x: 50, y: 50 },
 	        //endPoint: { x: 50, y: 50 },
-	        colors: [ 'AAAAAA','FFFFFF' ],
-	        startRadius: '90%',
+	        colors: [ 'f6debc','FFFFFF' ],
+	        startRadius: '95%',
 	        endRadius: 0,
 	        backfillStart: true
 	    }
