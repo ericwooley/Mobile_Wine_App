@@ -15,6 +15,7 @@ function ProfileWindow(title) {
 	
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
+	self.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
 		
 		
 //	EDIT PROFILE VIEW

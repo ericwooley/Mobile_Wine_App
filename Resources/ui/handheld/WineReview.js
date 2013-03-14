@@ -5,6 +5,7 @@
 function WineReview(wine){
 	var global = require('ui/common/globals');	
 	var self = global.createWindow('Wine Review');
+	self.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
 	var all = wine.all_information;
 
 	var overview = Ti.UI.createView({

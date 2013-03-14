@@ -2,6 +2,7 @@ function FriendsWindow(title) {
 	var global = require('ui/common/globals');
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
+	self.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
 	var view = Ti.UI.createView({
 		height: Ti.UI.FILL,
 		width: Ti.UI.FILL,
