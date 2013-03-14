@@ -283,10 +283,8 @@ function ProfileWindow(title) {
 			alert('Profile was not updated, a feild was blank');
 			return;
 		}
-		global.api.editProfile(fname.value, lname.value, ''/*about_me.value*/, function(){
-			userName.text = data.fname + ' ' + data.lname;
-			//aboutMe_Text.text = data.about_me;
-			alert('Profile Updated!');	
+		global.api.editProfile(fname.value, lname.value, ''/*about_me.value*/, function(data){
+			userName.text = data.user_info.fname + ' ' + data.user_info.lname;	
 		});
 		
 	});

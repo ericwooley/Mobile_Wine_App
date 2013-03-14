@@ -61,6 +61,14 @@ function CheckInsWindow(title) {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
 	global.outputHook(self);
 	return self;
 };
