@@ -9,11 +9,11 @@ function ApplicationTabGroup() {
 	);
 	
 	//create app tabs
-	var win1 = require('ui/handheld/HomeWindow')(''),
-		win2 = require('ui/handheld/DiscoverWindow')(''),//new Window(L('Discover')),
-		win3 = require('ui/handheld/CheckInsWindow')(''),//new Window(L('Check-Ins'))
-		win4 = require('ui/handheld/FriendsWindow')(''),//new Window(L('Friends'))
-		win5 = require('ui/handheld/ProfileWindow')('')//new Window(L('Profile'));
+	var win1 = require('ui/handheld/HomeWindow')(' '),
+		win2 = require('ui/handheld/DiscoverWindow')(' '),//new Window(L('Discover')),
+		win3 = require('ui/handheld/CheckInsWindow')(' '),//new Window(L('Check-Ins'))
+		win4 = require('ui/handheld/FriendsWindow')(' '),//new Window(L('Friends'))
+		win5 = require('ui/handheld/ProfileWindow')(' ')//new Window(L('Profile'));
 	
 	var homeImage = Ti.Platform.osname == 'android' ? '/images/android_home_tab.png' : '/images/iphone_grapevine_tab.png';
 	var tab1 = Ti.UI.createTab({
