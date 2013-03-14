@@ -25,6 +25,7 @@ function HomeWindow(title)
 	var top_label = Ti.UI.createLabel({
 		text: 'Friends Recent Check-ins',
 		color: 'black'
+
 	});
 	view.add(top_label);
 	global.api.get_home_results(function(data){
