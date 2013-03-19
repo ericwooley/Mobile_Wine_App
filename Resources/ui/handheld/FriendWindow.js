@@ -7,28 +7,17 @@
 //	***********************************************
 
 
-function ProfileWindow(title) {
+function FriendWindow(friend) {
 	var global = require('ui/common/globals');
 	var dropdown = require('ui/common/elements/dropdown');
 
-
+	Ti.API.info(JSON.stringify(friend));
 	
 	// Creates the default window with global color scheme
-	var self = global.createWindow(title);
+	var self = global.createWindow(' ');
 	self.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
 		
-		
-//	EDIT PROFILE VIEW
-//	***********************************************	
-	var edit_prof = Ti.UI.createView(
-		{
-			width: Ti.UI.FILL,
-			height: Ti.UI.SIZE,
-			layout: 'horizontal',
-			left: 10,
-			right: 10
-		}
-	);
+	
 //	***********************************************	
 
 //	PROFILE INFO VIEWS & SUBVIEWS
@@ -37,7 +26,7 @@ function ProfileWindow(title) {
 		layout: 'vertical',
 		height: Ti.UI.SIZE,
 		width: Ti.UI.FILL,
-		top: 35,
+		top: 10,
 		//backgroundColor: 'red'
 	});
 	
@@ -68,7 +57,7 @@ function ProfileWindow(title) {
 		borderRadius: 10,
   		contentMode: 'aspectfill',
   		clipsToBounds: false,
-  		//image:'images/user_david.jpg',
+  		image:friend.picture_url,
   		
 	});
 	header.add(user_image);
@@ -92,70 +81,11 @@ function ProfileWindow(title) {
 	
 //***********************************************************
 //EDIT PROFILE POP-DOWN
-//***********************************************************
-
-	//  ADD FIRST NAME - FIELD
-	var fname = Ti.UI.createTextField({
-		hintText: 'First Name',
-		width: '50%',
-		height: 40,
-		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
-	});
-	edit_prof.add(fname);
-	
-	//  ADD LAST NAME - FIELD
-	var lname = Ti.UI.createTextField({
-		hintText: 'Last Name',
-		width: '50%',
-		height: 40,
-		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
-	});
-	edit_prof.add(lname);
-	
-	//  ADD BIO/ ABOUT ME INFO - FIELD
-	/*var about_me = Ti.UI.createTextArea({
-		value: 'About me text',
-		width: Ti.UI.FILL,
-		top: 2,
-		font: {fontSize: 18},
-		height: 100,
-		color: '#AAA',
-		borderRadius: 10
-	});
-	Ti.API.info("got to here");
-	about_me._hintText = about_me.value;
-	about_me.addEventListener('focus',function(e){
-	    if(e.source.value == e.source._hintText){
-	        e.source.value = "";
-	        e.source.color = 'black';
-	    }
-	});
-	about_me.addEventListener('blur',function(e){
-	    if(e.source.value==""){
-	        e.source.value = e.source._hintText;
-	        e.source.color = '#AAA';
-	    }
-	});
-	edit_prof.add(about_me);*/
-	
-	
-
-
-	
-//***********************************************************
-// END EDIT PROFILE POP-DOWN
-//***********************************************************
-
-	
-
-	
-
-
-	//  USER NAME TEXT FIELD
+//***********************************************************	//  USER NAME TEXT FIELD
 	var userName = Ti.UI.createLabel({
   		color: global.colors.dark,
   		font: { fontSize:24 },
-  		text: 'Loading',
+  		text: friend.fname + ' ' + friend.lname,
   		top: 0,
   		left: 10,
   		height: Ti.UI.SIZE,
@@ -201,38 +131,7 @@ function ProfileWindow(title) {
   		width: Ti.UI.FILL
 	});
 	content.add(following);
-	
-	
 
-
-	// ABOUT ME TITLE FIELD
-	/*var aboutMe = Ti.UI.createLabel({
-  		color: global.colors.dark,
-  		font: { fontSize:18 },
-  		text: 'About Me:',
-  		textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-  		top: 10,
-  		left: 10,
- 		height: Ti.UI.SIZE,
-  		width: Ti.UI.FILL
-	});
-	profile_info.add(aboutMe);*/
-
-
-
-
-	// ABOUT ME TEXT FIELD
-	/*var aboutMe_Text = Ti.UI.createLabel({
-  		color: global.colors.dark,
-  		font: { fontSize:14 },
-  		text: 'Hi, my name is David. I love all wines!  Current favorite is Cabernet Sauvignon.  Follow me to see which wines I am drinking.',
-  		textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-  		top: 0,
-  		left: 10,
- 		height: Ti.UI.SIZE,
-  		width: Ti.UI.FILL
-	});
-	profile_info.add(aboutMe_Text);*/
 	
 	
 	// RECENT CHECK-INS LABEL
@@ -254,41 +153,17 @@ function ProfileWindow(title) {
 	
 	function load_data(){
 		self.removeEventListener('focus', load_data);
-		global.api.profileInformation(function(data){
-			userName.text = data.fname + ' ' + data.lname;
-			//aboutMe_Text.text = data.bio;
-			
-			fname.value = data.fname;
-			lname.value = data.lname;
-			user_image.image = data.picture_url;
-			//about_me.value = data.bio;
-			//about_me.color = "black";
-			//about_me._hintText = data.bio;
 			global.api.recent_checkins(function(data){
 				var table = global.api.search_results(data, function(wine){
 					var wine_review = require('ui/handheld/WineReview');
-					
 					self.containingTab.open(wine_review(wine));
 				});
 				profile_info.add(table);
 			});
- 		});
-		
 	};
-	self.addEventListener('focus', load_data);
+	load_data();
 	
 	self.add(profile_info);
-
-	dropdown(edit_prof, self, "Save Changes", "Edit Profile", "up", function(){
-		if(fname.value.length < 1 || lname.value.lengh < 1 /*|| about_me.value == about_me._hintText*/){
-			alert('Profile was not updated, a feild was blank');
-			return;
-		}
-		global.api.editProfile(fname.value, lname.value, ''/*about_me.value*/, function(data){
-			userName.text = data.user_info.fname + ' ' + data.user_info.lname;
-		});
-		
-	});
 	
 	//self.add(profile_info);
 	
@@ -297,4 +172,4 @@ function ProfileWindow(title) {
 	return self;
 };
 
-module.exports = ProfileWindow;
+module.exports = FriendWindow;

@@ -93,6 +93,7 @@ function FriendsWindow(title) {
 									view.add(list);
 								},
 								function(data){
+									
 									alert(JSON.stringify(data));
 								}
 							);
@@ -125,7 +126,8 @@ function FriendsWindow(title) {
 				view.add(list);
 			},
 			function(data){
-				alert(data);
+				var fw = require('ui/handheld/FriendWindow');
+				self.containingTab.open(fw(data));
 			}
 		);
 	});
