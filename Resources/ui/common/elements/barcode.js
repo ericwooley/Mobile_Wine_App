@@ -16,6 +16,11 @@
 module.exports = function(/*result, callback*/){
 	// Instant overview of product information. Includes prices, most
 	// important retailers, offers, local stores, reviews, etc.
+	var window = Titanium.UI.createWindow({  
+    	title:'Scandit SDK',
+    	backgroundColor:'#fff',
+	});
+	
 	
 	var scanditsdk = require("com.mirasense.scanditsdk");
 	
@@ -41,7 +46,7 @@ module.exports = function(/*result, callback*/){
     alert("success (" + e.symbology + "): " + e.barcode);
 	});
 	picker.setCancelCallback(function(e) {
-    alert("canceled");
+    	window.close();
 	});
 	
 	// add a tool bar at the bottom of the scan view with a cancel button (iphone/ipad only)
@@ -73,10 +78,7 @@ module.exports = function(/*result, callback*/){
 	picker.setVibrateEnabled(true);
 
 	// Create a window to add the picker to and display it. 
-	var window = Titanium.UI.createWindow({  
-    title:'Scandit SDK',
-    backgroundColor:'#fff',
-	});
+	
 	
 	window.add(picker);
 	window.open();

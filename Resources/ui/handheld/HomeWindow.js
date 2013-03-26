@@ -28,15 +28,19 @@ function HomeWindow(title)
 
 	});
 	view.add(top_label);
-	global.api.get_home_results(function(data){
-		Ti.API.info(data);
-		var table = global.api.search_results(data, function(wine){
-			var wine_review = require('ui/handheld/WineReview');
-			
-			self.containingTab.open(wine_review(wine));
+	var load_data = function(){
+		self.removeEventListener('focus', load_data);
+		global.api.get_home_results(function(data){
+			Ti.API.info(data);
+			var table = global.api.search_results(data, function(wine){
+				var wine_review = require('ui/handheld/WineReview');
+				
+				self.containingTab.open(wine_review(wine));
+			});
+			view.add(table);
 		});
-		view.add(table);
-	});
+	};
+	self.addEventListener('focus', load_data);
 	
 	self.add(view);
 
