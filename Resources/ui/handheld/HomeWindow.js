@@ -24,9 +24,9 @@ function HomeWindow(title)
 	//view.add(text);
 	var top_label = Ti.UI.createLabel({
 		text: 'Friends Recent Check-ins',
-		color: 'black'
-
+		color: 'dark'
 	});
+	
 	view.add(top_label);
 	var load_data = function(){
 		self.removeEventListener('focus', load_data);
