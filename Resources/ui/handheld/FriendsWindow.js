@@ -42,7 +42,7 @@ function FriendsWindow(title) {
 		
 		
 	var email_field = Ti.UI.createTextField({
-		hintText: 'A new friends Email',
+		hintText: 'Search Friend By Email',
 		width: Ti.UI.FILL,
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});

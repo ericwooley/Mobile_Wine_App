@@ -22,7 +22,7 @@ function CheckInsWindow(title) {
 	});
 	
 	var search_bar = Ti.UI.createTextField({
-		hintText: 'Search for wine...',
+		hintText: 'Search for a wine...',
 		width: Ti.UI.FILL,
 		right: 10,
 		left: 10,

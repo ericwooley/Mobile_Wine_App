@@ -12,7 +12,7 @@ function BrowseByStyle(){
  
  //	var global = require('ui/common/globals');
 	var tmp = Ti.UI.createTextField({
-		hintText: "Enter something here",
+		hintText: "Enter Something Here",
 		backgroundColor: 'white',
 		value:'merlot',
 		top: 10,

@@ -25,8 +25,12 @@ function DiscoverWindow(title) {
 	
 	var label_title = Ti.UI.createLabel({
 		color: global.colors.dark,
-  		font: { fontSize:18 },
-		text:'Todays Featured Wines'
+		text:"Today's Featured Wines",
+		font:{
+            fontFamily:'Helvetica Neue',
+            fontSize:18,
+            fontWeight:'Medium'
+           }
 	});
 //***********************************************************************************
 //  This original list in the future will display advertised wines / picks of the day
@@ -79,7 +83,7 @@ function DiscoverWindow(title) {
 		top:0,
 		width:'90%',
 		left:'5%',
-		hintText:' Discover wine...',
+		hintText:' Discover Wine...',
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});
 	
@@ -301,7 +305,7 @@ function DiscoverWindow(title) {
 			}
 			else if(winecolor == null && winetype == null)
 			{
-				alert('Please enter a wine or select a filter to search');
+				alert('Please Enter a Wine or Select a Filter to Search');
 			}
 	
      	self.add(view);

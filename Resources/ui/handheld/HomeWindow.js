@@ -23,8 +23,13 @@ function HomeWindow(title)
 			});
 	//view.add(text);
 	var top_label = Ti.UI.createLabel({
-		text: 'Friends Recent Check-ins',
-		color: 'dark'
+		text: 'Friends Recent Check-Ins',
+		color: global.colors.dark,
+		 font:{
+            fontFamily:'Helvetica Neue',
+            fontSize:18,
+            fontWeight:'Medium'
+           }
 	});
 	
 	view.add(top_label);
