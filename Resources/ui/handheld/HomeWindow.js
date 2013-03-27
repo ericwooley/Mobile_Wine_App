@@ -15,7 +15,7 @@ function HomeWindow(title)
 	self.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
 	//var text = global.elements.SimpleLabel('Home Page');
 	var view = Ti.UI.createView({
-				width: Ti.UI.SIZE,
+				width: Ti.UI.FILL,
 				height: Ti.UI.SIZE,
 				top: 0,
 				left: 0,
@@ -32,12 +32,24 @@ function HomeWindow(title)
            }
 	});
 	
+	
 	view.add(top_label);
+	var loading = global.loading_animation()
+	var table = null;
 	var load_data = function(){
+		if(table != null)
+			view.remove(table);
+		view.add(loading);
+		loading.show();
+		Ti.API.info("-----------------------------------------------");
+		Ti.API.info("Loading data");
+		Ti.API.info("-----------------------------------------------");
 		self.removeEventListener('focus', load_data);
 		global.api.get_home_results(function(data){
+			loading.hide();
+			view.remove(loading);
 			Ti.API.info(data);
-			var table = global.api.search_results(data, function(wine){
+			table = global.api.search_results(data, function(wine){
 				var wine_review = require('ui/handheld/WineReview');
 				
 				self.containingTab.open(wine_review(wine));
@@ -46,6 +58,12 @@ function HomeWindow(title)
 		});
 	};
 	self.addEventListener('focus', load_data);
+	self.addEventListener('blur', function(){
+		Ti.API.info("-----------------------------------------------");
+		Ti.API.info("blurred");
+		Ti.API.info("-----------------------------------------------");
+		self.addEventListener('focus', load_data);
+	});
 	
 	self.add(view);
 

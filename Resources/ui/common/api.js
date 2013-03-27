@@ -361,7 +361,7 @@ showMessage = function(customMessage, interval){
 	});
 	 
 	indView.add(message);
-	indWin.open();
+	//indWin.open();
  
 	//interval = interval ? interval : 3000;
 	if(interval > 0)

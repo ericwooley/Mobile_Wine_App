@@ -69,13 +69,13 @@ module.exports.userIsLoggedIn = function()
  * This is the tile of the window that will be returned.
  */
 function createWindow(title){
-	
+
 	var self = Ti.UI.createWindow({
 		title:title,
 		height:'100%',
 		width: '100%',
 		barColor: module.exports.colors.dark,
-		//backgroundColor: "FFFFEE"//module.exports.colors.lightest,
+		backgroundColor: "#f8ffde",//module.exports.colors.lightest,
 		//backgroundImage:'images/BKGD_Texture.png'
 		backgroundGradient: {
 	        type: 'radial',
@@ -86,11 +86,34 @@ function createWindow(title){
 	        endRadius: 0,
 	        backfillStart: true
 	    }
-	});
+	});	
+	
 	return self;
 };
 module.exports.createWindow = createWindow;
 
+
+module.exports.loading_animation = function(){
+	var style;
+	if (Ti.Platform.name === 'iPhone OS'){
+	  style = Ti.UI.iPhone.ActivityIndicatorStyle.DARK;
+	}
+	else {
+	  style = Ti.UI.ActivityIndicatorStyle.DARK;
+	}
+	return Ti.UI.createActivityIndicator({
+		  color: 'red',
+		  font: {fontFamily:'Helvetica Neue', fontSize:26, fontWeight:'bold'},
+		  //message: 'Loading...',
+		  style:style,
+		  top:30,
+		  //left:10,
+		  height:Ti.UI.SIZE,
+		  width:Ti.UI.SIZE
+		});
+	
+	
+}
 /**
  * This is the output hook and should be the last thing called by each page.
  * This allows us to add screen layovers or whatever we want.

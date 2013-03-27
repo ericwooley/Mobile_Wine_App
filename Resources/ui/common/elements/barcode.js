@@ -16,9 +16,11 @@
 module.exports = function(/*result, callback*/){
 	// Instant overview of product information. Includes prices, most
 	// important retailers, offers, local stores, reviews, etc.
-	var window = Titanium.UI.createWindow({  
+	var win = Titanium.UI.createWindow({  
     	title:'Scandit SDK',
     	backgroundColor:'#fff',
+    	navBarHidden: true,
+    	exitOnClose: false
 	});
 	
 	
@@ -43,10 +45,16 @@ module.exports = function(/*result, callback*/){
 	// Set callback functions for when scanning succeedes and for when the 
 	// scanning is canceled.
 	picker.setSuccessCallback(function(e) {
-    alert("success (" + e.symbology + "): " + e.barcode);
+    	//alert("success (" + e.symbology + "): " + e.barcode);
+    	alert(JSON.stringify(e));
+    	Ti.API.info(JSON.stringify(e));
 	});
 	picker.setCancelCallback(function(e) {
-    	window.close();
+		if(Ti.Platform.osname == "android")
+			picker.closeScanner();
+		else
+    		win.close();
+    	
 	});
 	
 	// add a tool bar at the bottom of the scan view with a cancel button (iphone/ipad only)
@@ -57,7 +65,7 @@ module.exports = function(/*result, callback*/){
 	picker.startScanning();
 	
 	// Adds a search bar to the top of the scan screen.
-	picker.showSearchBar(true);
+	picker.showSearchBar(false);
 	// Sets the text that will be displayed while non-autofocusing cameras are initialized.
 	// It has no effect under android.
 	picker.setTextForInitializingCamera("Initializing camera...");
@@ -80,10 +88,10 @@ module.exports = function(/*result, callback*/){
 	// Create a window to add the picker to and display it. 
 	
 	
-	window.add(picker);
-	window.open();
+	win.add(picker);
+	win.open();
 	
-	return window;
+	return win;
 };
 	
 /*
