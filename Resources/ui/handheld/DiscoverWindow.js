@@ -19,7 +19,7 @@ function DiscoverWindow(title) {
 		top:'40%',
 		left:0,
 		width:'100%',
-		height:'55%',
+		height:'60%',
 		layout: 'vertical'
 	});
 	
@@ -52,18 +52,22 @@ function DiscoverWindow(title) {
 // Arrays with wines for picker menu's
 //************************************************************************
 
- var allwines = ['Type', 'Amarone', 'Barolo', 'Blanc', 'Bordeaux', 'Cabernet', 'Carmenere', 'Chenin',
-  'Chianti', 'Grand', 'Grenache', 'Grigio', 'Gris', 'Merlot', 'Murray', 'Muscat', 'Pinot Noir', 'Riesling',
- 'Rose', 'Sangiovese', 'Shiraz', 'Syrah', 'Traminer', 'Verdicchio', 'Zinfandel'];
+
+
+ var allwines = ['Type', 'Amarone', 'Blanc', 'Cabernet', 'Chenin',
+ 'Grand', 'Grenache', 'Grigio', 'Gris', 'Merlot', 'Murray', 'Muscat', 'Pinot Noir', 'Riesling',
+  'Sangiovese', 'Shiraz', 'Syrah', 'Traminer', 'Verdicchio', 'Zinfandel'];
  
- var redwines =  ['Type','Amarone', 'Barolo', 'Cabernet', 'Carmenere',
-  'Chianti', 'Grand', 'Grenache', 'Merlot', 'Pinot Noir',
+ var redwines =  ['Type','Amarone', 'Cabernet',
+   'Grand', 'Grenache', 'Merlot', 'Pinot Noir',
   'Sangiovese', 'Shiraz', 'Syrah', 'Zinfandel'];
   
- var whitewines = ['Type','Blanc','Bordeaux', 'Chenin',
+ var whitewines = ['Type','Blanc', 'Chenin',
   'Grigio', 'Gris', 'Murray', 'Muscat', 'Riesling',
- 'Rose', 'Traminer', 'Verdicchio'];
+  'Traminer', 'Verdicchio'];
 
+// wines with filters not working
+//  'Barolo', 'Carmenere', 'Chianti', 'Bordeaux',
 	
 // Drop down view
 	var view_discover = Ti.UI.createView({
@@ -305,7 +309,7 @@ function DiscoverWindow(title) {
 			}
 			else if(winecolor == null && winetype == null)
 			{
-				alert('Please Enter a Wine or Select a Filter to Search');
+				//alert('Please Enter a Wine or Select a Filter to Search');
 			}
 	
      	self.add(view);
