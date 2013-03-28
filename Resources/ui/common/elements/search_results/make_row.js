@@ -10,7 +10,8 @@ function make_row(wine){
 	
 	var row = Ti.UI.createTableViewRow
 	({
-		hasChild:true
+		hasChild:true,
+		height:100
 	});
 	//alert(wine.Appellation.Id);
 	row.wine = {
