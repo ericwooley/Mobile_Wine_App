@@ -14,6 +14,7 @@
  *************************************************/
 
 module.exports = function(/*result, callback*/){
+	var global = require('ui/common/globals');
 	// Instant overview of product information. Includes prices, most
 	// important retailers, offers, local stores, reviews, etc.
 	var win = Titanium.UI.createWindow({  
@@ -49,11 +50,22 @@ module.exports = function(/*result, callback*/){
     	//alert(JSON.stringify(e));
     	//Ti.API.info(JSON.stringify(e));
     	//https://api.scandit.com/v2/products/9781401323257?key=
+    	Ti.App.fireEvent('barcode_scan_start');
+    	var server = global.api.httpInterface;
+		server.onload = function(){
+			var json = JSON.parse(this.responseText);
+			Ti.App.fireEvent('barcode_scan', json);
+		};
+		server.open('GET', "https://api.scandit.com/v2/products/"+e.barcode+"?key=agjZIRWRpvSfzPgu3ppvPQ4I9WS-eGZ8gSIh_BU5Q64")
+		server.send({});
+    	//if(Ti.Platform.osname == "android")
+			//picker.closeScanner();
+		//else
+    	win.close();
 	});
+
 	picker.setCancelCallback(function(e) {
-		if(Ti.Platform.osname == "android")
-			picker.closeScanner();
-		else
+
     		win.close();
     	
 	});

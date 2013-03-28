@@ -337,7 +337,7 @@ function getResponse(url, data, callback){
 	server.send(data);
 	
 };
-
+api.getResponse = getResponse;
 showMessage = function(customMessage, interval){
 	// window container
 	indWin = Titanium.UI.createWindow();

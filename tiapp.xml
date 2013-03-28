@@ -59,7 +59,7 @@
     </deployment-targets>
     <sdk-version>3.0.2.GA</sdk-version>
     <android xmlns:android="http://schemas.android.com/apk/res/android">
-	    <manifest>
+	    <manifest android:installLocation="preferExternal">
 	    	<uses-feature android:name="android.hardware.camera" android:required="false"/>
 			<uses-feature android:name="android.hardware.autofocus" android:required="false"/>
 			<uses-feature android:name="android.hardware.flash" android:required="false"/>

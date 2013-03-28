@@ -61,6 +61,13 @@ function CheckInsWindow(title) {
 	camera_button.addEventListener('click', function(){
 		var get_bar_code = require('ui/common/elements/barcode');
 		get_bar_code();
+		// Cabernet sauvignon shiraz
+		function getBarCodeInfo(e){
+			//alert("barcode_info: " + e.basic.name);
+			search_bar.value = e.basic.name;
+			Ti.App.removeEventListener('barcode_scan', getBarCodeInfo);
+		};
+		Ti.App.addEventListener('barcode_scan', getBarCodeInfo);
 	});
 	
 	
