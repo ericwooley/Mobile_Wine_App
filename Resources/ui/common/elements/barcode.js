@@ -46,8 +46,9 @@ module.exports = function(/*result, callback*/){
 	// scanning is canceled.
 	picker.setSuccessCallback(function(e) {
     	//alert("success (" + e.symbology + "): " + e.barcode);
-    	alert(JSON.stringify(e));
-    	Ti.API.info(JSON.stringify(e));
+    	//alert(JSON.stringify(e));
+    	//Ti.API.info(JSON.stringify(e));
+    	//https://api.scandit.com/v2/products/9781401323257?key=
 	});
 	picker.setCancelCallback(function(e) {
 		if(Ti.Platform.osname == "android")

@@ -25,15 +25,15 @@ function make_row(wine){
 	// This image will be the image of the wine
 	var image = Ti.UI.createImageView
 	({ 		
-		height: 90,
-		width: 90,
+		height:Ti.UI.SIZE,/// 90,
+		width: Ti.UI.SIZE,
 		left: 10,
 		top: 5,
 		bottom: 5,
 		borderRadius: 10,
 		borderColor: 'black',
 		borderWidth: 1,
-		contentMode: 'aspectfill',
+		//contentMode: 'aspectfill',
 		clipsToBounds: false,
 		image: imageurl,
 		layout:'vertical'
