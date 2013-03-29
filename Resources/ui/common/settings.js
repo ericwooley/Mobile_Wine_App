@@ -2,7 +2,7 @@
 module.exports = function(w)
 {
 	var global = require('ui/common/globals');
-	
+	w.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
 	// This is where I am going put the with all the results.
 	var overview = Ti.UI.createView({
 		width: Ti.UI.FILL,
@@ -10,6 +10,19 @@ module.exports = function(w)
 		layout: 'vertical',
 		top: 0
 	});
+	
+	var top_label = Ti.UI.createLabel({
+		text: 'Settings',
+		top:10,
+		color: 'black',
+		font:{
+            fontFamily:'Helvetica Neue',
+            fontSize:20,
+            fontWeight:'Bold'
+          }
+	});
+	
+	w.add(top_label)
 	
 	var logout_button = Ti.UI.createButton({
 	    top: 44, 

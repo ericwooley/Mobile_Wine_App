@@ -147,7 +147,7 @@ function outputHook(win){
 	settingsButton.addEventListener('click', function() {
 		//containingTab attribute must be set by parent tab group on
 		//the window for this work
-		var settingsWindow = createWindow('settings');
+		var settingsWindow = createWindow('');
 		settingsWindow.exitOnClose = false;
 		Ti.API.info("opening settings window");
 		var createSettingsPage = require('ui/common/settings');
