@@ -24,12 +24,16 @@ function HomeWindow(title)
 	//view.add(text);
 	var top_label = Ti.UI.createLabel({
 		text: 'Friends Recent Check-Ins',
-		color: global.colors.dark,
-		 font:{
+		color: 'white',
+		font:{
             fontFamily:'Helvetica Neue',
             fontSize:18,
-            fontWeight:'Medium'
-           }
+            fontWeight:'Bold'
+           },   
+        textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	    width: Ti.UI.FILL, 
+	    height: 40, 
+	    backgroundColor: global.colors.dark,
 	});
 	
 	
