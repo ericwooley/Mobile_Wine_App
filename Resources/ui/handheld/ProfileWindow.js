@@ -21,6 +21,7 @@ function ProfileWindow(title) {
 	self.add(loading);
 	loading.show();
 	loading.top = 40;
+	
 //	EDIT PROFILE VIEW
 //	***********************************************	
 	var edit_prof = Ti.UI.createView(
@@ -32,8 +33,9 @@ function ProfileWindow(title) {
 			right: 10
 		}
 	);
-//	***********************************************	
-
+//	***********************************************
+	
+	
 //	PROFILE INFO VIEWS & SUBVIEWS
 //	***********************************************	
 	var profile_info = Ti.UI.createView({
@@ -172,17 +174,32 @@ function ProfileWindow(title) {
 	});
 	content.add(following);
 
-	
-	
 	// RECENT CHECK-INS LABEL
 	var recent_check_ins = Ti.UI.createLabel({
+		/*
   		color: global.colors.dark,
   		font: { fontSize:18, fontWeight: 'bold' },
   		text: 'My Cellar',
   		top: 10,
   		left: 10,
   		height: Ti.UI.SIZE,
-  		width: Ti.UI.FILL
+  		width: Ti.UI.FILL */
+  		
+		color: 'white',
+		text: 'My Cellar',
+		font:{
+            fontFamily:'Helvetica Neue',
+            fontSize:18,
+            fontWeight:'Bold'
+           },   
+        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	    width: Ti.UI.FILL, 
+	    height: Ti.UI.SIZE,
+	    //height: 25, 
+	    top: 10,
+	    left: 0, 
+	    right: 0,
+	    backgroundColor: global.colors.dark,
 
 	});
 	header.add(recent_check_ins);
