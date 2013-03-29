@@ -12,6 +12,7 @@ module.exports = function(w)
 	});
 	
 	var top_label = Ti.UI.createLabel({
+		/*
 		text: 'Settings',
 		top:10,
 		color: 'black',
@@ -19,13 +20,26 @@ module.exports = function(w)
             fontFamily:'Helvetica Neue',
             fontSize:20,
             fontWeight:'Bold'
-          }
+         } */
+        
+        text: 'Settings',
+		color: 'white',
+		font:{
+            fontFamily:'Helvetica Neue',
+            fontSize:18,
+            fontWeight:'Bold'
+           },   
+        textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	    width: Ti.UI.FILL, 
+	    height: 40, 
+	    top:0,
+	    backgroundColor: global.colors.dark,
 	});
 	
 	w.add(top_label)
 	
 	var logout_button = Ti.UI.createButton({
-	    top: 44, 
+	    top: 60, 
 	    width: Ti.UI.FILL, 
 	    height: 42, 
 	    left: 10,
@@ -33,7 +47,7 @@ module.exports = function(w)
 	    backgroundColor: global.colors.dark,
 	    backgroundImage:'none',
 	    borderRadius: 5,
-		title: 'logout'
+		title: 'Logout'
 	});
 	overview.add(logout_button);
 	
@@ -42,7 +56,7 @@ module.exports = function(w)
 		global.api.logout(function(data){
 			Ti.App.fireEvent('user_logout', {});
 		});
-		alert('logging out');
+		alert('Logging You Out');
 	});
 	// add overview to the window.
 	w.add(overview);
