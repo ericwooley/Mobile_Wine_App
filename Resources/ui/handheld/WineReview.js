@@ -51,12 +51,18 @@ function WineReview(wine){
 					height: Ti.UI.SIZE,
 					width: Ti.UI.FILL,
 				});
-				r.add(rv);
+				r.add(rv);		
 				rv.add(Ti.UI.createLabel({
-					text: "Rating: "+review.rating + ' - ' + review.Date,
+					color: 'white',
+	    			top: 10,
+	    			left: 0, 
+	    			right: 0,
+	    			backgroundColor: global.colors.dark,
+					text: "Rating: "+review.rating + "\nDate: " +review.Date,
 					height: Ti.UI.SIZE,
 					width: Ti.UI.FILL
 				}));
+				
 				rv.add(Ti.UI.createLabel({
 					text: '"'+review.Comment + '"',
 					height: Ti.UI.SIZE,
@@ -82,7 +88,7 @@ function WineReview(wine){
 		});
 	};
 	load_tables();
-	dd(ch.view, self, "Finish Checkin", "Check In", "up", function(){
+	dd(ch.view, self, "Finish Check-In", "Check-In", "up", function(){
 		//alert("wine: "+ all.Id + " "+ ch.ta.value + " - " + Math.round(ch.rating.value));
 		global.api.checkin(wine.id, ch.ta.value, Math.round(ch.rating.value), function(){
 			load_tables();
