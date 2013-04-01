@@ -24,7 +24,7 @@ function DiscoverWindow(title) {
 	});
 	
 	var label_title = Ti.UI.createLabel({
-		color: 'black',
+		color: global.colors.dark,
 		text:"Today's Featured Wines",
 		font:{
             fontFamily:'Helvetica Neue',

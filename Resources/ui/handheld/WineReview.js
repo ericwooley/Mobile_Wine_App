@@ -55,8 +55,8 @@ function WineReview(wine){
 				rv.add(Ti.UI.createLabel({
 					color: 'white',
 	    			top: 10,
-	    			left: 0, 
-	    			right: 0,
+	    			left: 10, 
+	    			right: 10,
 	    			backgroundColor: global.colors.dark,
 					text: "Rating: "+review.rating + "\nDate: " +review.Date,
 					height: Ti.UI.SIZE,
@@ -67,7 +67,9 @@ function WineReview(wine){
 					text: '"'+review.Comment + '"',
 					height: Ti.UI.SIZE,
 					width: Ti.UI.FILL,
-					bottom: 10
+					bottom: 10,
+					left: 10, 
+	    			right: 10,
 				}));
 				
 				

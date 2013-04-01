@@ -37,6 +37,19 @@ function CheckInsWindow(title) {
 		top: 10
 	});
 	
+	
+	var picture = Ti.UI.createImageView({
+  		
+  		height: 200,
+  		width: 200,
+		bottom: 20,
+  		contentMode: 'aspectfill',
+  		clipsToBounds: false,
+  		image: 'images/Logo2.png',
+ 	});
+
+	self.add(picture)	
+	
 	sv.add(search_bar);
 	sv.add(camera_button);
 	var results_view;
@@ -47,13 +60,14 @@ function CheckInsWindow(title) {
 		global.api.search(search_bar.value, function(data){
 			if(results_view != null)
 				self.remove(results_view);
+				self.remove(picture);
 			var search_format = require('ui/common/elements/search_results');
 			results_view = search_format(data, function(wine){
 				var wine_review = require('ui/handheld/WineReview');
 				
 				self.containingTab.open(wine_review(wine));
 			});
-			results_view.top = 15;
+			results_view.top = 25;
 			self.add(results_view);
 		});
 	});
@@ -71,10 +85,7 @@ function CheckInsWindow(title) {
 	});
 	
 	
-	
-	
-	
-	
+
 	
 	
 	global.outputHook(self);

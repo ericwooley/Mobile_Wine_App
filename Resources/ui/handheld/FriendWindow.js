@@ -136,14 +136,22 @@ function FriendWindow(friend) {
 	
 	// RECENT CHECK-INS LABEL
 	var recent_check_ins = Ti.UI.createLabel({
-  		color: global.colors.dark,
-  		font: { fontSize:18, fontWeight: 'bold' },
-  		text: 'My Cellar',
-  		top: 10,
-  		left: 10,
-  		height: Ti.UI.SIZE,
-  		width: Ti.UI.FILL
-
+		
+		color: 'white',
+		text: 'My Cellar',
+		font:{
+            fontFamily:'Helvetica Neue',
+            fontSize:18,
+            fontWeight:'Bold'
+           },   
+        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	    width: Ti.UI.FILL, 
+	    height: Ti.UI.SIZE,
+	    top: 10,
+	    left: 10, 
+	    right: 10,
+	    backgroundColor: global.colors.dark
+  		
 	});
 	profile_info.add(recent_check_ins);
 

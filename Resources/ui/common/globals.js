@@ -75,13 +75,13 @@ function createWindow(title){
 		height:'100%',
 		width: '100%',
 		barColor: module.exports.colors.dark,
-		backgroundColor: "#f8ffde",//module.exports.colors.lightest,
+		backgroundColor: "#f8e0ae",//module.exports.colors.lightest,
 		//backgroundImage:'images/BKGD_Texture.png'
 		backgroundGradient: {
 	        type: 'radial',
 	        //startPoint: { x: 50, y: 50 },
 	        //endPoint: { x: 50, y: 50 },
-	        colors: [ 'f6debc','f8ffde' ],
+	        colors: [ 'f7e6c4','f8e0ae' ],
 	        startRadius: '95%',
 	        endRadius: 0,
 	        backfillStart: true
