@@ -278,8 +278,13 @@ api.get_home_results = function(callback){
  * Gets the data to be displayed on the homepage.
  * @param {Function} callback function to be called on success
  */
-api.previous_checkins = function(wine_id, callback){
-	getResponse('http://winelife.ericwooley.com/search/wine_checkins/', {wine_id: wine_id}, callback);
+api.previous_checkins = function(wine_id, user_id, callback){
+	object = {};
+	if(user_id)
+		object.user_id = user_id;
+	object.wine_id = wine_id;
+	//alert(JSON.stringify(object));
+	getResponse('http://winelife.ericwooley.com/search/wine_checkins/', object, callback);
 };
 // not really relevant to anyone outside of this page
 api.httpInterface = Ti.Network.createHTTPClient(

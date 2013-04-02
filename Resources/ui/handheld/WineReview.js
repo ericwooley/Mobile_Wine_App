@@ -2,7 +2,7 @@
 // WineReview.js
 // Author: Matthew Johnson  & David Wells
 
-function WineReview(wine){
+function WineReview(wine, friend){
 	var global = require('ui/common/globals');	
 	var self = global.createWindow('');
 	self.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
@@ -24,6 +24,13 @@ function WineReview(wine){
 			all.Labels[0].Url
 	);
 	overview.add(head);
+	if(friend)
+		overview.add(Ti.UI.createLabel({
+			text: friend.fname + "'s Reviews of this wine",
+			width: Ti.UI.SIZE,
+			height: Ti.UI.SIZE,
+			left: 10
+		}));
 	get_checkin_view = require('ui/handheld/Wine_Review/Checkin');
 
 	var ch = get_checkin_view(all);
@@ -31,7 +38,10 @@ function WineReview(wine){
 	var tableview = null;
 	function load_tables(){
 		//alert("wineid: "+ JSON.stringify(wine));
-		global.api.previous_checkins(wine.id, function(data){
+		var uid = null;
+		if(friend)
+			uid = friend.user_id;
+		global.api.previous_checkins(wine.id, uid, function(data){
 			if(tableview != null)
 				overview.remove(tableview);
 			

@@ -127,7 +127,9 @@ function FriendsWindow(title) {
 			},
 			function(data){
 				var fw = require('ui/handheld/FriendWindow');
-				self.containingTab.open(fw(data));
+				w = fw(data);
+				w.containingTab = self.containingTab;
+				self.containingTab.open(w);
 			}
 		);
 	});

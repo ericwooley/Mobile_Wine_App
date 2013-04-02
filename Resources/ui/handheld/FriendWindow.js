@@ -161,7 +161,10 @@ function FriendWindow(friend) {
 			global.api.friend_recent_checkins(friend.user_id, function(data){
 				var table = global.api.search_results(data, function(wine){
 					var wine_review = require('ui/handheld/WineReview');
-					self.containingTab.open(wine_review(wine));
+					w = wine_review(wine, friend);
+					w.containingTab = self.containingTab;
+					self.containingTab.open(w);
+
 				});
 				profile_info.add(table);
 			});
