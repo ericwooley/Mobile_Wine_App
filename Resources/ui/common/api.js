@@ -316,6 +316,7 @@ function getResponse(url, data, callback){
 		return;
 	}
 	api.lock = true;
+	setTimeout(function(){api.lock = false}, 300);
 	var message = showMessage("please wait: connecting to server", 5000);
 	Ti.API.info('Connecting To: '+ url);
 	if(Ti.Network.networkType == Ti.Network.NETWORK_NONE){
