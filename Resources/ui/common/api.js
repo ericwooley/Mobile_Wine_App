@@ -7,6 +7,7 @@
  *     {"Status":{"Messages":[],"ReturnCode":0},"Products":{"List":[{"Id":98841,"Name":"Goldeneye Gowan Creek Vineyard Pinot Noir 2006","Url":"http:\/\/www.wine.com\/V6\/Goldeneye-Gowan-Creek-Vineyard-Pinot-Noir-2006\/wine\/98841\/detail.aspx","Appellation":{"Id":2416,"Name":"North Coast","Url":"http:\/\/www.wine.com\/v6\/North-Coast\/wine\/list.aspx?N=7155+101+2416","Region":{"Id":101,"Name":"California","Url":"http:\/\/www.wine.com\/v6\/California\/wine\/list.aspx?N=7155+101","Area":null}},"Labels":[{"Id":"98841m","Name":"thumbnail","Url":"http:\/\/cache.wine.com\/labels\/98841m.jpg"}],"Type":"Wine","Varietal":{"Id":143,"Name":"Pinot Noir","Url":"http:\/\/www.wine.com\/v6\/Pinot-Noir\/wine\/list.aspx?N=7155+124+143","WineType":{"Id":124,"Name":"Red Wines","Url":"http:\/\/www.wine.com\/v6\/Red-Wines\/wine\/list.aspx?N=7155+124"}},"Vineyard":{"Id":6436,"Name":"Goldeneye","Url":"http:\/\/www.wine.com\/v6\/Goldeneye\/learnabout.aspx?winery=3787","ImageUrl":"http:\/\/cache.wine.com\/aboutwine\/basics\/images\/winerypics\/3787.jpg","GeoLocation":{"Latitude":-360,"Longitude":-360,"Url":"http:\/\/www.wine.com\/v6\/aboutwine\/mapof.aspx?winery=3787"}},"Vintage":"","Community":{"Reviews":{"HighestScore":0,"List":[],"Url":"http:\/\/www.wine.com\/V6\/Goldeneye-Gowan-Creek-Vineyard-Pinot-Noir-2006\/wine\/98841\/detail.aspx?pageType=reviews"},"Url":"http:\/\/www.wine.com\/V6\/Goldeneye-Gowan-Creek-Vineyard-Pinot-Noir-2006\/wine\/98841\/detail.aspx"},"Description":"","GeoLocation":{"Latitude":-360,"Longitude":-360,"Url":"http:\/\/www.wine.com\/v6\/aboutwine\/mapof.aspx?productId=98841"},"PriceMax":74.9900,"PriceMin":74.9900,"PriceRetail":74.9900,"ProductAttributes":[{"Id":36,"Name":"Collectible Wines","Url":"http:\/\/www.wine.com\/v6\/Collectible-Wines\/wine\/list.aspx?N=7155+36","ImageUrl":"http:\/\/cache.wine.com\/images\/glo_icon_collectable_big.gif"},{"Id":506,"Name":"Boutique Wines","Url":"http:\/\/www.wine.com\/v6\/Boutique-Wines\/wine\/list.aspx?N=7155+506","ImageUrl":"http:\/\/cache.wine.com\/images\/glo_icon_boutique_big.gif"}],"Ratings":{"HighestScore":94,"List":[]},"Retail":{"InStock":false,"Price":74.9900,"Sku":"DWCGOWAN_2006","State":"CALIFORNIA","Url":""},"Vintages":{"List":[]}},{"Id":98858,"Name":"Goldeneye Confluence Vineyard Pinot Noir 2006","Url":"http:\/\/www.wine.com\/V6\/Goldeneye-Confluence-Vineyard-Pinot-Noir-2006\/wine\/98858\/detail.aspx","Appellation":{"Id":2371,"Name":"Sonoma County","Url":"http:\/\/www.wine.com\/v6\/Sonoma-County\/wine\/list.aspx?N=7155+101+2371","Region":{"Id":101,"Name":"California","Url":"http:\/\/www.wine.com\/v6\/California\/wine\/list.aspx?N=7155+101","Area":null}},"Labels":[{"Id":"98858m","Name":"thumbnail","Url":"http:\/\/cache.wine.com\/labels\/98858m.jpg"}],"Type":"Wine","Varietal":{"Id":143,"Name":"Pinot Noir","Url":"http:\/\/www.wine.com\/v6\/Pinot-Noir\/wine\/list.aspx?N=7155+124+143","WineType":{"Id":124,"Name":"Red Wines","Url":"http:\/\/www.wine.com\/v6\/Red-Wines\/wine\/list.aspx?N=7155+124"}},"Vineyard":{"Id":6436,"Name":"Goldeneye","Url":"http:\/\/www.wine.com\/v6\/Goldeneye\/learnabout.aspx?winery=3787","ImageUrl":"http:\/\/cache.wine.com\/aboutwine\/basics\/images\/winerypics\/3787.jpg","GeoLocation":{"Latitude":-360,"Longitude":-360,"Url":"http:\/\/www.wine.com\/v6\/aboutwine\/mapof.aspx?winery=3787"}},"Vintage":"","Community":{"Reviews":{"HighestScore":0,"List":[],"Url":"http:\/\/www.wine.com\/V6\/Goldeneye-Confluence-Vineyard-Pinot-Noir-2006\/wine\/98858\/detail.aspx?pageType=reviews"},"Url":"http:\/\/www.wine.com\/V6\/Goldeneye-Confluence-Vineyard-Pinot-Noir-2006\/wine\/98858\/detail.aspx"},"Description":"","GeoLocation":{"Latitude":-360,"Longitude":-360,"Url":"http:\/\/www.wine.com\/v6\/aboutwine\/mapof.aspx?winery=3787"},"PriceMax":69.9900,"PriceMin":69.9900,"PriceRetail":69.9900,"ProductAttributes":[{"Id":506,"Name":"Boutique Wines","Url":"http:\/\/www.wine.com\/v6\/Boutique-Wines\/wine\/list.aspx?N=7155+506","ImageUrl":"http:\/\/cache.wine.com\/images\/glo_icon_boutique_big.gif"},{"Id":36,"Name":"Collectible Wines","Url":"http:\/\/www.wine.com\/v6\/Collectible-Wines\/wine\/list.aspx?N=7155+36","ImageUrl":"http:\/\/cache.wine.com\/images\/glo_icon_collectable_big.gif"}],"Ratings":{"HighestScore":94,"List":[]},"Retail":{"InStock":false,"Price":69.9900,"Sku":"DWCCONFLUENCE_2006","State":"CALIFORNIA","Url":""},"Vintages":{"List":[]}}],"Offset":0,"Total":148,"Url":""}}
  */
 var api={};
+api.lock = false;
 
 /**
  * The user login function
@@ -289,6 +290,7 @@ api.httpInterface = Ti.Network.createHTTPClient(
 	         alert('Connection Error: '+ JSON.stringify(e));}
 	        catch(e){
 	        	Ti.API.info(JSON.stringify(e));}
+	        api.lock = false;
 	     },
 	     timeout : 5000
 	}
@@ -308,6 +310,12 @@ var server = api.httpInterface;
  * The callback function to be called on success
  */
 function getResponse(url, data, callback){
+	if(api.lock)
+	{
+		Ti.API.info("api locked");
+		return;
+	}
+	api.lock = true;
 	var message = showMessage("please wait: connecting to server", 5000);
 	Ti.API.info('Connecting To: '+ url);
 	if(Ti.Network.networkType == Ti.Network.NETWORK_NONE){
@@ -340,6 +348,7 @@ function getResponse(url, data, callback){
 		}
 		Ti.API.info('executing load callback');
 		callback(response);
+		api.lock = false;
 	}
 	
 	server.open('POST', url);
