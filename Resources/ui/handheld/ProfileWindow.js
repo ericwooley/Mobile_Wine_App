@@ -70,14 +70,14 @@ function ProfileWindow(title) {
 	//	***********************************************	
 	var user_image = Ti.UI.createImageView({
   		
-  		height: 100,
+  		height: Ti.UI.SIZE,
   		width: 100,
 		top: 0,
   		
 		borderWidth: 1,
 		borderRadius: 10,
-  		contentMode: 'aspectfill',
-  		clipsToBounds: false,
+  		//contentMode: 'aspectfill',
+  		clipsToBounds: true,
   		//image:'images/user_david.jpg',
   		
 	});
