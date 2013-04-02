@@ -333,6 +333,9 @@ function ProfileWindow(title) {
 			
 			fname.value = data.fname;
 			lname.value = data.lname;
+			followers.text = "Followers: "+data.follower;
+			following.text = "Following: "+data.following;
+			
 			user_image.image = data.picture_url;
 			//about_me.value = data.bio;
 			//about_me.color = "black";

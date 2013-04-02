@@ -14,13 +14,13 @@ function header(name, winery, location, region, label_url, wine_info ){
 	});
 	// The label image.
 	var bottle_label = Ti.UI.createImageView({ 		
-	  	height: 100,
-	  	width: 100,
-	  	borderRadius: 15,
-	  	borderColor: global.colors.dark,
-		borderWidth: 1,
-	  	contentMode: 'aspectfill',
-	  	clipsToBounds: false,
+	  	height: Ti.UI.SIZE,
+	  	width: Ti.UI.SIZE ,
+	  	//borderRadius: 10,
+	  	//borderColor: global.colors.dark,
+		//borderWidth: 1,
+	  	//contentMode: 'aspectfill',
+	  	clipsToBounds: true,
 	  	image: label_url,
 	});
 	
