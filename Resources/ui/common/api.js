@@ -310,11 +310,11 @@ var server = api.httpInterface;
  * The callback function to be called on success
  */
 function getResponse(url, data, callback){
-	if(api.lock)
+	/*if(api.lock)
 	{
 		Ti.API.info("api locked");
 		return;
-	}
+	}*/
 	api.lock = true;
 	setTimeout(function(){api.lock = false}, 300);
 	var message = showMessage("please wait: connecting to server", 5000);
