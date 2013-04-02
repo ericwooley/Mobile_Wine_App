@@ -35,20 +35,7 @@ function CheckInsWindow(title) {
 		right: 10,
 		height: 40,
 		top: 10
-	});
-	
-	
-	var picture = Ti.UI.createImageView({
-  		
-  		height: 200,
-  		width: 200,
-		bottom: 20,
-  		contentMode: 'aspectfill',
-  		clipsToBounds: false,
-  		image: 'images/Logo2.png',
- 	});
-
-	self.add(picture)	
+	});	
 	
 	sv.add(search_bar);
 	sv.add(camera_button);
@@ -72,6 +59,18 @@ function CheckInsWindow(title) {
 		});
 	});
 	
+	var picture = Ti.UI.createImageView({
+  		//height: 200,
+  		width: 200,
+  		top: 135,
+		//bottom: 20,
+  		contentMode: 'aspectfill',
+  		clipsToBounds: false,
+  		image: 'images/Logo2.png',
+ 	});
+
+	self.add(picture);
+	
 	camera_button.addEventListener('click', function(){
 		var get_bar_code = require('ui/common/elements/barcode');
 		get_bar_code();
@@ -83,8 +82,6 @@ function CheckInsWindow(title) {
 		};
 		Ti.App.addEventListener('barcode_scan', getBarCodeInfo);
 	});
-	
-	
 
 	
 	
