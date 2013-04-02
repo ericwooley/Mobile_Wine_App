@@ -10,12 +10,14 @@ module.exports = function(fl, callback){
 		({
 			hasChild:true
 		});
-		row.friend ={
-			fname: f.fname,
-			lname: f.lname,
-			bio: f.bio,
-			picture_url: f.picture_url
-		}
+		row.friend =f; 
+		// {
+			// fname: f.fname,
+			// lname: f.lname,
+			// bio: f.bio,
+			// picture_url: f.picture_url,
+			// 			
+		// }
 		
 		// This image will be the image of the wine
 		var image = Ti.UI.createImageView

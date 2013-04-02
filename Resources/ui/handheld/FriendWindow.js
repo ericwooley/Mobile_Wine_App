@@ -155,13 +155,10 @@ function FriendWindow(friend) {
 	});
 	profile_info.add(recent_check_ins);
 
-
-	// Add User Profile Data to top row of table
-	//profile_info.add(user_image);
-	
 	function load_data(){
 		self.removeEventListener('focus', load_data);
-			global.api.recent_checkins(function(data){
+			
+			global.api.friend_recent_checkins(friend.user_id, function(data){
 				var table = global.api.search_results(data, function(wine){
 					var wine_review = require('ui/handheld/WineReview');
 					self.containingTab.open(wine_review(wine));
@@ -171,10 +168,7 @@ function FriendWindow(friend) {
 	};
 	load_data();
 	
-	self.add(profile_info);
-	
-	//self.add(profile_info);
-	
+	self.add(profile_info);	
 
 	global.outputHook(self);
 	return self;

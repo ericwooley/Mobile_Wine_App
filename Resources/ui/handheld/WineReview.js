@@ -21,8 +21,7 @@ function WineReview(wine){
 			all.Vineyard.Name,
 			all.Appellation.Name,
 			all.Appellation.Region.Name,
-			all.Labels[0].Url,
-			all
+			all.Labels[0].Url
 	);
 	overview.add(head);
 	get_checkin_view = require('ui/handheld/Wine_Review/Checkin');
@@ -76,8 +75,6 @@ function WineReview(wine){
 				reviews.push(r);
 				
 			}
-			
-			
 			// create table view
 			tableview = Titanium.UI.createTableView({
 				data:reviews,

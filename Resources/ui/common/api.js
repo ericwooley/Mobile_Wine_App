@@ -27,6 +27,15 @@ api.login = function(email, password, callback){
  */
 api.recent_checkins = function(callback){
 	getResponse('http://winelife.ericwooley.com/search/recent_checkins/', {}, callback);
+};
+
+/**
+ * @param {String/Int} user_id
+ * @param {Function} callback
+ * The callback function to be called when the request is successful.
+ */
+api.friend_recent_checkins = function(user_id, callback){
+	getResponse('http://winelife.ericwooley.com/search/friend_recent_checkins/'+user_id, {}, callback);
 }
 
 /**
