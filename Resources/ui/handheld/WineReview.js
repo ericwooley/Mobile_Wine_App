@@ -42,6 +42,7 @@ function WineReview(wine, friend){
 		if(friend)
 			uid = friend.user_id;
 		global.api.previous_checkins(wine.id, uid, function(data){
+			//alert(JSON.stringify(data));
 			if(tableview != null)
 				overview.remove(tableview);
 			
@@ -67,13 +68,13 @@ function WineReview(wine, friend){
 	    			left: 10, 
 	    			right: 10,
 	    			backgroundColor: global.colors.dark,
-					text: "Rating: "+review.rating + "\nDate: " +review.Date,
+					text: "Rating: "+review.rating + " by " +review.friend.fname+" "+review.friend.lname+ "\nDate: " +review.date,
 					height: Ti.UI.SIZE,
 					width: Ti.UI.FILL
 				}));
 				
 				rv.add(Ti.UI.createLabel({
-					text: '"'+review.Comment + '"',
+					text: '"'+review.comment + '"',
 					height: Ti.UI.SIZE,
 					width: Ti.UI.FILL,
 					bottom: 10,

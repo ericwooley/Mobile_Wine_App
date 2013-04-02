@@ -6,13 +6,9 @@
 //	Programmer:  David Wells
 //	***********************************************
 
-
 function ProfileWindow(title) {
 	var global = require('ui/common/globals');
 	var dropdown = require('ui/common/elements/dropdown');
-	
-
-	
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
 	self.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
@@ -33,11 +29,10 @@ function ProfileWindow(title) {
 			right: 10
 		}
 	);
-//	***********************************************
 	
-	
-//	PROFILE INFO VIEWS & SUBVIEWS
-//	***********************************************	
+	//	***********************************************
+	//	PROFILE INFO VIEWS & SUBVIEWS
+	//	***********************************************	
 	var profile_info = Ti.UI.createView({
 		layout: 'vertical',
 		height: Ti.UI.SIZE,
@@ -57,15 +52,7 @@ function ProfileWindow(title) {
 	});
 	profile_info.add(header);
 	header.hide();
-//	***********************************************	
-
-
-
-
-
-
-
-
+	//	***********************************************	
 	//  USER IMAGE - upper left of view
 	//	***********************************************	
 	var user_image = Ti.UI.createImageView({
@@ -81,11 +68,6 @@ function ProfileWindow(title) {
   		//image:'images/user_david.jpg',
   		
 	});
-
-
-
-
-
 
 	//  ADD IMAGE
 	//	***********************************************	
@@ -182,36 +164,18 @@ function ProfileWindow(title) {
 		        //user opted not to choose a photo
 		    }
 		});
-		 
-		//show dialog
 		dialog.show();
-				
-				
 	}
 	
-
-
-
-
-
 	header.add(user_image);
 	user_image.addEventListener('click', add_image);
 
-
-
-
-	
 	var content = Ti.UI.createView({
 		layout: 'vertical',
 		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE
 	});
 	header.add(content);
-	
-	
-	
-	
-	
 	
 //***********************************************************
 //EDIT PROFILE POP-DOWN
@@ -278,7 +242,6 @@ function ProfileWindow(title) {
 	});
 	content.add(followers);
 	
-	
 	//  FOLLOWING TEXT FIELD
 	var following = Ti.UI.createLabel({
   		color: global.colors.dark,
@@ -293,15 +256,6 @@ function ProfileWindow(title) {
 
 	// RECENT CHECK-INS LABEL
 	var recent_check_ins = Ti.UI.createLabel({
-		/*
-  		color: global.colors.dark,
-  		font: { fontSize:18, fontWeight: 'bold' },
-  		text: 'My Cellar',
-  		top: 10,
-  		left: 10,
-  		height: Ti.UI.SIZE,
-  		width: Ti.UI.FILL */
-  		
 		color: 'white',
 		text: 'My Cellar',
 		font:{
@@ -320,28 +274,19 @@ function ProfileWindow(title) {
 
 	});
 	header.add(recent_check_ins);
-
-
-	// Add User Profile Data to top row of table
-	//profile_info.add(user_image);
 	
 	function load_data(){
 		self.removeEventListener('focus', load_data);
 		global.api.profileInformation(function(data){
-			userName.text = data.fname + ' ' + data.lname;
-			//aboutMe_Text.text = data.bio;
-			
+			userName.text = data.fname + ' ' + data.lname;			
 			fname.value = data.fname;
 			lname.value = data.lname;
+			check_ins.text= "Total Check-ins: " + data.chcount;
 			followers.text = "Followers: "+data.follower;
 			following.text = "Following: "+data.following;
 			
 			user_image.image = data.picture_url;
-			//about_me.value = data.bio;
-			//about_me.color = "black";
-			//about_me._hintText = data.bio;
 			global.api.recent_checkins(function(data){
-				//profile_info.add(header);
 				header.show();
 				self.remove(loading);
 				var table = global.api.search_results(data, function(wine){
@@ -366,10 +311,7 @@ function ProfileWindow(title) {
 			userName.text = data.user_info.fname + ' ' + data.user_info.lname;
 		});
 		
-	});
-	
-	//self.add(profile_info);
-	
+	});	
 
 	global.outputHook(self);
 	return self;
