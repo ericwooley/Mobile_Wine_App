@@ -17,6 +17,15 @@ function FriendWindow(friend) {
 	var self = global.createWindow(' ');
 	self.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
 		
+	// Creates back button
+	var back = Ti.UI.createButton({ title: "Back" });
+	
+ 	back.addEventListener("click", function() 
+	{
+ 		self.close({animated:true});
+	});
+	self.setLeftNavButton(back);
+	
 	
 //	***********************************************	
 
@@ -137,7 +146,8 @@ function FriendWindow(friend) {
 	// RECENT CHECK-INS LABEL
 	var recent_check_ins = Ti.UI.createLabel({
 		
-		color: 'white',
+		color: global.colors.dark,
+  		font: { fontSize:18, fontWeight: 'bold' },
 		text: 'My Cellar',
 		font:{
             fontFamily:'Helvetica Neue',
@@ -150,7 +160,6 @@ function FriendWindow(friend) {
 	    top: 10,
 	    left: 10, 
 	    right: 10,
-	    backgroundColor: global.colors.dark
   		
 	});
 	profile_info.add(recent_check_ins);

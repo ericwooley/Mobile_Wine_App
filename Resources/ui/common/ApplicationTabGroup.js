@@ -19,7 +19,7 @@ function ApplicationTabGroup() {
 	var tab1 = Ti.UI.createTab({
 		title: 'Grapevine',
 		icon: homeImage,
-		backgroundColor: global.colors.dark,
+		backgroundColor: 'black',
 		window: win1
 	});
 	win1.containingTab = tab1;
@@ -28,7 +28,7 @@ function ApplicationTabGroup() {
 	var tab2 = Ti.UI.createTab({
 		title: 'Discover',
 		icon: discoverImage,
-		backgroundColor: global.colors.dark,
+		backgroundColor: 'black',
 		window: win2
 	});
 	win2.containingTab = tab2;
@@ -37,7 +37,7 @@ function ApplicationTabGroup() {
 	var tab3 = Ti.UI.createTab({
 		title: 'Check-In',
 		icon: checkinImage,
-		backgroundColor: global.colors.dark,
+		backgroundColor: 'black',
 		window: win3
 	});
 	win3.containingTab = tab3;
@@ -46,7 +46,7 @@ function ApplicationTabGroup() {
 	var tab4 = Ti.UI.createTab({
 		title: 'Friends',
 		icon: friendsImage,
-		backgroundColor: global.colors.dark,
+		backgroundColor: 'black',
 		window: win4
 	});
 	win4.containingTab = tab4;
@@ -55,7 +55,7 @@ function ApplicationTabGroup() {
 	var tab5 = Ti.UI.createTab({
 		title: 'Profile',
 		icon: profileImage,
-		backgroundColor: global.colors.dark,
+		backgroundColor: 'black',
 		window: win5
 	});
 	win5.containingTab = tab5;
@@ -65,6 +65,8 @@ function ApplicationTabGroup() {
 	self.addTab(tab3);
 	self.addTab(tab4);
 	self.addTab(tab5);
+	
+
 	
 	return self;
 };

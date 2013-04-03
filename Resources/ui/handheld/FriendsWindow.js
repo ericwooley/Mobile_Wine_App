@@ -23,10 +23,6 @@ function FriendsWindow(title) {
 		height: 50
 	});
 	
-
-	
-	
-	
 	 var or_text = Ti.UI.createLabel({
 	 	text: '-- or -- ',
 	 	width: Ti.UI.SIZE,

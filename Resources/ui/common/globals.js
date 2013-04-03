@@ -68,13 +68,15 @@ module.exports.userIsLoggedIn = function()
  * @param {String} title
  * This is the tile of the window that will be returned.
  */
+
 function createWindow(title){
 
 	var self = Ti.UI.createWindow({
 		title:title,
 		height:'100%',
 		width: '100%',
-		barColor: module.exports.colors.dark,
+		//barColor: module.exports.colors.dark,
+		barColor: 'black',
 		backgroundColor: "#f8e0ae",//module.exports.colors.lightest,
 		//backgroundImage:'images/BKGD_Texture.png'
 		backgroundGradient: {

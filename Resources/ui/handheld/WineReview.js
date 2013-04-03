@@ -63,12 +63,14 @@ function WineReview(wine, friend){
 				});
 				r.add(rv);		
 				rv.add(Ti.UI.createLabel({
-					color: 'white',
+					color: 'black',
 	    			top: 10,
 	    			left: 10, 
 	    			right: 10,
 	    			backgroundColor: global.colors.dark,
 					text: "Rating: "+review.rating + " by " +review.friend.fname+" "+review.friend.lname+ "\nDate: " +review.date,
+	    			//backgroundColor: global.colors.dark,
+					//text: "Rating: "+review.rating + "\nDate: " +review.Date,
 					height: Ti.UI.SIZE,
 					width: Ti.UI.FILL
 				}));

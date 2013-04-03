@@ -256,21 +256,14 @@ function ProfileWindow(title) {
 
 	// RECENT CHECK-INS LABEL
 	var recent_check_ins = Ti.UI.createLabel({
-		color: 'white',
-		text: 'My Cellar',
-		font:{
-            fontFamily:'Helvetica Neue',
-            fontSize:18,
-            fontWeight:'Bold'
-           },   
-        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-	    width: Ti.UI.FILL, 
-	    height: Ti.UI.SIZE,
-	    //height: 25, 
-	    top: 10,
-	    left: 0, 
-	    right: 0,
-	    backgroundColor: global.colors.dark,
+
+  		color: global.colors.dark,
+  		font: { fontSize:18, fontWeight: 'bold' },
+  		text: 'My Cellar',
+  		top: 10,
+  		left: 10,
+  		height: Ti.UI.SIZE,
+  		width: Ti.UI.FILL 
 
 	});
 	header.add(recent_check_ins);
