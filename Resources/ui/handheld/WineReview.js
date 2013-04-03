@@ -7,7 +7,16 @@ function WineReview(wine, friend){
 	var self = global.createWindow('');
 	self.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
 	var all = wine.all_information;
-
+	
+	
+	// Creates back button
+	var back = Ti.UI.createButton({ title: "Back" });
+ 	back.addEventListener("click", function() 
+	{
+ 		self.close({animated:true});
+	});
+	self.setLeftNavButton(back);
+	
 	var overview = Ti.UI.createView({
 		height: '100%',
 		width: '100%',
@@ -63,10 +72,11 @@ function WineReview(wine, friend){
 				});
 				r.add(rv);		
 				rv.add(Ti.UI.createLabel({
-					color: 'black',
+					color: 'white',
 	    			top: 10,
 	    			left: 10, 
 	    			right: 10,
+	    			fontSize:14,
 	    			backgroundColor: global.colors.dark,
 					text: "Rating: "+review.rating + " by " +review.friend.fname+" "+review.friend.lname+ "\nDate: " +review.date,
 	    			//backgroundColor: global.colors.dark,
