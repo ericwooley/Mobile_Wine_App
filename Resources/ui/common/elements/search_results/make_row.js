@@ -62,8 +62,8 @@ function make_row(wine){
 		height: Ti.UI.SIZE,
 		width: Ti.UI.FILL,
 		top: 5,
-		right: 5,
-		left: 5,
+		//right: 5,
+		//left: 5,
 		layout: 'vertical'
 	});
 	// Label for the location of the wine within the row
