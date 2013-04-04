@@ -63,26 +63,44 @@ function WineReview(wine, friend){
 					selectionStyle: 'none',
 					layout: 'vertical'
 				});
-				
+				var rc = Ti.UI.createView({
+					layout: 'horizontal',
+					height: Ti.UI.SIZE,
+					width: Ti.UI.FILL,
+				});
+				var user_image = Ti.UI.createImageView({
+  		
+			  		height: Ti.UI.SIZE,
+			  		width: 60,
+					top: 10,
+			  		left: 10,
+					borderWidth: 1,
+					borderRadius: 10,
+			  		clipsToBounds: true,
+			  		image: review.friend.picture_url,
+			  		
+				});
+				rc.add(user_image);
 				var rv = Ti.UI.createView({
 					layout: 'vertical',
 					height: Ti.UI.SIZE,
 					width: Ti.UI.FILL,
 				});
-				r.add(rv);		
+				r.add(rc);
+				rc.add(rv);	
 				rv.add(Ti.UI.createLabel({
-					color: 'white',
+					color: 'black',
 	    			top: 10,
 	    			left: 10, 
 	    			right: 10,
 	    			fontSize:14,
-	    			backgroundColor: global.colors.dark,
+	    			//backgroundColor: global.colors.dark,
 					text: "Rating: "+review.rating + " by " +review.friend.fname+" "+review.friend.lname+ "\n" +review.date,
 	    			//backgroundColor: global.colors.dark,
 					//text: "Rating: "+review.rating + "\nDate: " +review.Date,
 					height: Ti.UI.SIZE,
 					width: Ti.UI.FILL
-				}));
+				}));	
 				
 				rv.add(Ti.UI.createLabel({
 					text: '"'+review.comment + '"',

@@ -22,7 +22,7 @@ function make_row(wine){
 	var row = Ti.UI.createTableViewRow
 	({
 		hasChild:true,
-		height:100
+		height:Ti.UI.SIZE
 	});
 	
 	row.wine = {
@@ -32,28 +32,33 @@ function make_row(wine){
 		location: location,
 		all_information: wine
 	};
-	
-	// This image will be the image of the wine
-	var image = Ti.UI.createImageView
-	({ 		
-		height:Ti.UI.SIZE,/// 90,
-		width: 100,//Ti.UI.SIZE,
-		left: 10,
+	var rc = Ti.UI.createView({
+		width: Ti.UI.FILL,
+		height: Ti.UI.SIZE,
 		top: 5,
-		bottom: 5,
-		//borderRadius: 10,
-		//borderColor: 'black',
-		//borderWidth: 1,
-		//contentMode: 'aspectfill',
-		clipsToBounds: true,
-		image: imageurl,
-		layout:'vertical'
-	});
 
+		layout: 'horizontal'
+	});
+	// This image will be the image of the wine
+	var image = Ti.UI.createImageView({ 		
+		height: Ti.UI.SIZE,
+  		width: 100,
+		//top: 10,
+		left: 10,
+		borderWidth: 1,
+		borderRadius: 10,
+  		clipsToBounds: true,
+		image: imageurl,
+	});
+	var txt_container = Ti.UI.createView({
+		height: Ti.UI.SIZE,
+		width: Ti.UI.FILL,
+		top: 5,
+		layout: 'vertical'
+	});
 	// Label for the location of the wine within the row
 	var lbl_location = Ti.UI.createLabel
 	({
-		left:'40%',
 		color:'black',
 		bottom:5,
 		right: 5,
@@ -65,7 +70,7 @@ function make_row(wine){
 	// Label for the type of wine within the row
 	var lbl_type = Ti.UI.createLabel
 	({
-		left:'40%',
+		left:10,
 		color:'black',
 		text: name,
 		bottom:lbl_location.top,
@@ -78,7 +83,6 @@ function make_row(wine){
 	var lbl_date = Ti.UI.createLabel
 	({
 		right:5,
-		top:5,
 		color:'black',
 		text: winetype,
 		font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
@@ -86,10 +90,12 @@ function make_row(wine){
 	});
 
 	// Add each of these features to the row, then push the row
-	row.add(image);
-	row.add(lbl_location);
-	row.add(lbl_type);
-	row.add(lbl_date);
+	rc.add(image);
+	rc.add(txt_container);
+	txt_container.add(lbl_location);
+	txt_container.add(lbl_type);
+	txt_container.add(lbl_date);
+	row.add(rc);
 	return row;
 };
 module.exports = make_row;
