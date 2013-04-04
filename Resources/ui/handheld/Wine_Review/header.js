@@ -10,27 +10,22 @@ function header(name, winery, location, region, label_url, wine_info ){
 		top: 35,
 		left: 10,
 		right: 10,
-		//backgroundColor: 'blue'
 	});
 	// The label image.
 	var bottle_label = Ti.UI.createImageView({ 		
-	  	height: Ti.UI.SIZE,
+	  	height: '30%',
 	  	width: Ti.UI.SIZE ,
-	  	//borderRadius: 10,
-	  	//borderColor: global.colors.dark,
-		//borderWidth: 1,
-	  	//contentMode: 'aspectfill',
 	  	clipsToBounds: true,
 	  	image: label_url,
+	  	top: 0
 	});
 	
 	var right_text_view = Ti.UI.createView({
 		layout: 'vertical',
-		width: Ti.UI.SIZE,
+		width: '70%',
 		height: Ti.UI.SIZE,
 		left: 10,
 		top: 0,
-		//backgroundColor: 'red'
 	});
 	
 	// The text to the right of the image
@@ -41,7 +36,6 @@ function header(name, winery, location, region, label_url, wine_info ){
 		left: 0,
 		top: 0,
 		color: 'black',
-		//backgroundColor: 'green'
 	});
 	
 	var winery_lbl = Ti.UI.createLabel({
@@ -50,7 +44,7 @@ function header(name, winery, location, region, label_url, wine_info ){
 		width: Ti.UI.SIZE,
 		left: 0,
 		font:{fontSize:14,fontWeight:'italic',fontFamily:'Helvetica Neue'},
-
+		color: 'black',
 	});
 	
 	var loc_lbl = Ti.UI.createLabel({
@@ -59,6 +53,7 @@ function header(name, winery, location, region, label_url, wine_info ){
 		width: Ti.UI.SIZE,
 		left: 0,
 		font:{fontSize:14,fontWeight:'italic',fontFamily:'Helvetica Neue'},
+		color: 'black',
 	});
 	
 	right_text_view.add(name_lbl);

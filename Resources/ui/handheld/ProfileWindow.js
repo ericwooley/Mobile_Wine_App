@@ -58,7 +58,7 @@ function ProfileWindow(title) {
 	var user_image = Ti.UI.createImageView({
   		
   		height: Ti.UI.SIZE,
-  		width: 100,
+  		width: '30%',
 		top: 0,
   		
 		borderWidth: 1,
@@ -76,7 +76,7 @@ function ProfileWindow(title) {
 
 	var content = Ti.UI.createView({
 		layout: 'vertical',
-		width: Ti.UI.FILL,
+		width: '70%',
 		height: Ti.UI.SIZE
 	});
 	header.add(content);
@@ -207,8 +207,8 @@ function ProfileWindow(title) {
 	//  ADD FIRST NAME - FIELD
 	var fname = Ti.UI.createTextField({
 		hintText: 'First Name',
-		width: '50%',
-		height: 40,
+		width: Ti.UI.FILL,
+		height: Ti.UI.SIZE,
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});
 	edit_prof.add(fname);
@@ -216,8 +216,8 @@ function ProfileWindow(title) {
 	//  ADD LAST NAME - FIELD
 	var lname = Ti.UI.createTextField({
 		hintText: 'Last Name',
-		width: '50%',
-		height: 40,
+		width: Ti.UI.FILL,
+		height: Ti.UI.SIZE,
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});
 	edit_prof.add(lname);
@@ -245,8 +245,6 @@ function ProfileWindow(title) {
 	var check_ins = Ti.UI.createLabel({
   		color: global.colors.dark,
   		font: { fontSize: 12 },
-  		text: 'Total Check-ins: 10',
-  		top: 0,
   		left: 10,
   		height: Ti.UI.SIZE,
   		width: Ti.UI.FILL
@@ -257,8 +255,6 @@ function ProfileWindow(title) {
 	var followers = Ti.UI.createLabel({
   		color: global.colors.dark,
   		font: { fontSize: 12 },
-  		text: 'Followers: 3000',
-  		top: 0,
   		left: 10,
   		height: Ti.UI.SIZE,
   		width: Ti.UI.FILL
