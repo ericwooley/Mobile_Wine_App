@@ -54,7 +54,7 @@ function DiscoverWindow(title) {
 
 
 
- var allwines = ['Type', 'Amarone', 'Blanc', 'Cabernet', 'Chenin',
+ var allwines = ['Type', 'Amarone', 'Blanc', 'Carmenere', 'Cabernet', 'Chenin', 'Chianti',
  'Grand', 'Grenache', 'Grigio', 'Gris', 'Merlot', 'Murray', 'Muscat', 'Pinot Noir', 'Riesling',
   'Sangiovese', 'Shiraz', 'Syrah', 'Traminer', 'Verdicchio', 'Zinfandel'];
  
@@ -135,12 +135,12 @@ function DiscoverWindow(title) {
 	wines['Australian'] = '145';
 	wines['Barolo'] = '170';
 	wines['Blanc'] = '144';
-	wines['Bordeaux'] = '160';
+	wines['Bordeaux'] = '-2147483648'; // Filter doesnt work 
 	wines['Cabernet'] = '139';
 	wines['Carmenere'] = '10081';
-	wines['Chenin'] = '165';
+	wines['Chenin'] = '163'; // Filter DNE
 	wines['Chile'] = '10081';
-	wines['Chianti'] = '152';
+	wines['Chianti'] = '139';
 	wines['Grand'] = '10082';
 	wines['Grenache'] = '10080';
 	wines['Grigio'] = '194';
