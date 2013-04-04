@@ -10,7 +10,7 @@
 
 
 	<application android:icon="@drawable/appicon"
-		android:label="Mobile_Web_App" android:name="Mobile_web_appApplication"
+		android:label="Wine Life" android:name="Mobile_web_appApplication"
 		android:debuggable="false">
 
 		<!-- TI_APPLICATION -->

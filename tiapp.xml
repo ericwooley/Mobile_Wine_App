@@ -9,7 +9,7 @@
     <property name="acs-api-key-development" type="string">XWnaxCijaw9Y0oLkKhOJIwUWoyhJiz7M</property>
     <property name="ti.android.fastdev" type="bool">false</property>
     <id>V42H7K5MGR.com.winelife</id>
-    <name>Mobile_Web_App</name>
+    <name>Wine_Life</name>
     <version>1.0</version>
     <publisher>ericwooley</publisher>
     <url>http://menplusone.com</url>

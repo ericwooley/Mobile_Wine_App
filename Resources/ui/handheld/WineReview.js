@@ -98,13 +98,9 @@ function WineReview(wine, friend){
 	    			top: 10,
 	    			left: 10, 
 	    			right: 10,
-	    			//fontSize:14,
-	    			//backgroundColor: global.colors.dark,
 					text: "Rating: "+review.rating + " by " +review.friend.fname+" "+review.friend.lname+ "\n" +review.date,
 					font: {fontSize: 12, fontStyle: 'italic'},
 					textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
-	    			//backgroundColor: global.colors.dark,
-					//text: "Rating: "+review.rating + "\nDate: " +review.Date,
 					height: Ti.UI.SIZE,
 					width: Ti.UI.FILL
 				}));	
@@ -138,7 +134,6 @@ function WineReview(wine, friend){
 	};
 	load_tables();
 	dd(ch.view, self, "Finish Check-In", "Check-In", "up", function(){
-		//alert("wine: "+ all.Id + " "+ ch.ta.value + " - " + Math.round(ch.rating.value));
 		global.api.checkin(wine.id, ch.ta.value, Math.round(ch.rating.value), function(){
 			load_tables();
 		});
