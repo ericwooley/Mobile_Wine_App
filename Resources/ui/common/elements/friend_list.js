@@ -15,8 +15,8 @@ module.exports = function(fl, callback){
 			width: Ti.UI.FILL,
 			height: Ti.UI.SIZE,
 			top: 10,
-			left: 10,
-			right: 5,
+			//left: 10,
+			//right: 5,
 			borderRadius: 5,
 			backgroundColor: '#f2f2f2',
 			layout: 'horizontal'
@@ -25,7 +25,7 @@ module.exports = function(fl, callback){
 		var image = Ti.UI.createImageView
 		({ 		
   			  	height: Ti.UI.SIZE,
-		  		width: 100,
+		  		width: '30%',
 				top: 10,
 				bottom: 10,
 				borderWidth: 1,
@@ -35,9 +35,8 @@ module.exports = function(fl, callback){
 		});
 		var txt_container = Ti.UI.createView({
 			height: Ti.UI.SIZE,
-			width: Ti.UI.FILL,
+			width: '70%',
 			top: 5,
-			right: 5,
 			layout: 'vertical'
 		});
 		// Label for the location of the wine within the row

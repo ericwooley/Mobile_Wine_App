@@ -115,7 +115,8 @@ function FriendsWindow(title) {
 	});
 	self.add(view);
 	var friend_list;
-	self.addEventListener('open', function(e){
+	function load_fl(){
+		self.removeEventListener('focus', load_fl);
 		global.api.load_friend_list(
 			function(list){
 				friend_list = list;
@@ -128,8 +129,11 @@ function FriendsWindow(title) {
 				self.containingTab.open(w);
 			}
 		);
+	};
+	self.addEventListener('focus', load_fl);
+	self.addEventListener('blur', function(){
+		self.addEventListener('focus', load_fl);
 	});
-	
 	
 	global.outputHook(self);
 	return self;
