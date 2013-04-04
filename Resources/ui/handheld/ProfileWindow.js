@@ -281,14 +281,14 @@ function ProfileWindow(title) {
 	var recent_check_ins = Ti.UI.createLabel({
 
   		color: global.colors.dark,
-  		font: { fontSize:18, fontWeight: 'bold' },
+  		font: { fontSize:18, fontWeight: 'bold', textDecoration: 'underline'},
   		text: 'My Cellar',
   		top: 10,
-  		left: 10,
   		height: Ti.UI.SIZE,
   		width: Ti.UI.FILL 
 
 	});
+	
 	header.add(recent_check_ins);
 	var table = false;
 	function load_data(){
@@ -328,7 +328,7 @@ function ProfileWindow(title) {
 
 	dropdown(edit_prof, self, "Save Changes", "Edit Profile", "up", function(){
 		if(fname.value.length < 1 || lname.value.lengh < 1 /*|| about_me.value == about_me._hintText*/){
-			alert('Profile was not updated, a feild was blank');
+			alert('Profile was not updated, a field was blank');
 			return;
 		}
 		global.api.editProfile(fname.value, lname.value, ''/*about_me.value*/, function(data){
