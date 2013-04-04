@@ -18,7 +18,7 @@ function FriendsWindow(title) {
 		layout: 'vertical'
 	});
 	var fb_integrate = Ti.UI.createButton({
-		title: 'Integrate With Facebook',
+		title: 'Check for Facebook friends',
 		width: Ti.UI.Fill,
 		height: 50
 	});

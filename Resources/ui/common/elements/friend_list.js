@@ -6,44 +6,47 @@ module.exports = function(fl, callback){
 	for(var i = 0; i < fl.length; ++i)
 	{
 		f = fl[i];
-		var row = Ti.UI.createTableViewRow
-		({
-			hasChild:true
+		var row = Ti.UI.createTableViewRow({
+			hasChild:true,
+			height:Ti.UI.SIZE
 		});
 		row.friend =f; 
-		// {
-			// fname: f.fname,
-			// lname: f.lname,
-			// bio: f.bio,
-			// picture_url: f.picture_url,
-			// 			
-		// }
-		
+		var rc = Ti.UI.createView({
+			width: Ti.UI.FILL,
+			height: Ti.UI.SIZE,
+			top: 10,
+			left: 10,
+			right: 5,
+			borderRadius: 5,
+			backgroundColor: 'f2f2f2',
+			layout: 'horizontal'
+		});
 		// This image will be the image of the wine
 		var image = Ti.UI.createImageView
 		({ 		
-  			height: 90,
-  			width: 90,
-  			left: 10,
-  			top: 5,
-  			bottom: 5,
-  			borderRadius: 10,
-  			borderColor: 'black',
-			borderWidth: 1,
-  			contentMode: 'aspectfill',
-  			clipsToBounds: false,
-  			image: f.picture_url,
-  			layout:'vertical'
+  			  	height: Ti.UI.SIZE,
+		  		width: 100,
+				top: 10,
+				bottom: 10,
+				borderWidth: 1,
+				borderRadius: 10,
+		  		clipsToBounds: true,
+		  		image: f.picture_url
 		});
-		
+		var txt_container = Ti.UI.createView({
+			height: Ti.UI.SIZE,
+			width: Ti.UI.FILL,
+			top: 5,
+			right: 5,
+			layout: 'vertical'
+		});
 		// Label for the location of the wine within the row
 		var lbl_location = Ti.UI.createLabel
 		({
-			left:'40%',
 			color:'black',
 			bottom:5,
 			right: 5,
-			text: "10 checkins",
+			text: f.checkin_count + ' checkins',
 			font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
 			touchEnabled:false
 		});
@@ -52,7 +55,6 @@ module.exports = function(fl, callback){
 		// Label for the type of wine within the row
 		var lbl_type = Ti.UI.createLabel
 		({
-			left:'40%',
 			color:'black',
 			text: f.fname + ' ' + f.lname,
 			bottom:lbl_location.top,
@@ -61,24 +63,13 @@ module.exports = function(fl, callback){
 		
 		});	
 
-	
-		
-		/*// Label for the date within the row
-		var lbl_date = Ti.UI.createLabel
-		({
-			right:5,
-			top:5,
-			color:'black',
-			text: winetype,
-			font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
-			touchEnabled:false
-		});*/
 
 		// Add each of these features to the row, then push the row
-		row.add(image);
-		row.add(lbl_location);
-		row.add(lbl_type);
-		//row.add(lbl_date);
+		row.add(rc);
+		rc.add(image);
+		rc.add(txt_container);
+		txt_container.add(lbl_location);
+		txt_container.add(lbl_type);
 		tbl_data.push(row);
 	}
 	var table = Titanium.UI.createTableView
@@ -87,7 +78,10 @@ module.exports = function(fl, callback){
 		top:10,
 		width:'100%',
 		height:'100%',
-		data:tbl_data
+		data:tbl_data,
+		style: Ti.UI.iPhone.TableViewStyle.PLAIN,
+		separatorStyle: Titanium.UI.iPhone.TableViewSeparatorStyle.NONE,
+		separatorColor: 'transparent'
 	});
 	
 	table.addEventListener('click',function(data){

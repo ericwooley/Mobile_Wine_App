@@ -33,7 +33,10 @@ module.exports = function(result, callback){
 		top:10,
 		width:Ti.UI.FILL,
 		height:Ti.UI.FILL,
-		data:tbl_data
+		data:tbl_data,
+		style: Ti.UI.iPhone.TableViewStyle.PLAIN,
+		separatorStyle: Titanium.UI.iPhone.TableViewSeparatorStyle.NONE,
+		separatorColor: 'transparent'
 	});
 	if(pl.length > 0)
 		table.addEventListener('click', function(data){

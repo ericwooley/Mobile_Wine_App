@@ -64,9 +64,14 @@ function WineReview(wine, friend){
 					layout: 'vertical'
 				});
 				var rc = Ti.UI.createView({
-					layout: 'horizontal',
-					height: Ti.UI.SIZE,
 					width: Ti.UI.FILL,
+					height: Ti.UI.SIZE,
+					top: 10,
+					left: 10,
+					right: 5,
+					borderRadius: 5,
+					backgroundColor: 'f2f2f2',
+					layout: 'horizontal'
 				});
 				var user_image = Ti.UI.createImageView({
   		
@@ -93,9 +98,11 @@ function WineReview(wine, friend){
 	    			top: 10,
 	    			left: 10, 
 	    			right: 10,
-	    			fontSize:14,
+	    			//fontSize:14,
 	    			//backgroundColor: global.colors.dark,
 					text: "Rating: "+review.rating + " by " +review.friend.fname+" "+review.friend.lname+ "\n" +review.date,
+					font: {fontSize: 12, fontStyle: 'italic'},
+					textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
 	    			//backgroundColor: global.colors.dark,
 					//text: "Rating: "+review.rating + "\nDate: " +review.Date,
 					height: Ti.UI.SIZE,
@@ -120,7 +127,10 @@ function WineReview(wine, friend){
 				data:reviews,
 				width: Ti.UI.FILL,
 				height: Ti.UI.FILL,
-				backgroundColor:'transparent'
+				backgroundColor:'transparent',
+				style: Ti.UI.iPhone.TableViewStyle.PLAIN,
+				separatorStyle: Titanium.UI.iPhone.TableViewSeparatorStyle.NONE,
+				separatorColor: 'transparent'
 			});
 			
 			overview.add(tableview);

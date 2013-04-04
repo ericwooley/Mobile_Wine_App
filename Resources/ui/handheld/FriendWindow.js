@@ -108,7 +108,7 @@ function FriendWindow(friend) {
 	var check_ins = Ti.UI.createLabel({
   		color: global.colors.dark,
   		font: { fontSize: 12 },
-  		text: 'Total Check-ins: 10',
+  		text: 'Total Check-ins: ' + friend.checkin_count,
   		top: 0,
   		left: 10,
   		height: Ti.UI.SIZE,
@@ -120,7 +120,7 @@ function FriendWindow(friend) {
 	var followers = Ti.UI.createLabel({
   		color: global.colors.dark,
   		font: { fontSize: 12 },
-  		text: 'Followers: 3000',
+  		text: 'Followers: ' + friend.follower_count,
   		top: 0,
   		left: 10,
   		height: Ti.UI.SIZE,
@@ -133,7 +133,7 @@ function FriendWindow(friend) {
 	var following = Ti.UI.createLabel({
   		color: global.colors.dark,
   		font: { fontSize: 12 },
-  		text: 'Following: 4',
+  		text: 'Following: '+ friend.following_count,
   		top: 0,
   		left: 10,
   		height: Ti.UI.SIZE,

@@ -14,15 +14,19 @@ function make_row(wine){
 	if(wine.friend){
 		location = wine.friend.fname + ' ' + wine.friend.lname + ' checked in';
 		imageurl = wine.friend.picture_url;
+		img_width = 100;
 	}
 	else{
 		location = wine.Appellation.Name + " - " +wine.Appellation.Region.Name;
 		imageurl = wine.Labels[0].Url;
+		img_width = 60;
 	}
 	var row = Ti.UI.createTableViewRow
 	({
 		hasChild:true,
-		height:Ti.UI.SIZE
+		height:Ti.UI.SIZE,
+
+
 	});
 	
 	row.wine = {
@@ -35,15 +39,19 @@ function make_row(wine){
 	var rc = Ti.UI.createView({
 		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE,
-		top: 5,
-
+		top: 10,
+		left: 10,
+		right: 10,
+		borderRadius: 5,
+		backgroundColor: 'f2f2f2',
 		layout: 'horizontal'
 	});
 	// This image will be the image of the wine
 	var image = Ti.UI.createImageView({ 		
 		height: Ti.UI.SIZE,
-  		width: 100,
-		//top: 10,
+  		width: img_width,
+		top: 5,
+		bottom: 5,
 		left: 10,
 		borderWidth: 1,
 		borderRadius: 10,
@@ -54,6 +62,8 @@ function make_row(wine){
 		height: Ti.UI.SIZE,
 		width: Ti.UI.FILL,
 		top: 5,
+		right: 5,
+		left: 5,
 		layout: 'vertical'
 	});
 	// Label for the location of the wine within the row
@@ -63,14 +73,15 @@ function make_row(wine){
 		bottom:5,
 		right: 5,
 		text: location,
-		font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+		font: {fontSize: 12, fontStyle: 'italic'},
+		textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
 		touchEnabled:false
 	});
 	
 	// Label for the type of wine within the row
 	var lbl_type = Ti.UI.createLabel
 	({
-		left:10,
+		right: 5,
 		color:'black',
 		text: name,
 		bottom:lbl_location.top,
@@ -85,16 +96,19 @@ function make_row(wine){
 		right:5,
 		color:'black',
 		text: winetype,
-		font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+		
+		font: {fontSize: 12, fontStyle: 'italic'},
+		textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
 		touchEnabled:false
 	});
 
 	// Add each of these features to the row, then push the row
 	rc.add(image);
 	rc.add(txt_container);
-	txt_container.add(lbl_location);
-	txt_container.add(lbl_type);
 	txt_container.add(lbl_date);
+	txt_container.add(lbl_type);
+	txt_container.add(lbl_location);
+	
 	row.add(rc);
 	return row;
 };
