@@ -109,7 +109,7 @@ function WineReview(wine, friend){
 					width: Ti.UI.FILL
 				}));	
 				
-				rv.add(Ti.UI.createLabel({
+				rc.add(Ti.UI.createLabel({
 					text: '"'+review.comment + '"',
 					height: Ti.UI.SIZE,
 					width: Ti.UI.FILL,
