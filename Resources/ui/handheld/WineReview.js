@@ -22,7 +22,6 @@ function WineReview(wine, friend){
 		width: '100%',
 		layout: 'vertical'		
 	});
-	Ti.API.info(all.Labels[0].Url);
 	// Add the header to the view.
 	var header = require('ui/handheld/Wine_Review/header');
 	var head = header(
@@ -33,13 +32,13 @@ function WineReview(wine, friend){
 			all.Labels[0].Url
 	);
 	overview.add(head);
-	if(friend)
-		overview.add(Ti.UI.createLabel({
-			text: friend.fname + "'s Reviews of this wine",
-			width: Ti.UI.SIZE,
-			height: Ti.UI.SIZE,
-			left: 10
-		}));
+	// if(friend)
+		// overview.add(Ti.UI.createLabel({
+			// text: friend.fname + "'s Reviews of this wine",
+			// width: Ti.UI.SIZE,
+			// height: Ti.UI.SIZE,
+			// left: 10
+		// }));
 	get_checkin_view = require('ui/handheld/Wine_Review/Checkin');
 
 	var ch = get_checkin_view(all);
@@ -78,7 +77,7 @@ function WineReview(wine, friend){
 	    			right: 10,
 	    			fontSize:14,
 	    			backgroundColor: global.colors.dark,
-					text: "Rating: "+review.rating + " by " +review.friend.fname+" "+review.friend.lname+ "\nDate: " +review.date,
+					text: "Rating: "+review.rating + " by " +review.friend.fname+" "+review.friend.lname+ "\n" +review.date,
 	    			//backgroundColor: global.colors.dark,
 					//text: "Rating: "+review.rating + "\nDate: " +review.Date,
 					height: Ti.UI.SIZE,

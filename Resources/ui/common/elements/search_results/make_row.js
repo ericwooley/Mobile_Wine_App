@@ -3,7 +3,7 @@
  */
 
 function make_row(wine){
-	imageurl = wine.Labels[0].Url;
+	
 	name = wine.Name;
 	try{
 		winetype = wine.Varietal.WineType.Name;
@@ -11,8 +11,14 @@ function make_row(wine){
 	catch(err){
 		winetype = "Unknown";
 	}
-	location = wine.Appellation.Name + " - " +wine.Appellation.Region.Name;
-	
+	if(wine.friend){
+		location = wine.friend.fname + ' ' + wine.friend.lname + ' checked in';
+		imageurl = wine.friend.picture_url;
+	}
+	else{
+		location = wine.Appellation.Name + " - " +wine.Appellation.Region.Name;
+		imageurl = wine.Labels[0].Url;
+	}
 	var row = Ti.UI.createTableViewRow
 	({
 		hasChild:true,
@@ -31,7 +37,7 @@ function make_row(wine){
 	var image = Ti.UI.createImageView
 	({ 		
 		height:Ti.UI.SIZE,/// 90,
-		width: 40,//Ti.UI.SIZE,
+		width: 100,//Ti.UI.SIZE,
 		left: 10,
 		top: 5,
 		bottom: 5,
