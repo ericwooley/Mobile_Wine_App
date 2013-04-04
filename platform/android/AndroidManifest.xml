@@ -6,11 +6,11 @@
 <uses-feature android:name="android.hardware.flash" android:required="false"/>
 
 
-	<application android:debuggable="false" android:icon="@drawable/appicon" android:label="Wine_Life" android:name="Wine_lifeApplication">
+	<application android:debuggable="false" android:icon="@drawable/appicon" android:label="Wine Life" android:name="Wine_lifeApplication">
 
 		<!-- TI_APPLICATION -->
 
-		<activity android:configChanges="keyboardHidden|orientation" android:label="Wine_Life" android:name=".Wine_lifeActivity" android:theme="@style/Theme.Titanium">
+		<activity android:configChanges="keyboardHidden|orientation" android:label="Wine Life" android:name=".Wine_lifeActivity" android:theme="@style/Theme.Titanium">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
 				<category android:name="android.intent.category.LAUNCHER"/>

@@ -74,9 +74,9 @@ function make_row(wine){
 	image.add(l_image);
 	if(wine.friend){
 		image.add(Ti.UI.createImageView({ 		
-		height: '35%',//Ti.UI.SIZE,
+		height: '40%',//Ti.UI.SIZE,
   		width: Ti.UI.SIZE,
-		borderWidth: 1,
+		//borderWidth: 1,
 		borderRadius: 5,
   		//clipsToBounds: true,
 		image: wine.Labels[0].Url,
