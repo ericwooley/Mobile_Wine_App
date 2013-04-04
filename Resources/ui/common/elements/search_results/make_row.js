@@ -18,7 +18,7 @@ function make_row(wine){
 		hasChild:true,
 		height:100
 	});
-	//alert(wine.Appellation.Id);
+	
 	row.wine = {
 		id: wine.Id,
 		name: name,
@@ -26,7 +26,6 @@ function make_row(wine){
 		location: location,
 		all_information: wine
 	};
-	
 	
 	// This image will be the image of the wine
 	var image = Ti.UI.createImageView

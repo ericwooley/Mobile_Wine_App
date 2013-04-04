@@ -9,8 +9,7 @@ module.exports = function(result, callback){
 	// if we have a result
 	if(pl.length > 0){
 		for(var i = 0; i < pl.length; ++i)
-			tbl_data.push(make_row(pl[i]));
-		
+			tbl_data.push(make_row(pl[i]));	
 	}
 	else
 	{

@@ -68,7 +68,19 @@ function ProfileWindow(title) {
   		//image:'images/user_david.jpg',
   		
 	});
+	var progressbar = Ti.UI.createProgressBar({width: Ti.UI.FILL, height: 20});
+	header.add(user_image);
+	
+	
+	user_image.addEventListener('click', add_image);
 
+	var content = Ti.UI.createView({
+		layout: 'vertical',
+		width: Ti.UI.FILL,
+		height: Ti.UI.SIZE
+	});
+	header.add(content);
+	header.add(progressbar);
 	//  ADD IMAGE
 	//	***********************************************	
 	function add_image(){
@@ -82,7 +94,25 @@ function ProfileWindow(title) {
 		    //index of cancel button
 		    cancel:2
 		});
-		 
+		function upload_image(img){
+			progressbar.show();
+            var xhr = Titanium.Network.createHTTPClient();
+            xhr.onsendstream = function(e){
+			        progressbar.value = e.progress ;
+			};
+            xhr.onload = function(){
+            	progressbar.hide();
+            	            	Ti.API.info(this.responseText);
+
+            	res = JSON.parse(this.responseText);
+            	if(!res.success)
+            		alert("Server Error: \""+res.error+"\" Please try again later.");
+            }
+			xhr.open('POST', "http://winelife.ericwooley.com/user/upload");
+			//f1 = Titanium.Filesystem.getFile(Titanium.Filesystem.resourcesDirectory,filename);
+			//iamge=f1.read(image);
+			xhr.send({profile_image: img});
+		}
 		//add event listener
 		dialog.addEventListener('click', function(e) {
 			
@@ -97,7 +127,8 @@ function ProfileWindow(title) {
 		                //getting media
 		                var image = event.media; 
 		                user_image.image = image;
-		                 
+		               	upload_image(image);
+						
 		                //checking if it is photo
 		                if(event.mediaType == Ti.Media.MEDIA_TYPE_PHOTO)
 		                {
@@ -142,7 +173,7 @@ function ProfileWindow(title) {
 		                var image = event.media; 
 		                user_image.image = image;
 		                // set image view
-		                 
+		                upload_image(image);
 		                //checking if it is photo
 		                if(event.mediaType == Ti.Media.MEDIA_TYPE_PHOTO)
 		                {
@@ -167,15 +198,7 @@ function ProfileWindow(title) {
 		dialog.show();
 	}
 	
-	header.add(user_image);
-	user_image.addEventListener('click', add_image);
 
-	var content = Ti.UI.createView({
-		layout: 'vertical',
-		width: Ti.UI.FILL,
-		height: Ti.UI.SIZE
-	});
-	header.add(content);
 	
 //***********************************************************
 //EDIT PROFILE POP-DOWN
@@ -267,7 +290,7 @@ function ProfileWindow(title) {
 
 	});
 	header.add(recent_check_ins);
-	
+	var table = false;
 	function load_data(){
 		self.removeEventListener('focus', load_data);
 		global.api.profileInformation(function(data){
@@ -279,10 +302,15 @@ function ProfileWindow(title) {
 			following.text = "Following: "+data.following;
 			
 			user_image.image = data.picture_url;
+			if(table){
+					profile_info.remove(table);
+					
+				}
 			global.api.recent_checkins(function(data){
 				header.show();
 				self.remove(loading);
-				var table = global.api.search_results(data, function(wine){
+				
+				table = global.api.search_results(data, function(wine){
 					var wine_review = require('ui/handheld/WineReview');
 					self.containingTab.open(wine_review(wine));
 				});
@@ -292,6 +320,9 @@ function ProfileWindow(title) {
 		
 	};
 	self.addEventListener('focus', load_data);
+	self.addEventListener('blur', function(){
+		self.addEventListener('focus', load_data);
+	});
 	
 	self.add(profile_info);
 
