@@ -54,11 +54,11 @@ function DiscoverWindow(title) {
 
 
 
- var allwines = ['Type', 'Amarone', 'Blanc', 'Carmenere', 'Cabernet', 'Chenin', 'Chianti',
+ var allwines = ['Type', 'Amarone', 'Blanc', 'Carmenere', 'Cabernet', 'Chenin',
  'Grand', 'Grenache', 'Grigio', 'Gris', 'Merlot', 'Murray', 'Muscat', 'Pinot Noir', 'Riesling',
   'Sangiovese', 'Shiraz', 'Syrah', 'Traminer', 'Verdicchio', 'Zinfandel'];
  
- var redwines =  ['Type','Amarone', 'Cabernet',
+ var redwines =  ['Type','Amarone', 'Cabernet', 'Carmenere',
    'Grand', 'Grenache', 'Merlot', 'Pinot Noir',
   'Sangiovese', 'Shiraz', 'Syrah', 'Zinfandel'];
   
