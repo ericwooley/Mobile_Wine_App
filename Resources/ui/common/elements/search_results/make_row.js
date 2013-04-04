@@ -14,18 +14,20 @@ function make_row(wine){
 	if(wine.friend){
 		location = wine.friend.fname + ' ' + wine.friend.lname + ' checked in';
 		imageurl = wine.friend.picture_url;
-		img_width = 100;
+		img_width = '39%';
+		txt_width = '60%';
 	}
 	else{
 		location = wine.Appellation.Name + " - " +wine.Appellation.Region.Name;
 		imageurl = wine.Labels[0].Url;
-		img_width = 60;
+		img_width = '20%';
+		txt_width = '80%';
 	}
 	var row = Ti.UI.createTableViewRow
 	({
-		hasChild:true,
+		hasChild:false,
 		height:Ti.UI.SIZE,
-
+		className: 'WineRow'
 
 	});
 	
@@ -43,27 +45,48 @@ function make_row(wine){
 		left: 10,
 		right: 10,
 		borderRadius: 5,
-		backgroundColor: 'f2f2f2',
+		backgroundColor: '#F2F2F2',
 		layout: 'horizontal'
 	});
 	// This image will be the image of the wine
-	var image = Ti.UI.createImageView({ 		
+	var l_image = Ti.UI.createImageView({ 		
 		height: Ti.UI.SIZE,
-  		width: img_width,
-		top: 5,
-		bottom: 5,
-		left: 10,
+  		width: '75%',
+  		//borderColor:'black',
 		borderWidth: 1,
 		borderRadius: 10,
-  		clipsToBounds: true,
+		bottom: global.android? 0 : 10,
+		top: global.android? 0 : 10,
+  		//clipsToBounds: true,
 		image: imageurl,
+		//left: 10,
+		//backgroundColor: 'green'
 	});
+	var image = Ti.UI.createView({
+		height: Ti.UI.SIZE,
+		width: img_width,
+		//left: '1%',
+		//borderRadius: 10,
+		bottom: global.android? 0 : 10,
+		top: global.android? 0 : 10,
+		//backgroundColor: "#3C0017"
+	});
+	image.add(l_image);
+	if(wine.friend){
+		image.add(Ti.UI.createImageView({ 		
+		height: '35%',//Ti.UI.SIZE,
+  		width: Ti.UI.SIZE,
+		borderWidth: 1,
+		borderRadius: 5,
+  		//clipsToBounds: true,
+		image: wine.Labels[0].Url,
+		bottom: 0,
+		right: 0
+    }));
+	}
 	var txt_container = Ti.UI.createView({
 		height: Ti.UI.SIZE,
-		width: Ti.UI.FILL,
-		top: 5,
-		//right: 5,
-		//left: 5,
+		width: txt_width,
 		layout: 'vertical'
 	});
 	// Label for the location of the wine within the row
@@ -84,6 +107,7 @@ function make_row(wine){
 		right: 5,
 		color:'black',
 		text: name,
+		left: 10,
 		bottom:lbl_location.top,
 		font:{fontSize:14,fontWeight:'bold',fontFamily:'Helvetica Neue'},
 		touchEnabled:false
