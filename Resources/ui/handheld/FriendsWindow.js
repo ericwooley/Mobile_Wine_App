@@ -118,7 +118,8 @@ function FriendsWindow(title) {
 	var friend_list;
 	function load_fl(){
 		self.removeEventListener('focus', load_fl);
-		if(friend)
+		if(friend_list)
+			view.remove(friend_list);
 		global.api.load_friend_list(
 			function(list){
 				friend_list = list;
