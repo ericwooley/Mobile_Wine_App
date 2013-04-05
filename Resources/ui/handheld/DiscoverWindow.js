@@ -25,7 +25,7 @@ function DiscoverWindow(title) {
 	
 	var label_title = Ti.UI.createLabel({
 		color: global.colors.dark,
-		top: 5,
+		//top: 5,
 		text:"Today's Featured Wines",
 		font:{
             fontFamily:'Helvetica Neue',
@@ -217,7 +217,7 @@ function DiscoverWindow(title) {
 //***********************************************************************************
 	dropdown(view_discover, self, "Find", "Browse", "down", function(){
 		
-		view.setTop('10%');
+		view.setTop('5%');
 		view.setHeight('90%');
 		view.remove(table);
 		view.remove(label_title);

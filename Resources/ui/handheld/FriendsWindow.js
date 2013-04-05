@@ -7,7 +7,7 @@ function FriendsWindow(title) {
 		height: Ti.UI.FILL,
 		width: Ti.UI.FILL,
 		top: 15,
-		left: 0,
+		left: 10,
 		layout: 'vertical'
 	});
 	var Friend_view = Ti.UI.createView({

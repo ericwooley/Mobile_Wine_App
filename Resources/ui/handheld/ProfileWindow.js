@@ -275,7 +275,7 @@ function ProfileWindow(title) {
 
 	// RECENT CHECK-INS LABEL
 	var recent_check_ins = Ti.UI.createLabel({
-
+		top: 10,
   		color: global.colors.dark,
   		font: { fontFamily: 'Helvetica Neue', fontSize:20, fontWeight: 'bold'},
   		text: 'My Cellar',

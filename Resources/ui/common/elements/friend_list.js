@@ -15,7 +15,6 @@ module.exports = function(fl, callback){
 			width: Ti.UI.FILL,
 			height: Ti.UI.SIZE,
 			top: 10,
-			//left: 10,
 			//right: 5,
 			borderRadius: 5,
 			//backgroundColor: '#f2f2f2',
