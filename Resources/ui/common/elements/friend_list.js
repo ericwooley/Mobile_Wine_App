@@ -18,7 +18,8 @@ module.exports = function(fl, callback){
 			//left: 10,
 			//right: 5,
 			borderRadius: 5,
-			backgroundColor: '#f2f2f2',
+			//backgroundColor: '#f2f2f2',
+			backgroundColor: 'fbf2df',
 			layout: 'horizontal'
 		});
 		// This image will be the image of the wine
@@ -45,7 +46,7 @@ module.exports = function(fl, callback){
 			color:'black',
 			bottom:5,
 			right: 5,
-			text: f.checkin_count + ' checkins',
+			text: f.checkin_count + ' Check-Ins',
 			font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
 			touchEnabled:false
 		});

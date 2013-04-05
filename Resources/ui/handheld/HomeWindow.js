@@ -12,7 +12,7 @@ function HomeWindow(title)
 
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
-	self.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
+	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 	//var text = global.elements.SimpleLabel('Home Page');
 	var view = Ti.UI.createView({
 				width: Ti.UI.FILL,

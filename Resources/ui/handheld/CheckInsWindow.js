@@ -13,7 +13,7 @@ function CheckInsWindow(title) {
 	var global = require('ui/common/globals');
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
-	self.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
+	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 	// Search View
 	var sv = Ti.UI.createView({
 		width: Ti.UI.FILL,
@@ -61,8 +61,8 @@ function CheckInsWindow(title) {
 	
 	var picture = Ti.UI.createImageView({
   		//height: 200,
-  		width: 200,
-		bottom: 30,
+  		width: 230,
+		bottom: '1%',
   		contentMode: 'aspectfill',
   		clipsToBounds: false,
   		image: 'images/Logo2.png',

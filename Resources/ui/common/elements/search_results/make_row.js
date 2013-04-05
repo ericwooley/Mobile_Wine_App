@@ -45,7 +45,8 @@ function make_row(wine){
 		left: 10,
 		right: 10,
 		borderRadius: 5,
-		backgroundColor: '#F2F2F2',
+		//backgroundColor: '#F2F2F2',
+		backgroundColor: 'fbf2df',
 		layout: 'horizontal'
 	});
 	// This image will be the image of the wine

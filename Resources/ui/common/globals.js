@@ -77,17 +77,17 @@ function createWindow(title){
 		width: '100%',
 		//barColor: module.exports.colors.dark,
 		barColor: 'black',
-		backgroundColor: "#f8e0ae",//module.exports.colors.lightest,
-		//backgroundImage:'images/BKGD_Texture.png'
-		backgroundGradient: {
-	        type: 'radial',
+		//backgroundColor: "#f8e0ae",//module.exports.colors.lightest,
+		backgroundImage:'images/BKGD_Texture.png'
+		//backgroundGradient: {
+	        //type: 'radial',
 	        //startPoint: { x: 50, y: 50 },
 	        //endPoint: { x: 50, y: 50 },
-	        colors: [ 'f7e6c4','f8e0ae' ],
-	        startRadius: '95%',
-	        endRadius: 0,
-	        backfillStart: true
-	    }
+	        //colors: [ 'f7e6c4','f8e0ae' ],
+	        //startRadius: '95%',
+	        //endRadius: 0,
+	        //backfillStart: true
+	    //}
 	});	
 	
 	return self;

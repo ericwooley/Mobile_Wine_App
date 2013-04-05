@@ -11,7 +11,7 @@ function ProfileWindow(title) {
 	var dropdown = require('ui/common/elements/dropdown');
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
-	self.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
+	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 	var loading = global.loading_animation();
 	
 	self.add(loading);
@@ -38,7 +38,6 @@ function ProfileWindow(title) {
 		height: Ti.UI.SIZE,
 		width: Ti.UI.FILL,
 		top: 35,
-		//backgroundColor: 'red'
 	});
 	
 	
@@ -47,7 +46,8 @@ function ProfileWindow(title) {
 		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE,
 		left: 10,
-		right: 10
+		right: 10, 
+
 		
 	});
 	profile_info.add(header);
@@ -277,23 +277,35 @@ function ProfileWindow(title) {
 	var recent_check_ins = Ti.UI.createLabel({
 
   		color: global.colors.dark,
-  		font: { fontSize:18, fontWeight: 'bold', textDecoration: 'underline'},
+  		font: { fontFamily: 'Helvetica Neue', fontSize:20, fontWeight: 'bold'},
   		text: 'My Cellar',
-  		top: 10,
   		height: Ti.UI.SIZE,
   		width: Ti.UI.FILL 
 
 	});
+	/*
+	var sep_line=Ti.UI.createLabel({
+	    height: 2,
+	    width: Ti.UI.FILL,
+	    top: 4,
+	    bottom: 5,
+	    //left: 10,
+	    //right: 10,
+	    backgroundColor: global.colors.dark
+	});*/
 	
 	header.add(recent_check_ins);
+	//header.add(sep_line);
+	
 	var table = false;
+
 	function load_data(){
 		self.removeEventListener('focus', load_data);
 		global.api.profileInformation(function(data){
 			userName.text = data.fname + ' ' + data.lname;			
 			fname.value = data.fname;
 			lname.value = data.lname;
-			check_ins.text= "Total Check-ins: " + data.chcount;
+			check_ins.text= "Total Check-Ins: " + data.chcount;
 			followers.text = "Followers: "+data.follower;
 			following.text = "Following: "+data.following;
 			

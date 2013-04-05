@@ -11,7 +11,7 @@ function DiscoverWindow(title) {
 	var global = require('ui/common/globals');
 	var dropdown = require('ui/common/elements/dropdown');
 	var self = global.createWindow(title);
-	self.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
+	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 	var TU = require ('/TitanUp/TitanUp');
 
 	// This view holds the wine list
@@ -25,6 +25,7 @@ function DiscoverWindow(title) {
 	
 	var label_title = Ti.UI.createLabel({
 		color: global.colors.dark,
+		top: 5,
 		text:"Today's Featured Wines",
 		font:{
             fontFamily:'Helvetica Neue',

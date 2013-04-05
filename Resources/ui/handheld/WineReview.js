@@ -5,7 +5,7 @@
 function WineReview(wine, friend){
 	var global = require('ui/common/globals');	
 	var self = global.createWindow('');
-	self.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
+	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 	var all = wine.all_information;
 	
 	
@@ -70,7 +70,8 @@ function WineReview(wine, friend){
 					left: 10,
 					right: 5,
 					borderRadius: 5,
-					backgroundColor: '#f2f2f2',
+					//backgroundColor: '#f2f2f2',
+				    backgroundColor: 'fbf2df',
 					layout: 'horizontal'
 				});
 				var user_image = Ti.UI.createImageView({

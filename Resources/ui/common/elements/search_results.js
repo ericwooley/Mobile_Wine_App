@@ -20,7 +20,7 @@ module.exports = function(result, callback){
 		var message = Ti.UI.createLabel
 		({
 			color:'black',
-			text: "0 results",
+			text: "0 Results",
 			font:{fontSize:16,fontWeight:'normal',fontFamily:'Helvetica Neue'},
 			touchEnabled:false
 		});

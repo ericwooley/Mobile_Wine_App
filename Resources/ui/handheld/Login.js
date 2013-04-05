@@ -4,13 +4,13 @@ function LoginWindow() {
 	self.navBarHidden = true;
 	
 	
-	
 	var Body = global.elements.SimpleView('vertical');
 	
 	var emailTextField = Ti.UI.createTextField({
 		//borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
   		color: '#336699',
-  		top: 20,
+  		font: {fontFamily: 'Helvetica Neue', fontSize: 16, fontWeight: 'bold'},
+  		top: 10,
   		left: 10,
   		width: '80%',
   		backgroundColor: 'white',
@@ -21,6 +21,7 @@ function LoginWindow() {
 	var passwordTextField = Ti.UI.createTextField({
 		//borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
   		color: '#336699',
+  		font: {fontFamily: 'Helvetica Neue', fontSize: 16, fontWeight: 'bold'},
   		width: '55%',
   		top: 0,
   		left: 10,
@@ -43,7 +44,7 @@ function LoginWindow() {
 	});
 	var pwBoxHint = Ti.UI.createLabel({
 		text: 'Hide Password',
-		font: {fontSize: 14},
+		font: {fontFamily: 'Helvetica Neue', fontSize: 12},
 		right: 0,
 		bottom: 1,
 		color: '#777777'
@@ -77,23 +78,27 @@ function LoginWindow() {
 	
 	var loginButton = Ti.UI.createButton({
 		title: 'Login',
+		font: {fontFamily: 'Helvetica Neue', fontSize: 16, fontWeight: 'bold'},
 		top: 15,
 		width: '80%',
+		top: 7,
 		enabled: false
 		
 	});
 	
 	var login_Label = Ti.UI.createLabel({
-		text: "Don't have an account? Signing up is easy, just hit register instead of login.",
+		text: "Don't have an account? Signing up is easy! Just hit register instead of login to create an account.",
 		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-		color: 'black',
-		top: 5,
+		font: {fontFamily: 'Helvetica Neue', fontSize: 11, fontWeight: 'bold'},
+		color: global.colors.dark,
+		top: 15,
 		width: '80%'
 	});
 	
 	var registerButton = Ti.UI.createButton({
+		font: {fontFamily: 'Helvetica Neue', fontSize: 16, fontWeight: 'bold'},
 		title:'Register',
-		top: 10,
+		top: 2,
 		width: '80%',
 		enabled: false
 	});
@@ -138,12 +143,12 @@ function LoginWindow() {
 	   
 	});	
 	var fieldHints = Ti.UI.createLabel({
-		text: "To continue, enter a valid E-Mail and 6 character password.",
+		text: "To login, please enter your e-Mail address and 6-character password.",
 		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 		width: '80%',
-		top: 5,
+		bottom: 2,
 		color: global.colors.dark,
-		font: {fontSize: 12}
+		font: {fontFamily: 'Helvetica Neue', fontSize: 11, fontWeight: 'bold'}
 	})
 	function validateFields(e){
 		//global.store_string('email', emailTextField.value);
@@ -182,10 +187,11 @@ function LoginWindow() {
 		layout: 'vertical',
 		width: "80%",
 		height: Ti.UI.SIZE,
-		backgroundColor: 'white'
+		backgroundColor: 'white',
+		borderColor: '#BBBBBB'
 	});
 	var locseperator=Ti.UI.createLabel({
-	    height:2,
+	    height: 2,
 	    width: Ti.UI.FILL,
 	    top: 5,
 	    bottom: 5,
