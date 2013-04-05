@@ -11,7 +11,7 @@ function DiscoverWindow(title) {
 	var global = require('ui/common/globals');
 	var dropdown = require('ui/common/elements/dropdown');
 	var self = global.createWindow(title);
-	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
+	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black@2x.png';
 	var TU = require ('/TitanUp/TitanUp');
 
 	// This view holds the wine list
