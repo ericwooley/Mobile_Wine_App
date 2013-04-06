@@ -20,7 +20,7 @@ function WineReview(wine, friend){
 	var overview = Ti.UI.createView({
 		height: '100%',
 		width: '100%',
-		layout: 'vertical'		
+		layout: 'vertical',	
 	});
 	// Add the header to the view.
 	var header = require('ui/handheld/Wine_Review/header');
@@ -72,10 +72,9 @@ function WineReview(wine, friend){
 					borderRadius: 5,
 					//backgroundColor: '#f2f2f2',
 				    backgroundColor: 'fbf2df',
-					layout: 'horizontal'
+					layout: 'horizontal',
 				});
 				var user_image = Ti.UI.createImageView({
-  		
 			  		height: Ti.UI.SIZE,
 			  		width: 60,
 					top: 10,
@@ -110,7 +109,7 @@ function WineReview(wine, friend){
 					text: '"'+review.comment + '"',
 					height: Ti.UI.SIZE,
 					width: Ti.UI.FILL,
-					bottom: 10,
+					bottom: 15,
 					left: 10, 
 	    			right: 10,
 				}));
@@ -127,7 +126,7 @@ function WineReview(wine, friend){
 				backgroundColor:'transparent',
 				style: Ti.UI.iPhone.TableViewStyle.PLAIN,
 				separatorStyle: Titanium.UI.iPhone.TableViewSeparatorStyle.NONE,
-				separatorColor: 'transparent'
+				separatorColor: 'transparent',
 			});
 			
 			overview.add(tableview);

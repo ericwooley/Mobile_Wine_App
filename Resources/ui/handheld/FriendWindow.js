@@ -15,7 +15,7 @@ function FriendWindow(friend) {
 	
 	// Creates the default window with global color scheme
 	var self = global.createWindow(' ');
-	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black@2x.png';
+	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 		
 	// Creates back button
 	var back = Ti.UI.createButton({ title: "Back" });

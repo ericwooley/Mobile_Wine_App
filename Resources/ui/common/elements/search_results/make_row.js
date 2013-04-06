@@ -27,7 +27,7 @@ function make_row(wine){
 	({
 		hasChild:false,
 		height:Ti.UI.SIZE,
-		className: 'WineRow'
+		className: 'WineRow',
 
 	});
 	
@@ -47,7 +47,7 @@ function make_row(wine){
 		borderRadius: 5,
 		//backgroundColor: '#F2F2F2',
 		backgroundColor: 'fbf2df',
-		layout: 'horizontal'
+		layout: 'horizontal',
 	});
 	// This image will be the image of the wine
 	var l_image = Ti.UI.createImageView({ 		
@@ -73,6 +73,7 @@ function make_row(wine){
 		//backgroundColor: "#3C0017"
 	});
 	image.add(l_image);
+	
 	if(wine.friend){
 		image.add(Ti.UI.createImageView({ 		
 		height: '40%',//Ti.UI.SIZE,
@@ -85,10 +86,12 @@ function make_row(wine){
 		right: 0
     }));
 	}
+
 	var txt_container = Ti.UI.createView({
 		height: Ti.UI.SIZE,
 		width: txt_width,
-		layout: 'vertical'
+		layout: 'vertical',
+		
 	});
 	// Label for the location of the wine within the row
 	var lbl_location = Ti.UI.createLabel

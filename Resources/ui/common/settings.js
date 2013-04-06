@@ -2,7 +2,7 @@
 module.exports = function(w)
 {	
 	var global = require('ui/common/globals');
-	w.barImage='images/iPhone_Nav_Bar_With_Bkgrd.png';
+	w.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 	
 	// This is where I am going put the with all the results.
 	var overview = Ti.UI.createView({

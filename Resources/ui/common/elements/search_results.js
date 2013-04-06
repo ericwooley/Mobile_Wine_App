@@ -15,7 +15,7 @@ module.exports = function(result, callback){
 	{
 		var row = Ti.UI.createTableViewRow
 		({
-			hasChild:true
+			hasChild:true,
 		});
 		var message = Ti.UI.createLabel
 		({
@@ -30,7 +30,6 @@ module.exports = function(result, callback){
 	var table = Titanium.UI.createTableView
 	({
 		backgroundColor:'transparent',
-		top:10,
 		width:Ti.UI.FILL,
 		height:Ti.UI.FILL,
 		data:tbl_data,

@@ -32,7 +32,7 @@ module.exports = function(wine){
 		width: Ti.UI.FILL,
 		color: '#888',
 		textAlign: 'left',
-		value: 'Leave a comment about this wine'
+		value: 'Leave a comment about this wine...'
 	});
 
 

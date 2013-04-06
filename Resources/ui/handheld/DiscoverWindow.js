@@ -11,15 +11,15 @@ function DiscoverWindow(title) {
 	var global = require('ui/common/globals');
 	var dropdown = require('ui/common/elements/dropdown');
 	var self = global.createWindow(title);
-	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black@2x.png';
+	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 	var TU = require ('/TitanUp/TitanUp');
 
 	// This view holds the wine list
 	var view = Ti.UI.createView({
-		top:'40%',
+		top:'32%',
 		left:0,
 		width:'100%',
-		height:'60%',
+		height:'70%',
 		layout: 'vertical'
 	});
 	
@@ -88,7 +88,7 @@ function DiscoverWindow(title) {
 		top:0,
 		width:'90%',
 		left:'5%',
-		hintText:' Discover Wine...',
+		hintText:' Discover a wine...',
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});
 	
