@@ -16,16 +16,16 @@ function DiscoverWindow(title) {
 
 	// This view holds the wine list
 	var view = Ti.UI.createView({
-		top:'32%',
+		top:'35%',
 		left:0,
 		width:'100%',
 		height:'70%',
-		layout: 'vertical'
+		layout: 'vertical', 
 	});
 	
 	var label_title = Ti.UI.createLabel({
 		color: global.colors.dark,
-		//top: 5,
+		top:'5%',
 		text:"Today's Featured Wines",
 		font:{
             fontFamily:'Helvetica Neue',
@@ -220,6 +220,7 @@ function DiscoverWindow(title) {
 		view.setTop('5%');
 		view.setHeight('90%');
 		view.remove(table);
+		view.setBottom('5%');
 		view.remove(label_title);
 		self.remove(view);
 		label_title.setText("Search Results");
