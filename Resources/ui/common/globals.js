@@ -4,6 +4,8 @@
  */
 var globals  =
 {
+	
+	//imageFactory: require('mobile'),
 	/**
 	 * @cfg {boject} colors
 	 * Our color scheme

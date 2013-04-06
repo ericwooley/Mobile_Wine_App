@@ -19,7 +19,7 @@ function make_row(wine){
 	}
 	else{
 		location = wine.Appellation.Name + " - " +wine.Appellation.Region.Name;
-		imageurl = wine.Labels[0].Url;
+		imageurl = wine.Labels[wine.Labels.length-1].Url;
 		img_width = '20%';
 		txt_width = '80%';
 	}
@@ -46,46 +46,69 @@ function make_row(wine){
 		right: 10,
 		borderRadius: 5,
 		//backgroundColor: '#F2F2F2',
-		backgroundColor: 'fbf2df',
-		layout: 'horizontal',
+
+		backgroundColor: '#fbf2df',
+		layout: 'horizontal'
+
 	});
 	// This image will be the image of the wine
 	var l_image = Ti.UI.createImageView({ 		
 		height: Ti.UI.SIZE,
-  		width: '75%',
-  		//borderColor:'black',
-		borderWidth: 1,
-		borderRadius: 10,
-		bottom: global.android? 0 : 10,
-		top: global.android? 0 : 10,
-  		//clipsToBounds: true,
+  		width: Ti.UI.SIZE,
+  		borderColor:'black',
+		//borderRadius: 10,
+		bottom: 0,
+		right: 0,
 		image: imageurl,
-		//left: 10,
-		//backgroundColor: 'green'
 	});
+	
 	var image = Ti.UI.createView({
 		height: Ti.UI.SIZE,
+		//width: Ti.UI.SIZE,
 		width: img_width,
 		//left: '1%',
 		//borderRadius: 10,
 		bottom: global.android? 0 : 10,
 		top: global.android? 0 : 10,
-		//backgroundColor: "#3C0017"
+		backgroundColor: "#3C0017"
 	});
-	image.add(l_image);
+
 	
 	if(wine.friend){
-		image.add(Ti.UI.createImageView({ 		
-		height: '40%',//Ti.UI.SIZE,
-  		width: Ti.UI.SIZE,
-		//borderWidth: 1,
-		borderRadius: 5,
-  		//clipsToBounds: true,
-		image: wine.Labels[0].Url,
-		bottom: 0,
-		right: 0
-    }));
+		
+		lbl = Ti.UI.createImageView({ 		
+			//height: '40%',//Ti.UI.SIZE,
+	  		//width: '80%',
+			//borderWidth: 1,
+			//borderRadius: 10,
+	  		//clipsToBounds: true,
+			image: wine.Labels[wine.Labels.length-1].Url,
+			top: 0,
+			left: 0
+	   });
+	   image.add(lbl);
+	   var label_load = function(){
+			
+	   		lbl.removeEventListener('load', label_load);
+		   	var tmp = lbl.toBlob( );
+			if(tmp)
+				lbl.image = tmp.imageAsThumbnail(80);
+				
+	   };
+	   
+	   //lbl.addEventListener('load', label_load);
+		
 	}
+	image.add(l_image);
+	var l_image_load = function(){
+		l_image.removeEventListener('load', l_image_load);
+		var tmp = l_image.toBlob( );
+		 if(tmp)
+			 l_image.setImage(tmp.imageAsResized(80, 80));
+		//l_image.setWidth('80%');
+	}
+
+	l_image.addEventListener('load', l_image_load );
 
 	var txt_container = Ti.UI.createView({
 		height: Ti.UI.SIZE,
