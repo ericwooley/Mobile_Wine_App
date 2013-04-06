@@ -32,6 +32,16 @@ function WineReview(wine, friend){
 			all.Labels[0].Url
 	);
 	overview.add(head);
+	var FriendsReviews = Ti.UI.createLabel({
+		top: 10,
+		left: 10,
+  		color: global.colors.dark,
+  		font: { fontFamily: 'Helvetica Neue', fontSize:18, fontWeight: 'bold'},
+  		text: 'Reviews',
+  		height: Ti.UI.SIZE,
+  		width: Ti.UI.FILL 
+	});
+	overview.add(FriendsReviews);
 	// if(friend)
 		// overview.add(Ti.UI.createLabel({
 			// text: friend.fname + "'s Reviews of this wine",

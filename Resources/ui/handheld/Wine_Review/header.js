@@ -10,25 +10,18 @@ function header(name, winery, location, region, label_url, wine_info ){
 		top: 35,
 		left: 10,
 		right: 10,
+
 	});
 	
-	var FriendsReviews = Ti.UI.createLabel({
-		top: 10,
-  		color: global.colors.dark,
-  		font: { fontFamily: 'Helvetica Neue', fontSize:18, fontWeight: 'bold'},
-  		text: 'Reviews On This Wine',
-  		height: Ti.UI.SIZE,
-  		width: Ti.UI.FILL 
-	});
+
 	
 	// The label image.
 	var bottle_label = Ti.UI.createImageView({ 		
-	  	height: '50%',
+	  	//height: '50%',
 	  	width: Ti.UI.SIZE ,
 	  	clipsToBounds: true,
 	  	image: label_url,
 	  	//top: 5,
-	  	layout: 'vertical'
 	});
 	
 	var right_text_view = Ti.UI.createView({
@@ -37,6 +30,7 @@ function header(name, winery, location, region, label_url, wine_info ){
 		height: Ti.UI.SIZE,
 		left: 10,
 		top: 0,
+
 	});
 	
 	// The text to the right of the image
@@ -73,7 +67,6 @@ function header(name, winery, location, region, label_url, wine_info ){
 	
 	h.add(bottle_label);
 	h.add(right_text_view);
-	h.add(FriendsReviews)
 	return h;
 	
 	
