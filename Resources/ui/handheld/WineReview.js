@@ -29,7 +29,7 @@ function WineReview(wine, friend){
 			all.Vineyard.Name,
 			all.Appellation.Name,
 			all.Appellation.Region.Name,
-			all.Labels[0].Url
+			all.Labels[all.Labels.length - 1].Url
 	);
 	overview.add(head);
 	var FriendsReviews = Ti.UI.createLabel({
@@ -80,8 +80,7 @@ function WineReview(wine, friend){
 					left: 10,
 					right: 5,
 					borderRadius: 5,
-					//backgroundColor: '#f2f2f2',
-				    backgroundColor: 'fbf2df',
+					backgroundColor: '#f2f2f2',
 					layout: 'horizontal',
 				});
 				var user_image = Ti.UI.createImageView({

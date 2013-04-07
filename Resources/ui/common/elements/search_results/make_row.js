@@ -3,7 +3,7 @@
  */
 
 function make_row(wine){
-	
+	 var global = require('ui/common/globals');	
 	name = wine.Name;
 	try{
 		winetype = wine.Varietal.WineType.Name;
@@ -11,18 +11,13 @@ function make_row(wine){
 	catch(err){
 		winetype = "Unknown";
 	}
-	if(wine.friend){
-		location = wine.friend.fname + ' ' + wine.friend.lname + ' checked in';
-		imageurl = wine.friend.picture_url;
-		img_width = '39%';
-		txt_width = '60%';
-	}
-	else{
-		location = wine.Appellation.Name + " - " +wine.Appellation.Region.Name;
-		imageurl = wine.Labels[wine.Labels.length-1].Url;
-		img_width = '20%';
-		txt_width = '80%';
-	}
+	img_width = '20%';
+	txt_width = '80%';
+	
+
+	location = wine.Appellation.Name + " - " +wine.Appellation.Region.Name;
+	//imageurl = wine.Labels[wine.Labels.length-1].Url;
+	imageurl = wine.Labels[0].Url;
 	var row = Ti.UI.createTableViewRow
 	({
 		hasChild:false,
@@ -38,81 +33,42 @@ function make_row(wine){
 		location: location,
 		all_information: wine
 	};
-	var rc = Ti.UI.createView({
+	var row_block = Ti.UI.createView({
 		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE,
 		top: 10,
 		left: 10,
 		right: 10,
 		borderRadius: 5,
-		//backgroundColor: '#F2F2F2',
-
 		backgroundColor: '#fbf2df',
+		layout: 'vertical'
+
+	});
+	var wine_info = Ti.UI.createView({
+		width: Ti.UI.FILL,
+		height: Ti.UI.SIZE,
 		layout: 'horizontal'
 
 	});
-	// This image will be the image of the wine
-	var l_image = Ti.UI.createImageView({ 		
-		height: Ti.UI.SIZE,
-  		width: Ti.UI.SIZE,
-  		borderColor:'black',
-		//borderRadius: 10,
-		bottom: 0,
-		right: 0,
-		image: imageurl,
-	});
 	
+	
+	// This image will be the image of the wine
 	var image = Ti.UI.createView({
 		height: Ti.UI.SIZE,
-		//width: Ti.UI.SIZE,
-		width: img_width,
-		//left: '1%',
-		//borderRadius: 10,
-		bottom: global.android? 0 : 10,
-		top: global.android? 0 : 10,
-		backgroundColor: "#3C0017"
+		width: '20%',
+		
 	});
-
-	
-	if(wine.friend){
-		
-		lbl = Ti.UI.createImageView({ 		
-			//height: '40%',//Ti.UI.SIZE,
-	  		//width: '80%',
-			//borderWidth: 1,
-			//borderRadius: 10,
-	  		//clipsToBounds: true,
-			image: wine.Labels[wine.Labels.length-1].Url,
-			top: 0,
-			left: 0
-	   });
-	   image.add(lbl);
-	   var label_load = function(){
-			
-	   		lbl.removeEventListener('load', label_load);
-		   	var tmp = lbl.toBlob( );
-			if(tmp)
-				lbl.image = tmp.imageAsThumbnail(80);
-				
-	   };
-	   
-	   //lbl.addEventListener('load', label_load);
-		
-	}
-	image.add(l_image);
-	var l_image_load = function(){
-		l_image.removeEventListener('load', l_image_load);
-		var tmp = l_image.toBlob( );
-		 if(tmp)
-			 l_image.setImage(tmp.imageAsResized(80, 80));
-		//l_image.setWidth('80%');
-	}
-
-	l_image.addEventListener('load', l_image_load );
+	image.add(Ti.UI.createImageView({ 
+		width: 50,
+		top: 10,
+		left: 10,
+		image: imageurl,
+		backgroundImage: 'blue'
+	}));
 
 	var txt_container = Ti.UI.createView({
 		height: Ti.UI.SIZE,
-		width: txt_width,
+		width: '80%',
 		layout: 'vertical',
 		
 	});
@@ -141,8 +97,8 @@ function make_row(wine){
 	
 	});	
 
-	// Label for the date within the row
-	var lbl_date = Ti.UI.createLabel
+	// Label for the name
+	var lbl_name = Ti.UI.createLabel
 	({
 		right:5,
 		color:'black',
@@ -154,13 +110,58 @@ function make_row(wine){
 	});
 
 	// Add each of these features to the row, then push the row
-	rc.add(image);
-	rc.add(txt_container);
-	txt_container.add(lbl_date);
+	wine_info.add(image);
+	wine_info.add(txt_container);
+	txt_container.add(lbl_name);
 	txt_container.add(lbl_type);
 	txt_container.add(lbl_location);
+	row_block.add(wine_info);
+	if(wine.friend){
+		var friend_name = wine.friend.fname + ' ' + wine.friend.lname + ' checked in';
+		var friend_info_row = Ti.UI.createView({
+			width: Ti.UI.FILL,
+			height: Ti.UI.SIZE,
+			layout: 'horizontal'
+		});
+		
+		var friend_picture = Ti.UI.createView({height: Ti.UI.SIZE, width: '20%',top: 10, bottom: 10});
+		friend_picture.add(Ti.UI.createImageView({
+			image: wine.friend.picture_url,
+			width: 50,
+			left: 10,
+
+			borderRadius: 10,
+			backgroundColor: 'black'
+		}));
+		
+		var rating_container = Ti.UI.createView({
+			width: '80%',
+			height: Ti.UI.SIZE,
+			layout: 'vertical'
+		});
+		
+		// Add user rating
+		rating_container.add(Ti.UI.createLabel({
+			color: 'black',
+			text: wine.friend.rating + '/10',
+			left: 10,
+			font: {fontSize: 20, fontStyle: 'bold'}
+		}));
+		// Add User Comment
+		rating_container.add(Ti.UI.createLabel({
+			color: 'black',
+			text: '"'+wine.friend.comment+'"',
+			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+			font: {fontSize: 12, fontStyle: 'italic'}
+		}));
+		
+		
+		friend_info_row.add(friend_picture);
+		friend_info_row.add(rating_container);
+		row_block.add(friend_info_row);
+	}
 	
-	row.add(rc);
+	row.add(row_block);
 	return row;
 };
 module.exports = make_row;

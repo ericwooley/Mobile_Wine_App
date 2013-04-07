@@ -17,18 +17,15 @@ function header(name, winery, location, region, label_url, wine_info ){
 	
 	// The label image.
 	var bottle_label = Ti.UI.createImageView({ 		
-	  	//height: '50%',
-	  	width: Ti.UI.SIZE ,
-	  	clipsToBounds: true,
-	  	image: label_url,
-	  	//top: 5,
+	  	width: 100 ,
+	  	image: label_url
 	});
 	
 	var right_text_view = Ti.UI.createView({
 		layout: 'vertical',
-		width: '70%',
+		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE,
-		left: 10,
+		//left: 10,
 		top: 0,
 
 	});
@@ -38,7 +35,7 @@ function header(name, winery, location, region, label_url, wine_info ){
 		text: name,
 		height: Ti.UI.SIZE,
 		width: Ti.UI.SIZE,
-		left: 0,
+		left: 10,
 		top: 0,
 		color: 'black',
 	});
@@ -47,7 +44,7 @@ function header(name, winery, location, region, label_url, wine_info ){
 		text: winery,
 		height: Ti.UI.SIZE,
 		width: Ti.UI.SIZE,
-		left: 0,
+		left: 10,
 		font:{fontSize:14,fontWeight:'italic',fontFamily:'Helvetica Neue'},
 		color: 'black',
 	});
@@ -56,7 +53,7 @@ function header(name, winery, location, region, label_url, wine_info ){
 		text: location + ', ' + st2ab(region),
 		height: Ti.UI.SIZE,
 		width: Ti.UI.SIZE,
-		left: 0,
+		left: 10,
 		font:{fontSize:14,fontWeight:'italic',fontFamily:'Helvetica Neue'},
 		color: 'black',
 	});

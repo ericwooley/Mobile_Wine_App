@@ -17,8 +17,7 @@ module.exports = function(fl, callback){
 			top: 10,
 			//right: 5,
 			borderRadius: 5,
-			//backgroundColor: '#f2f2f2',
-			backgroundColor: 'fbf2df',
+			backgroundColor: '#f2f2f2',
 			layout: 'horizontal'
 		});
 		// This image will be the image of the user
