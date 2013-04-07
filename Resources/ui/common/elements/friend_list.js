@@ -21,13 +21,14 @@ module.exports = function(fl, callback){
 			backgroundColor: 'fbf2df',
 			layout: 'horizontal'
 		});
-		// This image will be the image of the wine
+		// This image will be the image of the user
 		var image = Ti.UI.createImageView
 		({ 		
   			  	height: Ti.UI.SIZE,
-		  		width: '30%',
+		  		width: '27%',
 				top: 10,
 				bottom: 10,
+				left: 5,
 				borderWidth: 1,
 				borderRadius: 10,
 		  		clipsToBounds: true,

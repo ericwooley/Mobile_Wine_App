@@ -30,8 +30,8 @@ if (Ti.version < 1.8 ) {
 	{
 		
 		var dia = Ti.UI.createAlertDialog({
-			title: "Logging you in",
-			message: "One moment..."
+			title: "Logging You In",
+			message: "One Moment..."
 		});
 		dia.show();
 		

@@ -217,8 +217,8 @@ function DiscoverWindow(title) {
 //***********************************************************************************
 	dropdown(view_discover, self, "Find", "Browse", "down", function(){
 		
-		view.setTop('5%');
-		view.setHeight('90%');
+		view.setTop('4%');
+		view.setHeight('100%');
 		view.remove(table);
 		view.setBottom('5%');
 		view.remove(label_title);

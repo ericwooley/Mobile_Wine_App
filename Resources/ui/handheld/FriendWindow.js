@@ -57,7 +57,7 @@ function FriendWindow(friend) {
 	//  USER IMAGE - upper left of view
 	//	***********************************************	
 	var user_image = Ti.UI.createImageView({
-  		
+  		//left: 10,
   		height: 100,
   		width: 100,
 		top: 0,
