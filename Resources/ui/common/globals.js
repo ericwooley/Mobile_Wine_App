@@ -5,7 +5,7 @@
 var globals  =
 {
 	
-	//imageFactory: require('mobile'),
+	imageFactory: require('ti.imagefactory'),
 	/**
 	 * @cfg {boject} colors
 	 * Our color scheme
