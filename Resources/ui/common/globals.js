@@ -142,6 +142,7 @@ function outputHook(win){
 	if(Titanium.Platform.osname == 'android'){
 		
 		settingsButton.setImage('/images/gearIconCrop.png');
+		//settingsButton.setImage(Titanium.UI.iPhone.SystemButton.REFRESH)
 		settingsButton.setRight(0);		
 		win.add(settingsButton);
 	}

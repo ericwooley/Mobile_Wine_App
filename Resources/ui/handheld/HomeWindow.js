@@ -35,6 +35,7 @@ function HomeWindow(title)
 	    height: 40, 
 	    backgroundColor: global.colors.dark,
 	});
+
 	
 	
 	view.add(top_label);
@@ -61,6 +62,21 @@ function HomeWindow(title)
 			view.add(table);
 		});
 	};
+	
+	
+	
+	// Refresh button
+	var refresh = Titanium.UI.createButton({
+    	systemButton : Titanium.UI.iPhone.SystemButton.REFRESH,
+	});
+	self.setLeftNavButton(refresh);
+	refresh.addEventListener('click',function(){
+   	    load_data()
+	});
+	
+	
+	
+	
 	self.addEventListener('focus', load_data);
 	self.addEventListener('blur', function(){
 		Ti.API.info("-----------------------------------------------");
