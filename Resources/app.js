@@ -33,7 +33,7 @@ if (Ti.version < 1.8 ) {
 			title: "Logging You In",
 			message: "One Moment..."
 		});
-		dia.show();
+		//dia.show();
 		
 		global.api.login(email, password, function(response){
 			dia.hide();

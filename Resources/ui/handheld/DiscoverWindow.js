@@ -25,7 +25,7 @@ function DiscoverWindow(title) {
 	
 	var label_title = Ti.UI.createLabel({
 		color: global.colors.dark,
-		top:'5%',
+		top: '5%',
 		text:"Today's Featured Wines",
 		font:{
             fontFamily:'Helvetica Neue',
