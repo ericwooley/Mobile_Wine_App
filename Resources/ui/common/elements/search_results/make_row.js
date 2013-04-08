@@ -154,8 +154,14 @@ function make_row(wine){
 			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 			font: {fontSize: 12, fontStyle: 'italic'}
 		}));
-		
-		
+		if( wine.friend.user_wine_url.length > 0){
+			friend_info_row.add(Ti.UI.createImageView({
+				width: Ti.UI.FILL,
+				//height:,
+				left: 10, right: 10,
+				image: wine.friend.user_wine_url
+			}));
+		}
 		friend_info_row.add(friend_picture);
 		friend_info_row.add(rating_container);
 		row_block.add(friend_info_row);
