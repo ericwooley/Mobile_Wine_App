@@ -50,7 +50,7 @@ function make_row(wine){
 		layout: 'horizontal'
 
 	});
-	
+
 	
 	// This image will be the image of the wine
 	var image = Ti.UI.createView({
@@ -143,9 +143,9 @@ function make_row(wine){
 		// Add user rating
 		rating_container.add(Ti.UI.createLabel({
 			color: 'black',
-			text: wine.friend.rating + '/10',
+			text: 'Rated ' + wine.friend.rating + '/10',
 			left: 10,
-			font: {fontSize: 20, fontStyle: 'bold'}
+			font: {fontSize: 18, fontStyle: 'bold'}
 		}));
 		// Add User Comment
 		rating_container.add(Ti.UI.createLabel({
