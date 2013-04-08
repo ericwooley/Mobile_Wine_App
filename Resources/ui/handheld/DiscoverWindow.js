@@ -55,17 +55,18 @@ function DiscoverWindow(title) {
 
 
 
- var allwines = ['Type', 'Amarone', 'Barolo', 'Blanc', 'Carmenere', 'Cabernet', 
- 'Grand', 'Grenache', 'Grigio', 'Gris', 'Merlot', 'Murray', 'Muscat', 'Pinot Noir', 'Riesling',
-  'Sangiovese', 'Shiraz', 'Syrah', 'Traminer', 'Verdicchio', 'Zinfandel'];
+ var allwines = ['Type', 'Albarino', 'Barbera', 'Barolo', 'Blanc', 'Carmenere', 'Cabernet Sauvignon', 
+ 'Cabernet Franc', 'Chardonay', 'Chenin Blanc', 'Desert Wines', 'Dolcetto', 'Gamay', 'Grenache', 'Grigio', 
+ 'Gris', 'Madeira', 'Merlot', 'Mourvedre', 'Murray', 'Muscat', 'Nebbiolo', 'Petite Sirah', 'Pinot Blanc', 'Pinot Noir', 'Port', 'Primitivo', 'Riesling',
+  'Sangiovese', 'Sauvignon Blanc', 'Semillon', 'Shiraz', 'Syrah', 'Zinfandel', 'Vintage', 'Non-Vintage'];
  
- var redwines =  ['Type','Amarone', 'Barolo', 'Cabernet', 'Carmenere',
-   'Grand', 'Grenache', 'Merlot', 'Pinot Noir',
-  'Sangiovese', 'Shiraz', 'Syrah', 'Zinfandel'];
+ var redwines =  ['Type', 'Barbera', 'Barolo', 'Cabernet Sauvignon', 'Cabernet Franc', 'Carmenere',
+   'Dolcetto', 'Gamay', 'Grenache', 'Merlot', 'Mourvedre', 'Nebbiolo', 'Petite Sirah', 'Pinot Noir',
+  'Primitivo', 'Sangiovese', 'Shiraz', 'Syrah', 'Zinfandel'];
   
- var whitewines = ['Type','Blanc', 
-  'Grigio', 'Gris', 'Murray', 'Muscat', 'Riesling',
-  'Traminer', 'Verdicchio'];
+ var whitewines = ['Type','Albarino', 'Chardonay', 'Chenin Blanc', 
+  'Grigio', 'Gris', 'Murray', 'Muscat', 'Pinot Blanc', 'Riesling',
+  'Sauvignon Blanc', 'Semillon' ];
 
 // wines with filters not working
 //  'Barolo', 'Carmenere', 'Chianti', 'Bordeaux',
@@ -132,31 +133,54 @@ function DiscoverWindow(title) {
 //*****************************************************************
 
 	var wines = new Object;
-	wines['Amarone'] = '145';
-	wines['Australian'] = '145';
+	wines['Albarino'] = '136';
+//	wines['Amarone'] = '145';  DNE	
+    wines['Barbera'] = '172';	
 	wines['Barolo'] = '170';
-	wines['Blanc'] = '144';
+//	wines['Blanc'] = '144'; - doesnt work
 	wines['Bordeaux'] = '-2147483648'; // Filter doesnt work 
-	wines['Cabernet'] = '139';
+	wines['Cabernet Sauvignon'] = '139';
+    wines['Cabernet Franc']	= '197';
 	wines['Carmenere'] = '10081';
-	wines['Chenin'] = '163'; // Filter DNE load Sangiovese
-	wines['Chile'] = '10081';
-	wines['Chianti'] = '139';// filter DNE
-	wines['Grand'] = '10082';
+	wines['Chenin Blanc'] = '165'; 
+	wines['Chardonay'] = '140';
+//	wines['Chianti'] = '139';// DNE
+	wines['Desert Wines'] = '160';
+    wines['Dolcetto'] = '183';	
+	wines['Gamay'] = '150';
+	//wines['Grand'] = '10082'; DNE
 	wines['Grenache'] = '10080';
-	wines['Grigio'] = '194';
-	wines['Gris'] = '194';
+	wines['Grigio'] = '194';  //ok
+	wines['Gris'] = '194';  // ok
+//	wines['Junmai'] = ''; -- Sake
+	wines['Madeira'] = '154';
+//  wines['Malbec'] = '';	
 	wines['Merlot'] = '138';
 	wines['Murray'] = '162';
 	wines['Muscat'] = '173';
+    wines['Mourvedre'] = '10083';	
+    wines['Nebbiolo'] = '170';
+    wines['Non-Vintage'] = '182';
+	wines['Petite Sirah'] = '176';
 	wines['Pinot Noir'] = '143';
+	wines['Pinot Blanc'] = '168';
+    wines['Port'] = '155';
+    wines['Primitivo'] = '10084';	
+//  wines['Rhone Blends'] = '';	
 	wines['Riesling'] = '153';
 	wines['Rose'] = '147';
 	wines['Sangiovese'] = '163';
-	wines['Shiraz'] = '146';
-	wines['Syrah'] = '146';
-	wines['Traminer'] = '148';
-	wines['Verdicchio'] = '148';
+	wines['Sauvignon Blanc'] = '151';
+	wines['Semillon'] = '177';
+	wines['Shiraz'] = '146';  //ok
+//	wines['Sherry'] = '';
+	wines['Syrah'] = '146';  //ok
+//	wines['Tempranillo'] = '';
+//  wines['Torrontes'] = '';
+//	wines['Traminer'] = '148';  DNE
+//	wines['Verdicchio'] = '148'; DNE
+	wines['Vintage'] = '142';
+//	wines['Viognier'] = '148';
 	wines['Zinfandel'] = '141';
 			
 //******************************************************************************
