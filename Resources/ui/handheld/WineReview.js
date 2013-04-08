@@ -31,7 +31,9 @@ function WineReview(wine, friend){
 			all.Appellation.Region.Name,
 			all.Labels[all.Labels.length - 1].Url
 	);
-	overview.add(head);
+	overview.add(head.header);
+	var progressbar = Ti.UI.createProgressBar({width: Ti.UI.FILL, height: 20});
+	overview.add(progressbar);
 	var FriendsReviews = Ti.UI.createLabel({
 		top: 10,
 		left: 10,
@@ -41,14 +43,8 @@ function WineReview(wine, friend){
   		height: Ti.UI.SIZE,
   		width: Ti.UI.FILL 
 	});
+	
 	overview.add(FriendsReviews);
-	// if(friend)
-		// overview.add(Ti.UI.createLabel({
-			// text: friend.fname + "'s Reviews of this wine",
-			// width: Ti.UI.SIZE,
-			// height: Ti.UI.SIZE,
-			// left: 10
-		// }));
 	get_checkin_view = require('ui/handheld/Wine_Review/Checkin');
 
 	var ch = get_checkin_view(all);
@@ -142,8 +138,37 @@ function WineReview(wine, friend){
 		});
 	};
 	load_tables();
+	function upload_image(id, img){
+		progressbar.show(); 
+        var xhr = Titanium.Network.createHTTPClient();
+        xhr.onsendstream = function(e){
+		        progressbar.value = e.progress ;
+		};
+        xhr.onload = function(){
+        	progressbar.hide();
+        	            	Ti.API.info(this.responseText);
+
+        	res = JSON.parse(this.responseText);
+        	if(!res.success)
+        		alert("Server Error: \""+res.error+"\" Please try again later.");
+        }
+        Ti.API.info('Uploading photo: ' + "http://winelife.ericwooley.com/user/upload/wine/"+id);
+		xhr.open('POST', "http://winelife.ericwooley.com/user/upload/wine/"+id);
+		//f1 = Titanium.Filesystem.getFile(Titanium.Filesystem.resourcesDirectory,filename);
+		//iamge=f1.read(image);
+		xhr.send({profile_image: img});
+	};
+	
 	dd(ch.view, self, "Finish Check-In", "Check-In", "up", function(){
-		global.api.checkin(wine.id, ch.ta.value, Math.round(ch.rating.value), function(){
+		global.api.checkin(wine.id, ch.ta.value, Math.round(ch.rating.value), function(data){
+			Ti.API.info('checkin complete:' + data.id);
+			if(ch.ui == null){
+				Ti.API.info('upload_image is null');
+			}
+			else{
+				Ti.API.info('uploading image');
+				upload_image(data.id, ch.ui.image);
+			}
 			load_tables();
 		});
 	});

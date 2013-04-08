@@ -60,6 +60,93 @@ module.exports = function(wine){
 		width:300,
 		height:'auto'
 	});	
+	var camera = Ti.UI.createImageView({
+		image: '/images/camera.png',
+		width: '30%',
+		left: '10%'
+		
+	});
+	camera_button = Ti.UI.createView({
+		width: Ti.UI.SIZE,
+		height: Ti.UI.SIZE,
+		borderRadius: 10,
+		layout: 'horizontal'
+	});
+	var user_image = Ti.UI.createImageView({
+		width: '30%',
+		image:'/images/android_checkin_tab.png',
+		left: '10%'
+	});
+	camera_button.add(camera);
+	camera_button.add(user_image);
+	
+	var image;
+	var full_image = Ti.UI.createImageView({width: Ti.UI.SIZE, height: Ti.UI.SIZE});
+	function add_image(){
+		
+		//Create a dialog with options
+		var dialog = Titanium.UI.createOptionDialog({
+		    //title of dialog
+		    title: 'Choose an image source...',
+		    //options
+		    options: ['Camera','Photo Gallery', 'Cancel'],
+		    //index of cancel button
+		    cancel:2
+		});
+		//add event listener
+		dialog.addEventListener('click', function(e) {
+			
+		    //if first option was selected
+		    if(e.index == 0)
+		    {
+		        //then we are getting image from camera
+		        Titanium.Media.showCamera({
+		            //we got something
+		            success:function(event)
+		            {
+		                //getting media
+		                image = event.media; 
+		                user_image.image = image.imageAsThumbnail(50);
+		                full_image.image = image;
+		            },
+		            error:function(error)
+		            {
+		                //error happend, create alert
+		                var a = Titanium.UI.createAlertDialog({title:'Camera'});
+		                //set message
+		                if (error.code == Titanium.Media.NO_CAMERA)
+		                {
+		                    a.setMessage('Device does not have camera');
+		                }
+		                else
+		                {
+		                    a.setMessage('Unexpected error: ' + error.code);
+		                }
+		 
+		                a.show();
+		            },
+		            allowImageEditing:true,
+		            saveToPhotoGallery:true
+		        });
+		    }
+		    
+		    else if(e.index == 1)
+		    {
+		        //obtain an image from the gallery
+		        Titanium.Media.openPhotoGallery({
+		            success:function(event)
+		            {
+		                image = event.media; 
+		                user_image.image = image.imageAsThumbnail(50);
+		                full_image.image = image;
+		            }
+		             
+		        });
+		    }
+		});
+		dialog.show();
+	};
+	camera_button.addEventListener('click', add_image);
 	
 	// Record the values as they are changing
 	basicSlider.addEventListener('change',function(e)
@@ -80,11 +167,11 @@ module.exports = function(wine){
 	});
 
 
-
 	overview.add(basicSliderLabel);
 	overview.add(basicSlider);
-	overview.add(name_lbl);
+	//overview.add(name_lbl);
 	overview.add(textArea);
+	overview.add(camera_button);
 
 	textArea._hintText = textArea.value;
 	textArea.addEventListener('focus',function(e){
@@ -100,11 +187,13 @@ module.exports = function(wine){
 	    }
 	});
 		
-
+	
 	var ret = {
 		ta: textArea,
 		view: overview,
-		rating: basicSlider
+		rating: basicSlider,
+		ui: full_image,
+		
 	};
 	return ret;
 }

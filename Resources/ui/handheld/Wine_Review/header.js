@@ -64,7 +64,7 @@ function header(name, winery, location, region, label_url, wine_info ){
 	
 	h.add(bottle_label);
 	h.add(right_text_view);
-	return h;
+	return {label_image: bottle_label, header: h};
 	
 	
 }

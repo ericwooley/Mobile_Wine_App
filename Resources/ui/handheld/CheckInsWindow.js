@@ -65,7 +65,7 @@ function CheckInsWindow(title) {
 		bottom: '1%',
   		contentMode: 'aspectfill',
   		clipsToBounds: false,
-  		image: 'images/Logo2.png',
+  		image: '/images/Logo2.png',
  	});
 
 	self.add(picture);
