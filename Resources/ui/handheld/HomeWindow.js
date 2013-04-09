@@ -9,7 +9,7 @@
 function HomeWindow(title)
 {
 	var global = require('ui/common/globals');
-	alert(global.user_id);
+	
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
 	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
