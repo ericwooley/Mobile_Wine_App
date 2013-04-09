@@ -88,7 +88,7 @@ function WineReview(wine, friend){
 				//  THIS IS WHERE THE SWIPE TO DELETE EVENT IS
 				rc.addEventListener('swipe', function(e){
 					
-					if(global.user_id == friend.ID){
+					if(global.user_id != review.friend.ID){
 						//do nothing
 						alert('You swiped a friends review ');
 					}
