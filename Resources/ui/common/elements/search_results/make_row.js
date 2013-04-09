@@ -60,7 +60,7 @@ function make_row(wine){
 	});
 	image.add(Ti.UI.createImageView({ 
 		width: 50,
-		top: 10,
+		//top: 10,
 		left: 10,
 		image: imageurl,
 		backgroundImage: 'blue'
