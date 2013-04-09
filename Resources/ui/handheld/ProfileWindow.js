@@ -102,7 +102,7 @@ function ProfileWindow(title) {
 			};
             xhr.onload = function(){
             	progressbar.hide();
-            	            	Ti.API.info(this.responseText);
+            	Ti.API.info(this.responseText);
 
             	res = JSON.parse(this.responseText);
             	if(!res.success)

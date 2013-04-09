@@ -68,7 +68,8 @@ function WineReview(wine, friend){
 				var r = Ti.UI.createTableViewRow({
 					hasChild:false,
 					selectionStyle: 'none',
-					layout: 'vertical'
+					layout: 'vertical',
+					touchEnabled: false
 				});
 				
 				// THIS IS ONE REVIEW ENTRY
@@ -81,14 +82,15 @@ function WineReview(wine, friend){
 					borderRadius: 5,
 					backgroundColor: '#f2f2f2',
 					layout: 'horizontal',
+					touchEnabled: true
 				});
+				rc.friend = review.friend
 				
 				
 				
 				//  THIS IS WHERE THE SWIPE TO DELETE EVENT IS
 				rc.addEventListener('swipe', function(e){
-					
-					if(global.user_id != review.friend.ID){
+					if(global.user_id != e.source.friend.ID){
 						//do nothing
 						alert('You swiped a friends review ');
 					}
@@ -99,7 +101,18 @@ function WineReview(wine, friend){
    	 				
 				});
 					
-				
+				//  THIS IS WHERE THE SWIPE TO DELETE EVENT IS
+				rc.addEventListener('click', function(e){
+					
+					if(global.user_id == e.source.friend.ID){
+						//do nothing
+						alert('clicked your own');
+					}
+					else
+					{
+						alert('you clicked another wine ' + global.user_id + ' ' + review.friend.ID);
+					}
+				});
 				
 				
 				
@@ -112,6 +125,7 @@ function WineReview(wine, friend){
 					borderRadius: 10,
 			  		clipsToBounds: true,
 			  		image: review.friend.picture_url,
+					touchEnabled: false
 			  		
 				});
 				rc.add(user_image);
@@ -119,6 +133,7 @@ function WineReview(wine, friend){
 					layout: 'vertical',
 					height: Ti.UI.SIZE,
 					width: Ti.UI.FILL,
+					touchEnabled: false
 				});
 				r.add(rc);
 				rc.add(rv);	
@@ -131,7 +146,8 @@ function WineReview(wine, friend){
 					font: {fontSize: 12, fontStyle: 'italic'},
 					textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT,
 					height: Ti.UI.SIZE,
-					width: Ti.UI.FILL
+					width: Ti.UI.FILL,
+					touchEnabled: false
 				}));	
 				
 				rc.add(Ti.UI.createLabel({
@@ -141,6 +157,7 @@ function WineReview(wine, friend){
 					bottom: 15,
 					left: 10, 
 	    			right: 10,
+					touchEnabled: false
 				}));
 				
 				
