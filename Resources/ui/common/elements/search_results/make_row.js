@@ -16,14 +16,12 @@ function make_row(wine){
 	
 
 	location = wine.Appellation.Name + " - " +wine.Appellation.Region.Name;
-	//imageurl = wine.Labels[wine.Labels.length-1].Url;
 	imageurl = wine.Labels[0].Url;
 	var row = Ti.UI.createTableViewRow
 	({
 		hasChild:false,
 		height:Ti.UI.SIZE,
 		className: 'WineRow',
-
 	});
 	
 	row.wine = {
@@ -42,7 +40,6 @@ function make_row(wine){
 		borderRadius: 5,
 		backgroundColor: '#fbf2df',
 		layout: 'vertical'
-
 	});
 	var wine_info = Ti.UI.createView({
 		width: Ti.UI.FILL,
@@ -50,8 +47,6 @@ function make_row(wine){
 		layout: 'horizontal'
 
 	});
-
-	
 	// This image will be the image of the wine
 	var image = Ti.UI.createView({
 		height: Ti.UI.SIZE,

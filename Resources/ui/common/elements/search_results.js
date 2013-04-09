@@ -35,13 +35,43 @@ module.exports = function(result, callback){
 		data:tbl_data,
 		style: Ti.UI.iPhone.TableViewStyle.PLAIN,
 		separatorStyle: Titanium.UI.iPhone.TableViewSeparatorStyle.NONE,
-		separatorColor: 'transparent'
+		separatorColor: 'transparent',
+		top: 10
 	});
 	if(pl.length > 0)
 		table.addEventListener('click', function(data){
 			callback(data.row.wine);
 		});
 	
-	return table;	
+	var table_view = Ti.UI.createView({
+		height: Ti.UI.FILL,
+		width: Ti.UI.SIZE
+	});
+	var refresh = Ti.UI.createButton({
+    	systemButton : global.android? null :Ti.UI.iPhone.SystemButton.REFRESH,
+    	top: 0,
+    	right: 0,
+    	height: 25,
+    	width: 25,
+    	//title: 'refresh',
+    	opacity: .9,
+    	backgroundColor: 'transparent'
+
+	});
+	refresh.add(Ti.UI.createImageView({
+		image: '/images/refresh.png',
+		top: 2,
+		bottom: 2,
+		left: 2,
+		right: 2
+	}));
+	refresh.addEventListener('click', function(e){
+		alert('event button clicked');
+	})
+	
+	table_view.add(table);
+	table_view.add(refresh);
+	
+	return table_view;	
 }
 
