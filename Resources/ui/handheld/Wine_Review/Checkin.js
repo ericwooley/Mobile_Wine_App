@@ -61,9 +61,11 @@ module.exports = function(wine){
 		width:300,
 		height:'auto'
 	});	
+	
+	//  Camera Image on check-in pull-down
 	var camera = Ti.UI.createImageView({
 		image: '/images/camera.png',
-		width: '30%',
+		width: '25%',
 		left: '10%'
 		
 	});
@@ -73,13 +75,30 @@ module.exports = function(wine){
 		borderRadius: 10,
 		layout: 'horizontal'
 	});
+	
+	
+	/*
 	var user_image = Ti.UI.createImageView({
 		width: '30%',
 		image:'/images/android_checkin_tab.png',
 		left: '10%'
 	});
+	*/
+	
+	//  Text on Check-in pull-down to add an image
+	var add_image_text = Titanium.UI.createLabel({
+		text:'Add an Image!',
+		color:'white',
+		font:{
+			fontSize:16
+		},
+		textAlign:'center',
+		width:'30%',
+		left: '10%'
+	});	
+	
 	camera_button.add(camera);
-	camera_button.add(user_image);
+	camera_button.add(add_image_text);
 	
 	var image;
 	var full_image = Ti.UI.createImageView({width: Ti.UI.SIZE, height: Ti.UI.SIZE});
