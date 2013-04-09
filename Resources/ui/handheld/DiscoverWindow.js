@@ -58,15 +58,15 @@ function DiscoverWindow(title) {
  var allwines = ['Type', 'Albarino', 'Barbera', 'Carmenere', 'Cabernet Sauvignon', 
  'Cabernet Franc', 'Chardonnay', 'Chenin Blanc', 'Dessert Wines', 'Dolcetto', 'Gamay', 'Grenache', 'Grigio', 
  'Gris', 'Madeira', 'Merlot', 'Mourvedre', 'Muscat', 'Nebbiolo', 'Petite Sirah', 'Pinot Blanc', 'Pinot Noir', 'Port', 'Primitivo', 'Riesling',
-  'Sangiovese', 'Sauvignon Blanc', 'Semillon', 'Shiraz', 'Syrah', 'Zinfandel', 'Non-Vintage'];
+  'Sangiovese', 'Sauvignon Blanc', 'Semillon', 'Sherry', 'Shiraz', 'Syrah', 'Tempranillo', 'Torrontes', 'Viognier', 'Zinfandel', 'Non-Vintage'];
  
  var redwines =  ['Type', 'Barbera',  'Cabernet Sauvignon', 'Cabernet Franc', 'Carmenere',
    'Dolcetto', 'Gamay', 'Grenache', 'Merlot', 'Mourvedre', 'Nebbiolo', 'Petite Sirah', 'Pinot Noir',
-  'Primitivo', 'Sangiovese', 'Shiraz', 'Syrah', 'Zinfandel'];
+  'Primitivo', 'Sangiovese', 'Shiraz', 'Syrah', 'Tempranillo', 'Zinfandel'];
   
  var whitewines = ['Type','Albarino', 'Chardonnay', 'Chenin Blanc', 
   'Grigio', 'Gris', 'Muscat', 'Pinot Blanc', 'Riesling',
-  'Sauvignon Blanc', 'Semillon' ];
+  'Sauvignon Blanc', 'Semillon', 'Torrontes', 'Viognier' ];
 
 // wines with filters not working
 //  'Barolo', 'Carmenere', 'Chianti', 'Bordeaux',
@@ -167,12 +167,12 @@ function DiscoverWindow(title) {
 	wines['Sauvignon Blanc'] = '151';
 	wines['Semillon'] = '177';
 	wines['Shiraz'] = '146';  
-//	wines['Sherry'] = '';
+	wines['Sherry'] = '157';
 	wines['Syrah'] = '146';  
-//	wines['Tempranillo'] = '';
-//  wines['Torrontes'] = '';
+	wines['Tempranillo'] = '169';
+    wines['Torrontes'] = '209';
 //	wines['Vintage'] = '142';  filter doesn't work
-//	wines['Viognier'] = '148';
+	wines['Viognier'] = '162';
 	wines['Zinfandel'] = '141';
 			
 //******************************************************************************
