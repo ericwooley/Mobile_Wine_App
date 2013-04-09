@@ -6,10 +6,23 @@ module.exports = function(result, callback){
 	//result.Products.List
 	var pl = result.Products.List;
 	Ti.API.info(pl.length + " results");
+	var first = true;
 	// if we have a result
 	if(pl.length > 0){
 		for(var i = 0; i < pl.length; ++i)
-			tbl_data.push(make_row(pl[i]));	
+			if(first){
+				tbl_data.push(make_row({
+					wine: pl[i],
+					top: 20
+				}));
+				first = false;
+			}
+			else{
+				tbl_data.push(make_row({
+					wine: pl[i],
+					top: 10
+				}));
+			}
 	}
 	else
 	{
@@ -27,6 +40,7 @@ module.exports = function(result, callback){
 		row.add(message);
 		tbl_data.push(row);
 	}
+		
 	var table = Titanium.UI.createTableView
 	({
 		backgroundColor:'transparent',
@@ -36,7 +50,7 @@ module.exports = function(result, callback){
 		style: Ti.UI.iPhone.TableViewStyle.PLAIN,
 		separatorStyle: Titanium.UI.iPhone.TableViewSeparatorStyle.NONE,
 		separatorColor: 'transparent',
-		top: 10
+		//top: 10
 	});
 	if(pl.length > 0)
 		table.addEventListener('click', function(data){
@@ -49,8 +63,8 @@ module.exports = function(result, callback){
 	});
 	var refresh = Ti.UI.createButton({
     	systemButton : global.android? null :Ti.UI.iPhone.SystemButton.REFRESH,
-    	top: 0,
-    	right: 0,
+    	top: 5,
+    	right: 5,
     	height: 25,
     	width: 25,
     	//title: 'refresh',
@@ -66,7 +80,7 @@ module.exports = function(result, callback){
 		right: 2
 	}));
 	refresh.addEventListener('click', function(e){
-		alert('event button clicked');
+		Ti.App.fireEvent('refresh_page_data', {});
 	})
 	
 	table_view.add(table);

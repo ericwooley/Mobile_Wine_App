@@ -9,7 +9,7 @@
 function HomeWindow(title)
 {
 	var global = require('ui/common/globals');
-
+	alert(global.user_id);
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
 	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
@@ -53,7 +53,7 @@ function HomeWindow(title)
 		global.api.get_home_results(function(data){
 			loading.hide();
 			view.remove(loading);
-			Ti.API.info(data);
+			//Ti.API.info(data);
 			table = global.api.search_results(data, function(wine){
 				var wine_review = require('ui/handheld/WineReview');
 				
@@ -72,6 +72,9 @@ function HomeWindow(title)
 	self.setLeftNavButton(refresh);
 	refresh.addEventListener('click',function(){
    	    load_data()
+	});
+	Ti.App.addEventListener('refresh_page_data', function(){
+		load_data();
 	});
 	
 	

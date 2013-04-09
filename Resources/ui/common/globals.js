@@ -17,6 +17,7 @@ var globals  =
 		lessDark: '#c42d30',
 		dark: '#3c0017'
 	},
+	user_id: Ti.App.Properties.getInt('user_id'),
 	android: Ti.Platform.osname == 'android',
 	/**
 	 * Elements to be added

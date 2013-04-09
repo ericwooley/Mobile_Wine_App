@@ -327,6 +327,7 @@ function ProfileWindow(title) {
  		});
 		
 	};
+	Ti.App.addEventListener('refresh_page_data', load_data);
 	self.addEventListener('focus', load_data);
 	self.addEventListener('blur', function(){
 		self.addEventListener('focus', load_data);

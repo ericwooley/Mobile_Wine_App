@@ -2,9 +2,14 @@
  * @author Eric Wooley
  */
 
-function make_row(wine){
-	 var global = require('ui/common/globals');	
+function make_row(info){
+	 var global = require('ui/common/globals');
+	 var wine = info.wine;
+	 //Ti.API.info('info:'+JSON.stringify(info));	
+	 top = info.top;
+	 
 	name = wine.Name;
+	
 	try{
 		winetype = wine.Varietal.WineType.Name;
 	}
@@ -14,7 +19,6 @@ function make_row(wine){
 	img_width = '20%';
 	txt_width = '80%';
 	
-
 	location = wine.Appellation.Name + " - " +wine.Appellation.Region.Name;
 	imageurl = wine.Labels[0].Url;
 	var row = Ti.UI.createTableViewRow
@@ -34,7 +38,7 @@ function make_row(wine){
 	var row_block = Ti.UI.createView({
 		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE,
-		top: 10,
+		top: top? top: 10,
 		left: 10,
 		right: 10,
 		borderRadius: 5,

@@ -39,6 +39,9 @@ if (Ti.version < 1.8 ) {
 			dia.hide();
 			if(response.success)
 			{
+				Ti.API.info("profile_info: " + JSON.stringify(response));
+				Ti.App.Properties.setInt('user_id', response.user_info.ID);
+				global.user_id = response.user_info.ID;
 				var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
 				new ApplicationTabGroup().open();
 			}
