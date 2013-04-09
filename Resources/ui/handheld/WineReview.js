@@ -83,17 +83,24 @@ function WineReview(wine, friend){
 					layout: 'horizontal',
 				});
 				
-				if(global.userid){
-					//do nothing
-					alert('You swiped a friends review '+e.direction);
-				}
-				else{
+				
+				
 				//  THIS IS WHERE THE SWIPE TO DELETE EVENT IS
 				rc.addEventListener('swipe', function(e){
-   	 				alert('You swiped to the '+e.direction);
-					});
+					
+					if(global.user_id == friend.ID){
+						//do nothing
+						alert('You swiped a friends review ');
+					}
+					
+					else{
+   	 					alert('You swiped to the '+e.direction);
+   	 				}
+   	 				
+				});
+					
 				
-				}
+				
 				
 				
 				var user_image = Ti.UI.createImageView({
