@@ -71,10 +71,9 @@ function DiscoverWindow(title) {
   'Grigio', 'Gris', 'Muscat', 'Pinot Blanc', 'Riesling',
   'Sauvignon Blanc', 'Semillon', 'Torrontes', 'Viognier' ];
 
-// wines with filters not working
-//  'Barolo', 'Carmenere', 'Chianti', 'Bordeaux',
-	
-// Drop down view
+//**********************************************************************
+// Drop down menu view and layout components
+//**********************************************************************
 	var view_discover = Ti.UI.createView({
 			width: Ti.UI.FILL,
 			height: Ti.UI.SIZE,
@@ -86,8 +85,7 @@ function DiscoverWindow(title) {
 	
 	var wine_review = null; 
 	var table = null;
-	
-	// Dropdown menu components
+
 	var search_bar = Ti.UI.createTextField({
 		top:0,
 		width:'90%',
@@ -182,6 +180,7 @@ function DiscoverWindow(title) {
 // based off of what is selected in the picker.
 //******************************************************************************	
 	picker_color.addEventListener ('TUchange', function (e) {
+		// Red wines selected
 		if(e.value == 'Red'){
 			winecolor = '124';
 			wineColor = e.value;
@@ -193,7 +192,8 @@ function DiscoverWindow(title) {
 		winetype =  e.value;
 		});
 			
-		}	
+		}
+		// White wines selected	
 		else if(e.value == "White"){
 			winecolor = '125';
 			wineColor = e.value;
@@ -206,6 +206,7 @@ function DiscoverWindow(title) {
 			});
 		}
 		else{
+			// If no color is selected change wine type picker to display all wines
 			winecolor = null;
 			wineColor = null;
 			view_discover.remove(picker_whitewines);
@@ -234,7 +235,7 @@ function DiscoverWindow(title) {
 // search bar.
 //***********************************************************************************
 	dropdown(view_discover, self, "Find", "Browse", "down", function(){
-		
+		// removes featured wines and replaces it with search query
 		view.setTop('4%');
 		view.setHeight('100%');
 		view.remove(table);
@@ -248,7 +249,7 @@ function DiscoverWindow(title) {
 		
 		
 		if(winetype == 'Type'){winetype = null;}
-		
+		// If textfield has values it looks at these
 			if(winecolor != null && winetype != null)
 			{
 				global.api.search_with_filter(search_bar.value, winecolor + '+' + wines[winetype], function(search_results){
@@ -329,7 +330,7 @@ function DiscoverWindow(title) {
 			}
 			else if(winecolor == null && winetype == null)
 			{
-				//alert('Please Enter a Wine or Select a Filter to Search');
+				
 			}
 	
      	self.add(view);
