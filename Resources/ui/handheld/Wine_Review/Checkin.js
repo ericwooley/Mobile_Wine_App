@@ -11,6 +11,7 @@ module.exports = function(wine){
 		height: Ti.UI.SIZE,
 		width: Ti.UI.FILL,
 		layout: 'vertical'
+	
 	});
 	
 	var name_lbl = Ti.UI.createLabel({

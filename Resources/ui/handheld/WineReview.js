@@ -22,6 +22,7 @@ function WineReview(wine, friend){
 		width: '100%',
 		layout: 'vertical',	
 	});
+	
 	// Add the header to the view.
 	var header = require('ui/handheld/Wine_Review/header');
 	var head = header(
@@ -69,6 +70,8 @@ function WineReview(wine, friend){
 					selectionStyle: 'none',
 					layout: 'vertical'
 				});
+				
+				// THIS IS ONE REVIEW ENTRY
 				var rc = Ti.UI.createView({
 					width: Ti.UI.FILL,
 					height: Ti.UI.SIZE,
@@ -79,6 +82,12 @@ function WineReview(wine, friend){
 					backgroundColor: '#f2f2f2',
 					layout: 'horizontal',
 				});
+				
+				
+				rc.addEventListener('swipe', function(e){
+   	 				alert('You swiped to the '+e.direction);
+				});
+				
 				var user_image = Ti.UI.createImageView({
 			  		height: Ti.UI.SIZE,
 			  		width: 60,
