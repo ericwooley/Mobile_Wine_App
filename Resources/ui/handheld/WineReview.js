@@ -83,10 +83,17 @@ function WineReview(wine, friend){
 					layout: 'horizontal',
 				});
 				
-				
+				if(friend.id ){
+					//do nothing
+				}
+				else{
+				//  THIS IS WHERE THE SWIPE TO DELETE EVENT IS
 				rc.addEventListener('swipe', function(e){
    	 				alert('You swiped to the '+e.direction);
-				});
+					});
+				
+				}
+				
 				
 				var user_image = Ti.UI.createImageView({
 			  		height: Ti.UI.SIZE,
