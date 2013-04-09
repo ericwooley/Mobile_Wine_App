@@ -171,7 +171,6 @@ function DiscoverWindow(title) {
 	wines['Syrah'] = '146';  
 	wines['Tempranillo'] = '169';
     wines['Torrontes'] = '209';
-//	wines['Vintage'] = '142';  filter doesn't work
 	wines['Viognier'] = '162';
 	wines['Zinfandel'] = '141';
 			
