@@ -83,8 +83,9 @@ function WineReview(wine, friend){
 					layout: 'horizontal',
 				});
 				
-				if(friend.id ){
+				if(global.userid){
 					//do nothing
+					alert('You swiped a friends review '+e.direction);
 				}
 				else{
 				//  THIS IS WHERE THE SWIPE TO DELETE EVENT IS
