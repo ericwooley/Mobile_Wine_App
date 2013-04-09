@@ -37,6 +37,9 @@ function DiscoverWindow(title) {
 //  This original list in the future will display advertised wines / picks of the day
 //***********************************************************************************		
 	self.addEventListener('open', function(e){
+		
+		label_title.setTop(view_discover.getBottom() + 5);
+		
 		global.api.search_with_filter("Zinfandel", '124', function(search_results){
             table = global.api.search_results(search_results, function(wine){
 				wine_review = require('ui/handheld/WineReview');
