@@ -101,7 +101,8 @@ function WineReview(wine, friend){
    	 				
 				});
 					
-				//  THIS IS WHERE THE SWIPE TO DELETE EVENT IS
+				//  THIS IS WHERE THE CLICK EVENT IS FOR WINE REVIEWS
+				//  Used to edit your own wine revies
 				rc.addEventListener('click', function(e){
 					
 					if(global.user_id == e.source.friend.ID){
