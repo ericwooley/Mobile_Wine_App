@@ -81,20 +81,22 @@ function FriendsWindow(title) {
 					Ti.App.Properties.setBool('facebook', true);
 					Ti.Facebook.requestWithGraphPath('me/friends', {}, 'GET', function(e){
 						var res = JSON.parse(e.result);
-						load_fl();
-						/*global.api.find_fb_friends(res.data, function(data){
-							view.remove(friend_list);
-							global.api.load_friend_list(
+						
+						global.api.find_fb_friends(res.data, function(data){
+							//view.remove(friend_list);
+							/*global.api.load_friend_list(
 								function(list){
-									friend_list = list;
-									view.add(list);
+									//friend_list = list;
+									//view.add(list);
 								},
 								function(data){
 									
 									alert(JSON.stringify(data));
 								}
-							);
-						});*/
+							);*/
+							load_fl();
+						});
+						//load_fl();
 					});
 					
 				});

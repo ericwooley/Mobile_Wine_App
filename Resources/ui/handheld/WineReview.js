@@ -84,7 +84,7 @@ function WineReview(wine, friend){
 					layout: 'horizontal',
 					touchEnabled: true
 				});
-				rc.friend = review.friend
+				rc.friend = review.friend;
 				
 				
 				
