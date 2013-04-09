@@ -72,6 +72,7 @@ module.exports = function(result, callback){
     	backgroundColor: 'transparent'
 
 	});
+	//  Eric's test refresh button that is added to the top right of tables
 	refresh.add(Ti.UI.createImageView({
 		image: '/images/refresh.png',
 		top: 2,
@@ -84,7 +85,11 @@ module.exports = function(result, callback){
 	})
 	
 	table_view.add(table);
+	
+	//  Added an IF statement to only display on android.  
+	if (Ti.Platform.name === 'Android'){
 	table_view.add(refresh);
+	}
 	
 	return table_view;	
 }
