@@ -126,7 +126,7 @@ function LoginWindow() {
 	});
 	
 	var login_Label = Ti.UI.createLabel({
-		text: "Don't have an account? Creating one is easy! Just hit register to sign up.",
+		text: "Don't have an account? Creating one is easy! Just hit register instead of login.",
 		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 		font: {fontFamily: 'Helvetica Neue', fontSize: 13, fontWeight: 'bold'},
 		color: global.colors.lightest,
