@@ -180,7 +180,8 @@ function WineReview(wine, friend){
 		});
 	};
 	load_tables();
-	function upload_image(id, img){
+	function upload_image(id, img, total_rotation){
+		alert('total rotation: '+total_rotation);
 		progressbar.show(); 
         var xhr = Titanium.Network.createHTTPClient();
         xhr.onsendstream = function(e){
@@ -198,9 +199,11 @@ function WineReview(wine, friend){
 		xhr.open('POST', "http://winelife.ericwooley.com/user/upload/wine/"+id);
 		//f1 = Titanium.Filesystem.getFile(Titanium.Filesystem.resourcesDirectory,filename);
 		//iamge=f1.read(image);
-		xhr.send({profile_image: img});
+		xhr.send({profile_image: img, rotation: total_rotation});
 	};
-	
+	Ti.App.addEventListener('rotate', function(rotation){
+		ch.image_rotation = rotation.r;
+	});
 	dd(ch.view, self, "Finish Check-In", "Check-In", "up", function(){
 		global.api.checkin(wine.id, ch.ta.value, Math.round(ch.rating.value), function(data){
 			Ti.API.info('checkin complete:' + data.id);
@@ -209,7 +212,7 @@ function WineReview(wine, friend){
 			}
 			else{
 				Ti.API.info('uploading image');
-				upload_image(data.id, ch.ui.image);
+				upload_image(data.id, ch.ui.image, ch.image_rotation);
 			}
 			load_tables();
 		});

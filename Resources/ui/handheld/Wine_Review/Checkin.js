@@ -65,7 +65,8 @@ module.exports = function(wine){
 	//  Camera Image on check-in pull-down
 	var camera = Ti.UI.createImageView({
 		image: '/images/camera.png',
-		width: '25%',
+		//width: '25%',
+		height: 50,
 		left: '10%'
 		
 	});
@@ -76,29 +77,39 @@ module.exports = function(wine){
 		layout: 'horizontal'
 	});
 	
+
 	
-	/*
 	var user_image = Ti.UI.createImageView({
-		width: '30%',
-		image:'/images/android_checkin_tab.png',
-		left: '10%'
+		//width: '30%',
+		//image:'/images/android_checkin_tab.png',
+		height: 50,
+		visible: false
 	});
-	*/
-	
-	//  Text on Check-in pull-down to add an image
-	var add_image_text = Titanium.UI.createLabel({
-		text:'Add an Image!',
-		color:'white',
-		font:{
-			fontSize:16
-		},
-		textAlign:'center',
-		width:'30%',
-		left: '10%'
-	});	
+	var ccw = Ti.UI.createImageView({
+		width: Ti.UI.FILL,
+		image:'/images/rotate_ccw.png',
+		visible: false,
+		top: 0,
+		left: 0
+	});
+	var cw = Ti.UI.createImageView({
+		width: Ti.UI.FILL,
+		image:'/images/rotate_cw.png',
+		visible: false,
+		bottom: 0,
+		left: 0
+	});
+	rotate_container = Ti.UI.createView({
+		width: '10%',
+		height: 50
+		//layout: 'vertical'
+	});
 	
 	camera_button.add(camera);
-	camera_button.add(add_image_text);
+	camera_button.add(user_image);
+	rotate_container.add(ccw);
+	rotate_container.add(cw);
+	camera_button.add(rotate_container);
 	
 	var image;
 	var full_image = Ti.UI.createImageView({width: Ti.UI.SIZE, height: Ti.UI.SIZE});
@@ -127,6 +138,8 @@ module.exports = function(wine){
 		                //getting media
 		                image = event.media; 
 		                user_image.image = image.imageAsThumbnail(50);
+		                user_image.visible = true;
+		                cw.visible = true;
 		                full_image.image = image;
 		            },
 		            error:function(error)
@@ -158,6 +171,9 @@ module.exports = function(wine){
 		            {
 		                image = event.media; 
 		                user_image.image = image.imageAsThumbnail(50);
+		                user_image.visible = true;
+		                cw.visible = true;
+		                ccw.visible = true;
 		                full_image.image = image;
 		            }
 		             
@@ -166,7 +182,28 @@ module.exports = function(wine){
 		});
 		dialog.show();
 	};
-	camera_button.addEventListener('click', add_image);
+	camera.addEventListener('click', add_image);
+	var total_rotation = 0;
+	function rotate_right(){
+		var t = Ti.UI.create2DMatrix(); 
+		total_rotation += 90;
+  		t = t.rotate(total_rotation);
+  		var anim = Ti.UI.createAnimation();
+  		anim.transform = t;
+  		user_image.animate(anim);
+  		Ti.App.fireEvent('rotate', {r: total_rotation});
+	};
+	cw.addEventListener('click', rotate_right);
+		function rotate_left(){
+		var t = Ti.UI.create2DMatrix(); 
+  		total_rotation -= 90;
+  		t = t.rotate(total_rotation);
+  		var anim = Ti.UI.createAnimation();
+  		anim.transform = t;
+  		user_image.animate(anim);
+  		Ti.App.fireEvent('rotate', {r: total_rotation});
+	};
+	ccw.addEventListener('click', rotate_left);
 	
 	// Record the values as they are changing
 	basicSlider.addEventListener('change',function(e)
@@ -212,7 +249,7 @@ module.exports = function(wine){
 		ta: textArea,
 		view: overview,
 		rating: basicSlider,
-		ui: full_image,
+		ui: full_image
 		
 	};
 	return ret;
