@@ -20,7 +20,7 @@ function LoginWindow() {
 			//backgroundImage: 'images/login_bkg.png'
 			backgroundGradient: {
     			type: 'radial',
-   				colors: ['#313131','black'],
+   				colors: ['#3d3d3d','black'],
     			backFillStart: false
   			}
 		}
@@ -117,7 +117,7 @@ function LoginWindow() {
 	
 	var loginButton = Ti.UI.createButton({
 		title: 'Login',
-		font: {fontFamily: 'Myriad Pro', fontSize: 18, fontWeight: 'bold'},
+		font: {fontFamily: 'Helvetica Neue', fontSize: 18, fontWeight: 'bold'},
 		//top: 15,
 		width: '80%',
 		top: 7,
@@ -128,14 +128,14 @@ function LoginWindow() {
 	var login_Label = Ti.UI.createLabel({
 		text: "Don't have an account? Creating one is easy! Just hit register to sign up.",
 		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-		font: {fontFamily: 'Myriad Pro', fontSize: 13, fontWeight: 'bold'},
+		font: {fontFamily: 'Helvetica Neue', fontSize: 13, fontWeight: 'bold'},
 		color: global.colors.lightest,
 		top: 25,
 		width: '80%'
 	});
 	
 	var registerButton = Ti.UI.createButton({
-		font: {fontFamily: 'Myriad Pro', fontSize: 18, fontWeight: 'bold'},
+		font: {fontFamily: 'Helvetica Neue', fontSize: 18, fontWeight: 'bold'},
 		title:'Register',
 		top: 4,
 		width: '80%',
