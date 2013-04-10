@@ -65,11 +65,11 @@ function HomeWindow(title)
 	
 	
 	
-	// Refresh button
-	var refresh = Titanium.UI.createButton({
-    	systemButton : Titanium.UI.iPhone.SystemButton.REFRESH,
-	});
-	self.setLeftNavButton(refresh);
+	// // Refresh button
+	// var refresh = Titanium.UI.createButton({
+    	// systemButton : Titanium.UI.iPhone.SystemButton.REFRESH,
+	// });
+	// self.setLeftNavButton(refresh);
 	refresh.addEventListener('click',function(){
    	    load_data()
 	});
