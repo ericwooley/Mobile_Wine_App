@@ -58,7 +58,7 @@ module.exports = function(w)
 		global.api.logout(function(data){
 			Ti.App.fireEvent('user_logout', {});
 		});
-		alert('Logging You Out');
+		//alert('You have successfully logged out');
 	});
 	// add overview to the window.
 	w.add(overview);

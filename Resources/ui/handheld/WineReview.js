@@ -5,7 +5,7 @@
 function WineReview(wine, friend){
 	var global = require('ui/common/globals');	
 	var self = global.createWindow('');
-	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black@2x.png';
+	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 	var all = wine.all_information;
 	
 	
