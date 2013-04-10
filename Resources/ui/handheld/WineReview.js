@@ -34,9 +34,9 @@ function WineReview(wine, friend){
 	);
 	overview.add(head.header);
 	var progressbar = Ti.UI.createProgressBar({width: Ti.UI.FILL, height: 20});
-	overview.add(progressbar);
+	
 	var FriendsReviews = Ti.UI.createLabel({
-		top: 10,
+		//top: 10,
 		left: 10,
   		color: global.colors.dark,
   		font: { fontFamily: 'Helvetica Neue', fontSize:18, fontWeight: 'bold'},
@@ -150,11 +150,20 @@ function WineReview(wine, friend){
 					width: Ti.UI.FILL,
 					touchEnabled: false
 				}));	
-				
+				if(review.wine_pic.length  > 0)
+				{
+					rc.add(Ti.UI.createImageView({
+						width: Ti.UI.FILL,
+						left: 10, right: 10,
+						image: review.wine_pic
+					}));
+				}
 				rc.add(Ti.UI.createLabel({
 					text: '"'+review.comment + '"',
 					height: Ti.UI.SIZE,
 					width: Ti.UI.FILL,
+					textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+					font: {fontSize: 12, fontStyle: 'italic'},
 					bottom: 15,
 					left: 10, 
 	    			right: 10,
@@ -181,7 +190,7 @@ function WineReview(wine, friend){
 	};
 	load_tables();
 	function upload_image(id, img, total_rotation){
-		alert('total rotation: '+total_rotation);
+		overview.add(progressbar);
 		progressbar.show(); 
         var xhr = Titanium.Network.createHTTPClient();
         xhr.onsendstream = function(e){
@@ -192,6 +201,7 @@ function WineReview(wine, friend){
         	            	Ti.API.info(this.responseText);
 
         	res = JSON.parse(this.responseText);
+        	overview.remove(progressbar);
         	if(!res.success)
         		alert("Server Error: \""+res.error+"\" Please try again later.");
         }

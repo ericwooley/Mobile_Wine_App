@@ -96,8 +96,7 @@ module.exports = function(wine){
 		width: Ti.UI.FILL,
 		image:'/images/rotate_cw.png',
 		visible: false,
-		bottom: 0,
-		left: 0
+		left: 10
 	});
 	rotate_container = Ti.UI.createView({
 		width: '10%',
@@ -107,7 +106,7 @@ module.exports = function(wine){
 	
 	camera_button.add(camera);
 	camera_button.add(user_image);
-	rotate_container.add(ccw);
+	//rotate_container.add(ccw);
 	rotate_container.add(cw);
 	camera_button.add(rotate_container);
 	
@@ -175,7 +174,8 @@ module.exports = function(wine){
 		                cw.visible = true;
 		                ccw.visible = true;
 		                full_image.image = image;
-		            }
+		            },
+		            allowImageEditing:true,
 		             
 		        });
 		    }

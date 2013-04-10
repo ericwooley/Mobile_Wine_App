@@ -60,12 +60,8 @@ function ProfileWindow(title) {
   		height: Ti.UI.SIZE,
   		width: '30%',
 		top: 0,
-  		
 		borderWidth: 1,
 		borderRadius: 10,
-  		//contentMode: 'aspectfill',
-  		clipsToBounds: true,
-  		//image:'images/user_david.jpg',
   		
 	});
 	var progressbar = Ti.UI.createProgressBar({width: Ti.UI.FILL, height: 20});
@@ -322,12 +318,13 @@ function ProfileWindow(title) {
 					var wine_review = require('ui/handheld/WineReview');
 					self.containingTab.open(wine_review(wine));
 				});
+				table.addEventListener('refresh_page_data', load_data);
 				profile_info.add(table);
 			});
  		});
 		
 	};
-	Ti.App.addEventListener('refresh_page_data', load_data);
+	
 	self.addEventListener('focus', load_data);
 	self.addEventListener('blur', function(){
 		self.addEventListener('focus', load_data);

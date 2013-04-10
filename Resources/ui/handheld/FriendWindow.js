@@ -58,9 +58,8 @@ function FriendWindow(friend) {
 	//	***********************************************	
 	var user_image = Ti.UI.createImageView({
   		//left: 10,
-  		height: 100,
-  		width: 100,
-		top: 0,
+  		width: '30%',
+		top: 10,
 		borderWidth: 1,
 		borderRadius: 10,
   		contentMode: 'aspectfill',

@@ -59,6 +59,9 @@ function HomeWindow(title)
 				
 				self.containingTab.open(wine_review(wine));
 			});
+			table.addEventListener('refresh_page_data', function(){
+				load_data();
+			});
 			view.add(table);
 		});
 	};
@@ -73,9 +76,6 @@ function HomeWindow(title)
 	// refresh.addEventListener('click',function(){
    	    // load_data()
 	// });
-	Ti.App.addEventListener('refresh_page_data', function(){
-		load_data();
-	});
 	
 	
 	

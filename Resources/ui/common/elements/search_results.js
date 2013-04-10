@@ -63,7 +63,7 @@ module.exports = function(result, callback){
 	});
 	var refresh = Ti.UI.createButton({
     	systemButton : global.android? null :Ti.UI.iPhone.SystemButton.REFRESH,
-    	top: 5,
+    	bottom: 5,
     	right: 5,
     	height: 25,
     	width: 25,
@@ -80,7 +80,7 @@ module.exports = function(result, callback){
 		right: 2
 	}));
 	refresh.addEventListener('click', function(e){
-		Ti.App.fireEvent('refresh_page_data', {});
+		table_view.fireEvent('refresh_page_data', {});
 	})
 	
 	table_view.add(table);
