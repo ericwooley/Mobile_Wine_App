@@ -119,8 +119,8 @@ function LoginWindow() {
 		title: 'Login',
 		font: {fontFamily: 'Helvetica Neue', fontSize: 18, fontWeight: 'bold'},
 		//top: 15,
-		width: '80%',
-		top: 7,
+		width: '45%',
+		top: 10,
 		enabled: false
 		
 	});
@@ -130,15 +130,17 @@ function LoginWindow() {
 		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 		font: {fontFamily: 'Helvetica Neue', fontSize: 13, fontWeight: 'bold'},
 		color: global.colors.lightest,
-		top: 25,
-		width: '80%'
+		top: 10,
+		width: '80%',
 	});
 	
 	var registerButton = Ti.UI.createButton({
 		font: {fontFamily: 'Helvetica Neue', fontSize: 18, fontWeight: 'bold'},
 		title:'Register',
-		top: 4,
-		width: '80%',
+		top: 10,
+		//left: '5%',
+		width: '45%',
+		left: '10%',
 		enabled: false
 	});
 	
@@ -247,9 +249,17 @@ function LoginWindow() {
 	loginForm.add(fieldsView);
 	//fieldsView.add(fieldHints)
 	//loginForm.add(fieldHints);
-	loginForm.add(loginButton);
+	
+	var lr_buttons = Ti.UI.createView({
+		height: Ti.UI.SIZE,
+		width: '80%',
+		layout:'horizontal'
+	});
+	lr_buttons.add(loginButton);
+	lr_buttons.add(registerButton);
+	loginForm.add(lr_buttons);
 	loginForm.add(login_Label);
-	loginForm.add(registerButton);
+	
 		
 	// Use the appropriate views depending on if the device
 	// is retina or not
