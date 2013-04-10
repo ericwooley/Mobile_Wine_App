@@ -3,6 +3,13 @@ function LoginWindow() {
 	var self = global.createWindow("");
 	navBarHidden:false;
 	
+	// This will determine if the device is retina or not. This will be used
+	// to position the items onto the screen
+	var isRetina = false;
+		if(Ti.Platform.displayCaps.density=="high"){
+		    isRetina = true;
+	}
+	
 	//var Body = global.elements.SimpleView('vertical');
 	var Body = Ti.UI.createView(
 		{
@@ -13,7 +20,19 @@ function LoginWindow() {
 		}
 	);
 	
+	// This is the view we will use if the device is retina
 	var picture = Ti.UI.createImageView({
+		top: '15%',
+  		//height: 200,
+  		width: Ti.UI.SIZE,
+  		contentMode: 'aspectfill',
+  		clipsToBounds: false,
+  		image: '/images/login_logo.png',
+ 	});
+ 	
+ 	// This is the view we will use if the device is NOT retina
+ 	var picture2 = Ti.UI.createImageView({
+		top: '7%',
   		//height: 200,
   		width: Ti.UI.SIZE,
   		contentMode: 'aspectfill',
@@ -24,7 +43,7 @@ function LoginWindow() {
 	var emailTextField = Ti.UI.createTextField({
 		//borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
   		color: '#336699',
-  		font: {fontFamily: 'Helvetica Neue', fontSize: 16, fontWeight: 'bold'},
+  		font: {fontFamily: 'Myriad Pro', fontSize: 16, fontWeight: 'bold'},
   		top: 10,
   		left: 10,
   		width: '80%',
@@ -36,7 +55,7 @@ function LoginWindow() {
 	var passwordTextField = Ti.UI.createTextField({
 		//borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
   		color: '#336699',
-  		font: {fontFamily: 'Helvetica Neue', fontSize: 16, fontWeight: 'bold'},
+  		font: {fontFamily: 'Myriad Pro', fontSize: 16, fontWeight: 'bold'},
   		width: '55%',
   		top: 0,
   		left: 10,
@@ -59,7 +78,7 @@ function LoginWindow() {
 	});
 	var pwBoxHint = Ti.UI.createLabel({
 		text: 'Hide Password',
-		font: {fontFamily: 'Helvetica Neue', fontSize: 12},
+		font: {fontFamily: 'Myriad Pro', fontSize: 12},
 		right: 0,
 		bottom: 1,
 		color: '#777777'
@@ -92,7 +111,7 @@ function LoginWindow() {
 	
 	var loginButton = Ti.UI.createButton({
 		title: 'Login',
-		font: {fontFamily: 'Helvetica Neue', fontSize: 16, fontWeight: 'bold'},
+		font: {fontFamily: 'Myriad Pro', fontSize: 18, fontWeight: 'bold'},
 		//top: 15,
 		width: '80%',
 		top: 7,
@@ -101,18 +120,18 @@ function LoginWindow() {
 	});
 	
 	var login_Label = Ti.UI.createLabel({
-		text: "Don't have an account? Signing up is easy! Just hit register instead of login to create an account.",
+		text: "Don't have an account? Creating one is easy! Just hit register to sign up.",
 		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-		font: {fontFamily: 'Helvetica Neue', fontSize: 10, fontWeight: 'bold'},
+		font: {fontFamily: 'Myriad Pro', fontSize: 13, fontWeight: 'bold'},
 		color: global.colors.lightest,
 		top: 25,
 		width: '80%'
 	});
 	
 	var registerButton = Ti.UI.createButton({
-		font: {fontFamily: 'Helvetica Neue', fontSize: 16, fontWeight: 'bold'},
+		font: {fontFamily: 'Myriad Pro', fontSize: 18, fontWeight: 'bold'},
 		title:'Register',
-		top: 2,
+		top: 4,
 		width: '80%',
 		enabled: false
 	});
@@ -162,7 +181,7 @@ function LoginWindow() {
 		width: '80%',
 		bottom: 2,
 		color: global.colors.lightest,
-		font: {fontFamily: 'Helvetica Neue', fontSize: 10, fontWeight: 'bold'}
+		font: {fontFamily: 'Myriad Pro', fontSize: 10, fontWeight: 'bold'}
 	})
 	function validateFields(e){
 		//global.store_string('email', emailTextField.value);
@@ -198,7 +217,7 @@ function LoginWindow() {
 		
 	// THE WHOLE THING minus the top text
 	var fieldsView = Ti.UI.createView({
-		top: '10%',
+		// top
 		borderRadius: br,
 		layout: 'vertical',
 		width: "80%",
@@ -224,8 +243,15 @@ function LoginWindow() {
 	//loginForm.add(fieldHints);
 	loginForm.add(loginButton);
 	loginForm.add(login_Label);
-	loginForm.add(registerButton);	
-	Body.add(picture);
+	loginForm.add(registerButton);
+		
+	// Use the appropriate views depending on if the device
+	// is retina or not
+	if (isRetina) {
+		Body.add(picture);
+	}
+	else { Body.add(picture2) }
+	
 	Body.add(loginForm);
 	self.add(Body);	
 	
