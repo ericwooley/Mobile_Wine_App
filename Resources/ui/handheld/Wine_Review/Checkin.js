@@ -99,7 +99,7 @@ module.exports = function(wine){
 		left: 10
 	});
 	rotate_container = Ti.UI.createView({
-		width: '10%',
+		width: '25%',
 		height: 50
 		//layout: 'vertical'
 	});
