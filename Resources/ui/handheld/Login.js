@@ -16,7 +16,13 @@ function LoginWindow() {
 			width: Ti.UI.FILL,
 			height: Ti.UI.SIZE,
 			layout: 'vertical',
-			backgroundColor: 'black'
+			//backgroundColor: 'black'
+			//backgroundImage: 'images/login_bkg.png'
+			backgroundGradient: {
+    			type: 'radial',
+   				colors: ['#313131','black'],
+    			backFillStart: false
+  			}
 		}
 	);
 	
