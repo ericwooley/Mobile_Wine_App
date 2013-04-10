@@ -70,9 +70,9 @@ function HomeWindow(title)
     	// systemButton : Titanium.UI.iPhone.SystemButton.REFRESH,
 	// });
 	// self.setLeftNavButton(refresh);
-	refresh.addEventListener('click',function(){
-   	    load_data()
-	});
+	// refresh.addEventListener('click',function(){
+   	    // load_data()
+	// });
 	Ti.App.addEventListener('refresh_page_data', function(){
 		load_data();
 	});
