@@ -32,7 +32,7 @@ function LoginWindow() {
  	
  	// This is the view we will use if the device is NOT retina
  	var picture2 = Ti.UI.createImageView({
-		top: '7%',
+		top: '4%',
   		//height: 200,
   		width: Ti.UI.SIZE,
   		contentMode: 'aspectfill',

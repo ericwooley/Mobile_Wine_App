@@ -50,7 +50,7 @@ module.exports = function(result, callback){
 		style: Ti.UI.iPhone.TableViewStyle.PLAIN,
 		separatorStyle: Titanium.UI.iPhone.TableViewSeparatorStyle.NONE,
 		separatorColor: 'transparent',
-		//top: 10
+		top: 3
 	});
 	if(pl.length > 0)
 		table.addEventListener('click', function(data){
