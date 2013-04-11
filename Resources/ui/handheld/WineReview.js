@@ -159,7 +159,7 @@ function WineReview(wine, friend){
 						      case 0: Titanium.API.info('Clicked button 0 (YES)');
 						      //alert('checkin id'+ r.review.checkin_id);
 						      	global.api.delete_review(r.source.review.checkin_id, function(){
-						      		alert('deleted: '+r.source.review.checkin_id);
+						      		Ti.API.info('deleted: '+r.source.review.checkin_id);
 						      	});						 
 						      	r.source.width = r.source.size.width;
 							      r.source.animate({left: r.source.size.width,  duration: 200}, function(t){
@@ -221,6 +221,10 @@ function WineReview(wine, friend){
 	};
 	load_tables();
 	function upload_image(id, img, total_rotation){
+		if(!img){
+			load_tables();
+			return;
+		}
 		overview.add(progressbar);
 		progressbar.show(); 
         var xhr = Titanium.Network.createHTTPClient();
@@ -235,6 +239,8 @@ function WineReview(wine, friend){
         	overview.remove(progressbar);
         	if(!res.success)
         		alert("Server Error: \""+res.error+"\" Please try again later.");
+        	else
+        		load_tables();
         }
         Ti.API.info('Uploading photo: ' + "http://winelife.ericwooley.com/user/upload/wine/"+id);
 		xhr.open('POST', "http://winelife.ericwooley.com/user/upload/wine/"+id);
@@ -255,7 +261,7 @@ function WineReview(wine, friend){
 				Ti.API.info('uploading image');
 				upload_image(data.id, ch.ui.image, ch.image_rotation);
 			}
-			load_tables();
+			//load_tables();
 		});
 	});
 	self.add(overview);
