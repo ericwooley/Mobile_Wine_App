@@ -188,14 +188,18 @@ function WineReview(wine, friend){
 				//  Used to edit your own wine revies
 				rc.addEventListener('click', function(e){
 					
-					if(global.user_id == e.source.friend.ID){
+					
+					
+					
+					
+					/*if(global.user_id == e.source.friend.ID){
 						//do nothing
 						alert('clicked your own, this will eventually allow you to edit it.');
 					}
 					else
 					{
 						alert('you clicked another wine ' + global.user_id + ' ' + review.friend.ID);
-					}
+					}*/
 				});
 				
 				reviews.push(r);

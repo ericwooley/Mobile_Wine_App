@@ -33,25 +33,7 @@ function DiscoverWindow(title) {
             fontWeight:'Bold'
            }
 	});
-//***********************************************************************************
-//  This original list in the future will display advertised wines / picks of the day
-//***********************************************************************************		
-	self.addEventListener('open', function(e){
-		
-		label_title.setTop(view_discover.getBottom() + 5);
-		
-		global.api.search_with_filter("Zinfandel", '124', function(search_results){
-            table = global.api.search_results(search_results, function(wine){
-				wine_review = require('ui/handheld/WineReview');
-				self.containingTab.open(wine_review(wine));
-			});
-			//table.addEventListener('refresh_page_data', load_data);
-		   view.add(label_title); 
-           view.add(table);
-      });
-	});
 
-	self.add(view);
 
 //************************************************************************
 // Arrays with wines for picker menu's
@@ -229,114 +211,167 @@ function DiscoverWindow(title) {
 	view_discover.add(search_bar);
 	view_discover.add(picker_color);
 	view_discover.add(picker_allwines);
+	//***********************************************************************************
+//  This original list in the future will display advertised wines / picks of the day
+//***********************************************************************************
+	var table = null;
+	
+	var load_initial = function(e){
+		
+		label_title.setTop(view_discover.getBottom() + 5);
+		
+		global.api.search_with_filter("Zinfandel", '124', function(search_results){
+			if(table) view.remove(table);
+            table = global.api.search_results(search_results, function(wine){
+				wine_review = require('ui/handheld/WineReview');
+				self.containingTab.open(wine_review(wine));
+			});
+			//table.addEventListener('refresh_page_data', load_data);
+		   view.add(label_title); 
+           view.add(table);
+           table.addEventListener('refresh_page_data', function(){
+				load_initial();
+			});
+      });
+	};		
+	self.addEventListener('open', load_initial);
+
+	self.add(view);
 	
 //***********************************************************************************
 // Dropdown menu area
 // This function controls the dropdown menu and the logic for the pickers and
 // search bar.
 //***********************************************************************************
-	dropdown(view_discover, self, "Find", "Browse", "down", function(){
-		// removes featured wines and replaces it with search query
-		view.setTop('4%');
-		view.setHeight('100%');
-		view.remove(table);
-		view.setBottom('5%');
-		view.remove(label_title);
-		self.remove(view);
-		label_title.setText("Search Results");
-		view.add(label_title);
-			
-		if(search_bar.value != null && search_bar.value != ""){
-		
-		
-		if(winetype == 'Type'){winetype = null;}
-		// If textfield has values it looks at these
-			if(winecolor != null && winetype != null)
-			{
-				global.api.search_with_filter(search_bar.value, winecolor + '+' + wines[winetype], function(search_results){
-	         		table = global.api.search_results(search_results, function(wine){
-						wine_review = require('ui/handheld/WineReview');
-						self.containingTab.open(wine_review(wine));
-					});
-					view.add(table);
-				});	 
-			}
-			else if(winecolor == null && winetype != null)
-			{
-				global.api.search_with_filter(search_bar.value, wines[winetype], function(search_results){
-	         		table = global.api.search_results(search_results, function(wine){
-						wine_review = require('ui/handheld/WineReview');
-						self.containingTab.open(wine_review(wine));
-					}); 
-					view.add(table);
-				  });	 
-			}
-			else if(winecolor != null && winetype == null)
-			{
-				global.api.search_with_filter(search_bar.value, winecolor, function(search_results){
-	         		table = global.api.search_results(search_results, function(wine){
-						wine_review = require('ui/handheld/WineReview');
-						self.containingTab.open(wine_review(wine));
-					});
-					view.add(table);
-				 });
-			}
-			else
-			{
-				global.api.search(search_bar.value, function(search_results){
-	         		table = global.api.search_results(search_results, function(wine){
-						wine_review = require('ui/handheld/WineReview');
-						self.containingTab.open(wine_review(wine));
-					});
-					view.add(table);
-				 });
-			}
-			 		
-        self.add(view);
-     
-     }
-     else{
-     //	if nothing entered in textfield do these
-     	if(winetype == 'Type'){winetype = null;}
-		
-			if(winecolor != null && winetype != null)
-			{
-				global.api.search_with_filter(winetype, winecolor + '+' + wines[winetype], function(search_results){
-         		table = global.api.search_results(search_results, function(wine){
-				wine_review = require('ui/handheld/WineReview');
-				self.containingTab.open(wine_review(wine));
-				});
-				view.add(table);
-			  });	 
-			}
-			else if(winecolor == null && winetype != null)
-			{
-				global.api.search_with_filter(winetype, wines[winetype], function(search_results){
-         		table = global.api.search_results(search_results, function(wine){
-				wine_review = require('ui/handheld/WineReview');
-				self.containingTab.open(wine_review(wine));
-				}); 
-				view.add(table);
-			  });	 
-			}
-			else if(winecolor != null && winetype == null)
-			{
-				global.api.search_with_filter(wineColor, winecolor, function(search_results){
-         		table = global.api.search_results(search_results, function(wine){
-				wine_review = require('ui/handheld/WineReview');
-				self.containingTab.open(wine_review(wine));
-				});
-				view.add(table);
-			 });
-			}
-			else if(winecolor == null && winetype == null)
-			{
+	var load_data = function(){
+			//alert('called');
+			// removes featured wines and replaces it with search query
+			view.setTop('4%');
+			view.setHeight('100%');
+			view.remove(table);
+			view.setBottom('5%');
+			view.remove(label_title);
+			self.remove(view);
+			label_title.setText("Search Results");
+			view.add(label_title);
 				
-			}
+			if(search_bar.value != null && search_bar.value != ""){
+			
+			
+			if(winetype == 'Type'){winetype = null;}
+			// If textfield has values it looks at these
+				if(winecolor != null && winetype != null)
+				{
+					global.api.search_with_filter(search_bar.value, winecolor + '+' + wines[winetype], function(search_results){
+		         		table = global.api.search_results(search_results, function(wine){
+							wine_review = require('ui/handheld/WineReview');
+							self.containingTab.open(wine_review(wine));
+						});
+						view.add(table);
+						table.addEventListener('refresh_page_data', function(){
+							load_data();
+						});
+					});	 
+				}
+				else if(winecolor == null && winetype != null)
+				{
+					global.api.search_with_filter(search_bar.value, wines[winetype], function(search_results){
+		         		table = global.api.search_results(search_results, function(wine){
+							wine_review = require('ui/handheld/WineReview');
+							self.containingTab.open(wine_review(wine));
+						}); 
+						view.add(table);
+						table.addEventListener('refresh_page_data', function(){
+							load_data();
+						});
+					  });	 
+				}
+				else if(winecolor != null && winetype == null)
+				{
+					global.api.search_with_filter(search_bar.value, winecolor, function(search_results){
+		         		table = global.api.search_results(search_results, function(wine){
+							wine_review = require('ui/handheld/WineReview');
+							self.containingTab.open(wine_review(wine));
+						});
+						view.add(table);
+						table.addEventListener('refresh_page_data', function(){
+							load_data();
+						});
+					 });
+				}
+				else
+				{
+					global.api.search(search_bar.value, function(search_results){
+		         		table = global.api.search_results(search_results, function(wine){
+							wine_review = require('ui/handheld/WineReview');
+							self.containingTab.open(wine_review(wine));
+						});
+						view.add(table);
+						table.addEventListener('refresh_page_data', function(){
+							load_data();
+						});
+					 });
+				}
+				 		
+	        self.add(view);
+	     
+	     }
+	     else{
+	     //	if nothing entered in textfield do these
+	     	if(winetype == 'Type'){winetype = null;}
+			
+				if(winecolor != null && winetype != null)
+				{
+					global.api.search_with_filter(winetype, winecolor + '+' + wines[winetype], function(search_results){
+		         		table = global.api.search_results(search_results, function(wine){
+							wine_review = require('ui/handheld/WineReview');
+							self.containingTab.open(wine_review(wine));
+						});
+							view.add(table);
+						table.addEventListener('refresh_page_data', function(){
+							load_data();
+						});
+				  });	 
+				}
+				else if(winecolor == null && winetype != null)
+				{
+					global.api.search_with_filter(winetype, wines[winetype], function(search_results){
+			        	table = global.api.search_results(search_results, function(wine){
+							wine_review = require('ui/handheld/WineReview');
+							self.containingTab.open(wine_review(wine));
+						}); 
+						view.add(table);
+						table.addEventListener('refresh_page_data', function(){
+							load_data();
+						});
+					});	 
+				}
+				else if(winecolor != null && winetype == null)
+				{
+					global.api.search_with_filter(wineColor, winecolor, function(search_results){
+		         		table = global.api.search_results(search_results, function(wine){
+							wine_review = require('ui/handheld/WineReview');
+							self.containingTab.open(wine_review(wine));
+						});
+						view.add(table);
+						table.addEventListener('refresh_page_data', function(){
+							load_data();
+						});
+					});
+				}
+				else if(winecolor == null && winetype == null)
+				{
+					
+				}
+		
+	     	self.add(view);
+	     }
+	};
+	dropdown(view_discover, self, "Find", "Browse", "down", load_data );
 	
-     	self.add(view);
-     }
-	});
+	
+	
+	
 	
 global.outputHook(self);
 return self;
