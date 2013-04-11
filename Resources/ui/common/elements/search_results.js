@@ -118,7 +118,7 @@ module.exports = function(result, callback){
 		height:"auto",
 		color:"#576c89",
 		textAlign:"center",
-		font:{fontSize:13,fontWeight:"bold"},
+		font:{fontFamily: "Helvetica Neue", fontSize:13,fontWeight:"bold"},
 		shadowColor:"#999",
 		shadowOffset:{x:0,y:1}
 	});

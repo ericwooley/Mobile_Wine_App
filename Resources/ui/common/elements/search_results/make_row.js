@@ -38,7 +38,7 @@ function make_row(info){
 	var row_block = Ti.UI.createView({
 		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE,
-		top: top? top: 10,
+		top: top? top: 5,
 		left: 10,
 		right: 10,
 		borderRadius: 5,
@@ -48,7 +48,7 @@ function make_row(info){
 	var wine_info = Ti.UI.createView({
 		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE,
-		layout: 'horizontal'
+		layout: 'horizontal',
 
 	});
 	// This image will be the image of the wine

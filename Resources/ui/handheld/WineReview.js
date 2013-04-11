@@ -36,7 +36,7 @@ function WineReview(wine, friend){
 	var progressbar = Ti.UI.createProgressBar({width: Ti.UI.FILL, height: 20});
 	
 	var FriendsReviews = Ti.UI.createLabel({
-		//top: 10,
+		top: 5,
 		left: 10,
   		color: global.colors.dark,
   		font: { fontFamily: 'Helvetica Neue', fontSize:18, fontWeight: 'bold'},
