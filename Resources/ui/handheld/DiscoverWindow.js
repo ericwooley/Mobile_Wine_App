@@ -26,17 +26,17 @@ function DiscoverWindow(title) {
 
 
 
- var allwines = ['Type', 'Albarino', 'Barbera', 'Carmenere', 'Cabernet Sauvignon', 
- 'Cabernet Franc', 'Chardonnay', 'Chenin Blanc', 'Dessert Wines', 'Dolcetto', 'Gamay', 'Grenache', 'Grigio', 
- 'Gris', 'Madeira', 'Merlot', 'Mourvedre', 'Muscat', 'Nebbiolo', 'Petite Sirah', 'Pinot Blanc', 'Pinot Noir', 'Port', 'Primitivo', 'Riesling',
+ var allwines = ['Type', 'Albarino', 'Barbera','Carmenere', 'Cabernet Sauvignon', 
+ 'Cabernet Franc', 'Chardonnay', 'Chenin Blanc', 'Dessert Wines', 'Dolcetto', 'Gamay', 'Gewurztraminer', 'Grenache', 'Grigio', 
+ 'Gris', 'Gruner Veltliner', 'Malbec', 'Madeira', 'Merlot', 'Mourvedre', 'Muscat', 'Nebbiolo', 'Petite Sirah', 'Pinot Blanc', 'Pinot Noir', 'Port', 'Primitivo', 'Riesling',
   'Sangiovese', 'Sauvignon Blanc', 'Semillon', 'Sherry', 'Shiraz', 'Syrah', 'Tempranillo', 'Torrontes', 'Viognier', 'Zinfandel', 'Non-Vintage'];
  
  var redwines =  ['Type', 'Barbera',  'Cabernet Sauvignon', 'Cabernet Franc', 'Carmenere',
-   'Dolcetto', 'Gamay', 'Grenache', 'Merlot', 'Mourvedre', 'Nebbiolo', 'Petite Sirah', 'Pinot Noir',
+   'Dolcetto', 'Gamay', 'Grenache', 'Malbec', 'Merlot', 'Mourvedre', 'Nebbiolo', 'Petite Sirah', 'Pinot Noir',
   'Primitivo', 'Sangiovese', 'Shiraz', 'Syrah', 'Tempranillo', 'Zinfandel'];
   
  var whitewines = ['Type','Albarino', 'Chardonnay', 'Chenin Blanc', 
-  'Grigio', 'Gris', 'Muscat', 'Pinot Blanc', 'Riesling',
+  'Gewurztraminer', 'Grigio', 'Gris', 'Gruner Veltliner', 'Muscat', 'Pinot Blanc', 'Riesling',
   'Sauvignon Blanc', 'Semillon', 'Torrontes', 'Viognier' ];
 
 //**********************************************************************
@@ -104,7 +104,7 @@ function DiscoverWindow(title) {
 	var wines = new Object;
 	wines['Albarino'] = '136';	
     wines['Barbera'] = '172';	
-	wines['Bordeaux'] = '-2147483648'; // Filter doesnt work 
+	//wines['Bordeaux Blends'] = '-2147483648'; // Filter doesnt work 
 	wines['Cabernet Sauvignon'] = '139';
     wines['Cabernet Franc']	= '197';
 	wines['Carmenere'] = '10081';
@@ -113,13 +113,14 @@ function DiscoverWindow(title) {
 	wines['Dessert Wines'] = '160';
     wines['Dolcetto'] = '183';	
 	wines['Gamay'] = '150';
+	wines['Gewurztraminer'] = '166';
 	wines['Grenache'] = '10080';
 	wines['Grigio'] = '194';  
-	wines['Gris'] = '194';  
+	wines['Gris'] = '194';
+	wines['Gruner Veltliner'] = '10087'; 
 	wines['Madeira'] = '154';
-//  wines['Malbec'] = '';	
+    wines['Malbec'] = '10079';	
 	wines['Merlot'] = '138';
-	//wines['Murray'] = '162'; -bad filter
 	wines['Muscat'] = '173';
     wines['Mourvedre'] = '10083';	
     wines['Nebbiolo'] = '170';
@@ -129,7 +130,7 @@ function DiscoverWindow(title) {
 	wines['Pinot Blanc'] = '168';
     wines['Port'] = '155';
     wines['Primitivo'] = '10084';	
-//  wines['Rhone Blends'] = '';	
+   // wines['Rhone Blends'] = '10082';	since its in both red and white filter doesnt work correcly for white wines
 	wines['Riesling'] = '153';
 	wines['Rose'] = '147';
 	wines['Sangiovese'] = '163';
