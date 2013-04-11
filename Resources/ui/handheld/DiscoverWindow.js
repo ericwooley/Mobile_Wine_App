@@ -201,7 +201,7 @@ function DiscoverWindow(title) {
 //  This original list in the future will display advertised wines / picks of the day
 //***********************************************************************************
 	var view = Ti.UI.createView({
-		top:view_discover.size.height + 130,
+		top:view_discover.size.height + 140,
 		left:0,
 		width:Ti.UI.FILL,
 		height: Ti.UI.FILL,

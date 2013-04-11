@@ -3,13 +3,6 @@ function LoginWindow() {
 	var self = global.createWindow("");
 	navBarHidden:false;
 	
-	// This will determine if the device is retina or not. This will be used
-	// to position the items onto the screen
-	var isRetina = false;
-		if(Ti.Platform.displayCaps.density=="high"){
-		    isRetina = true;
-	}
-	
 	//var Body = global.elements.SimpleView('vertical');
 	var Body = Ti.UI.createView(
 		{
@@ -26,18 +19,7 @@ function LoginWindow() {
 		}
 	);
 	
-	// This is the view we will use if the device is retina
 	var picture = Ti.UI.createImageView({
-		top: '15%',
-  		//height: 200,
-  		width: Ti.UI.SIZE,
-  		contentMode: 'aspectfill',
-  		clipsToBounds: false,
-  		image: '/images/login_logo.png',
- 	});
- 	
- 	// This is the view we will use if the device is NOT retina
- 	var picture2 = Ti.UI.createImageView({
 		top: '4%',
   		//height: 200,
   		width: Ti.UI.SIZE,
@@ -45,7 +27,7 @@ function LoginWindow() {
   		clipsToBounds: false,
   		image: '/images/login_logo.png',
  	});
-	
+
 	var emailTextField = Ti.UI.createTextField({
 		//borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
   		color: '#336699',
@@ -261,13 +243,7 @@ function LoginWindow() {
 	loginForm.add(login_Label);
 	
 		
-	// Use the appropriate views depending on if the device
-	// is retina or not
-	if (isRetina) {
-		Body.add(picture);
-	}
-	else { Body.add(picture2) }
-	
+	Body.add(picture);
 	Body.add(loginForm);
 	self.add(Body);	
 	
