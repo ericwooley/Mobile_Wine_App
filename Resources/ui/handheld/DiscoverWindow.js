@@ -217,10 +217,9 @@ function DiscoverWindow(title) {
             fontWeight:'Bold'
            }
 	});
+	view.add(label_title);
 	var table = null;
 	var load_initial = function(e){
-		//if(!table)
-		//	label_title.setTop(view_discover.getBottom() + 5);
 		
 		global.api.search_with_filter("Zinfandel", '124', function(search_results){
 			if(table) view.remove(table);
@@ -229,7 +228,7 @@ function DiscoverWindow(title) {
 				self.containingTab.open(wine_review(wine));
 			});
 			//table.addEventListener('refresh_page_data', load_data);
-		   view.add(label_title); 
+		   // 
            view.add(table);
            table.addEventListener('refresh_page_data', function(){
 				load_initial();
