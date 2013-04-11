@@ -253,6 +253,20 @@ api.befriend = function(friends_email, callback){
 		}
 	});
 };
+
+/**
+ * Delete a review on its id.
+ * @param {int} review_id
+ * A search query basically words that will be sent to the server.
+ * 
+ * @param {Function} callback
+ * callback function that will be given the results.
+ */
+api.delete_review = function(review_id, callback){
+	getResponse('http://winelife.ericwooley.com/search/delete_checkin/', {checkin_id: review_id}, callback);
+};
+
+
 /**
  * Grabs the data about a specific wine based on it's id.
  * @param {Integer/String} id the id of the wine you want information for.

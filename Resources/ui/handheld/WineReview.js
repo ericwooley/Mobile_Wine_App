@@ -84,38 +84,7 @@ function WineReview(wine, friend){
 					layout: 'horizontal',
 					touchEnabled: true
 				});
-				rc.friend = review.friend;
-				
-				
-				
-				//  THIS IS WHERE THE SWIPE TO DELETE EVENT IS
-				rc.addEventListener('swipe', function(e){
-					if(global.user_id != e.source.friend.ID){
-						//do nothing
-						alert('You swiped a friends review ');
-					}
-					
-					else{
-   	 					alert('You swiped to the '+e.direction);
-   	 				}
-   	 				
-				});
-					
-				//  THIS IS WHERE THE CLICK EVENT IS FOR WINE REVIEWS
-				//  Used to edit your own wine revies
-				rc.addEventListener('click', function(e){
-					
-					if(global.user_id == e.source.friend.ID){
-						//do nothing
-						alert('clicked your own');
-					}
-					else
-					{
-						alert('you clicked another wine ' + global.user_id + ' ' + review.friend.ID);
-					}
-				});
-				
-				
+				rc.review = review;
 				
 				var user_image = Ti.UI.createImageView({
 			  		height: Ti.UI.SIZE,
@@ -155,7 +124,9 @@ function WineReview(wine, friend){
 					rc.add(Ti.UI.createImageView({
 						width: Ti.UI.FILL,
 						left: 10, right: 10,
-						image: review.wine_pic
+						top: 5,
+						image: review.wine_pic,
+						touchEnabled: false
 					}));
 				}
 				rc.add(Ti.UI.createLabel({
@@ -169,7 +140,63 @@ function WineReview(wine, friend){
 	    			right: 10,
 					touchEnabled: false
 				}));
-				
+				//review.friend;
+				//  THIS IS WHERE THE SWIPE TO DELETE EVENT IS
+				rc.addEventListener('swipe', function(r){
+					
+					if(global.user_id == r.source.review.friend.ID){
+   	 					//alert('You swiped your own review '+e.direction);
+   	 					var confirm = Titanium.UI.createAlertDialog({ title: 'Delete this review?', message: 'Are you sure?\n(this cannot be undone)', buttonNames: ['Yes', 'No'], cancel: 1 });
+						confirm.addEventListener('click', function(e) { Titanium.API.info('e = ' + JSON.stringify(e));
+						   //Clicked cancel, first check is for iphone, second for android
+						   if (e.cancel === e.index || e.cancel === true) {
+						      return;
+						   }
+						
+						    //now you can use parameter e to switch/case
+						
+						   switch (e.index) {
+						      case 0: Titanium.API.info('Clicked button 0 (YES)');
+						      //alert('checkin id'+ r.review.checkin_id);
+						      	global.api.delete_review(r.source.review.checkin_id, function(){
+						      		alert('deleted: '+r.source.review.checkin_id);
+						      	});						 
+						      	r.source.width = r.source.size.width;
+							      r.source.animate({left: r.source.size.width,  duration: 200}, function(t){
+							      	r.source.height=0;
+							      });
+							      
+						      
+						      break;
+						
+						      //This will never be reached, if you specified cancel for index 1
+						      case 1: Titanium.API.info('Clicked button 1 (NO)');
+						      break;
+						
+						      default:
+						      break;
+						
+						  }
+						});
+						confirm.show();
+
+   	 				}
+   	 				
+				});
+					
+				//  THIS IS WHERE THE CLICK EVENT IS FOR WINE REVIEWS
+				//  Used to edit your own wine revies
+				rc.addEventListener('click', function(e){
+					
+					if(global.user_id == e.source.friend.ID){
+						//do nothing
+						alert('clicked your own, this will eventually allow you to edit it.');
+					}
+					else
+					{
+						alert('you clicked another wine ' + global.user_id + ' ' + review.friend.ID);
+					}
+				});
 				
 				reviews.push(r);
 				
