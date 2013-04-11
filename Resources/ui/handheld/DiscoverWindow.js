@@ -15,24 +15,9 @@ function DiscoverWindow(title) {
 	var TU = require ('/TitanUp/TitanUp');
 
 	// This view holds the wine list
-	var view = Ti.UI.createView({
-		top:'35%',
-		left:0,
-		width:Ti.UI.FILL,
-		height: '65%',
-		layout: 'vertical', 
-	});
+
 	
-	var label_title = Ti.UI.createLabel({
-		color: global.colors.dark,
-		top: '5%',
-		text:"Today's Featured Wines",
-		font:{
-            fontFamily:'Helvetica Neue',
-            fontSize:18,
-            fontWeight:'Bold'
-           }
-	});
+
 
 
 //************************************************************************
@@ -214,11 +199,27 @@ function DiscoverWindow(title) {
 	//***********************************************************************************
 //  This original list in the future will display advertised wines / picks of the day
 //***********************************************************************************
+	var view = Ti.UI.createView({
+		top:view_discover.size.height + 130,
+		left:0,
+		width:Ti.UI.FILL,
+		height: Ti.UI.FILL,
+		layout: 'vertical', 
+	});
+	var label_title = Ti.UI.createLabel({
+		color: global.colors.dark,
+		top: 10,
+		text:"Today's Featured Wines",
+		font:{
+            fontFamily:'Helvetica Neue',
+            fontSize:18,
+            fontWeight:'Bold'
+           }
+	});
 	var table = null;
-	
 	var load_initial = function(e){
-		
-		label_title.setTop(view_discover.getBottom() + 5);
+		//if(!table)
+		//	label_title.setTop(view_discover.getBottom() + 5);
 		
 		global.api.search_with_filter("Zinfandel", '124', function(search_results){
 			if(table) view.remove(table);
