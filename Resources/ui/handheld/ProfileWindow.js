@@ -316,7 +316,9 @@ function ProfileWindow(title) {
 				
 				table = global.api.search_results(data, function(wine){
 					var wine_review = require('ui/handheld/WineReview');
-					self.containingTab.open(wine_review(wine));
+					var wr = wine_review(wine);
+					wr.containingTab = self.containingTab;
+					self.containingTab.open(wr);
 				});
 				table.addEventListener('refresh_page_data', load_data);
 				profile_info.add(table);

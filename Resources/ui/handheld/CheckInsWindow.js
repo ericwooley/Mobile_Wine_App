@@ -52,7 +52,9 @@ function CheckInsWindow(title) {
 			results_view = search_format(data, function(wine){
 				var wine_review = require('ui/handheld/WineReview');
 				
-				self.containingTab.open(wine_review(wine));
+				var wr = wine_review(wine);
+				wr.containingTab = self.containingTab;
+				self.containingTab.open(wr);
 			});
 			results_view.top = 25;
 			self.add(results_view);

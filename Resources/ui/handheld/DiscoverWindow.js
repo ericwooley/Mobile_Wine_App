@@ -225,7 +225,9 @@ function DiscoverWindow(title) {
 			if(table) view.remove(table);
             table = global.api.search_results(search_results, function(wine){
 				wine_review = require('ui/handheld/WineReview');
-				self.containingTab.open(wine_review(wine));
+				var wr = wine_review(wine);
+				wr.containingTab = self.containingTab;
+				self.containingTab.open(wr);
 			});
 			//table.addEventListener('refresh_page_data', load_data);
 		   // 
@@ -266,7 +268,9 @@ function DiscoverWindow(title) {
 					global.api.search_with_filter(search_bar.value, winecolor + '+' + wines[winetype], function(search_results){
 		         		table = global.api.search_results(search_results, function(wine){
 							wine_review = require('ui/handheld/WineReview');
-							self.containingTab.open(wine_review(wine));
+							var wr = wine_review(wine);
+							wr.containingTab = self.containingTab;
+							self.containingTab.open(wr);
 						});
 						view.add(table);
 						table.addEventListener('refresh_page_data', function(){
@@ -279,7 +283,9 @@ function DiscoverWindow(title) {
 					global.api.search_with_filter(search_bar.value, wines[winetype], function(search_results){
 		         		table = global.api.search_results(search_results, function(wine){
 							wine_review = require('ui/handheld/WineReview');
-							self.containingTab.open(wine_review(wine));
+							var wr = wine_review(wine);
+				wr.containingTab = self.containingTab;
+				self.containingTab.open(wr);
 						}); 
 						view.add(table);
 						table.addEventListener('refresh_page_data', function(){
@@ -292,7 +298,9 @@ function DiscoverWindow(title) {
 					global.api.search_with_filter(search_bar.value, winecolor, function(search_results){
 		         		table = global.api.search_results(search_results, function(wine){
 							wine_review = require('ui/handheld/WineReview');
-							self.containingTab.open(wine_review(wine));
+							var wr = wine_review(wine);
+				wr.containingTab = self.containingTab;
+				self.containingTab.open(wr);
 						});
 						view.add(table);
 						table.addEventListener('refresh_page_data', function(){
@@ -305,7 +313,9 @@ function DiscoverWindow(title) {
 					global.api.search(search_bar.value, function(search_results){
 		         		table = global.api.search_results(search_results, function(wine){
 							wine_review = require('ui/handheld/WineReview');
-							self.containingTab.open(wine_review(wine));
+							var wr = wine_review(wine);
+				wr.containingTab = self.containingTab;
+				self.containingTab.open(wr);
 						});
 						view.add(table);
 						table.addEventListener('refresh_page_data', function(){
@@ -326,7 +336,9 @@ function DiscoverWindow(title) {
 					global.api.search_with_filter(winetype, winecolor + '+' + wines[winetype], function(search_results){
 		         		table = global.api.search_results(search_results, function(wine){
 							wine_review = require('ui/handheld/WineReview');
-							self.containingTab.open(wine_review(wine));
+							var wr = wine_review(wine);
+							wr.containingTab = self.containingTab;
+							self.containingTab.open(wr);
 						});
 							view.add(table);
 						table.addEventListener('refresh_page_data', function(){
@@ -339,7 +351,9 @@ function DiscoverWindow(title) {
 					global.api.search_with_filter(winetype, wines[winetype], function(search_results){
 			        	table = global.api.search_results(search_results, function(wine){
 							wine_review = require('ui/handheld/WineReview');
-							self.containingTab.open(wine_review(wine));
+							var wr = wine_review(wine);
+							wr.containingTab = self.containingTab;
+							self.containingTab.open(wr);
 						}); 
 						view.add(table);
 						table.addEventListener('refresh_page_data', function(){
@@ -352,7 +366,9 @@ function DiscoverWindow(title) {
 					global.api.search_with_filter(wineColor, winecolor, function(search_results){
 		         		table = global.api.search_results(search_results, function(wine){
 							wine_review = require('ui/handheld/WineReview');
-							self.containingTab.open(wine_review(wine));
+							var wr = wine_review(wine);
+							wr.containingTab = self.containingTab;
+							self.containingTab.open(wr);
 						});
 						view.add(table);
 						table.addEventListener('refresh_page_data', function(){

@@ -84,7 +84,7 @@ function WineReview(wine, friend){
 					layout: 'horizontal',
 					touchEnabled: true
 				});
-				rc.review = review;
+				
 				
 				var user_image = Ti.UI.createImageView({
 			  		height: Ti.UI.SIZE,
@@ -119,15 +119,18 @@ function WineReview(wine, friend){
 					width: Ti.UI.FILL,
 					touchEnabled: false
 				}));	
+				review.upload_pic = null;
 				if(review.wine_pic.length  > 0)
 				{
-					rc.add(Ti.UI.createImageView({
+					upload_pic = Ti.UI.createImageView({
 						width: Ti.UI.FILL,
 						left: 10, right: 10,
 						top: 5,
 						image: review.wine_pic,
 						touchEnabled: false
-					}));
+					});
+					rc.add(upload_pic);
+					review.upload_pic = upload_pic;
 				}
 				rc.add(Ti.UI.createLabel({
 					text: '"'+review.comment + '"',
@@ -143,7 +146,7 @@ function WineReview(wine, friend){
 				//review.friend;
 				//  THIS IS WHERE THE SWIPE TO DELETE EVENT IS
 				rc.addEventListener('swipe', function(r){
-					
+					if(r.direction != 'right') return;
 					if(global.user_id == r.source.review.friend.ID){
    	 					//alert('You swiped your own review '+e.direction);
    	 					var confirm = Titanium.UI.createAlertDialog({ title: 'Delete this review?', message: 'Are you sure?\n(this cannot be undone)', buttonNames: ['Yes', 'No'], cancel: 1 });
@@ -164,6 +167,8 @@ function WineReview(wine, friend){
 						      	r.source.width = r.source.size.width;
 							      r.source.animate({left: r.source.size.width,  duration: 200}, function(t){
 							      	r.source.height=0;
+							      	r.source.visible = false;
+							      	r.souce.top = 0; r.source.bottom = 0;
 							      });
 							      
 						      
@@ -189,6 +194,11 @@ function WineReview(wine, friend){
 				rc.addEventListener('click', function(e){
 					
 					
+					var open_review_details = require('/ui/handheld/review_details');
+					
+					var review_details = open_review_details(e.source.review);
+					review_details.containingTab = self.containingTab;
+					self.containingTab.open(review_details);
 					
 					
 					
@@ -201,7 +211,7 @@ function WineReview(wine, friend){
 						alert('you clicked another wine ' + global.user_id + ' ' + review.friend.ID);
 					}*/
 				});
-				
+				rc.review = review;
 				reviews.push(r);
 				
 			}
