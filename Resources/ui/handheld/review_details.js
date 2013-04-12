@@ -48,7 +48,8 @@ function review_details(review){
 	var review_text = Ti.UI.createView({
 		width: Titanium.Platform.displayCaps.platformWidth - 120,
 		height: Ti.UI.SIZE,
-		layout: 'vertical'
+		layout: 'vertical',
+		top: 0
 	});
 		
 	var comment = Ti.UI.createLabel({

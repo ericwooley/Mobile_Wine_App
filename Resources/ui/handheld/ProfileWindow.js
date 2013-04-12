@@ -64,7 +64,7 @@ function ProfileWindow(title) {
 		borderRadius: 10,
   		
 	});
-	var progressbar = Ti.UI.createProgressBar({width: Ti.UI.FILL, height: 20});
+	var progressbar = Ti.UI.createProgressBar({width: Ti.UI.FILL, height: 20, bottom: 0});
 	header.add(user_image);
 	
 	
@@ -76,7 +76,7 @@ function ProfileWindow(title) {
 		height: Ti.UI.SIZE
 	});
 	header.add(content);
-	header.add(progressbar);
+	self.add(progressbar);
 	//  ADD IMAGE
 	//	***********************************************	
 	function add_image(){

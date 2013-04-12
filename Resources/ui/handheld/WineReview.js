@@ -168,7 +168,7 @@ function WineReview(wine, friend){
 							      r.source.animate({left: r.source.size.width,  duration: 200}, function(t){
 							      	r.source.height=0;
 							      	r.source.visible = false;
-							      	r.souce.top = 0; r.source.bottom = 0;
+							      	r.source.top = 0; r.source.bottom = 0;
 							      });
 							      
 						      

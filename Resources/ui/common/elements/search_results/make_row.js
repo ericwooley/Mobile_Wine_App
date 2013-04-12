@@ -42,7 +42,7 @@ function make_row(info){
 		left: 10,
 		right: 10,
 		borderRadius: 5,
-		backgroundColor: '#fbf2df',
+		backgroundColor: '#f2f2f2',
 		layout: 'vertical'
 	});
 	var wine_info = Ti.UI.createView({
