@@ -20,7 +20,7 @@ function LoginWindow() {
 	);
 	
 	var picture = Ti.UI.createImageView({
-		top: '4%',
+		top: '10%',
   		//height: 200,
   		width: Ti.UI.SIZE,
   		contentMode: 'aspectfill',
