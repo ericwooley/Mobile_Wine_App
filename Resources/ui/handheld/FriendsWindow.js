@@ -38,7 +38,7 @@ function FriendsWindow(title) {
 		
 		
 	var email_field = Ti.UI.createTextField({
-		hintText: 'Search Friend By Email',
+		hintText: 'Search for a friend by name or email',
 		width: Ti.UI.FILL,
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});
@@ -46,27 +46,33 @@ function FriendsWindow(title) {
 	Friend_view.add(email_field);
 	var dropdown = require('ui/common/elements/dropdown');
 	
-	dropdown(Friend_view, self, "Add Friend", "Find Friend", "up", function() {
+	dropdown(Friend_view, self, "Complete Search", "Search for Friends", "up", function() {
 		if(email_field.getValue().length < 1){
 				
 			return;
 		}
-		global.api.befriend(email_field.value, function(result){
-			
-			
-			Ti.API.info('Removing old friend list');
-			view.remove(friend_list);
-			email_field.setValue('');
-			global.api.load_friend_list(
-				function(list){
-					friend_list = list;
-					view.add(list);
-				},
-				function(data){
-					alert(JSON.stringify(data));
-				}
-			);
-		});
+		// global.api.user_search(email_field.value, function(result){
+// 			
+// 			
+			// Ti.API.info('Removing old friend list');
+			// 
+			// email_field.setValue('');
+		global.api.load_user_search_results(
+			email_field.value,
+			function(list){
+				view.remove(friend_list);
+				friend_list = list;
+				friend_list = list;
+				view.add(list);
+			},
+			function(data){
+				var fw = require('ui/handheld/FriendWindow');
+				w = fw(data);
+				w.containingTab = self.containingTab;
+				self.containingTab.open(w);
+			}
+		);
+		// });
 
 	});
 	function find_fb_friends(e){

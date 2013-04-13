@@ -195,10 +195,25 @@ api.search = function(query, callback){
  */
 api.load_friend_list = function(callback, onclickCallback){
 	getResponse('http://winelife.ericwooley.com/user/friendlist/', {}, function(data){
-		Ti.API.info('Got to first maker');
 		var table = require('ui/common/elements/friend_list');
 		table = table(data, onclickCallback);
-		Ti.API.info('Got to second marker');
+		callback(table);
+	});
+};
+
+/**
+ * Creates a table of users based on search results and returns it via the callback function
+ * 
+ * @param {Function} callback
+ * callback function that will be given the results.
+ * 
+ * @param {Function} onclickCallback
+ * The function to be called when a user clicks on a row.
+ */
+api.load_user_search_results = function(search, callback, onclickCallback){
+	getResponse('http://winelife.ericwooley.com/search/user_search/', {search: search}, function(data){
+		var table = require('ui/common/elements/friend_list');
+		table = table(data, onclickCallback);
 		callback(table);
 	});
 };
@@ -262,6 +277,30 @@ api.befriend = function(friends_email, callback){
 	Ti.API.info("Befriending: " + friends_email);
 	getResponse('http://winelife.ericwooley.com/user/befriend/', {fr_email: friends_email}, function(data){
 		Ti.API.info('got to here' + JSON.stringify(data));
+		if(data.success)
+		{
+			Ti.API.info('friend success');
+			callback(data);
+		}
+		else
+		{
+			Ti.API.info('friend error');
+			alert(data.error);
+		}
+	});
+};
+
+/**
+ * Find a friend based on name or email
+ * @param {String} friends_email
+ * A search query basically words that will be sent to the server.
+ * 
+ * @param {Function} callback
+ * callback function that will be given the results.
+ */
+api.user_search = function(query, callback){
+	Ti.API.info("searching: " + query);
+	getResponse('http://winelife.ericwooley.com/search/befriend/', {search: query}, function(data){
 		if(data.success)
 		{
 			Ti.API.info('friend success');

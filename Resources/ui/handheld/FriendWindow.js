@@ -146,14 +146,17 @@ function FriendWindow(friend) {
 		allow_deselect: false,
 		labels: options
 	});
-	select_bar.xsetSelectedIndex(0);
+	select_bar.xsetSelectedIndex(friend.is_friend?0:1);
 	select_bar.addEventListener ('TUchange', function (e) {
+		select_bar.visible = false;
 		if(e.index == 0){
 			global.api.follow(friend.user_id, function(){
+				select_bar.visible = true;
 				alert('You are now following ' + friend.fname);
 			});
 		}else if(e.index = 1){
 			global.api.unfollow(friend.user_id, function(){
+				select_bar.visible = true;
 				alert('You are no longer following ' + friend.fname);
 			});
 		}
