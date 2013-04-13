@@ -219,6 +219,23 @@ api.load_user_search_results = function(search, callback, onclickCallback){
 };
 
 /**
+ * Creates a table of users who follow the user
+ * 
+ * @param {Function} callback
+ * callback function that will be given the results.
+ * 
+ * @param {Function} onclickCallback
+ * The function to be called when a user clicks on a row.
+ */
+api.follower_table = function(callback, onclickCallback){
+	getResponse('http://winelife.ericwooley.com/user/followertable/', {}, function(data){
+		var table = require('ui/common/elements/friend_list');
+		table = table(data, onclickCallback);
+		callback(table);
+	});
+};
+
+/**
  * search for wine by catagories, please note that these catagories need to line up with the wine api catagories. For more information: http://api.wine.com.
  * @param {String} cat
  * catagory id's should be space seperated or + seperated.

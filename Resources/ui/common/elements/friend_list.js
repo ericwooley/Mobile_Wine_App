@@ -76,7 +76,7 @@ module.exports = function(fl, callback){
 		backgroundColor:'transparent',
 		top:10,
 		width:'100%',
-		height:'100%',
+		height:Ti.UI.FILL,
 		data:tbl_data,
 		style: Ti.UI.iPhone.TableViewStyle.PLAIN,
 		separatorStyle: Titanium.UI.iPhone.TableViewSeparatorStyle.NONE,

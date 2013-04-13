@@ -237,48 +237,52 @@ function ProfileWindow(title) {
 	
 
 	
-	//  CHECK-INS FIELD
-	var check_ins = Ti.UI.createLabel({
-  		color: global.colors.dark,
-  		font: { fontSize: 12 },
-  		left: 10,
-  		height: Ti.UI.SIZE,
-  		width: Ti.UI.FILL
-	});
-	content.add(check_ins);
-	
-	//  FOLLOWERS TEXT FIELD
-	var followers = Ti.UI.createLabel({
-  		color: global.colors.dark,
-  		font: { fontSize: 12 },
-  		left: 10,
-  		height: Ti.UI.SIZE,
-  		width: Ti.UI.FILL
-	});
-	content.add(followers);
-	
-	//  FOLLOWING TEXT FIELD
-	var following = Ti.UI.createLabel({
-  		color: global.colors.dark,
-  		font: { fontSize: 12 },
-  		text: 'Following: 4',
-  		top: 0,
-  		left: 10,
-  		height: Ti.UI.SIZE,
-  		width: Ti.UI.FILL
-	});
-	content.add(following);
+	// //  CHECK-INS FIELD
+	// var check_ins = Ti.UI.createLabel({
+  		// color: global.colors.dark,
+  		// font: { fontSize: 12 },
+  		// left: 10,
+  		// height: Ti.UI.SIZE,
+  		// width: Ti.UI.FILL
+	// });
+	// content.add(check_ins);
+// 	
+	// //  FOLLOWERS TEXT FIELD
+	// var followers = Ti.UI.createLabel({
+  		// color: global.colors.dark,
+  		// font: { fontSize: 12 },
+  		// left: 10,
+  		// height: Ti.UI.SIZE,
+  		// width: Ti.UI.FILL
+	// });
+	// content.add(followers);
+// 	
+	// //  FOLLOWING TEXT FIELD
+	// var following = Ti.UI.createLabel({
+  		// color: global.colors.dark,
+  		// font: { fontSize: 12 },
+  		// text: 'Following: 4',
+  		// top: 0,
+  		// left: 10,
+  		// height: Ti.UI.SIZE,
+  		// width: Ti.UI.FILL
+	// });
+	// content.add(following);
 
 	// RECENT CHECK-INS LABEL
-	var recent_check_ins = Ti.UI.createLabel({
-		top: 10,
-  		color: global.colors.dark,
-  		font: { fontFamily: 'Helvetica Neue', fontSize:20, fontWeight: 'bold'},
-  		text: 'My Cellar',
-  		height: Ti.UI.SIZE,
-  		width: Ti.UI.FILL 
-
-	});
+	// var recent_check_ins = Ti.UI.createLabel({
+		// top: 10,
+  		// color: global.colors.dark,
+  		// font: { fontFamily: 'Helvetica Neue', fontSize:20, fontWeight: 'bold'},
+  		// text: 'My Cellar',
+  		// height: Ti.UI.SIZE,
+  		// width: Ti.UI.FILL 
+// 
+	// });
+	
+	
+	
+	
 	/*
 	var sep_line=Ti.UI.createLabel({
 	    height: 2,
@@ -290,20 +294,89 @@ function ProfileWindow(title) {
 	    backgroundColor: global.colors.dark
 	});*/
 	
-	header.add(recent_check_ins);
+	//header.add(recent_check_ins);
 	//header.add(sep_line);
-	
+	var followers = false;
+	function load_followers(){
+		global.api.follower_table(function(table){
+				followers = table;
+				profile_info.add(followers);
+			},
+			function(data){
+				var fw = require('ui/handheld/FriendWindow');
+				w = fw(data);
+				w.containingTab = self.containingTab;
+				self.containingTab.open(w);
+			}
+		);
+	};
+	var following = false;
+	function load_following(){
+		global.api.load_friend_list(
+			function(list){
+				following = list;
+				profile_info.add(following);
+			},
+			function(data){
+				var fw = require('ui/handheld/FriendWindow');
+				w = fw(data);
+				w.containingTab = self.containingTab;
+				self.containingTab.open(w);
+			}
+		);
+	};
 	var table = false;
-
+	
+	
+	var select_bar = null;
+	var index_selected = 0;
 	function load_data(){
 		self.removeEventListener('focus', load_data);
 		global.api.profileInformation(function(data){
 			userName.text = data.fname + ' ' + data.lname;			
 			fname.value = data.fname;
 			lname.value = data.lname;
-			check_ins.text= "Total Check-Ins: " + data.chcount;
-			followers.text = "Followers: "+data.follower;
-			following.text = "Following: "+data.following;
+			// check_ins.text= "Total Check-Ins: " + data.chcount;
+			// followers.text = "Followers: "+data.follower;
+			// following.text = "Following: "+data.following;
+			if(select_bar)
+				profile_info.remove(select_bar);
+			var options = ['Check-Ins ('+data.chcount+')', 'Followers (' + +data.follower+')', 'Following (' + +data.following+')'];
+			select_bar = global.TU.UI.createSelectBar ({
+				width: Ti.UI.FILL,
+				top:10,
+				left: 10,
+				right: 10,
+				backgroundColor: global.colors.dark,
+				allow_deselect: false,
+				borderRadius: 0,
+				labels: options
+			});
+			select_bar.xsetSelectedIndex(index_selected);
+			select_bar.addEventListener ('TUchange', function (e) {
+				index_selected = e.index;
+				profile_info.remove(table);
+				if(followers)
+					profile_info.remove(followers);
+				if(following)
+					profile_info.remove(following);
+				
+				if(e.index == 0){
+					if(table)
+						profile_info.add(table);
+				}else if(e.index == 1){
+					if(!following)
+						load_following();
+					else
+						profile_info.add(following);
+				}else if(e.index == 2){
+					if(!followers)
+						load_followers();
+					else
+						profile_info.add(following);
+				}
+			});
+			profile_info.add(select_bar);
 			
 			user_image.image = data.picture_url;
 			if(table){
@@ -328,9 +401,9 @@ function ProfileWindow(title) {
 	};
 	
 	self.addEventListener('focus', load_data);
-	self.addEventListener('blur', function(){
-		self.addEventListener('focus', load_data);
-	});
+	// self.addEventListener('blur', function(){
+		// self.addEventListener('focus', load_data);
+	// });
 	
 	self.add(profile_info);
 

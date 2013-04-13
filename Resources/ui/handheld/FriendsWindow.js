@@ -82,7 +82,7 @@ function FriendsWindow(title) {
 						view.remove(search_results);
 						view.add(friend_list);
 						
-					}else if(e.index = 1){
+					}else if(e.index == 1){
 						friend_list_selected = false;
 						view.remove(friend_list);
 						view.add(search_results);
