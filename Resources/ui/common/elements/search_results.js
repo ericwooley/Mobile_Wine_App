@@ -103,16 +103,17 @@ module.exports = function(result, callback){
 	tableHeader.add(border);
 	
 	var arrow = Ti.UI.createView({
-		backgroundImage:"/images/whiteArrow.png",
+		backgroundImage:"/images/arrow.png",
 		width:23,
-		height:60,
+		//height:60,
+		height: 37,
 		bottom:10,
-		left:20
+		left:25
 	});
 	
 	var statusLabel = Ti.UI.createLabel({
 		text:"Pull to reload",
-		left:30,
+		left:25,
 		width:200,
 		bottom:20,
 		height:"auto",
@@ -178,7 +179,8 @@ module.exports = function(result, callback){
 	table.addEventListener('scroll',function(e)
 	{
 		var offset = e.contentOffset.y;
-		if (offset <= -65.0 && !pulling && !reloading)
+		//if (offset <= -65.0 && !pulling && !reloading)
+		if (offset <= -50.0 && !pulling && !reloading)
 		{
 			var t = Ti.UI.create2DMatrix();
 			t = t.rotate(-180);
@@ -186,7 +188,7 @@ module.exports = function(result, callback){
 			arrow.animate({transform:t,duration:180});
 			statusLabel.text = "Release to refresh...";
 		}
-		else if (pulling && (offset > -65.0 && offset < 0) && !reloading )
+		else if (pulling && (offset > -50.0 && offset < 0) && !reloading )
 		{
 			pulling = false;
 			var t = Ti.UI.create2DMatrix();
