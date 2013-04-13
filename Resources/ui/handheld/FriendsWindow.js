@@ -55,13 +55,14 @@ function FriendsWindow(title) {
 		global.api.load_user_search_results(
 			email_field.value,
 			function(list){
-				search_results = list;
+				//search_results = list;
 				if(friend_list_selected){
 					view.remove(friend_list);
 				}	
 				else{
 					view.remove(search_results);
 				}
+				friend_list_selected = false;
 				search_results = list;
 				view.add(search_results);
 				var options = ['Friend List', 'Search For Friends'];
@@ -77,9 +78,12 @@ function FriendsWindow(title) {
 				select_bar.addEventListener ('TUchange', function (e) {
 					//select_bar.visible = false;
 					if(e.index == 0){
-						view.add(friend_list);
+						friend_list_selected = true;
 						view.remove(search_results);
+						view.add(friend_list);
+						
 					}else if(e.index = 1){
+						friend_list_selected = false;
 						view.remove(friend_list);
 						view.add(search_results);
 					}
