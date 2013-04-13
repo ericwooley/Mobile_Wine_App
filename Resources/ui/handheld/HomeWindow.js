@@ -82,12 +82,12 @@ function HomeWindow(title)
 	
 	
 	self.addEventListener('focus', load_data);
-	self.addEventListener('blur', function(){
-		Ti.API.info("-----------------------------------------------");
-		Ti.API.info("blurred");
-		Ti.API.info("-----------------------------------------------");
-		self.addEventListener('focus', load_data);
-	});
+	// self.addEventListener('blur', function(){
+		// Ti.API.info("-----------------------------------------------");
+		// Ti.API.info("blurred");
+		// Ti.API.info("-----------------------------------------------");
+		// self.addEventListener('focus', load_data);
+	// });
 	
 	self.add(view);
 

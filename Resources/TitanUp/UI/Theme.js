@@ -7,11 +7,16 @@ function Theme ()
 
 function initialize ()
 {
-	Theme.backgroundColor = '#999';
-	Theme.lightBackgroundColor = '#fff';
-	Theme.darkBackgroundColor = '#666';
-	Theme.highlightColor = '#ccc';
-	Theme.textColor = '#000';
+	// Theme.backgroundColor = '#999';
+	// Theme.lightBackgroundColor = '#fff';
+	// Theme.darkBackgroundColor = '#666';
+	// Theme.highlightColor = '#ccc';
+	// Theme.textColor = '#000';
+	Theme.backgroundColor = '#BA3D49';
+	Theme.lightBackgroundColor = '#F1E6D4';
+	Theme.darkBackgroundColor = '#791F33';
+	Theme.highlightColor = '#B0AEAB';
+	Theme.textColor = '#66605F';
 	
 	if (TU.Device.getOS () == 'ios')
 	{

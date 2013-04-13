@@ -132,6 +132,27 @@ api.editProfile = function(fname, lname, bio, callback){
 api.checkin = function(wine_id, comment, rating, callback){
 	getResponse('http://winelife.ericwooley.com/user/checkin/',{wine_id: wine_id, comment: comment, rating: rating}, callback);
 }
+/**
+ * Follow a user
+ * @param {String} fid
+ * The id of the friend to follow
+ * @param {Function} callback
+ * The callback function to be used on load 
+ */
+api.follow = function(fid, callback){
+	getResponse('http://winelife.ericwooley.com/user/follow/',{friend_id: fid}, callback);
+}
+
+/**
+ * Follow a user
+ * @param {String} fid
+ * The id of the friend to follow
+ * @param {Function} callback
+ * The callback function to be used on load 
+ */
+api.unfollow = function(fid, callback){
+	getResponse('http://winelife.ericwooley.com/user/unfollow/',{friend_id: fid}, callback);
+}
 
 /**
  * creates a view containing a table with all the search results already formatted.
@@ -306,7 +327,8 @@ api.httpInterface = Ti.Network.createHTTPClient(
 		onerror : function(e) {
 			try{
 	         Ti.API.debug("Connection error: " +JSON.stringify(e));
-	         alert('Connection Error: '+ JSON.stringify(e));}
+	         alert('Connection Error: Please try again later');
+	        }
 	        catch(e){
 	        	Ti.API.info(JSON.stringify(e));}
 	        api.lock = false;

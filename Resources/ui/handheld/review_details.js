@@ -28,8 +28,8 @@ function review_details(review){
 		top: 0
 	});
 	var user_image = Ti.UI.createImageView({
-		image: review.friend.picture_url,
-		width: 100,
+		image: review.friend.picture_m,
+		width:150,
 		height: Ti.UI.SIZE,
 		touchEnabled: false,
 	});
@@ -56,6 +56,7 @@ function review_details(review){
 		text: '"'+review.comment+ '"',
 		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE,
+		font: {fontSize: 12, fontStyle: 'italic'},
 		textAlign:Ti.UI.TEXT_ALIGNMENT_CENTER
 	});
 	var swipe_text = Ti.UI.createLabel({
@@ -117,13 +118,13 @@ function review_details(review){
 
 		img = review.upload_pic.toImage();
 		var iv = {
-			image: review.wine_pic,
+			image: review.wine_pic_m,
 			height:Titanium.Platform.displayCaps.platformHeight * .7 ,
 			touchEnabled: false,
 			top: 0
 		};
 		if(img.width > img.height){
-			alert('using width');
+			//alert('using width');
 			iv = {
 				image: review.wine_pic,
 				width: Ti.UI.FILL,

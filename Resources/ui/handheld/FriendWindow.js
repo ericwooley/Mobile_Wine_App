@@ -6,7 +6,6 @@
 //	Programmer:  David Wells
 //	***********************************************
 
-
 function FriendWindow(friend) {
 	var global = require('ui/common/globals');
 	var dropdown = require('ui/common/elements/dropdown');
@@ -138,7 +137,28 @@ function FriendWindow(friend) {
   		width: Ti.UI.FILL
 	});
 	content.add(following);
-
+	var options = ['Following', 'Not Following'];
+	var select_bar = global.TU.UI.createSelectBar ({
+		left: 10,
+		width: Ti.UI.FILL,
+		top: 5,
+		backgroundColor: global.colors.dark,
+		allow_deselect: false,
+		labels: options
+	});
+	select_bar.xsetSelectedIndex(0);
+	select_bar.addEventListener ('TUchange', function (e) {
+		if(e.index == 0){
+			global.api.follow(friend.user_id, function(){
+				alert('You are now following ' + friend.fname);
+			});
+		}else if(e.index = 1){
+			global.api.unfollow(friend.user_id, function(){
+				alert('You are no longer following ' + friend.fname);
+			});
+		}
+	});
+	content.add(select_bar);
 	
 	
 	// RECENT CHECK-INS LABEL

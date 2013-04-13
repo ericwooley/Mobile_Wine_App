@@ -5,9 +5,16 @@ if (Ti.version < 1.8 ) {
 	alert('Sorry - this application template requires Titanium Mobile SDK 1.8 or later');
 }
 
-
+var TU = require ('/TitanUp/TitanUp');
 // This is a single context application with mutliple windows in a stack
 (function() {
+	TU.UI.Theme.backgroundColor = '#BA3D49';
+	TU.UI.Theme.lightBackgroundColor = '#F1E6D4';
+	TU.UI.Theme.darkBackgroundColor = '#791F33';
+	TU.UI.Theme.highlightColor = '#B0AEAB';
+	TU.UI.Theme.textColor = '#66605F';
+	
+	
 	var global = require('ui/common/globals');
 	//determine platform and form factor and render approproate components
 	var osname = Ti.Platform.osname,

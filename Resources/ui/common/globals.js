@@ -17,6 +17,7 @@ var globals  =
 		lessDark: '#c42d30',
 		dark: '#3c0017'
 	},
+	TU: require ('/TitanUp/TitanUp'),
 	user_id: Ti.App.Properties.getInt('user_id'),
 	android: Ti.Platform.osname == 'android',
 	/**
@@ -63,6 +64,10 @@ module.exports.userIsLoggedIn = function()
 {
 	return true;
 };
+// This is the theme for all of the global aspects
+
+
+
 
 /**
  * Global creation window function

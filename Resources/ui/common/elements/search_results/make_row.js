@@ -149,7 +149,7 @@ function make_row(info){
 		// Add User Comment
 		rating_container.add(Ti.UI.createLabel({
 			color: 'black',
-			text: '"'+wine.friend.comment+'"',
+			text: '"'+wine.friend.comment+'"\n- ' + wine.friend.fname + ' ' + wine.friend.lname,
 			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 			font: {fontSize: 12, fontStyle: 'italic'}
 		}));
