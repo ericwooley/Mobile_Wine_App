@@ -87,13 +87,13 @@ module.exports = function(result, callback){
 	// Pull to refresh
 	//////////////////////////////////
 	var border = Ti.UI.createView({
-		backgroundColor:"#576c89",
-		height:2,
-		bottom:0
+		backgroundColor: global.colors.dark,
+		height:1.5,
+		bottom:0,
 	});
 	
 	var tableHeader = Ti.UI.createView({
-		backgroundColor:"#e2e7ed",
+		backgroundColor:"#efd195",
 		width:320,
 		height:60
 	});
@@ -112,15 +112,15 @@ module.exports = function(result, callback){
 	
 	var statusLabel = Ti.UI.createLabel({
 		text:"Pull to reload",
-		left:55,
+		left:30,
 		width:200,
-		bottom:30,
+		bottom:20,
 		height:"auto",
-		color:"#576c89",
+		color: global.colors.dark,
 		textAlign:"center",
 		font:{fontFamily: "Helvetica Neue", fontSize:13,fontWeight:"bold"},
-		shadowColor:"#999",
-		shadowOffset:{x:0,y:1}
+		//shadowColor:"#999",
+		//shadowOffset:{x:0,y:1}
 	});
 	
 	// var lastUpdatedLabel = Ti.UI.createLabel({

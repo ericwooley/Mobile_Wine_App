@@ -27,7 +27,7 @@ function make_row(info){
 		height:Ti.UI.SIZE,
 		className: 'WineRow',
 	});
-	
+	 
 	row.wine = {
 		id: wine.Id,
 		name: name,
