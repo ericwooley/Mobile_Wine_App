@@ -45,25 +45,46 @@ function FriendsWindow(title) {
 
 	Friend_view.add(email_field);
 	var dropdown = require('ui/common/elements/dropdown');
-	
-	dropdown(Friend_view, self, "Complete Search", "Search for Friends", "up", function() {
+	var search_results = null;
+	var friend_list_selected = true;
+	var search = function() {
 		if(email_field.getValue().length < 1){
 				
 			return;
 		}
-		// global.api.user_search(email_field.value, function(result){
-// 			
-// 			
-			// Ti.API.info('Removing old friend list');
-			// 
-			// email_field.setValue('');
 		global.api.load_user_search_results(
 			email_field.value,
 			function(list){
-				view.remove(friend_list);
-				friend_list = list;
-				friend_list = list;
-				view.add(list);
+				search_results = list;
+				if(friend_list_selected){
+					view.remove(friend_list);
+				}	
+				else{
+					view.remove(search_results);
+				}
+				search_results = list;
+				view.add(search_results);
+				var options = ['Friend List', 'Search For Friends'];
+				var select_bar = global.TU.UI.createSelectBar ({
+					width: Ti.UI.FILL,
+					bottom: 0,
+					backgroundColor: global.colors.dark,
+					allow_deselect: false,
+					borderRadius: 0,
+					labels: options
+				});
+				select_bar.xsetSelectedIndex(1);
+				select_bar.addEventListener ('TUchange', function (e) {
+					//select_bar.visible = false;
+					if(e.index == 0){
+						view.add(friend_list);
+						view.remove(search_results);
+					}else if(e.index = 1){
+						view.remove(friend_list);
+						view.add(search_results);
+					}
+				});
+				self.add(select_bar);
 			},
 			function(data){
 				var fw = require('ui/handheld/FriendWindow');
@@ -72,9 +93,9 @@ function FriendsWindow(title) {
 				self.containingTab.open(w);
 			}
 		);
-		// });
 
-	});
+	};
+	dropdown(Friend_view, self, "Complete Search", "Search for Friends", "up", search);
 	function find_fb_friends(e){
 		Ti.API.info('Facebook successfully logged into');
 		Ti.App.fireEvent('raise_shade', {});
@@ -141,10 +162,12 @@ function FriendsWindow(title) {
 			}
 		);
 	};
-	self.addEventListener('focus', load_fl);
-	self.addEventListener('blur', function(){
-		self.addEventListener('focus', load_fl);
-	});
+	 self.addEventListener('focus', load_fl);
+	 
+
+	// self.addEventListener('blur', function(){
+		// self.addEventListener('focus', load_fl);
+	// });
 	
 	global.outputHook(self);
 	return self;
