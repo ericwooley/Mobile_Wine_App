@@ -64,7 +64,7 @@ module.exports = function(wine){
 	
 	//  Camera Image on check-in pull-down
 	var camera = Ti.UI.createImageView({
-		image: '/images/camera.png',
+		image: '/images/camera2.png',
 		//width: '25%',
 		height: 50,
 		left: '10%'
