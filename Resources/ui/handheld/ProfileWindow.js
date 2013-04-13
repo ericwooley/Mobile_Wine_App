@@ -341,7 +341,7 @@ function ProfileWindow(title) {
 			// following.text = "Following: "+data.following;
 			if(select_bar)
 				profile_info.remove(select_bar);
-			var options = ['Check-Ins ('+data.chcount+')', 'Followers (' + +data.follower+')', 'Following (' + +data.following+')'];
+			var options = ['Check-Ins ('+data.chcount+')','Following (' + +data.following+')', 'Followers (' + +data.follower+')' ];
 			select_bar = global.TU.UI.createSelectBar ({
 				width: Ti.UI.FILL,
 				top:10,
