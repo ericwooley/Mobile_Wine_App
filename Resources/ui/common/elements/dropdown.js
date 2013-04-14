@@ -47,7 +47,7 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 	var cancel = Titanium.UI.createImageView({
 		//color: 'white',
 		//title: start_down? down_button_text: up_button_text
-		top: -60,left: 10,
+		top: -60,left: 5,
 		width: Ti.UI.SIZE,
 		height:30,
 		zIndex: 1,

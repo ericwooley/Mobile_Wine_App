@@ -23,10 +23,9 @@ module.exports = function(fl, callback){
 		// This image will be the image of the user
 		var image = Ti.UI.createImageView
 		({ 		
-  			  	// height: Ti.UI.SIZE,
-		  		// width: '27%',
+  			  	height: Ti.UI.SIZE,
+		  		width: '27%',
 		  		//height: 100,
-		  		width: 50,
 				top: 10,
 				bottom: 10,
 				left: 5,
