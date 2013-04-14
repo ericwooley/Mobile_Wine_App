@@ -343,7 +343,7 @@ function ProfileWindow(title) {
 			// following.text = "Following: "+data.following;
 			if(select_bar)
 				profile_info.remove(select_bar);
-			var options = ['Check-Ins ('+data.chcount+')','Following (' + +data.following+')', 'Followers (' + +data.follower+')' ];
+			var options = ['Check-Ins','Following', 'Followers' ];
 			select_bar = global.TU.UI.createSelectBar ({
 				width: Ti.UI.FILL,
 				top:10,
@@ -367,15 +367,15 @@ function ProfileWindow(title) {
 					if(table)
 						profile_info.add(table);
 				}else if(e.index == 1){
-					if(!following)
+					//if(!following)
 						load_following();
-					else
-						profile_info.add(following);
+					//else
+						//profile_info.add(following);
 				}else if(e.index == 2){
-					if(!followers)
+					//if(!followers)
 						load_followers();
-					else
-						profile_info.add(following);
+					//else
+						//rofile_info.add(following);
 				}
 			});
 			profile_info.add(select_bar);
