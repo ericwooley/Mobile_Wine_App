@@ -48,6 +48,11 @@ module.exports = function(w)
 	    right: 10,
 	    backgroundColor: global.colors.dark,
 	    backgroundImage:'none',
+	    color: 'white',
+		font:{
+            fontFamily:'Helvetica Neue',
+            fontSize:18,
+           },  
 	    borderRadius: 5,
 		title: 'Logout'
 	});

@@ -23,6 +23,9 @@ function CheckInsWindow(title) {
 	
 	var search_bar = Ti.UI.createTextField({
 		hintText: 'Search for a wine...',
+		font:{
+            fontFamily:'Helvetica Neue', fontSize: 16
+           },   
 		width: Ti.UI.FILL,
 		right: 10,
 		left: 10,
@@ -31,6 +34,9 @@ function CheckInsWindow(title) {
 	});
 	var camera_button = Ti.UI.createButton({
 		title: 'Scan Barcode',
+		font:{
+            fontFamily:'Helvetica Neue', fontSize: 18, fontWeight: 'Bold'
+           },
 		left: 10,
 		right: 10,
 		height: 40,

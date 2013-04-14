@@ -31,7 +31,9 @@ function LoginWindow() {
 	var emailTextField = Ti.UI.createTextField({
 		//borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
   		color: '#336699',
-  		font: {fontFamily: 'Myriad Pro', fontSize: 16, fontWeight: 'bold'},
+  		font:{
+            fontFamily:'Helvetica Neue', fontSize: 16
+           },   
   		top: 10,
   		left: 10,
   		width: '80%',
@@ -43,7 +45,9 @@ function LoginWindow() {
 	var passwordTextField = Ti.UI.createTextField({
 		//borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
   		color: '#336699',
-  		font: {fontFamily: 'Myriad Pro', fontSize: 16, fontWeight: 'bold'},
+  		font:{
+            fontFamily:'Helvetica Neue', fontSize: 16
+           },   
   		width: '55%',
   		top: 0,
   		left: 10,
@@ -66,7 +70,7 @@ function LoginWindow() {
 	});
 	var pwBoxHint = Ti.UI.createLabel({
 		text: 'Hide Password',
-		font: {fontFamily: 'Myriad Pro', fontSize: 12},
+		font: {fontFamily: 'Helvetica Neue', fontSize: 12},
 		right: 0,
 		bottom: 1,
 		color: '#777777'
@@ -171,7 +175,7 @@ function LoginWindow() {
 		width: '80%',
 		bottom: 2,
 		color: global.colors.lightest,
-		font: {fontFamily: 'Myriad Pro', fontSize: 10, fontWeight: 'bold'}
+		font: {fontFamily: 'Helvetica Neue', fontSize: 10, fontWeight: 'bold'}
 	})
 	function validateFields(e){
 		//global.store_string('email', emailTextField.value);

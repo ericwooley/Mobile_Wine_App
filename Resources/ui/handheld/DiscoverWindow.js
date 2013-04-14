@@ -58,6 +58,9 @@ function DiscoverWindow(title) {
 		top:0,
 		width:'90%',
 		left:'5%',
+		font:{
+            fontFamily:'Helvetica Neue', fontSize: 16
+           },  
 		hintText:' Discover a wine...',
 		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 	});
