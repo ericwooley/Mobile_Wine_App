@@ -87,8 +87,9 @@ module.exports = function(result, callback){
 	// Pull to refresh
 	//////////////////////////////////
 	var border = Ti.UI.createView({
-		backgroundColor: global.colors.dark,
-		height:1.5,
+		backgroundColor: 'e7c580',
+		//backgroundColor: 'transparent',
+		height:3,
 		bottom:0,
 	});
 	
