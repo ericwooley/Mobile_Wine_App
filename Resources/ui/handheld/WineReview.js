@@ -166,10 +166,11 @@ function WineReview(wine, friend){
 						      		Ti.API.info('deleted: '+r.source.review.checkin_id);
 						      	});						 
 						      	r.source.width = r.source.size.width;
-							      r.source.animate({left: r.source.size.width,  duration: 200}, function(t){
-							      	r.source.height=0;
-							      	r.source.visible = false;
-							      	r.source.top = 0; r.source.bottom = 0;
+							      r.source.animate({left: Titanium.Platform.displayCaps.platformWidth,  duration: 200}, function(t){
+							      	// r.source.height=0;
+							      	// r.source.visible = false;
+							      	// r.source.top = 0; r.source.bottom = 0;
+							      	tableview.deleteRow(r.source.index);
 							      });
 							      
 						      

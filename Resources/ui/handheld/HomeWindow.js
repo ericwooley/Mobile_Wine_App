@@ -64,6 +64,7 @@ function HomeWindow(title)
 				load_data();
 			});
 			view.add(table);
+			//alert('got to here');
 		});
 	};
 	

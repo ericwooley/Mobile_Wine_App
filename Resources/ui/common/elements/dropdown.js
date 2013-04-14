@@ -44,6 +44,17 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 		//backgroundImage: 'images/wood_texture.png'
 	});
 	
+	var cancel = Titanium.UI.createImageView({
+		//color: 'white',
+		//title: start_down? down_button_text: up_button_text
+		top: -60,left: 10,
+		width: Ti.UI.SIZE,
+		height:30,
+		zIndex: 1,
+		image: '/images/back.png',
+		//backgroundImage: 'images/wood_texture.png'
+	});
+	
 	var db_text = Ti.UI.createLabel({
 		height: Ti.UI.SIZE,
 		width: Ti.UI.SIZE,
@@ -58,6 +69,21 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 	//Ti.API.info("Height at end: "+in_view.size.height);
 	drop_view_w.add(drop_view);
 	drop_view_w.add(drop_button);
+	drop_view_w.add(cancel);
+	raise_shade = function(data){
+		if(raise_lock)
+			return;
+		raise_lock = true;
+		drop_button.addEventListener('click', drop);
+		drop_view_w.animate({
+			top: 0 - in_view.size.height - in_view.top,
+			duration: 500
+		},function(e){
+			db_text.text = up_button_text;
+			//callback();
+		});
+	};
+	cancel.addEventListener('click', raise_shade);
 	win.add(drop_view_w);
 	
 	var raise_lock = false;
@@ -90,19 +116,7 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 			db_text.text = down_button_text;
 		});
 	};
-	Ti.App.addEventListener('raise_shade', function(data){
-		if(raise_lock)
-			return;
-		raise_lock = true;
-		drop_button.addEventListener('click', drop);
-		drop_view_w.animate({
-			top: 0 - in_view.size.height - in_view.top,
-			duration: 500
-		},function(e){
-			db_text.text = up_button_text;
-			//callback();
-		});
-	});
+	Ti.App.addEventListener('raise_shade', raise_shade);
 	win.addEventListener('focus', init);
 	function init(e){
 		// We only want this called the first time the window is focused on.
