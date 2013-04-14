@@ -25,6 +25,7 @@ function make_row(info){
 	({
 		hasChild:false,
 		height:Ti.UI.SIZE,
+		width: Ti.UI.FILL,
 		className: 'WineRow',
 	});
 	 
@@ -41,10 +42,10 @@ function make_row(info){
 		top: top? top: 5,
 		left: 10,
 		right: 10,
-		borderRadius: 5,
 		backgroundColor: '#fcf3e1',
 		layout: 'vertical'
 	});
+	if(!global.android) row_block.borderRadius = 5;
 	var wine_info = Ti.UI.createView({
 		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE,
@@ -129,7 +130,7 @@ function make_row(info){
 			width: 50,
 			left: 10,
 
-			borderRadius: 10,
+			borderRadius: global.android?null: 10,
 			backgroundColor: 'black'
 		}));
 		

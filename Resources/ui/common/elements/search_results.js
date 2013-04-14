@@ -82,7 +82,8 @@ module.exports = function(result, callback){
 	}));
 	refresh.addEventListener('click', function(e){
 		table_view.fireEvent('refresh_page_data', {});
-	})
+	});
+	table_view.add(table);
 	if(!global.android){
 		//////////////////////////////////
 		// Pull to refresh
@@ -223,7 +224,7 @@ module.exports = function(result, callback){
 		////////////////////////////
 		// End of pull to refresh
 		////////////////////////////
-		table_view.add(table);
+		
 	}
 	else
 		table_view.add(refresh);

@@ -45,15 +45,11 @@ function HomeWindow(title)
 		if(table != null)
 			view.remove(table);
 		view.add(loading);
-		loading.show();
-		Ti.API.info("-----------------------------------------------");
-		Ti.API.info("Loading data");
-		Ti.API.info("-----------------------------------------------");
+		loading.show(); 
 		self.removeEventListener('focus', load_data);
 		global.api.get_home_results(function(data){
 			loading.hide();
 			view.remove(loading);
-			//Ti.API.info(data);
 			table = global.api.search_results(data, function(wine){
 				var wine_review = require('ui/handheld/WineReview');
 				var wr = wine_review(wine);
@@ -64,31 +60,12 @@ function HomeWindow(title)
 				load_data();
 			});
 			view.add(table);
-			//alert('got to here');
 		});
 	};
-	
-	
-	
-	// // Refresh button
-	// var refresh = Titanium.UI.createButton({
-    	// systemButton : Titanium.UI.iPhone.SystemButton.REFRESH,
-	// });
-	// self.setLeftNavButton(refresh);
-	// refresh.addEventListener('click',function(){
-   	    // load_data()
-	// });
-	
-	
-	
+
 	
 	self.addEventListener('focus', load_data);
-	// self.addEventListener('blur', function(){
-		// Ti.API.info("-----------------------------------------------");
-		// Ti.API.info("blurred");
-		// Ti.API.info("-----------------------------------------------");
-		// self.addEventListener('focus', load_data);
-	// });
+
 	
 	self.add(view);
 
