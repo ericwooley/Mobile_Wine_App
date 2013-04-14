@@ -79,8 +79,9 @@ function WineReview(wine, friend){
 					top: 10,
 					left: 10,
 					right: 5,
+					right: 10,
 					borderRadius: 5,
-					backgroundColor: '#f4f1eb',
+					backgroundColor: '#fcf3e1',
 					layout: 'horizontal',
 					touchEnabled: true
 				});
