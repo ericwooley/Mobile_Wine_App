@@ -301,6 +301,7 @@ function ProfileWindow(title) {
 		global.api.follower_table(function(table){
 				followers = table;
 				profile_info.add(followers);
+				table.setLeft(10);
 			},
 			function(data){
 				var fw = require('ui/handheld/FriendWindow');
@@ -316,6 +317,7 @@ function ProfileWindow(title) {
 			function(list){
 				following = list;
 				profile_info.add(following);
+				list.setLeft(10);
 			},
 			function(data){
 				var fw = require('ui/handheld/FriendWindow');
