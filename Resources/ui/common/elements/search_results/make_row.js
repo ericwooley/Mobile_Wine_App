@@ -7,7 +7,6 @@ function make_row(info){
 	 var wine = info.wine;
 	 //Ti.API.info('info:'+JSON.stringify(info));	
 	 top = info.top;
-	 
 	name = wine.Name;
 	
 	try{
@@ -26,7 +25,7 @@ function make_row(info){
 		hasChild:false,
 		height:Ti.UI.SIZE,
 		width: Ti.UI.FILL,
-		className: 'WineRow',
+		className: 'WineRow'
 	});
 	 
 	row.wine = {
@@ -154,7 +153,7 @@ function make_row(info){
 			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 			font: {fontSize: 12, fontStyle: 'italic'}
 		}));
-		if( wine.friend.user_wine_url.length > 0){
+		if( !global.android && wine.friend.user_wine_url.length > 0){
 			friend_info_row.add(Ti.UI.createImageView({
 				width: Ti.UI.FILL,
 				//height:,

@@ -10,7 +10,10 @@ module.exports = function(result, callback){
 	var first = true;
 	// if we have a result
 	if(pl.length > 0){
-		for(var i = 0; i < pl.length; ++i)
+		var c = global.android? 10: pl.length;
+		//if(pl.length < 10) 
+		c = pl.length;
+		for(var i = 0; i < c; ++i)
 			if(first){
 				tbl_data.push(make_row({
 					wine: pl[i],
