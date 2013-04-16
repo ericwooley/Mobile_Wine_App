@@ -75,7 +75,7 @@ function ProfileWindow(title) {
 		height: Ti.UI.SIZE
 	});
 	header.add(content);
-	self.add(progressbar);
+	
 	//  ADD IMAGE
 	//	***********************************************	
 	function add_image(){
@@ -420,7 +420,7 @@ function ProfileWindow(title) {
 		});
 		
 	});	
-
+	self.add(progressbar);
 	global.outputHook(self);
 	return self;
 };
