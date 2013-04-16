@@ -28,22 +28,26 @@ function make_row(info){
 		className: 'WineRow'
 	});
 	 
-	row.wine = {
-		id: wine.Id,
-		name: name,
-		winetype: winetype,
-		location: location,
-		all_information: wine
-	};
+
 	var row_block = Ti.UI.createView({
 		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE,
-		top: top? top: 5,
+		top: 10,
 		left: 10,
 		right: 10,
 		backgroundColor: '#fcf3e1',
 		layout: 'vertical'
 	});
+	row_block.addEventListener('click', function(data){
+		info.callback({
+			id: wine.Id,
+			name: name,
+			winetype: winetype,
+			location: location,
+			all_information: wine
+		});
+	})
+	
 	if(!global.android) row_block.borderRadius = 5;
 	var wine_info = Ti.UI.createView({
 		width: Ti.UI.FILL,
@@ -153,7 +157,7 @@ function make_row(info){
 			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 			font: {fontSize: 12, fontStyle: 'italic'}
 		}));
-		if( !global.android && wine.friend.user_wine_url.length > 0){
+		if(wine.friend.user_wine_url.length > 0){
 			friend_info_row.add(Ti.UI.createImageView({
 				width: Ti.UI.FILL,
 				//height:,
@@ -167,6 +171,6 @@ function make_row(info){
 	}
 	
 	row.add(row_block);
-	return row;
+	return row_block;
 };
 module.exports = make_row;

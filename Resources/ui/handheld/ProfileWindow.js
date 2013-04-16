@@ -11,7 +11,8 @@ function ProfileWindow(title) {
 	var dropdown = require('ui/common/elements/dropdown');
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
-	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
+	if(!global.android)
+		self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 	var loading = global.loading_animation();
 	
 	self.add(loading);
@@ -33,11 +34,11 @@ function ProfileWindow(title) {
 	//	***********************************************
 	//	PROFILE INFO VIEWS & SUBVIEWS
 	//	***********************************************	
-	var profile_info = Ti.UI.createView({
+	var profile_info = Ti.UI.createScrollView({
 		layout: 'vertical',
 		height: Ti.UI.SIZE,
 		width: Ti.UI.FILL,
-		top: 35,
+		top: 15,
 	});
 	
 	
@@ -46,7 +47,8 @@ function ProfileWindow(title) {
 		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE,
 		left: 10,
-		right: 10, 
+		right: 10,
+		top: 20 
 
 		
 	});
@@ -56,13 +58,10 @@ function ProfileWindow(title) {
 	//  USER IMAGE - upper left of view
 	//	***********************************************	
 	var user_image = Ti.UI.createImageView({
-  		
-  		height: Ti.UI.SIZE,
   		width: '30%',
 		top: 0,
 		borderWidth: 1,
 		borderRadius: 10,
-  		
 	});
 	var progressbar = Ti.UI.createProgressBar({width: Ti.UI.FILL, height: 20, bottom: 0});
 	header.add(user_image);
@@ -410,6 +409,8 @@ function ProfileWindow(title) {
 	self.add(profile_info);
 
 	dropdown(edit_prof, self, "Save Changes", "Edit Profile", "up", function(){
+		fname.blur();
+		lname.blur();
 		if(fname.value.length < 1 || lname.value.lengh < 1 /*|| about_me.value == about_me._hintText*/){
 			alert('Profile was not updated, a field was blank');
 			return;

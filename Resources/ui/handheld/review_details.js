@@ -1,7 +1,8 @@
 function review_details(review){
 	var global = require('ui/common/globals');	
 	var self = global.createWindow('');
-	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
+	if(!global.android)
+		self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 	var has_image = review.wine_pic.length > 0;
 	// Creates back button
 	var back = Ti.UI.createButton({ title: "Back" });

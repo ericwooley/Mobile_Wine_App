@@ -13,7 +13,13 @@ function CheckInsWindow(title) {
 	var global = require('ui/common/globals');
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
-	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
+	if(!global.android)
+		self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
+	var overview = Ti.UI.createScrollView({
+		height: Ti.UI.SIZE,
+		width: Ti.UI.FILL,
+		layout: 'verticl'
+	});
 	// Search View
 	var sv = Ti.UI.createView({
 		width: Ti.UI.FILL,
@@ -48,12 +54,13 @@ function CheckInsWindow(title) {
 	var results_view;
 	var dd = require('ui/common/elements/dropdown');
 	dd(sv, self, 'Search', 'Search Again', 'down', function(data){
+		search_bar.blur();
 		if(search_bar.value.length < 1)
 			return;
 		global.api.search(search_bar.value, function(data){
 			if(results_view != null)
-				self.remove(results_view);
-				self.remove(picture);
+				overview.remove(results_view);
+				overview.remove(picture);
 			var search_format = require('ui/common/elements/search_results');
 			results_view = search_format(data, function(wine){
 				var wine_review = require('ui/handheld/WineReview');
@@ -63,12 +70,12 @@ function CheckInsWindow(title) {
 				self.containingTab.open(wr);
 			});
 			results_view.top = 25;
-			self.add(results_view);
+			overview.add(results_view);
 		});
 	});
 	
 	var picture = Ti.UI.createImageView({
-  		//height: 200,
+  		top: sv.rect.height + 100,
   		width: 250,
 		bottom: 35,
   		contentMode: 'aspectfill',
@@ -76,7 +83,7 @@ function CheckInsWindow(title) {
   		image: '/images/Logo2.png',
  	});
 
-	self.add(picture);
+	overview.add(picture);
 	
 	camera_button.addEventListener('click', function(){
 		var get_bar_code = require('ui/common/elements/barcode');
@@ -91,7 +98,7 @@ function CheckInsWindow(title) {
 	});
 
 	
-	
+	self.add(overview);
 	global.outputHook(self);
 	return self;
 };

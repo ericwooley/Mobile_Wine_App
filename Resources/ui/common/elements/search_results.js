@@ -1,30 +1,43 @@
 module.exports = function(result, callback){
 	Ti.API.info("loading search results: ");
 	var global = require('ui/common/globals');
+	
+	
+			
+	var table = Titanium.UI.createView
+	({
+		width:Ti.UI.FILL,
+		height:Ti.UI.SIZE,
+		layout: 'vertical',
+		top: 3,
+		bottom: 10
+	});
+	
+	
 	Ti.API.info(JSON.stringify(result));
 	var make_row = require('ui/common/elements/search_results/make_row');
 	var tbl_data = [];
-	//result.Products.List
 	var pl = result.Products.List;
 	Ti.API.info(pl.length + " results");
 	var first = true;
 	// if we have a result
 	if(pl.length > 0){
-		var c = global.android? 10: pl.length;
-		//if(pl.length < 10) 
+		//var c = global.android? 10: pl.length; 
 		c = pl.length;
 		for(var i = 0; i < c; ++i)
 			if(first){
-				tbl_data.push(make_row({
+				table.add(make_row({
 					wine: pl[i],
-					top: 20
+					top: 20,
+					callback: callback
 				}));
 				first = false;
 			}
 			else{
-				tbl_data.push(make_row({
+				table.add(make_row({
 					wine: pl[i],
-					top: 10
+					top: 10,
+					callback: callback
 				}));
 			}
 	}
@@ -42,27 +55,16 @@ module.exports = function(result, callback){
 			touchEnabled:false
 		});
 		row.add(message);
-		tbl_data.push(row);
+		table.add(row);
 	}
-		
-	var table = Titanium.UI.createTableView
-	({
-		backgroundColor:'transparent',
-		width:Ti.UI.FILL,
-		height:Ti.UI.FILL,
-		data:tbl_data,
-		style: Ti.UI.iPhone.TableViewStyle.PLAIN,
-		separatorStyle: Titanium.UI.iPhone.TableViewSeparatorStyle.NONE,
-		separatorColor: 'transparent',
-		top: 3
-	});
-	if(pl.length > 0)
-		table.addEventListener('click', function(data){
-			callback(data.row.wine);
-		});
+
+	// if(pl.length > 0)
+		// table.addEventListener('click', function(data){
+			// callback(data.source.wine);
+		// });
 	
 	var table_view = Ti.UI.createView({
-		height: Ti.UI.FILL,
+		height: Ti.UI.SIZE,
 		width: Ti.UI.SIZE
 	});
 	var refresh = Ti.UI.createButton({

@@ -14,7 +14,8 @@ function FriendWindow(friend) {
 	
 	// Creates the default window with global color scheme
 	var self = global.createWindow(' ');
-	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
+	if(!global.android)
+		self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 		
 	// Creates back button
 	var back = Ti.UI.createButton({ title: "Back" });
@@ -30,7 +31,7 @@ function FriendWindow(friend) {
 
 //	PROFILE INFO VIEWS & SUBVIEWS
 //	***********************************************	
-	var profile_info = Ti.UI.createView({
+	var profile_info = Ti.UI.createScrollView({
 		layout: 'vertical',
 		height: Ti.UI.SIZE,
 		width: Ti.UI.FILL,
@@ -165,25 +166,25 @@ function FriendWindow(friend) {
 	
 	
 	// RECENT CHECK-INS LABEL
-	var recent_check_ins = Ti.UI.createLabel({
-		
-		color: global.colors.dark,
-  		font: { fontSize:18, fontWeight: 'bold' },
-		text: 'My Cellar',
-		font:{
-            fontFamily:'Helvetica Neue',
-            fontSize:18,
-            fontWeight:'Bold'
-           },   
-        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-	    width: Ti.UI.FILL, 
-	    height: Ti.UI.SIZE,
-	    top: 10,
-	    left: 10, 
-	    right: 10,
-  		
-	});
-	profile_info.add(recent_check_ins);
+	// var recent_check_ins = Ti.UI.createLabel({
+// 		
+		// color: global.colors.dark,
+  		// font: { fontSize:18, fontWeight: 'bold' },
+		// text: 'My Cellar',
+		// font:{
+            // fontFamily:'Helvetica Neue',
+            // fontSize:18,
+            // fontWeight:'Bold'
+           // },   
+        // textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	    // width: Ti.UI.FILL, 
+	    // height: Ti.UI.SIZE,
+	    // top: 10,
+	    // left: 10, 
+	    // right: 10,
+//   		
+	// });
+	//profile_info.add(recent_check_ins);
 	var table = null;
 	function load_data(){
 		self.removeEventListener('focus', load_data);

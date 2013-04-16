@@ -359,7 +359,6 @@ api.get_wine_by_id = function(id, callback){
  */
 api.get_home_results = function(callback){
 	getResponse('http://winelife.ericwooley.com/search/friends_checkins/', {}, callback);
-	
 };
 
 /**

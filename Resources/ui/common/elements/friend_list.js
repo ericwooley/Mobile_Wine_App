@@ -2,15 +2,25 @@ module.exports = function(fl, callback){
 	Ti.API.info("loading friendlist: ");
 	Ti.API.info(JSON.stringify(fl));
 	var tbl_data = [];
+	var table = Titanium.UI.createView
+	({
+		backgroundColor:'transparent',
+		top:10,
+		width:Ti.UI.SIZE,
+		height:Ti.UI.SIZE,
+		layout:'vertical',
+		right: 10,
+		bottom: 10
+	});
 	//result.Products.List
 	for(var i = 0; i < fl.length; ++i)
 	{
 		f = fl[i];
-		var row = Ti.UI.createTableViewRow({
-			hasChild:true,
-			height:Ti.UI.SIZE
+		var row = Ti.UI.createView({
+			height: Ti.UI.SIZE,
+			width: Ti.UI.FILL
 		});
-		row.friend =f; 
+		
 		var rc = Ti.UI.createView({
 			width: Ti.UI.FILL,
 			height: Ti.UI.SIZE,
@@ -20,6 +30,7 @@ module.exports = function(fl, callback){
 			backgroundColor: '#fcf3e1',
 			layout: 'horizontal'
 		});
+		rc.friend = f; 
 		// This image will be the image of the user
 		var image = Ti.UI.createImageView
 		({ 		
@@ -32,13 +43,15 @@ module.exports = function(fl, callback){
 				borderWidth: 1,
 				borderRadius: 10,
 		  		clipsToBounds: true,
-		  		image: f.picture_url
+		  		image: f.picture_url,
+		  		touchEnabled: false
 		});
 		var txt_container = Ti.UI.createView({
 			height: Ti.UI.SIZE,
 			width: '70%',
 			top: 5,
-			layout: 'vertical'
+			layout: 'vertical',
+		  		touchEnabled: false
 		});
 		// Label for the location of the wine within the row
 		var lbl_location = Ti.UI.createLabel
@@ -63,30 +76,20 @@ module.exports = function(fl, callback){
 		
 		});	
 
-
+		row.addEventListener('click',function(data){
+			callback(data.source.friend);
+		});
 		// Add each of these features to the row, then push the row
 		row.add(rc);
 		rc.add(image);
 		rc.add(txt_container);
 		txt_container.add(lbl_location);
 		txt_container.add(lbl_type);
-		tbl_data.push(row);
+		table.add(row);
 	}
-	var table = Titanium.UI.createTableView
-	({
-		backgroundColor:'transparent',
-		top:10,
-		width:'100%',
-		height:Ti.UI.FILL,
-		data:tbl_data,
-		style: Ti.UI.iPhone.TableViewStyle.PLAIN,
-		separatorStyle: Titanium.UI.iPhone.TableViewSeparatorStyle.NONE,
-		separatorColor: 'transparent'
-	});
+
 	
-	table.addEventListener('click',function(data){
-		callback(data.row.friend);
-	});
+
 	return table;	
 }
 

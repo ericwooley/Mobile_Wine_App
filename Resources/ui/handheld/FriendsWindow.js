@@ -2,12 +2,12 @@ function FriendsWindow(title) {
 	var global = require('ui/common/globals');
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
-	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
-	var view = Ti.UI.createView({
+	if(!global.android)
+		self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
+	var view = Ti.UI.createScrollView({
 		height: Ti.UI.FILL,
 		width: Ti.UI.FILL,
-		top: 15,
-		left: 10,
+		top: 0,
 		layout: 'vertical'
 	});
 	var Friend_view = Ti.UI.createView({
@@ -48,6 +48,7 @@ function FriendsWindow(title) {
 	var search_results = null;
 	var friend_list_selected = true;
 	var search = function() {
+		email_field.blur();
 		if(email_field.getValue().length < 1){
 				
 			return;
@@ -64,6 +65,9 @@ function FriendsWindow(title) {
 				}
 				friend_list_selected = false;
 				search_results = list;
+				search_results.top = 25;
+				search_results.bottom= 40;
+				friend_list.bottom = 40;
 				view.add(search_results);
 				var options = ['Friend List', 'Search For Friends'];
 				var select_bar = global.TU.UI.createSelectBar ({
@@ -156,6 +160,7 @@ function FriendsWindow(title) {
 		global.api.load_friend_list(
 			function(list){
 				friend_list = list;
+				friend_list.top = 25;
 				view.add(list);
 			},
 			function(data){
@@ -174,6 +179,7 @@ function FriendsWindow(title) {
 	// });
 	
 	global.outputHook(self);
+	self.top = 0;
 	return self;
 };
 

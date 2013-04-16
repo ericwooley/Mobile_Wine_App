@@ -5,24 +5,26 @@
 function WineReview(wine, friend){
 	var global = require('ui/common/globals');	
 	var self = global.createWindow('');
-	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
+	if(!global.android)
+		self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 	var all = wine.all_information;
 	
 	
 	// Creates back button
-	var back = Ti.UI.createButton({ title: "Back" });
- 	back.addEventListener("click", function() 
-	{
- 		self.close({animated:true});
-	});
-	self.setLeftNavButton(back);
-	
-	var overview = Ti.UI.createView({
-		height: '100%',
-		width: '100%',
+	if(!global.android){
+		var back = Ti.UI.createButton({ title: "Back" });
+	 	back.addEventListener("click", function() 
+		{
+	 		self.close({animated:true});
+		});
+		self.setLeftNavButton(back);
+	}
+	var overview = Ti.UI.createScrollView({
+		height: Ti.UI.SIZE,
+		width: Ti.UI.FILL,
 		layout: 'vertical',	
 	});
-	
+
 	// Add the header to the view.
 	var header = require('ui/handheld/Wine_Review/header');
 	var head = header(
@@ -60,17 +62,17 @@ function WineReview(wine, friend){
 			//alert(JSON.stringify(data));
 			if(tableview != null)
 				overview.remove(tableview);
-			
+			tableview = Titanium.UI.createView({
+				//data:reviews,
+				width: Ti.UI.FILL,
+				height: Ti.UI.SIZE,
+				layout:'vertical',
+				bottom: 10
+			});
 			var reviews = [];
 			
 			for (var i = 0; i < data.length; i++) {
 				var review = data[i];
-				var r = Ti.UI.createTableViewRow({
-					hasChild:false,
-					selectionStyle: 'none',
-					layout: 'vertical',
-					touchEnabled: false
-				});
 				
 				// THIS IS ONE REVIEW ENTRY
 				var rc = Ti.UI.createView({
@@ -78,8 +80,7 @@ function WineReview(wine, friend){
 					height: Ti.UI.SIZE,
 					top: 10,
 					left: 10,
-					right: 5,
-					right: 10,
+					right:10,
 					borderRadius: 5,
 					backgroundColor: '#fcf3e1',
 					layout: 'horizontal',
@@ -106,7 +107,7 @@ function WineReview(wine, friend){
 					width: Ti.UI.FILL,
 					touchEnabled: false
 				});
-				r.add(rc);
+				//r.add(rc);
 				rc.add(rv);	
 				rv.add(Ti.UI.createLabel({
 					color: 'black',
@@ -201,32 +202,13 @@ function WineReview(wine, friend){
 					var review_details = open_review_details(e.source.review);
 					review_details.containingTab = self.containingTab;
 					self.containingTab.open(review_details);
-					
-					
-					
-					/*if(global.user_id == e.source.friend.ID){
-						//do nothing
-						alert('clicked your own, this will eventually allow you to edit it.');
-					}
-					else
-					{
-						alert('you clicked another wine ' + global.user_id + ' ' + review.friend.ID);
-					}*/
 				});
 				rc.review = review;
-				reviews.push(r);
+				tableview.add(rc);
 				
 			}
 			// create table view
-			tableview = Titanium.UI.createTableView({
-				data:reviews,
-				width: Ti.UI.FILL,
-				height: Ti.UI.FILL,
-				backgroundColor:'transparent',
-				style: Ti.UI.iPhone.TableViewStyle.PLAIN,
-				separatorStyle: Titanium.UI.iPhone.TableViewSeparatorStyle.NONE,
-				separatorColor: 'transparent',
-			});
+			
 			
 			overview.add(tableview);
 		});
@@ -264,6 +246,7 @@ function WineReview(wine, friend){
 		ch.image_rotation = rotation.r;
 	});
 	dd(ch.view, self, "Finish Check-In", "Check-In", "up", function(){
+		ch.ta.blur();
 		global.api.checkin(wine.id, ch.ta.value, Math.round(ch.rating.value), function(data){
 			Ti.API.info('checkin complete:' + data.id);
 			if(ch.ui == null){

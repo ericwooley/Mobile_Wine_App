@@ -154,16 +154,9 @@ function outputHook(win){
 		image:'/images/gearIcon.png',
 		layout:'vertical'
 	});
-
-	if(Titanium.Platform.osname == 'android'){
-		
-		settingsButton.setImage('/images/gearIconCrop.png');
-		//settingsButton.setImage(Titanium.UI.iPhone.SystemButton.REFRESH)
-		settingsButton.setRight(0);		
-		win.add(settingsButton);
-	}
-	else{
-	win.setRightNavButton(settingsButton);
+	if(!globals.android)
+	{
+		win.setRightNavButton(settingsButton);
 	}
 	settingsButton.addEventListener('click', function() {
 		//containingTab attribute must be set by parent tab group on

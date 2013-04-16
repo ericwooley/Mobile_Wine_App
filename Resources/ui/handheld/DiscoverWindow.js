@@ -11,7 +11,8 @@ function DiscoverWindow(title) {
 	var global = require('ui/common/globals');
 	var dropdown = require('ui/common/elements/dropdown');
 	var self = global.createWindow(title);
-	self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
+	if(!global.android)
+		self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 	var TU = require ('/TitanUp/TitanUp');
 
 	// This view holds the wine list
@@ -203,16 +204,16 @@ function DiscoverWindow(title) {
 	//***********************************************************************************
 //  This original list in the future will display advertised wines / picks of the day
 //***********************************************************************************
-	var view = Ti.UI.createView({
-		top:view_discover.size.height + 140,
+	var view = Ti.UI.createScrollView({
+		top:view_discover.size.height + 120,
 		left:0,
 		width:Ti.UI.FILL,
-		height: Ti.UI.FILL,
+		height: Ti.UI.SIZE,
 		layout: 'vertical', 
 	});
 	var label_title = Ti.UI.createLabel({
 		color: global.colors.dark,
-		top: 10,
+		top: 20,
 		text:"Today's Featured Wines",
 		font:{
             fontFamily:'Helvetica Neue',
