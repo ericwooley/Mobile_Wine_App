@@ -69,8 +69,8 @@ function CheckInsWindow(title) {
 	
 	var picture = Ti.UI.createImageView({
   		//height: 200,
-  		width: 230,
-		bottom: '1%',
+  		width: 250,
+		bottom: 35,
   		contentMode: 'aspectfill',
   		clipsToBounds: false,
   		image: '/images/Logo2.png',
