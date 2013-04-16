@@ -35,7 +35,7 @@ function WineReview(wine, friend){
 			all.Labels[all.Labels.length - 1].Url
 	);
 	overview.add(head.header);
-	var progressbar = Ti.UI.createProgressBar({width: Ti.UI.FILL, height: 20});
+	var progressbar = Ti.UI.createProgressBar({width: Ti.UI.FILL, height: 20, bottom: 0});
 	
 	var FriendsReviews = Ti.UI.createLabel({
 		top: 5,
@@ -219,7 +219,7 @@ function WineReview(wine, friend){
 			load_tables();
 			return;
 		}
-		overview.add(progressbar);
+		//overview.add(progressbar);
 		progressbar.show(); 
         var xhr = Titanium.Network.createHTTPClient();
         xhr.onsendstream = function(e){
@@ -260,6 +260,7 @@ function WineReview(wine, friend){
 		});
 	});
 	self.add(overview);
+	self.add(progressbar);
 	return self;
 };
 
