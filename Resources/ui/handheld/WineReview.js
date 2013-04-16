@@ -38,17 +38,32 @@ function WineReview(wine, friend){
 	overview.add(head.header);
 	var progressbar = Ti.UI.createProgressBar({width: Ti.UI.FILL, height: 20, bottom: 0});
 	
-	var FriendsReviews = Ti.UI.createLabel({
-		top: 5,
+	
+	var options = ['Friend','Professional', 'Public' ];
+	var select_bar = global.TU.UI.createSelectBar ({
+		width: Ti.UI.FILL,
+		top:10,
 		left: 10,
-  		color: global.colors.dark,
-  		font: { fontFamily: 'Helvetica Neue', fontSize:18, fontWeight: 'bold'},
-  		text: 'Reviews',
-  		height: Ti.UI.SIZE,
-  		width: Ti.UI.FILL 
+		right: 10,
+		backgroundColor: global.colors.dark,
+		allow_deselect: false,
+		borderRadius: 0,
+		labels: options
+	});
+	select_bar.xsetSelectedIndex(0);
+	select_bar.addEventListener ('TUchange', function (e) {
+		var index_selected = e.index;	
+		if(e.index == 0){
+			alert('load friend reviews');
+		}else if(e.index == 1){
+			alert('load professional reviews');
+			
+		}else if(e.index == 2){
+			alert('load all reviews');
+		}
 	});
 	
-	overview.add(FriendsReviews);
+	overview.add(select_bar);
 	get_checkin_view = require('ui/handheld/Wine_Review/Checkin');
 
 	var ch = get_checkin_view(all);
