@@ -171,7 +171,7 @@ function WineReview(wine, friend){
 							      	// r.source.height=0;
 							      	// r.source.visible = false;
 							      	// r.source.top = 0; r.source.bottom = 0;
-							      	tableview.deleteRow(r.source.index);
+							      	tableview.remove(r.source);
 							      });
 							      
 						      
