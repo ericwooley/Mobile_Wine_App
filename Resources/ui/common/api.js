@@ -358,7 +358,6 @@ api.get_wine_by_id = function(id, callback){
  * @param {Function} callback function to be called on success
  */
 api.get_home_results = function(callback){
-	Ti.API.info("get_home_results etc");
 	getResponse('http://winelife.ericwooley.com/search/friends_checkins/', {}, callback);
 	
 };

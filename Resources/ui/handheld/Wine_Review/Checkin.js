@@ -187,6 +187,8 @@ module.exports = function(wine){
 	function rotate_right(){
 		var t = Ti.UI.create2DMatrix(); 
 		total_rotation += 90;
+		if(total_rotation == 360)
+			total_rotation = 0;
   		t = t.rotate(total_rotation);
   		var anim = Ti.UI.createAnimation();
   		anim.transform = t;
@@ -194,16 +196,7 @@ module.exports = function(wine){
   		Ti.App.fireEvent('rotate', {r: total_rotation});
 	};
 	cw.addEventListener('click', rotate_right);
-		function rotate_left(){
-		var t = Ti.UI.create2DMatrix(); 
-  		total_rotation -= 90;
-  		t = t.rotate(total_rotation);
-  		var anim = Ti.UI.createAnimation();
-  		anim.transform = t;
-  		user_image.animate(anim);
-  		Ti.App.fireEvent('rotate', {r: total_rotation});
-	};
-	ccw.addEventListener('click', rotate_left);
+
 	
 	// Record the values as they are changing
 	basicSlider.addEventListener('change',function(e)

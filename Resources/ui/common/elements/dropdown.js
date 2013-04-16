@@ -37,23 +37,35 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 		backgroundColor: global.colors.dark,
 		backgroundImage: 'none',
 		font:{fontSize:16,fontWeight:'normal',fontFamily:'Helvetica Neue'},
-		top: -30,
+		//top: -30,
 		width: Ti.UI.SIZE,
 		height:30,
 		zIndex: 1
 		//backgroundImage: 'images/wood_texture.png'
 	});
 	
-	var cancel = Titanium.UI.createImageView({
-		//color: 'white',
-		//title: start_down? down_button_text: up_button_text
-		top: -60,left: 5,
+	var cancel = Titanium.UI.createView({
+		borderRadius: 15,
+		borderWidth: 0,
+		backgroundColor: global.colors.dark,
+		backgroundImage: 'none',
+		font:{fontSize:16,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+		//top: -30,
 		width: Ti.UI.SIZE,
 		height:30,
 		zIndex: 1,
-		image: '/images/back.png',
-		//backgroundImage: 'images/wood_texture.png'
+		left: 10,
+		color: 'white',
 	});
+	var cancel_text = Ti.UI.createLabel({
+		height: Ti.UI.SIZE,
+		width: Ti.UI.SIZE,
+		left: 20,
+		right: 20,
+		color: 'white',
+		text: 'cancel'
+	});
+	cancel.add(cancel_text);
 	
 	var db_text = Ti.UI.createLabel({
 		height: Ti.UI.SIZE,
@@ -68,9 +80,20 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 	drop_view.add(in_view);
 	//Ti.API.info("Height at end: "+in_view.size.height);
 	drop_view_w.add(drop_view);
-	drop_view_w.add(drop_button);
-	drop_view_w.add(cancel);
+
+	var button_container = Ti.UI.createView({
+		width: Ti.UI.SIZE,
+		height: Ti.UI.SIZE,
+		top: -30,
+		zIndex: 2,
+		layout: 'horizontal',
+		//backgroundColor: 'green'
+	});
+	button_container.add(drop_button);
+	//button_container.add(cancel);
+	drop_view_w.add(button_container);
 	raise_shade = function(data){
+		button_container.remove(cancel);
 		if(raise_lock)
 			return;
 		raise_lock = true;
@@ -80,7 +103,6 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 			duration: 500
 		},function(e){
 			db_text.text = up_button_text;
-			//callback();
 		});
 	};
 	cancel.addEventListener('click', raise_shade);
@@ -88,6 +110,7 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 	
 	var raise_lock = false;
 	function raise_call(){
+		button_container.remove(cancel);
 		if(raise_lock)
 			return;
 		raise_lock = true;
@@ -106,6 +129,7 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 
 	
 	function drop(e){
+		button_container.add(cancel);
 		raise_lock = false;
 		drop_button.removeEventListener('click', drop);
 		drop_button.addEventListener('click', raise_call);
@@ -124,6 +148,7 @@ module.exports = function(in_view, win, down_button_text,  up_button_text, start
 		if(start_down)
 		{
 			drop_button.addEventListener('click', raise_call);
+			//button_container.add(cancel);
 		}
 		else
 		{
