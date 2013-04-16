@@ -174,7 +174,6 @@ module.exports = function(wine){
 		                user_image.image = image.imageAsThumbnail(50);
 		                user_image.visible = true;
 		                cw.visible = true;
-		                ccw.visible = true;
 		                full_image.image = image;
 		            },
 		            allowImageEditing:true,

@@ -22,6 +22,7 @@ function WineReview(wine, friend){
 	var overview = Ti.UI.createScrollView({
 		height: Ti.UI.SIZE,
 		width: Ti.UI.FILL,
+		top: 0,
 		layout: 'vertical',	
 	});
 
