@@ -254,7 +254,7 @@ api.follower_table = function(callback, onclickCallback){
  */
 api.catagory = function(cat, callback){
 	cat = cat.replace(/ /g, '+');
-	getResponse( 'http://winelife.ericwooley.com/search/wine_search/', { cat: cat, size: 10}, callback );
+	getResponse( 'http://winelife.ericwooley.com/search/wine_search/', { cat: cat, size: 40}, callback );
 };
 
 /**
