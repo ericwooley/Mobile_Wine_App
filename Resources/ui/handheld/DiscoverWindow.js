@@ -211,6 +211,10 @@ function DiscoverWindow(title) {
 		height: Ti.UI.SIZE,
 		layout: 'vertical', 
 	});
+	view = global.add_ptr(view);
+	view.addEventListener('refreshContents', function(){
+		load_data();
+	});
 	var label_title = Ti.UI.createLabel({
 		color: global.colors.dark,
 		top: 20,

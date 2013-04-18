@@ -38,7 +38,10 @@ function FriendWindow(friend) {
 		top: 10,
 		//backgroundColor: 'red'
 	});
-	
+	profile_info = global.add_ptr(profile_info);
+	profile_info.addEventListener('refreshContents', function(){
+		load_data();
+	});
 	
 	var header = Ti.UI.createView({
 		layout: 'horizontal',
@@ -188,10 +191,13 @@ function FriendWindow(friend) {
 	var table = null;
 	function load_data(){
 		self.removeEventListener('focus', load_data);
-			
+		if(table){
+			profile_info.remove(table);
+			table = null;
+			alert('this happened');
+		}			
 			global.api.friend_recent_checkins(friend.user_id, function(data){
-				if(table)
-				profile_info.remove(table);
+
 				table = global.api.search_results(data, function(wine){
 					var wine_review = require('ui/handheld/WineReview');
 					w = wine_review(wine, friend);
@@ -199,7 +205,7 @@ function FriendWindow(friend) {
 					self.containingTab.open(w);
 
 				});
-				table.addEventListener('refresh_page_data', load_data);
+				//table.addEventListener('refresh_page_data', load_data);
 				profile_info.add(table);
 			});
 	};

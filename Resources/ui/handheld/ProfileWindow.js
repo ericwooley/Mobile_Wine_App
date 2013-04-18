@@ -40,6 +40,11 @@ function ProfileWindow(title) {
 		width: Ti.UI.FILL,
 		top: 15,
 	});
+	profile_info = global.add_ptr(profile_info);
+	profile_info.addEventListener('refreshContents', function(){
+		data = {index: index_selected, refresh_mode: true};
+		load_correct_table(data);
+	});
 	
 	
 	var header = Ti.UI.createView({
@@ -310,6 +315,7 @@ function ProfileWindow(title) {
 			}
 		);
 	};
+	
 	var following = false;
 	function load_following(){
 		global.api.load_friend_list(
@@ -326,23 +332,78 @@ function ProfileWindow(title) {
 			}
 		);
 	};
-	var table = false;
 	
+	var table = false;
+	function load_table(){
+		if(!table){
+			//alert('loading table');
+			global.api.recent_checkins(function(data){
+				table = global.api.search_results(data, function(wine){
+					var wine_review = require('ui/handheld/WineReview');
+					var wr = wine_review(wine);
+					wr.containingTab = self.containingTab;
+					self.containingTab.open(wr);
+				});
+				profile_info.add(table);
+			});
+		}
+		else
+			profile_info.add(table);
+	};
+	
+	var index_selected = 0;
+	var refresh_mode = false;
+	function load_correct_table(e){
+		
+		if(typeof e.refresh_mode == 'undefined')
+			e.refresh_mode = false;
+		if(followers)
+			profile_info.remove(followers);
+		if(following)
+			profile_info.remove(following);
+		if(table)
+			profile_info.remove(table);
+		if(e.refresh_mode){
+			followers = null;
+			following = null;
+			table = null;
+		}
+		index_selected = e.index;
+		
+		
+		Ti.API.info(index_selected);
+		
+		if(index_selected == 0){
+			
+			load_table();
+			
+		}else if(index_selected == 1){
+			//if(!following)
+				load_following();
+			//else
+				//profile_info.add(following);
+		}else if(index_selected == 2){
+			//if(!followers)
+				load_followers();
+			//else
+				//rofile_info.add(following);
+		}
+		
+	};
 	
 	var select_bar = null;
-	var index_selected = 0;
+	var options = ['Check-Ins','Following', 'Followers' ];
 	function load_data(){
 		self.removeEventListener('focus', load_data);
 		global.api.profileInformation(function(data){
 			userName.text = data.fname + ' ' + data.lname;			
 			fname.value = data.fname;
 			lname.value = data.lname;
-			// check_ins.text= "Total Check-Ins: " + data.chcount;
-			// followers.text = "Followers: "+data.follower;
-			// following.text = "Following: "+data.following;
-			if(select_bar)
+			if(select_bar){
 				profile_info.remove(select_bar);
-			var options = ['Check-Ins','Following', 'Followers' ];
+				select_bar = null;
+			}
+			
 			select_bar = global.TU.UI.createSelectBar ({
 				width: Ti.UI.FILL,
 				top:10,
@@ -354,49 +415,13 @@ function ProfileWindow(title) {
 				labels: options
 			});
 			select_bar.xsetSelectedIndex(index_selected);
-			select_bar.addEventListener ('TUchange', function (e) {
-				index_selected = e.index;
-				profile_info.remove(table);
-				if(followers)
-					profile_info.remove(followers);
-				if(following)
-					profile_info.remove(following);
-				
-				if(e.index == 0){
-					if(table)
-						profile_info.add(table);
-				}else if(e.index == 1){
-					//if(!following)
-						load_following();
-					//else
-						//profile_info.add(following);
-				}else if(e.index == 2){
-					//if(!followers)
-						load_followers();
-					//else
-						//rofile_info.add(following);
-				}
-			});
+			select_bar.addEventListener ('TUchange', load_correct_table);
 			profile_info.add(select_bar);
-			
 			user_image.image = data.picture_url;
-			if(table){
-					profile_info.remove(table);
-					
-				}
-			global.api.recent_checkins(function(data){
-				header.show();
-				self.remove(loading);
-				
-				table = global.api.search_results(data, function(wine){
-					var wine_review = require('ui/handheld/WineReview');
-					var wr = wine_review(wine);
-					wr.containingTab = self.containingTab;
-					self.containingTab.open(wr);
-				});
-				table.addEventListener('refresh_page_data', load_data);
-				profile_info.add(table);
-			});
+			header.show();
+			self.remove(loading);
+			
+			load_correct_table({index: index_selected});
  		});
 		
 	};

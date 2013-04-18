@@ -10,6 +10,10 @@ function FriendsWindow(title) {
 		top: 0,
 		layout: 'vertical'
 	});
+	view = global.add_ptr(view);
+	view.addEventListener('refreshContents', function(){
+		load_fl();
+	});
 	var Friend_view = Ti.UI.createView({
 		width: Ti.UI.FILL,
 		height: Ti.UI.SIZE,

@@ -22,6 +22,10 @@ function HomeWindow(title)
 				left: 0,
 				layout: 'vertical'
 	});
+	view = global.add_ptr(view);
+	view.addEventListener('refreshContents', function(){
+		load_data();
+	});
 	//view.add(text);
 	var top_label = Ti.UI.createLabel({
 		text: 'Recent Check-Ins',

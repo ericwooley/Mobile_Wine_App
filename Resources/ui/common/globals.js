@@ -184,6 +184,97 @@ function store_string(name, value)
 };
 module.exports.store_string = store_string;
 
+
+/**
+ * Adds pull to refresh to a scrollView and fires events
+ * @param {Ti.UI.ScrollView} scrollView
+ * the view to thave the things added
+ */
+function add_ptr(scrollView){
+		if(!scrollView)
+			scrollView = Ti.UI.createScrollView({
+	            contentHeight : 'auto',
+	            layout : 'vertical',
+	            showVerticalScrollIndicator: true
+	            });
+	   
+		var tableHeader = Ti.UI.createView({
+            width: '100%',
+            height: 60,
+            top: -60
+        });
+ 
+        var arrow = Ti.UI.createView({
+            backgroundImage : "/images/arrow.png",       //your custom image path here.
+            width : '23dp',
+            height : '40dp',
+            bottom : '10dp',
+            left : '25dp'
+        });
+        tableHeader.add(arrow);
+         
+        var statusLabel = Ti.UI.createLabel({
+            text : 'Pull To Refresh',
+            textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
+            bottom : '30dp',
+            height : "auto",
+            font : {
+                fontSize : '11sp',
+                fontWeight : "bold"
+            }
+        });
+        tableHeader.add(statusLabel);
+        scrollView.add(tableHeader);
+		var offset = 0;
+		var do_refresh = false;
+		scrollView.addEventListener('scroll', function(e) {
+		    if (e.y!=null) {
+		        offset = e.y;
+		    }
+
+		    if (offset <= -60) {
+		    	
+		        var t = Ti.UI.create2DMatrix();
+		        t = t.rotate(-180);
+		        arrow.animate({
+		            transform : t,
+		            duration : 180
+		        });
+		        statusLabel.text = 'Release To Reload';
+				do_refresh= true;
+				
+		    }
+		    else if (offset >= 0) {             
+		        var t = Ti.UI.create2DMatrix();
+		        arrow.animate({
+		            transform : t,
+		            duration : 180
+		        });
+		        statusLabel.text = 'Pull To Refresh';
+            	Ti.API.info('removing touchEnd');
+            	
+	        	//scrollView.removeEventListener('touchend', refresh);
+	        	if(do_refresh)
+					scrollView.fireEvent('refreshContents'); 
+	        	do_refresh = false;
+		      
+		    }
+		     
+		});
+
+		
+        // var init = setInterval(function(e){
+            // if (offset==0) {
+                // clearInterval(init);
+            // }
+            // scrollView.scrollTo(0,0);
+        // },100);
+        
+        
+        return scrollView;
+	
+};
+module.exports.add_ptr = add_ptr; 
 /**
  * retrieve and decrypt a stored string.
  * @param {Object} name
