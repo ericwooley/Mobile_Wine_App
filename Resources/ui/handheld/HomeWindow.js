@@ -58,6 +58,7 @@ function HomeWindow(title)
 			table.addEventListener('refresh_page_data', function(){
 				load_data();
 			});
+			table.containingTab = self.containingTab;
 			view.add(table);
 		});
 	};

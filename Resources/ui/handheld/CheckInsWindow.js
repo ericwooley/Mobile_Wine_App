@@ -70,6 +70,7 @@ function CheckInsWindow(title) {
 				self.containingTab.open(wr);
 			});
 			results_view.top = 25;
+			results_view.containingTab = self.containingTab;
 			overview.add(results_view);
 		});
 	});

@@ -65,31 +65,43 @@ module.exports = function(result, callback){
 		// */
 		// ////////////////////// END OF CHANGES ///////////////////////
 	// }
-	if(!pl[0].friend){
-		var add_wine = Ti.UI.createView({
-			width: Titanium.Platform.displayCaps.platformWidth - 20,
-			height: Ti.UI.SIZE,
-			top: 10,
-			left: 10,
-			right: 10,
-			backgroundColor: '#fcf3e1',
-			borderRadius: global.android?0:10,
-			//title: "Don't see the wine you were looking for?\nAdd it to our database",
-		});
-		add_wine.add(Ti.UI.createLabel({
-			width: Ti.UI.SIZE,
-			height: Ti.UI.SIZE,
-			top:10, bottom: 10,
-			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-			text: "Don't see the wine you were looking for?\nAdd it to our database",
-			touchEnabled: false
-		}));
-		table.add(add_wine);
-		var edit_wine = require('ui/common/elements/edit_wine');
-		add_wine.addEventListener('click', function(){
-			edit_wine();
-		});
-	}
+	
+	
+	
+	/**********************************************************
+	 * 
+	 * This still needs work, doesn't open in a resonable way
+	 * 
+	 **********************************************************/
+	
+	
+	// if(pl.length < 1 || !pl[0].friend){
+		// var add_wine = Ti.UI.createView({
+			// width: Titanium.Platform.displayCaps.platformWidth - 20,
+			// height: Ti.UI.SIZE,
+			// top: 10,
+			// left: 10,
+			// right: 10,
+			// backgroundColor: '#fcf3e1',
+			// borderRadius: global.android?0:10,
+			// //title: "Don't see the wine you were looking for?\nAdd it to our database",
+		// });
+		// add_wine.add(Ti.UI.createLabel({
+			// width: Ti.UI.SIZE,
+			// height: Ti.UI.SIZE,
+			// top:10, bottom: 10,
+			// textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+			// text: "Don't see the wine you were looking for?\nAdd it to our database",
+			// touchEnabled: false
+		// }));
+		// table.add(add_wine);
+		// var edit_wine = require('ui/common/elements/edit_wine');
+		// add_wine.addEventListener('click', function(){
+			// var ew = edit_wine();
+			// ew.containingTab = table.containingTab;
+			// table.containingTab.open(wr);
+		// });
+	// }
 	
 	var table_view = Ti.UI.createView({
 		height: Ti.UI.SIZE,

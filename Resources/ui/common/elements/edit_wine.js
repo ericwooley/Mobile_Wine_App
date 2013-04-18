@@ -12,14 +12,14 @@
 module.exports = function(){
 	var global = require('ui/common/globals');
 	var make_row = require('ui/common/elements/search_results/make_row');
-	var win1 = global.createWindow('Add a Wine');
+	//var win1 = global.createWindow('Add a Wine');
 	var win2 = global.createWindow('Edit Wine');
 
-	win1.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
+	//win1.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 	win2.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 
 	// Create view 1
-	var view1 = Ti.UI.createView();
+	 var view1 = Ti.UI.createView();
 	// Create view 2
 	var view2 = Ti.UI.createView();
 
@@ -194,11 +194,11 @@ module.exports = function(){
 	view1.add(button1);
 	view2.add(button2);
 	// Adds (views -> (buttons + label)) to win1. 
-	win1.add(view1);
+	//win1.add(view1);
 	win2.add(view2);
 
-	win1.open();
-	global.outputHook(win1);
+	//win1.open();
+	//global.outputHook(win1);
 	global.outputHook(win2);
-	return win1;
+	return win2;
 };
