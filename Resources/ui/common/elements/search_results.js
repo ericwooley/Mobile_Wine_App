@@ -59,13 +59,11 @@ module.exports = function(result, callback){
 			touchEnabled:false
 		});
 		row.add(message);
-<<<<<<< HEAD
 		table.add(row);
-=======
+
 		tbl_data.push(row);
 		*/
 		////////////////////// END OF CHANGES ///////////////////////
->>>>>>> Added code to add a wine not found in database
 	}
 
 	// if(pl.length > 0)

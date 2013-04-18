@@ -40,6 +40,7 @@ module.exports = function(){
 		top: 200,
 		width: 150,
 		height: 35
+		//color: '#3c0017',
 	});
 
 	// Add event listener to button 1
@@ -56,44 +57,65 @@ module.exports = function(){
 		};
 		
 		// Window 2 is now open, attach the following labels, boxes, and buttons.
-
-		// Create label
-		var edit_message = Ti.UI.createLabel({
-			text: 'Enter the following information:',
-			height: 40,
+	
+		// Label for wine name text box
+		var name_label = Ti.UI.createLabel({
+			text: 'Wine name:',
+			height: 35,
 			width: 'auto',
-			top: 105,
+			left: 10,
+			top: 40,
 			color: 'black'
 		});
 
 		// Create box to enter a wine
 		var wineName = Ti.UI.createTextField({
 			color: '#333333',
-			hintText: 'Wine name',
+			hintText: 'e.g., Kendall Jackson',
 			height: 35,
-			top: 150,
+			top: 70,
 			left: 10,
 			right: 10,
 			borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
+		});
+		
+		// Label for wine varietal text box
+		var varietal_label = Ti.UI.createLabel({
+			text: 'Wine varietal:',
+			height: 35,
+			width: 'auto',
+			left: 10,
+			top: 105,
+			color: 'black'
 		});
 		
 		// Create box to enter the wine type
 		var wineType = Ti.UI.createTextField({
 			color: '#333333',
-			hintText: 'Wine varietal',
+			hintText: 'e.g., Pinot Noir 2007',
 			height: 35,
-			top: 190,
+			top: 135,
 			left: 10,
 			right: 10,
 			borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 		});
 		
+		// Label for wine varietal text box
+		var location_label = Ti.UI.createLabel({
+			text: 'Wine region:',
+			height: 35,
+			width: 'auto',
+			left: 10,
+			top: 170,
+			color: 'black'
+		});
+		
 		// Create box to enter the wine region
 		var wineRegion = Ti.UI.createTextField({
 			color: '#333333',
-			hintText: 'Wine region',
+			hintText: 'e.g., Sonoma County, CA',
 			height: 35,
-			top: 230,
+			top: 200,
 			left: 10,
 			right: 10,
 			borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
@@ -101,10 +123,11 @@ module.exports = function(){
 
 		var submitButton = Ti.UI.createButton({
 			title: 'Submit',
-			top: 275,
+			top: 245,
 			right: 10,
 			width: 145,
-			height: 40
+			height: 35
+			//color: '#3c0017',
 		});
 	
 		var wine_list = [];
@@ -128,9 +151,11 @@ module.exports = function(){
 		//for( var i = 0; i < wine_list.length; ++i )
 		//	wine_list.push(make_row(wine_list[i]));
 		
-		win2.add(edit_message);	
+		win2.add(name_label);
 		win2.add(wineName);
+		win2.add(varietal_label);
 		win2.add(wineType);
+		win2.add(location_label);
 		win2.add(wineRegion);
 		win2.add(submitButton);
 	});
@@ -140,10 +165,11 @@ module.exports = function(){
 	// Create button 2
 	var button2 = Ti.UI.createButton({
 		title: 'Cancel',
-		top: 275,
+		top: 245,
 		left: 10,
 		width: 145,
-		height: 40
+		height: 35
+		//color: '#3c0017',
 	});
 
 	// Add event listener to button 2
