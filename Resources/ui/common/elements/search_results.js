@@ -1,4 +1,4 @@
-module.exports = function(result, callback){
+module.exports = function(result, callback, addwine){
 	Ti.API.info("loading search results: ");
 	var global = require('ui/common/globals');
 	
@@ -24,7 +24,7 @@ module.exports = function(result, callback){
 	if(pl.length > 0){
 		//var c = global.android? 10: pl.length; 
 		c = pl.length;
-		for(var i = 0; i < c; ++i)
+		for(var i = 0; i < c; ++i){
 			if(first){
 				table.add(make_row({
 					wine: pl[i],
@@ -40,7 +40,37 @@ module.exports = function(result, callback){
 					callback: callback
 				}));
 			}
+			}
+		// Add Wine row to bottom of list
+	if(addwine == true){				
+	var row_block = Ti.UI.createView({
+		width: Ti.UI.FILL,
+		height: Ti.UI.SIZE,
+	    top: 5,
+		left: 10,
+		right: 10,
+		backgroundColor: '#fcf3e1',
+		layout: 'vertical'
+	});
+			
+	var lbl_addwine = Ti.UI.createLabel({
+		color:'black',
+		text: "Don't see the wine you were looking for?\nAdd it to our database",
+		font:{fontSize:20,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+		touchEnabled:false
+	});
+			
+	row_block.add(lbl_addwine);
+	table.add(row_block);
+			
+	row_block.addEventListener('click', function(e){
+		alert('add wine clicked');  // load add wine page
+	});	
 	}
+
+	}
+	
+
 	// else  // When there are no results from a search, call function to add a wine.
 	// {
 		// ////////////////////// CHANGED BY IVAN ///////////////////////

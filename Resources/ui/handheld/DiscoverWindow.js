@@ -254,7 +254,7 @@ function DiscoverWindow(title) {
 			//alert('called');
 			// removes featured wines and replaces it with search query
 			view.setTop('4%');
-			view.setHeight('100%');
+			view.setHeight(Ti.UI.FILL);
 			view.remove(table);
 			view.setBottom('5%');
 			view.remove(label_title);
@@ -275,7 +275,7 @@ function DiscoverWindow(title) {
 							var wr = wine_review(wine);
 							wr.containingTab = self.containingTab;
 							self.containingTab.open(wr);
-						});
+						}, true);
 						view.add(table);
 						table.addEventListener('refresh_page_data', function(){
 							load_data();
@@ -290,7 +290,7 @@ function DiscoverWindow(title) {
 							var wr = wine_review(wine);
 				wr.containingTab = self.containingTab;
 				self.containingTab.open(wr);
-						}); 
+						}, true); 
 						view.add(table);
 						table.addEventListener('refresh_page_data', function(){
 							load_data();
@@ -305,7 +305,7 @@ function DiscoverWindow(title) {
 							var wr = wine_review(wine);
 				wr.containingTab = self.containingTab;
 				self.containingTab.open(wr);
-						});
+						}, true);
 						view.add(table);
 						table.addEventListener('refresh_page_data', function(){
 							load_data();
@@ -320,7 +320,7 @@ function DiscoverWindow(title) {
 							var wr = wine_review(wine);
 				wr.containingTab = self.containingTab;
 				self.containingTab.open(wr);
-						});
+						}, true);
 						view.add(table);
 						table.addEventListener('refresh_page_data', function(){
 							load_data();
@@ -343,7 +343,7 @@ function DiscoverWindow(title) {
 							var wr = wine_review(wine);
 							wr.containingTab = self.containingTab;
 							self.containingTab.open(wr);
-						});
+						}, true);
 							view.add(table);
 						table.addEventListener('refresh_page_data', function(){
 							load_data();
@@ -358,7 +358,7 @@ function DiscoverWindow(title) {
 							var wr = wine_review(wine);
 							wr.containingTab = self.containingTab;
 							self.containingTab.open(wr);
-						}); 
+						}, true); 
 						view.add(table);
 						table.addEventListener('refresh_page_data', function(){
 							load_data();
@@ -373,7 +373,7 @@ function DiscoverWindow(title) {
 							var wr = wine_review(wine);
 							wr.containingTab = self.containingTab;
 							self.containingTab.open(wr);
-						});
+						}, true);
 						view.add(table);
 						table.addEventListener('refresh_page_data', function(){
 							load_data();

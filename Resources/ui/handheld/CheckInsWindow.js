@@ -68,7 +68,7 @@ function CheckInsWindow(title) {
 				var wr = wine_review(wine);
 				wr.containingTab = self.containingTab;
 				self.containingTab.open(wr);
-			});
+			}, true);
 			results_view.top = 25;
 			results_view.containingTab = self.containingTab;
 			overview.add(results_view);
