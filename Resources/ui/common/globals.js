@@ -195,8 +195,15 @@ function add_ptr(scrollView){
 			scrollView = Ti.UI.createScrollView({
 	            contentHeight : 'auto',
 	            layout : 'vertical',
-	            showVerticalScrollIndicator: true
+	            showVerticalScrollIndicator: true,
+	            verticalBounce: true,
+	            overScrollMode:global.android? Titanium.UI.Android.OVER_SCROLL_ALWAYS: null,
 	            });
+	    else{
+	    	scrollView.contentHeight = 'auto';
+	    	if(global.android) scrollView.overScrollMode = Titanium.UI.Android.OVER_SCROLL_ALWAYS;
+	    	scrollView.verticalBounce = true;
+	    }
 	   
 		var tableHeader = Ti.UI.createView({
             width: '100%',

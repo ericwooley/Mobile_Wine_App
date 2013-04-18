@@ -194,20 +194,20 @@ function FriendWindow(friend) {
 		if(table){
 			profile_info.remove(table);
 			table = null;
-			alert('this happened');
+			//alert('this happened');
 		}			
-			global.api.friend_recent_checkins(friend.user_id, function(data){
+		global.api.friend_recent_checkins(friend.user_id, function(data){
 
-				table = global.api.search_results(data, function(wine){
-					var wine_review = require('ui/handheld/WineReview');
-					w = wine_review(wine, friend);
-					w.containingTab = self.containingTab;
-					self.containingTab.open(w);
+			table = global.api.search_results(data, function(wine){
+				var wine_review = require('ui/handheld/WineReview');
+				w = wine_review(wine, friend);
+				w.containingTab = self.containingTab;
+				self.containingTab.open(w);
 
-				});
-				//table.addEventListener('refresh_page_data', load_data);
-				profile_info.add(table);
 			});
+			//table.addEventListener('refresh_page_data', load_data);
+			profile_info.add(table);
+		});
 	};
 	load_data();
 	
