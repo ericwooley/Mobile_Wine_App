@@ -41,8 +41,12 @@ module.exports = function(result, callback){
 				}));
 			}
 	}
-	else
+	else  // When there are no results from a search, call function to add a wine.
 	{
+		////////////////////// CHANGED BY IVAN ///////////////////////
+		var get_wine = require('ui/common/elements/edit_wine');
+		get_wine();
+		/*
 		var row = Ti.UI.createTableViewRow
 		({
 			hasChild:true,
@@ -55,7 +59,13 @@ module.exports = function(result, callback){
 			touchEnabled:false
 		});
 		row.add(message);
+<<<<<<< HEAD
 		table.add(row);
+=======
+		tbl_data.push(row);
+		*/
+		////////////////////// END OF CHANGES ///////////////////////
+>>>>>>> Added code to add a wine not found in database
 	}
 
 	// if(pl.length > 0)
