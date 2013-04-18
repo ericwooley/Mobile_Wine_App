@@ -16,7 +16,7 @@ function HomeWindow(title)
 		self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 	//var text = global.elements.SimpleLabel('Home Page');
 	var view = Ti.UI.createScrollView({
-				width: Ti.UI.FILL,
+				width: Titanium.Platform.displayCaps.platformWidth,
 				height: Ti.UI.SIZE,
 				top: 0,
 				left: 0,
