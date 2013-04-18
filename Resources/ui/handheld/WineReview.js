@@ -25,6 +25,11 @@ function WineReview(wine, friend){
 		top: 0,
 		layout: 'vertical',	
 	});
+	
+	overview = global.add_ptr(overview);
+	overview.addEventListener('refreshContents', function(){
+		load_tables();
+	});
 
 	// Add the header to the view.
 	var header = require('ui/handheld/Wine_Review/header');
