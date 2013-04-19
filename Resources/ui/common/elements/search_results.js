@@ -18,7 +18,7 @@ module.exports = function(result, callback, addwine){
 	var make_row = require('ui/common/elements/search_results/make_row');
 	var tbl_data = [];
 	var pl = result.Products.List;
-	Ti.API.info(pl.length + " results");
+	//Ti.API.info(pl.length + " results");
 	var first = true;
 	// if we have a result
 	if(pl.length > 0){

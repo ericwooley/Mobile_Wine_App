@@ -16,10 +16,11 @@ function HomeWindow(title)
 		self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
 	//var text = global.elements.SimpleLabel('Home Page');
 	var view = Ti.UI.createScrollView({
-				width: Titanium.Platform.displayCaps.platformWidth,
+				width: Ti.UI.FILL,//Titanium.Platform.displayCaps.platformWidth,
 				height: Ti.UI.SIZE,
 				top: 0,
 				left: 0,
+				bottom: 0,
 				layout: 'vertical'
 	});
 	view = global.add_ptr(view);
@@ -58,12 +59,16 @@ function HomeWindow(title)
 				var wr = wine_review(wine);
 				wr.containingTab = self.containingTab;
 				self.containingTab.open(wr);
+				//if(global.android){
+					
+				//}	
 			});
-			table.addEventListener('refresh_page_data', function(){
-				load_data();
-			});
+			// table.addEventListener('refresh_page_data', function(){
+				// load_data();
+			// });
 			table.containingTab = self.containingTab;
 			view.add(table);
+			view.fireEvent('finishRefresh');
 		});
 	};
 

@@ -185,13 +185,43 @@ function store_string(name, value)
 module.exports.store_string = store_string;
 
 
+
+
+function scrollAnimation(time, scroll, /*origin,*/ destiny)
+{
+	
+	var origin =scroll.getContentOffset(); 
+//Time is... well... I don't really know why I named it like that :P
+//Scroll is the scrollView
+//Origin is the origin X coordinate of our scrollView
+//Destiny is the desired X coordinate of out scrollView
+    if(origin > destiny)
+    {
+        var frequency = (origin - destino) / time;
+ 
+        for(var i = origin; i > destiny; i-=frequency)
+        {
+            scroll.scrollTo(i, 0);
+        }
+    }
+    else
+    {
+        var frequency = (destiny - origin) / time;
+ 
+        for(var i = origin; i > destiny; i+=frequency)
+        {
+            scroll.scrollTo(i, 0);
+        }
+    }
+}
+
 /**
  * Adds pull to refresh to a scrollView and fires events
  * @param {Ti.UI.ScrollView} scrollView
  * the view to thave the things added
  */
 function add_ptr(scrollView){
-		if(!scrollView)
+		if(!scrollView){
 			scrollView = Ti.UI.createScrollView({
 	            contentHeight : 'auto',
 	            layout : 'vertical',
@@ -199,24 +229,26 @@ function add_ptr(scrollView){
 	            verticalBounce: true,
 	            overScrollMode:global.android? Titanium.UI.Android.OVER_SCROLL_ALWAYS: null,
 	            });
+	    }
 	    else{
 	    	scrollView.contentHeight = 'auto';
+	    	scrollView.layout = 'vertical';
 	    	if(global.android) scrollView.overScrollMode = Titanium.UI.Android.OVER_SCROLL_ALWAYS;
 	    	scrollView.verticalBounce = true;
 	    }
 	   
 		var tableHeader = Ti.UI.createView({
-            width: '100%',
-            height: 60,
-            top: -60
+            width: Ti.UI.FILL,
+            height: '60dip',
+            //backgroundColor: 'red'
         });
- 
+ 		if(!globals.android) tableHeader.top = -60;
         var arrow = Ti.UI.createView({
             backgroundImage : "/images/arrow.png",       //your custom image path here.
-            width : '23dp',
-            height : '40dp',
-            bottom : '10dp',
-            left : '25dp'
+            width : 23,
+            height : 40,
+            //bottom : 10,
+            left : 25
         });
         tableHeader.add(arrow);
          
@@ -225,6 +257,7 @@ function add_ptr(scrollView){
             textAlign : Ti.UI.TEXT_ALIGNMENT_CENTER,
             bottom : '30dp',
             height : "auto",
+            color: 'black',
             font : {
                 fontSize : '11sp',
                 fontWeight : "bold"
@@ -232,50 +265,113 @@ function add_ptr(scrollView){
         });
         tableHeader.add(statusLabel);
         scrollView.add(tableHeader);
-		var offset = 0;
-		var do_refresh = false;
-		scrollView.addEventListener('scroll', function(e) {
-		    if (e.y!=null) {
-		        offset = e.y;
-		    }
-
-		    if (offset <= -60) {
-		    	
-		        var t = Ti.UI.create2DMatrix();
-		        t = t.rotate(-180);
-		        arrow.animate({
-		            transform : t,
-		            duration : 180
-		        });
-		        statusLabel.text = 'Release To Reload';
-				do_refresh= true;
+        
+        if(!globals.android){
+        	
+			var offset = 0;
+			var do_refresh = false;
+			scrollView.addEventListener('scroll', function(e) {
+			    if (e.y!=null) {
+			        offset = e.y;
+			    }
+	
+			    if (offset <= -60) {
+			    	
+			        var t = Ti.UI.create2DMatrix();
+			        t = t.rotate(-180);
+			        arrow.animate({
+			            transform : t,
+			            duration : 180
+			        });
+			        statusLabel.text = 'Release To Reload';
+					do_refresh= true;
+					
+			    }
+			    else if (offset >= 0) {             
+			        var t = Ti.UI.create2DMatrix();
+			        arrow.animate({
+			            transform : t,
+			            duration : 180
+			        });
+			        statusLabel.text = 'Pull To Refresh';
+	            	Ti.API.info('removing touchEnd');
+	            	
+		        	//scrollView.removeEventListener('touchend', refresh);
+		        	if(do_refresh)
+						scrollView.fireEvent('refreshContents'); 
+		        	do_refresh = false;
+			      
+			    }
+			     
+			});
+		}
+		else{
+			var view_size = 60;
+			var offset = 0;
+			
+			var init = setInterval(function(e){
+	            if (offset == view_size) {
+	                clearInterval(init);
+	            }
+	            scrollView.scrollTo(0,view_size);
+	            
+	            //view_size = tableHeader.rect.height;
+	            
+	        },100);
+	        
+	        
+			scrollView.addEventListener('scroll', function(e) {
+			    // if (e.y!=null) {
+			        // offset = e.y;
+			    // }
+			    offset = scrollView.getContentOffset().y;
+			    Ti.API.info('Debug: offset: '+offset);
+			    if (offset <= 5) {
+			    	tableHeader.visible=true;
+			        var t = Ti.UI.create2DMatrix();
+			        t = t.rotate(-180);
+			        arrow.animate({
+			            transform : t,
+			            duration : 180
+			        });
+			        statusLabel.text = 'Release To Reload';
+			    }
+			    else if (offset > 5 && offset < view_size) {
+			    	tableHeader.visible=true;
+			    	Ti.API.info('Debug: th height: '+tableHeader.rect.height);           
+			        var t = Ti.UI.create2DMatrix();
+			        arrow.animate({
+			            transform : t,
+			            duration : 180
+			        });
+			        statusLabel.text = 'Pull To Refresh';
+			    }
+			    else
+			    	tableHeader.visible=false;
+			     
+			});
+			
+			scrollView.addEventListener('touchend', function() {
 				
-		    }
-		    else if (offset >= 0) {             
-		        var t = Ti.UI.create2DMatrix();
-		        arrow.animate({
-		            transform : t,
-		            duration : 180
-		        });
-		        statusLabel.text = 'Pull To Refresh';
-            	Ti.API.info('removing touchEnd');
-            	
-	        	//scrollView.removeEventListener('touchend', refresh);
-	        	if(do_refresh)
-					scrollView.fireEvent('refreshContents'); 
-	        	do_refresh = false;
-		      
-		    }
-		     
-		});
-
-		
-        // var init = setInterval(function(e){
-            // if (offset==0) {
-                // clearInterval(init);
-            // }
-            // scrollView.scrollTo(0,0);
-        // },100);
+		        if (offset<=5) {
+		        	//
+		        	Ti.API.info('Debug: REFRESH SENT - offset '+offset + " view_size: "+ view_size);
+		        	//scrollView.scrollTo(0,view_size);
+		            scrollView.fireEvent('refreshContents');    //Your custom event to REFRESH fired here
+		            
+		            //alert('got to here');
+		                     
+		        } 
+		        else if (offset<view_size)
+		         {
+		            scrollView.scrollTo(0,view_size);
+		        } 
+		    });
+		    scrollView.addEventListener('finishRefresh', function(){
+		    	scrollView.scrollTo(0,view_size);
+		    	//scrollAnimation(10, scrollView, view_size);
+		    });
+		}
         
         
         return scrollView;

@@ -30,7 +30,7 @@ function make_row(info){
 	 
 
 	var row_block = Ti.UI.createView({
-		width: Titanium.Platform.displayCaps.platformWidth - 20,
+		width: Ti.UI.FILL,//Titanium.Platform.displayCaps.platformWidth - 20,
 		height: Ti.UI.SIZE,
 		top: 10,
 		left: 10,
