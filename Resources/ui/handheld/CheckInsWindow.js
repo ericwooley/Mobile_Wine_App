@@ -18,7 +18,7 @@ function CheckInsWindow(title) {
 	var overview = Ti.UI.createScrollView({
 		height: Ti.UI.SIZE,
 		width: Ti.UI.FILL,
-		layout: 'verticl'
+		layout: 'vertical'
 	});
 	// Search View
 	var sv = Ti.UI.createView({

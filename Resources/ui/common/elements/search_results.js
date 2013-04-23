@@ -72,8 +72,8 @@ module.exports = function(result, callback, addwine){
 	
 	/**********************************************************
 	 * 
-	 * This still needs work, it now opens a new window with a
-	 * message but once label gets clicked an error occurs.
+	 * This still needs work, tab group still absent along with
+	 * the Wine Life icon and name on top of page.
 	 * 
 	 **********************************************************/
 	
@@ -100,11 +100,13 @@ module.exports = function(result, callback, addwine){
 		var edit_wine = require('ui/common/elements/edit_wine');
 		add_wine.addEventListener('click', function(){
 			var ew = edit_wine();
-			//ew.containingTab = table.containingTab;
-			ew.containingTab;
-			ew = table.containingTab;
-			//table.containingTab.open(wr);
-			table.containingTab.open(ew);
+			ew.containingTab = table.containingTab;
+			
+			//ew.containingTab;
+			//ew = table.containingTab;
+						
+			ew.open();
+			//table.containingTab.open(ew);
 		});
 	}; // if statement ends here when 0 results from a search.
 	

@@ -4,13 +4,7 @@
  * 
  * MEN+1
  * Programmer:  Ivan Rodriguez
- * STILL UNDER CONSTRUCTION...
  * 
- * COMMENTS: Needs to be tested on a mobile device. Scanner seems to be
- * functional for iPhone (working to make it work for android). 
- * When the button for scanning is clicked it does switch to the camera. 
- * Working on how to switch from camera view back to the "check in" view 
- * once cancel button gets clicked.
  *************************************************/
 
 module.exports = function(/*result, callback*/){
