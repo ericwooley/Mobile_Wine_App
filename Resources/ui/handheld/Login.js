@@ -1,31 +1,58 @@
 function LoginWindow() {
 	var global = require('ui/common/globals');
-	var self = global.createWindow("Login");
-	self.navBarHidden = true;
+	var self = global.createWindow("");
+	navBarHidden:false;
 	
+	//var Body = global.elements.SimpleView('vertical');
+	var Body = Ti.UI.createView(
+		{
+			width: Ti.UI.FILL,
+			height: Ti.UI.SIZE,
+			layout: 'vertical',
+			//backgroundColor: 'black'
+			//backgroundImage: 'images/login_bkg.png'
+			backgroundGradient: {
+    			type: 'radial',
+   				colors: ['#3d3d3d','black'],
+    			backFillStart: false
+  			}
+		}
+	);
 	
-	
-	var Body = global.elements.SimpleView('vertical');
-	
+	var picture = Ti.UI.createImageView({
+		top: '10%',
+  		//height: 200,
+  		width: Ti.UI.SIZE,
+  		contentMode: 'aspectfill',
+  		clipsToBounds: false,
+  		image: '/images/login_logo.png',
+ 	});
+
 	var emailTextField = Ti.UI.createTextField({
 		//borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
   		color: '#336699',
-  		top: 20,
+  		font:{
+            fontFamily:'Helvetica Neue', fontSize: 16
+           },   
+  		top: 10,
   		left: 10,
   		width: '80%',
-  		backgroundColor: 'white',
-  		hintText: 'E-Mail Address',
+  		backgroundColor: 'transparent',
+  		hintText: 'Email Address',
   		borderStyle: Ti.UI.INPUT_BORDERSTYLE_NONE
 	});
 	
 	var passwordTextField = Ti.UI.createTextField({
 		//borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
   		color: '#336699',
+  		font:{
+            fontFamily:'Helvetica Neue', fontSize: 16
+           },   
   		width: '55%',
   		top: 0,
   		left: 10,
   		hintText: 'Password',
-  		backgroundColor: 'white',
+  		backgroundColor: 'transparent',
   		passwordMask: true
 	});
 
@@ -43,7 +70,7 @@ function LoginWindow() {
 	});
 	var pwBoxHint = Ti.UI.createLabel({
 		text: 'Hide Password',
-		font: {fontSize: 14},
+		font: {fontFamily: 'Helvetica Neue', fontSize: 12},
 		right: 0,
 		bottom: 1,
 		color: '#777777'
@@ -52,9 +79,8 @@ function LoginWindow() {
 	var pwBoxView = Ti.UI.createView({
 		layout: 'vertical',
 		width: Ti.UI.SIZE,
-		//backgroundColor: 'red',
 		height: Ti.UI.SIZE,
-		//top: 15,
+		top: 0,
 		right: 0
 	});
 	pwBoxView.add(showPWbox);
@@ -77,24 +103,30 @@ function LoginWindow() {
 	
 	var loginButton = Ti.UI.createButton({
 		title: 'Login',
-		top: 15,
-		width: '80%',
+		font: {fontFamily: 'Helvetica Neue', fontSize: 18, fontWeight: 'bold'},
+		//top: 15,
+		width: '45%',
+		top: 10,
 		enabled: false
 		
 	});
 	
 	var login_Label = Ti.UI.createLabel({
-		text: "Don't have an account? Signing up is easy, just hit register instead of login.",
+		text: "Don't have an account? Creating one is easy! Just hit register instead of login.",
 		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-		color: 'black',
-		top: 5,
-		width: '80%'
+		font: {fontFamily: 'Helvetica Neue', fontSize: 13, fontWeight: 'bold'},
+		color: global.colors.lightest,
+		top: 10,
+		width: '80%',
 	});
 	
 	var registerButton = Ti.UI.createButton({
+		font: {fontFamily: 'Helvetica Neue', fontSize: 18, fontWeight: 'bold'},
 		title:'Register',
 		top: 10,
-		width: '80%',
+		//left: '5%',
+		width: '45%',
+		left: '10%',
 		enabled: false
 	});
 	
@@ -138,12 +170,12 @@ function LoginWindow() {
 	   
 	});	
 	var fieldHints = Ti.UI.createLabel({
-		text: "To continue, enter a valid E-Mail and 6 character password.",
+		text: "To login, please enter your email address and 6-character password.",
 		textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 		width: '80%',
-		top: 5,
-		color: global.colors.dark,
-		font: {fontSize: 12}
+		bottom: 2,
+		color: global.colors.lightest,
+		font: {fontFamily: 'Helvetica Neue', fontSize: 10, fontWeight: 'bold'}
 	})
 	function validateFields(e){
 		//global.store_string('email', emailTextField.value);
@@ -169,23 +201,26 @@ function LoginWindow() {
 	
 	
 	var loginForm = global.elements.SimpleView('vertical');
-	
-	loginForm.add(fieldHints);
+	//loginForm.add(fieldHints);
 	
 	//loginForm.add(emailTextField);
 	//loginForm.add(showPWview);
 	var br = 20;
 	if(Ti.Platform.osname == 'android')
 		br = 40;
+		
+	// THE WHOLE THING minus the top text
 	var fieldsView = Ti.UI.createView({
+		// top
 		borderRadius: br,
 		layout: 'vertical',
 		width: "80%",
 		height: Ti.UI.SIZE,
-		backgroundColor: 'white'
+		backgroundColor: 'white',
+		borderColor: '#BBBBBB'
 	});
 	var locseperator=Ti.UI.createLabel({
-	    height:2,
+	    height: 2,
 	    width: Ti.UI.FILL,
 	    top: 5,
 	    bottom: 5,
@@ -198,11 +233,21 @@ function LoginWindow() {
 	fieldsView.add(locseperator);
 	fieldsView.add(showPWview);
 	loginForm.add(fieldsView);
+	//fieldsView.add(fieldHints)
+	//loginForm.add(fieldHints);
 	
-	loginForm.add(loginButton);
+	var lr_buttons = Ti.UI.createView({
+		height: Ti.UI.SIZE,
+		width: '80%',
+		layout:'horizontal'
+	});
+	lr_buttons.add(loginButton);
+	lr_buttons.add(registerButton);
+	loginForm.add(lr_buttons);
 	loginForm.add(login_Label);
-	loginForm.add(registerButton);
 	
+		
+	Body.add(picture);
 	Body.add(loginForm);
 	self.add(Body);	
 	

@@ -7,6 +7,7 @@
  *     {"Status":{"Messages":[],"ReturnCode":0},"Products":{"List":[{"Id":98841,"Name":"Goldeneye Gowan Creek Vineyard Pinot Noir 2006","Url":"http:\/\/www.wine.com\/V6\/Goldeneye-Gowan-Creek-Vineyard-Pinot-Noir-2006\/wine\/98841\/detail.aspx","Appellation":{"Id":2416,"Name":"North Coast","Url":"http:\/\/www.wine.com\/v6\/North-Coast\/wine\/list.aspx?N=7155+101+2416","Region":{"Id":101,"Name":"California","Url":"http:\/\/www.wine.com\/v6\/California\/wine\/list.aspx?N=7155+101","Area":null}},"Labels":[{"Id":"98841m","Name":"thumbnail","Url":"http:\/\/cache.wine.com\/labels\/98841m.jpg"}],"Type":"Wine","Varietal":{"Id":143,"Name":"Pinot Noir","Url":"http:\/\/www.wine.com\/v6\/Pinot-Noir\/wine\/list.aspx?N=7155+124+143","WineType":{"Id":124,"Name":"Red Wines","Url":"http:\/\/www.wine.com\/v6\/Red-Wines\/wine\/list.aspx?N=7155+124"}},"Vineyard":{"Id":6436,"Name":"Goldeneye","Url":"http:\/\/www.wine.com\/v6\/Goldeneye\/learnabout.aspx?winery=3787","ImageUrl":"http:\/\/cache.wine.com\/aboutwine\/basics\/images\/winerypics\/3787.jpg","GeoLocation":{"Latitude":-360,"Longitude":-360,"Url":"http:\/\/www.wine.com\/v6\/aboutwine\/mapof.aspx?winery=3787"}},"Vintage":"","Community":{"Reviews":{"HighestScore":0,"List":[],"Url":"http:\/\/www.wine.com\/V6\/Goldeneye-Gowan-Creek-Vineyard-Pinot-Noir-2006\/wine\/98841\/detail.aspx?pageType=reviews"},"Url":"http:\/\/www.wine.com\/V6\/Goldeneye-Gowan-Creek-Vineyard-Pinot-Noir-2006\/wine\/98841\/detail.aspx"},"Description":"","GeoLocation":{"Latitude":-360,"Longitude":-360,"Url":"http:\/\/www.wine.com\/v6\/aboutwine\/mapof.aspx?productId=98841"},"PriceMax":74.9900,"PriceMin":74.9900,"PriceRetail":74.9900,"ProductAttributes":[{"Id":36,"Name":"Collectible Wines","Url":"http:\/\/www.wine.com\/v6\/Collectible-Wines\/wine\/list.aspx?N=7155+36","ImageUrl":"http:\/\/cache.wine.com\/images\/glo_icon_collectable_big.gif"},{"Id":506,"Name":"Boutique Wines","Url":"http:\/\/www.wine.com\/v6\/Boutique-Wines\/wine\/list.aspx?N=7155+506","ImageUrl":"http:\/\/cache.wine.com\/images\/glo_icon_boutique_big.gif"}],"Ratings":{"HighestScore":94,"List":[]},"Retail":{"InStock":false,"Price":74.9900,"Sku":"DWCGOWAN_2006","State":"CALIFORNIA","Url":""},"Vintages":{"List":[]}},{"Id":98858,"Name":"Goldeneye Confluence Vineyard Pinot Noir 2006","Url":"http:\/\/www.wine.com\/V6\/Goldeneye-Confluence-Vineyard-Pinot-Noir-2006\/wine\/98858\/detail.aspx","Appellation":{"Id":2371,"Name":"Sonoma County","Url":"http:\/\/www.wine.com\/v6\/Sonoma-County\/wine\/list.aspx?N=7155+101+2371","Region":{"Id":101,"Name":"California","Url":"http:\/\/www.wine.com\/v6\/California\/wine\/list.aspx?N=7155+101","Area":null}},"Labels":[{"Id":"98858m","Name":"thumbnail","Url":"http:\/\/cache.wine.com\/labels\/98858m.jpg"}],"Type":"Wine","Varietal":{"Id":143,"Name":"Pinot Noir","Url":"http:\/\/www.wine.com\/v6\/Pinot-Noir\/wine\/list.aspx?N=7155+124+143","WineType":{"Id":124,"Name":"Red Wines","Url":"http:\/\/www.wine.com\/v6\/Red-Wines\/wine\/list.aspx?N=7155+124"}},"Vineyard":{"Id":6436,"Name":"Goldeneye","Url":"http:\/\/www.wine.com\/v6\/Goldeneye\/learnabout.aspx?winery=3787","ImageUrl":"http:\/\/cache.wine.com\/aboutwine\/basics\/images\/winerypics\/3787.jpg","GeoLocation":{"Latitude":-360,"Longitude":-360,"Url":"http:\/\/www.wine.com\/v6\/aboutwine\/mapof.aspx?winery=3787"}},"Vintage":"","Community":{"Reviews":{"HighestScore":0,"List":[],"Url":"http:\/\/www.wine.com\/V6\/Goldeneye-Confluence-Vineyard-Pinot-Noir-2006\/wine\/98858\/detail.aspx?pageType=reviews"},"Url":"http:\/\/www.wine.com\/V6\/Goldeneye-Confluence-Vineyard-Pinot-Noir-2006\/wine\/98858\/detail.aspx"},"Description":"","GeoLocation":{"Latitude":-360,"Longitude":-360,"Url":"http:\/\/www.wine.com\/v6\/aboutwine\/mapof.aspx?winery=3787"},"PriceMax":69.9900,"PriceMin":69.9900,"PriceRetail":69.9900,"ProductAttributes":[{"Id":506,"Name":"Boutique Wines","Url":"http:\/\/www.wine.com\/v6\/Boutique-Wines\/wine\/list.aspx?N=7155+506","ImageUrl":"http:\/\/cache.wine.com\/images\/glo_icon_boutique_big.gif"},{"Id":36,"Name":"Collectible Wines","Url":"http:\/\/www.wine.com\/v6\/Collectible-Wines\/wine\/list.aspx?N=7155+36","ImageUrl":"http:\/\/cache.wine.com\/images\/glo_icon_collectable_big.gif"}],"Ratings":{"HighestScore":94,"List":[]},"Retail":{"InStock":false,"Price":69.9900,"Sku":"DWCCONFLUENCE_2006","State":"CALIFORNIA","Url":""},"Vintages":{"List":[]}}],"Offset":0,"Total":148,"Url":""}}
  */
 var api={};
+api.lock = false;
 
 /**
  * The user login function
@@ -19,6 +20,57 @@ var api={};
  */
 api.login = function(email, password, callback){
 	getResponse('http://winelife.ericwooley.com/user/login/', {email: email, password:password}, callback);
+};
+
+/**
+ * @param {Function} callback
+ * The callback function to be called when the request is successful.
+ */
+api.recent_checkins = function(callback){
+	getResponse('http://winelife.ericwooley.com/search/recent_checkins/', {}, callback);
+};
+
+/**
+ * @param {String/Int} user_id
+ * @param {Function} callback
+ * The callback function to be called when the request is successful.
+ */
+api.friend_recent_checkins = function(user_id, callback){
+	getResponse('http://winelife.ericwooley.com/search/friend_recent_checkins/'+user_id, {}, callback);
+}
+
+/**
+ * @param {Function} callback
+ * A callback function to be called upon success.
+ */
+api.logout = function(callback){
+	getResponse('http://winelife.ericwooley.com/user/logout/', {}, callback);
+	
+};
+
+/**
+ * @param {String/Integer} fb_id
+ * The users facebook id
+ * @param {Function} callback
+ * A callback function to be called upon success.
+ */
+api.fb_integrate = function(fb_id, callback){
+	Ti.API.info('fb_integrate api call started');
+	getResponse('http://winelife.ericwooley.com/user/fb_integrate/', {fb_id: fb_id}, callback);
+	
+};
+
+/**
+ * @param {array} friends
+ * The users facebook id
+ * @param {Function} callback
+ * A callback function to be called upon success.
+ */
+api.find_fb_friends = function(friends, callback){
+	Ti.API.info('friendList' + JSON.stringify(friends));
+	friends = JSON.stringify(friends);
+	getResponse('http://winelife.ericwooley.com/user/fb_friends/', {friends: friends}, callback);
+	
 };
 
 /**
@@ -38,6 +90,10 @@ api.register = function(email, password, callback){
  * Get the user profile information
  * @param {Function} callback
  * Callback function, to be called upon success.
+ *     @example
+ *     api.profileInformation(function(data){
+ * 	       alert(JSON.stringify(data));
+ *     });
  */
 api.profileInformation = function(callback){
 	getResponse('http://winelife.ericwooley.com/user/profile/', {}, callback);
@@ -49,7 +105,7 @@ api.profileInformation = function(callback){
  * The users first name
  * @param {String} lname
  * The users last name
- * @param {bio} bio
+ * @param {String} bio
  * The users biography text
  * @param {Function} callback
  * The callback function to be used 
@@ -61,6 +117,42 @@ api.editProfile = function(fname, lname, bio, callback){
 		bio: bio
 	}, callback);
 };
+
+/**
+ * Send the server an updated profile
+ * @param {String} wine_id
+ * The id of the wine we are checking into.
+ * @param {String} comment
+ * The users comment on the wine
+ * @param {Integer} rating
+ * The users rating of the one, should be 1 - 5
+ * @param {Function} callback
+ * The callback function to be used on load 
+ */
+api.checkin = function(wine_id, comment, rating, callback){
+	getResponse('http://winelife.ericwooley.com/user/checkin/',{wine_id: wine_id, comment: comment, rating: rating}, callback);
+}
+/**
+ * Follow a user
+ * @param {String} fid
+ * The id of the friend to follow
+ * @param {Function} callback
+ * The callback function to be used on load 
+ */
+api.follow = function(fid, callback){
+	getResponse('http://winelife.ericwooley.com/user/follow/',{friend_id: fid}, callback);
+}
+
+/**
+ * Follow a user
+ * @param {String} fid
+ * The id of the friend to follow
+ * @param {Function} callback
+ * The callback function to be used on load 
+ */
+api.unfollow = function(fid, callback){
+	getResponse('http://winelife.ericwooley.com/user/unfollow/',{friend_id: fid}, callback);
+}
 
 /**
  * creates a view containing a table with all the search results already formatted.
@@ -87,7 +179,8 @@ api.search_results = require('ui/common/elements/search_results');
  *     });
  */
 api.search = function(query, callback){
-	query = query.replace(' ', '+');
+	query = query.replace(/ /g, '+');
+	Ti.API.info('Searching for : ' + query)
 	getResponse( 'http://winelife.ericwooley.com/search/wine_search/', { query: query, size: 10}, callback );
 };
 
@@ -96,13 +189,48 @@ api.search = function(query, callback){
  * 
  * @param {Function} callback
  * callback function that will be given the results.
+ * 
+ * @param {Function} onclickCallback
+ * The function to be called when a user clicks on a row.
  */
-api.load_friend_list = function(callback){
+api.load_friend_list = function(callback, onclickCallback){
 	getResponse('http://winelife.ericwooley.com/user/friendlist/', {}, function(data){
-		Ti.API.info('Got to first maker');
 		var table = require('ui/common/elements/friend_list');
-		table = table(data);
-		Ti.API.info('Got to second marker');
+		table = table(data, onclickCallback);
+		callback(table);
+	});
+};
+
+/**
+ * Creates a table of users based on search results and returns it via the callback function
+ * 
+ * @param {Function} callback
+ * callback function that will be given the results.
+ * 
+ * @param {Function} onclickCallback
+ * The function to be called when a user clicks on a row.
+ */
+api.load_user_search_results = function(search, callback, onclickCallback){
+	getResponse('http://winelife.ericwooley.com/search/user_search/', {search: search}, function(data){
+		var table = require('ui/common/elements/friend_list');
+		table = table(data, onclickCallback);
+		callback(table);
+	});
+};
+
+/**
+ * Creates a table of users who follow the user
+ * 
+ * @param {Function} callback
+ * callback function that will be given the results.
+ * 
+ * @param {Function} onclickCallback
+ * The function to be called when a user clicks on a row.
+ */
+api.follower_table = function(callback, onclickCallback){
+	getResponse('http://winelife.ericwooley.com/user/followertable/', {}, function(data){
+		var table = require('ui/common/elements/friend_list');
+		table = table(data, onclickCallback);
 		callback(table);
 	});
 };
@@ -125,8 +253,8 @@ api.load_friend_list = function(callback){
  *     });
  */
 api.catagory = function(cat, callback){
-	cat = cat.replace(' ', '+');
-	getResponse( 'http://winelife.ericwooley.com/search/wine_search/', { cat: cat, size: 10}, callback );
+	cat = cat.replace(/ /g, '+');
+	getResponse( 'http://winelife.ericwooley.com/search/wine_search/', { cat: cat, size: 40}, callback );
 };
 
 /**
@@ -142,15 +270,15 @@ api.catagory = function(cat, callback){
  * @param {Function} callback
  * callback function that will be given the results. It is recommended that you format this data using api.search_results
  *     @example
- *     api.search("124 ", function(search_results){
+ *     api.search("search terms", "124 ", function(search_results){
  *         	Ti.API.info('Here are some search results in json format');
  *          Ti.API.info(JSON.stringify(search_results)); // Check the login for an example of how this object is formatted.
  *          var preformatteedView = api.search_results(search_results); // Add this view to whatever you want!
  *     });
  */
 api.search_with_filter = function(query, cat, callback){
-	query = query.replace(' ', '+');
-	cat = cat.replace(' ', '+');
+	query = query.replace(/ /g, '+');
+	cat = cat.replace(/ /g, '+');
 	getResponse( 'http://winelife.ericwooley.com/search/wine_search/', { query: query, cat: cat, size: 10}, callback );
 };
 
@@ -178,6 +306,44 @@ api.befriend = function(friends_email, callback){
 		}
 	});
 };
+
+/**
+ * Find a friend based on name or email
+ * @param {String} friends_email
+ * A search query basically words that will be sent to the server.
+ * 
+ * @param {Function} callback
+ * callback function that will be given the results.
+ */
+api.user_search = function(query, callback){
+	Ti.API.info("searching: " + query);
+	getResponse('http://winelife.ericwooley.com/search/befriend/', {search: query}, function(data){
+		if(data.success)
+		{
+			Ti.API.info('friend success');
+			callback(data);
+		}
+		else
+		{
+			Ti.API.info('friend error');
+			alert(data.error);
+		}
+	});
+};
+
+/**
+ * Delete a review on its id.
+ * @param {int} review_id
+ * A search query basically words that will be sent to the server.
+ * 
+ * @param {Function} callback
+ * callback function that will be given the results.
+ */
+api.delete_review = function(review_id, callback){
+	getResponse('http://winelife.ericwooley.com/search/delete_checkin/', {checkin_id: review_id}, callback);
+};
+
+
 /**
  * Grabs the data about a specific wine based on it's id.
  * @param {Integer/String} id the id of the wine you want information for.
@@ -192,19 +358,34 @@ api.get_wine_by_id = function(id, callback){
  * @param {Function} callback function to be called on success
  */
 api.get_home_results = function(callback){
-	Ti.API.info("get_home_results etc");
-	getResponse('http://winelife.ericwooley.com/user/', {}, callback);
-	
-}
+	getResponse('http://winelife.ericwooley.com/search/friends_checkins/', {}, callback);
+};
+
+/**
+ * @param {String/Int} wine_id
+ * The id of the wine you want ratings for.
+ * Gets the data to be displayed on the homepage.
+ * @param {Function} callback function to be called on success
+ */
+api.previous_checkins = function(wine_id, user_id, callback){
+	object = {};
+	if(user_id)
+		object.user_id = user_id;
+	object.wine_id = wine_id;
+	//alert(JSON.stringify(object));
+	getResponse('http://winelife.ericwooley.com/search/wine_checkins/', object, callback);
+};
 // not really relevant to anyone outside of this page
 api.httpInterface = Ti.Network.createHTTPClient(
 	{
 		onerror : function(e) {
 			try{
-	         Ti.API.debug(JSON.stringify(e));
-	         alert('Error: '+ JSON.stringify(e));}
+	         Ti.API.debug("Connection error: " +JSON.stringify(e));
+	         alert('Connection Error: Please try again later');
+	        }
 	        catch(e){
 	        	Ti.API.info(JSON.stringify(e));}
+	        api.lock = false;
 	     },
 	     timeout : 5000
 	}
@@ -224,8 +405,15 @@ var server = api.httpInterface;
  * The callback function to be called on success
  */
 function getResponse(url, data, callback){
+	/*if(api.lock)
+	{
+		Ti.API.info("api locked");
+		return;
+	}*/
+	api.lock = true;
+	setTimeout(function(){api.lock = false}, 300);
 	var message = showMessage("please wait: connecting to server", 5000);
-	
+	Ti.API.info('Connecting To: '+ url);
 	if(Ti.Network.networkType == Ti.Network.NETWORK_NONE){
 		closeMessage(message);
 		var dialog = Ti.UI.createAlertDialog({
@@ -244,22 +432,26 @@ function getResponse(url, data, callback){
 		closeMessage(message);
 		var response;
 		try{
+			Ti.API.info('call returned: ' + json)
 			response = JSON.parse(json);
 		}catch(err)
 		{
+			
+			Ti.API.info("Decode Error:" + err);
 			Ti.API.info(json);
-			showMessage("Decode Error:" + err, 5000);
+			//alert(json);
 			response = json;
 		}
 		Ti.API.info('executing load callback');
 		callback(response);
+		api.lock = false;
 	}
 	
 	server.open('POST', url);
 	server.send(data);
 	
 };
-
+api.getResponse = getResponse;
 showMessage = function(customMessage, interval){
 	// window container
 	indWin = Titanium.UI.createWindow();
@@ -283,7 +475,7 @@ showMessage = function(customMessage, interval){
 	});
 	 
 	indView.add(message);
-	indWin.open();
+	//indWin.open();
  
 	//interval = interval ? interval : 3000;
 	if(interval > 0)

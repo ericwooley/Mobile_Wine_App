@@ -1,41 +1,65 @@
-module.exports = function(fl){
+module.exports = function(fl, callback){
 	Ti.API.info("loading friendlist: ");
 	Ti.API.info(JSON.stringify(fl));
 	var tbl_data = [];
+	var table = Titanium.UI.createView
+	({
+		backgroundColor:'transparent',
+		top:10,
+		width:Ti.UI.SIZE,
+		height:Ti.UI.SIZE,
+		layout:'vertical',
+		right: 10,
+		bottom: 10
+	});
 	//result.Products.List
 	for(var i = 0; i < fl.length; ++i)
 	{
 		f = fl[i];
-		var row = Ti.UI.createTableViewRow
-		({
-			hasChild:true
+		var row = Ti.UI.createView({
+			height: Ti.UI.SIZE,
+			width: Ti.UI.FILL
 		});
 		
-		// This image will be the image of the wine
+		var rc = Ti.UI.createView({
+			width: Ti.UI.FILL,
+			height: Ti.UI.SIZE,
+			top: 12,
+			//right: 5,
+			borderRadius: 5,
+			backgroundColor: '#fcf3e1',
+			layout: 'horizontal'
+		});
+		rc.friend = f; 
+		// This image will be the image of the user
 		var image = Ti.UI.createImageView
 		({ 		
-  			height: 90,
-  			width: 90,
-  			left: 10,
-  			top: 5,
-  			bottom: 5,
-  			borderRadius: 10,
-  			borderColor: 'black',
-			borderWidth: 1,
-  			contentMode: 'aspectfill',
-  			clipsToBounds: false,
-  			image: f.picture_url,
-  			layout:'vertical'
+  			  	height: Ti.UI.SIZE,
+		  		width: '27%',
+		  		//height: 100,
+				top: 10,
+				bottom: 10,
+				left: 5,
+				borderWidth: 1,
+				borderRadius: 10,
+		  		clipsToBounds: true,
+		  		image: f.picture_url,
+		  		touchEnabled: false
 		});
-		
+		var txt_container = Ti.UI.createView({
+			height: Ti.UI.SIZE,
+			width: '70%',
+			top: 5,
+			layout: 'vertical',
+		  		touchEnabled: false
+		});
 		// Label for the location of the wine within the row
 		var lbl_location = Ti.UI.createLabel
 		({
-			left:'40%',
 			color:'black',
 			bottom:5,
 			right: 5,
-			text: "10 checkins",
+			text: f.checkin_count + ' Check-Ins',
 			font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
 			touchEnabled:false
 		});
@@ -44,7 +68,6 @@ module.exports = function(fl){
 		// Label for the type of wine within the row
 		var lbl_type = Ti.UI.createLabel
 		({
-			left:'40%',
 			color:'black',
 			text: f.fname + ' ' + f.lname,
 			bottom:lbl_location.top,
@@ -53,38 +76,20 @@ module.exports = function(fl){
 		
 		});	
 
-	
-		
-		/*// Label for the date within the row
-		var lbl_date = Ti.UI.createLabel
-		({
-			right:5,
-			top:5,
-			color:'black',
-			text: winetype,
-			font:{fontSize:12,fontWeight:'normal',fontFamily:'Helvetica Neue'},
-			touchEnabled:false
-		});*/
-
+		row.addEventListener('click',function(data){
+			callback(data.source.friend);
+		});
 		// Add each of these features to the row, then push the row
-		row.add(image);
-		row.add(lbl_location);
-		row.add(lbl_type);
-		//row.add(lbl_date);
-		tbl_data.push(row);
+		row.add(rc);
+		rc.add(image);
+		rc.add(txt_container);
+		txt_container.add(lbl_location);
+		txt_container.add(lbl_type);
+		table.add(row);
 	}
-	var table = Titanium.UI.createTableView
-	({
-		backgroundColor:'transparent',
-		top:10,
-		width:'100%',
-		height:'100%',
-		data:tbl_data
-	});
+
 	
-	table.addEventListener('click', function(data){
-		alert('you clicked me!');
-	});
+
 	return table;	
 }
 

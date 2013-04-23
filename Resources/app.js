@@ -1,12 +1,20 @@
- 
-//bootstrap and check dependencies
+// This is a comment we need to fix
+// HERE WE GO 
+// bootstrap and check dependencies
 if (Ti.version < 1.8 ) {
 	alert('Sorry - this application template requires Titanium Mobile SDK 1.8 or later');
 }
 
-
+var TU = require ('/TitanUp/TitanUp');
 // This is a single context application with mutliple windows in a stack
 (function() {
+	TU.UI.Theme.backgroundColor = '#BA3D49';
+	TU.UI.Theme.lightBackgroundColor = '#F1E6D4';
+	TU.UI.Theme.darkBackgroundColor = '#791F33';
+	TU.UI.Theme.highlightColor = '#B0AEAB';
+	TU.UI.Theme.textColor = '#66605F';
+	
+	
 	var global = require('ui/common/globals');
 	//determine platform and form factor and render approproate components
 	var osname = Ti.Platform.osname,
@@ -21,19 +29,26 @@ if (Ti.version < 1.8 ) {
 	loginWindow = require('ui/handheld/Login')();
 	var email = global.get_string('email');
 	var password = global.get_string('password');
-	if(email && password)
+	var facebook = Ti.App.Properties.getBool('facebook');
+	var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
+	
+	var atg =  ApplicationTabGroup();
+	if(email && password || (email == '' || password == ''))
 	{
 		
 		var dia = Ti.UI.createAlertDialog({
-			title: "logging you in",
-			message: "one moment..."
+			title: "Logging You In",
+			message: "One Moment..."
 		});
-		dia.show();
+		//dia.show();
 		
 		global.api.login(email, password, function(response){
 			dia.hide();
 			if(response.success)
 			{
+				Ti.API.info("profile_info: " + JSON.stringify(response));
+				Ti.App.Properties.setInt('user_id', response.user_info.ID);
+				global.user_id = response.user_info.ID;
 				var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
 				new ApplicationTabGroup().open();
 			}
@@ -48,7 +63,14 @@ if (Ti.version < 1.8 ) {
 	}
 	else
 	{
-		var ApplicationTabGroup = require('ui/common/ApplicationTabGroup');
-		new ApplicationTabGroup().open();
+		atg.open();
 	}
+	Ti.App.addEventListener('user_logout', function(data){
+		Ti.App.Properties.removeProperty('email');
+		Ti.App.Properties.removeProperty('password');
+		Ti.App.Properties.removeProperty('facebook');
+		Ti.Facebook.logout();
+		atg.close();
+		loginWindow.open();
+	});
 })();

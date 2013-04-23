@@ -8,3 +8,4 @@ build/iphone/
 build/android/
 build/mobileweb/
 build.log
+*.prefs

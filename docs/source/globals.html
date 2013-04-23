@@ -32,6 +32,7 @@ var globals  =
 		lessDark: '#c42d30',
 		dark: '#3c0017'
 	},
+	android: Ti.Platform.osname == 'android',
 <span id='globals-property-elements'>	/**
 </span>	 * Elements to be added
 	 */
@@ -63,6 +64,10 @@ var globals  =
 	crypt: require('ui/common/crypt')
 };
 module.exports = globals;
+
+Ti.Facebook.appid = 591074907588038;
+Ti.Facebook.permissions = ['email'];
+//$.socialWin.open();
 
 <span id='globals-method-userIsLoggedIn'>/**
 </span> * function to check if the user has logged in, unimplemented

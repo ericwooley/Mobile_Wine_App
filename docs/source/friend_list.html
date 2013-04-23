@@ -15,7 +15,7 @@
   </script>
 </head>
 <body onload="prettyPrint(); highlight();">
-  <pre class="prettyprint lang-js">module.exports = function(fl){
+  <pre class="prettyprint lang-js">module.exports = function(fl, callback){
 	Ti.API.info(&quot;loading friendlist: &quot;);
 	Ti.API.info(JSON.stringify(fl));
 	var tbl_data = [];
@@ -27,6 +27,12 @@
 		({
 			hasChild:true
 		});
+		row.friend ={
+			fname: f.fname,
+			lname: f.lname,
+			bio: f.bio,
+			picture_url: f.picture_url
+		}
 		
 		// This image will be the image of the wine
 		var image = Ti.UI.createImageView
@@ -99,8 +105,8 @@
 		data:tbl_data
 	});
 	
-	table.addEventListener('click', function(data){
-		alert('you clicked me!');
+	table.addEventListener('click',function(data){
+		callback(data.row.friend);
 	});
 	return table;	
 }

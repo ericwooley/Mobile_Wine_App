@@ -6,160 +6,101 @@
 //	Programmer:  Ivan Rodriguez & David Wells
 //	***********************************************
 
-
+//red wine = category 124
+//white wine = category 125
 
 function CheckInsWindow(title) {
 	var global = require('ui/common/globals');
 	// Creates the default window with global color scheme
 	var self = global.createWindow(title);
-	
-	// "Search for wine" text field
-	var wines = Titanium.UI.createTextField({
-		backgroundColor:'#FFF',
-		top:20,
-		//left:20,
-		width:'80%',
-		height:40,
-		hintText:'  Search for a wine...',
-		paddingLeft:8,
-		paddingRight:8,
-		borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-		keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
-
+	if(!global.android)
+		self.barImage='images/iPhone_Nav_Bar_Bkgrd_With_Black.png';
+	var overview = Ti.UI.createScrollView({
+		height: Ti.UI.SIZE,
+		width: Ti.UI.FILL,
+		layout: 'vertical'
+	});
+	// Search View
+	var sv = Ti.UI.createView({
+		width: Ti.UI.FILL,
+		height: Ti.UI.SIZE,
+		layout: 'vertical'
 	});
 	
+	var search_bar = Ti.UI.createTextField({
+		hintText: 'Search for a wine...',
+		font:{
+            fontFamily:'Helvetica Neue', fontSize: 16
+           },   
+		width: Ti.UI.FILL,
+		right: 10,
+		left: 10,
+		height: 40,
+		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED
+	});
+	var camera_button = Ti.UI.createButton({
+		title: 'Scan Barcode',
+		font:{
+            fontFamily:'Helvetica Neue', fontSize: 18, fontWeight: 'Bold'
+           },
+		left: 10,
+		right: 10,
+		height: 40,
+		top: 10
+	});	
 	
-	
-	
-	//window to put results
-	// This is where I am going put all the results.
-	var search_results = global.createWindow(title);
-	
-	
-//******
-	
-	
-	
-	// add my search field to my 
-	search_results.add(wines);
-	
-	// This is the function that fires when someone hides the keyboard.
-	// Maybe a button event or whatever you want.
-	wines.addEventListener('blur', function(){
-		// This is the search api.
-		// The firsty value should be the query followed by an anonymous function
-		// that will be called once the data has been retrieved. This won't be called
-		// if there is a failure. 
-		global.api.search(wines.value, function(result){
-			// get a view with the results.
-			var view = global.api.search_results(result);
-			// Add this view to the view in the whole page.
-			search_results.add(view);
+	sv.add(search_bar);
+	sv.add(camera_button);
+	var results_view;
+	var dd = require('ui/common/elements/dropdown');
+	dd(sv, self, 'Search', 'Search Again', 'down', function(data){
+		search_bar.blur();
+		if(search_bar.value.length < 1)
+			return;
+		global.api.search(search_bar.value, function(data){
+			if(results_view != null)
+				overview.remove(results_view);
+				overview.remove(picture);
+			var search_format = require('ui/common/elements/search_results');
+			results_view = search_format(data, function(wine){
+				var wine_review = require('ui/handheld/WineReview');
+				
+				var wr = wine_review(wine);
+				wr.containingTab = self.containingTab;
+				self.containingTab.open(wr);
+			}, true);
+			results_view.top = 25;
+			results_view.containingTab = self.containingTab;
+			overview.add(results_view);
 		});
 	});
-	// add overview to the window.
-	self.add(wines);
 	
-	
-	// NEED SOMETHING HERE *****
-	
+	var picture = Ti.UI.createImageView({
+  		top: sv.rect.height + 100,
+  		width: 250,
+		bottom: 35,
+  		contentMode: 'aspectfill',
+  		clipsToBounds: false,
+  		image: '/images/Logo2.png',
+ 	});
 
-//*******
+	overview.add(picture);
 	
-	
-	
-	
-	
-	// "Year" text field
-	var year = Titanium.UI.createTextField({
-		backgroundColor:'#FFF',
-		bottom:170,
-		left:20,
-		width:'40%',
-		height:40,
-		hintText:'  Year...',
-		paddingLeft:8,
-		paddingRight:8,
-		borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-		keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
+	camera_button.addEventListener('click', function(){
+		var get_bar_code = require('ui/common/elements/barcode');
+		get_bar_code();
+		// Cabernet sauvignon shiraz
+		function getBarCodeInfo(e){
+			//alert("barcode_info: " + e.basic.name);
+			search_bar.value = e.basic.name;
+			Ti.App.removeEventListener('barcode_scan', getBarCodeInfo);
+		};
+		Ti.App.addEventListener('barcode_scan', getBarCodeInfo);
+	});
 
-	});
 	
-	// "Style" text field
-	var style = Titanium.UI.createTextField({
-		backgroundColor:'#FFF',
-		bottom:170,
-		right:20,
-		width:'40%',
-		height:40,
-		hintText:'  Style...',
-		paddingLeft:8,
-		paddingRight:8,
-		borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-		keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
-
-	});
-	
-	// Creates "Look-Up" button
-	var btn = Titanium.UI.createButton({
-		color:'#000',
-		title:"Look-Up",
-		color: global.colors.dark,
-		borderColor: global.colors.dark,
-		borderRadius: 5,
-		borderWidth: 1,
-		backgroundColor: global.colors.lightest,
-		backgroundImage: 'none',
-		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'},
-		top: 70,
-		width:'80%',
-		height:35
-		
-	});
-	
-	// Creates "Browse" button
-	var btn2 = Titanium.UI.createButton({
-		color:'#000',
-		title:"Browse",
-		color: global.colors.dark,
-		borderColor: global.colors.dark,
-		borderRadius: 5,
-		borderWidth: 1,
-		backgroundColor: global.colors.lightest,
-		backgroundImage: 'none',
-		font:{fontSize:18,fontWeight:'normal',fontFamily:'Helvetica Neue'},
-		bottom:120,
-		width:'80%',
-		height:35
-	});
-	
-	// Creates label for "browsing by year/style"
-	var label1 = Titanium.UI.createLabel({
-		color:'#000',            // Black color
-		text:'Browse By Year/Style',
-		font:{fontSize:18,fontFamily:'Helvetica Neue'},
-		textAlign:'center',
-		top: 130,
-		width:'auto'
-	});
-	
-	// Displays pop-up message after clicking buttons
-	btn.addEventListener("click", function(e){
-		alert(e.source + " RESULTS FOR SEARCH");
-	});
-	btn2.addEventListener("click", function(e){
-		alert(e.source + " RESULTS FOR BROWSING");
-	});
-	
-	self.add(wines);
-	self.add(year);
-	self.add(style);
-	self.add(btn);
-	self.add(btn2);
-	self.add(label1);
-	//self.open();
+	self.add(overview);
 	global.outputHook(self);
 	return self;
 };
-
 module.exports = CheckInsWindow;
