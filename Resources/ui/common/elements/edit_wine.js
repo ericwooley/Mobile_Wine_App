@@ -1,10 +1,9 @@
 // ***********************************************
 // WINE LIFE
-// File: edit_wine.js (gets called in the search_results.js file)
+// File: edit_wine.js
 // Author: Ivan Rodriguez
 // Status: UNDER DEVELOPMENT
-// Comments: Wine Life icon and name on top of pages are missing. Tabs are also
-//			missing. Cannot go back to app after finding 0 results. Wine name, varietal,
+// Comments: Wine name, varietal,
 // 			and region are stored in array as a single element. Need to push data to 
 //			server.
 // ***********************************************

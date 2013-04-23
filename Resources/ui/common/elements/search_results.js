@@ -1,8 +1,6 @@
 module.exports = function(result, callback, addwine){
 	Ti.API.info("loading search results: ");
 	var global = require('ui/common/globals');
-	
-	
 			
 	var table = Titanium.UI.createView
 	({
@@ -13,7 +11,6 @@ module.exports = function(result, callback, addwine){
 		bottom: 10
 	});
 	
-	
 	Ti.API.info(JSON.stringify(result));
 	var make_row = require('ui/common/elements/search_results/make_row');
 	var tbl_data = [];
@@ -21,117 +18,95 @@ module.exports = function(result, callback, addwine){
 	//Ti.API.info(pl.length + " results");
 	var first = true;
 	// if we have a result
-	if(pl.length > 0){
-		//var c = global.android? 10: pl.length; 
+	if(pl.length > 0){ // outer if statement begins
 		c = pl.length;
-		for(var i = 0; i < c; ++i){
-			if(first){
+		for(var i = 0; i < c; ++i){ // for loop begins
+			if(first){ // inner if statement begins
 				table.add(make_row({
 					wine: pl[i],
 					top: 20,
 					callback: callback
 				}));
 				first = false;
-			}
-			else{
+			} // inner if statement ends
+			else { // else statement begins
 				table.add(make_row({
 					wine: pl[i],
 					top: 10,
 					callback: callback
 				}));
-			}
-			}
-		// Add Wine row to bottom of list
-	if(addwine == true){				
-	var row_block = Ti.UI.createView({
-		width: Ti.UI.FILL,
-		height: Ti.UI.SIZE,
-	    top: 5,
-		left: 10,
-		right: 10,
-		backgroundColor: '#fcf3e1',
-		layout: 'vertical'
-	});
-			
-	var lbl_addwine = Ti.UI.createLabel({
-		color:'black',
-		text: "Don't see the wine you were looking for?\nAdd it to our database",
-		font:{fontSize:20,fontWeight:'normal',fontFamily:'Helvetica Neue'},
-		touchEnabled:false
-	});
-			
-	row_block.add(lbl_addwine);
-	table.add(row_block);
-			
-	row_block.addEventListener('click', function(e){
-		alert('add wine clicked');  // load add wine page
-	});	
-	}
+			} // else statement ends
+		} // for loop ends
+	}; // outer if statement ends
 
-	}
-	
-
-	// else  // When there are no results from a search, call function to add a wine.
-	// {
-		// ////////////////////// CHANGED BY IVAN ///////////////////////
-		// 
-		// 
-		// /*
-		// var row = Ti.UI.createTableViewRow
-		// ({
-			// hasChild:true,
-		// });
-		// var message = Ti.UI.createLabel
-		// ({
-			// color:'black',
-			// text: "0 Results",
-			// font:{fontSize:16,fontWeight:'normal',fontFamily:'Helvetica Neue'},
-			// touchEnabled:false
-		// });
-		// row.add(message);
-		// table.add(row);
-// 
-		// tbl_data.push(row);
-		// */
-		// ////////////////////// END OF CHANGES ///////////////////////
-	// }
-	
-	
+/*
+	// Add Wine row to bottom of list
+	if(addwine == true){ // if statement begins			
+		var row_block = Ti.UI.createView({
+			width: Ti.UI.FILL,
+			height: Ti.UI.SIZE,
+	    	top: 5,
+			left: 10,
+			right: 10,
+			backgroundColor: '#fcf3e1',
+			layout: 'vertical'
+		});
+			
+		var lbl_addwine = Ti.UI.createLabel({
+			color:'black',
+			text: "Don't see the wine you were looking for?\nAdd it to our database",
+			font:{fontSize:20,fontWeight:'normal',fontFamily:'Helvetica Neue'},
+			touchEnabled:false
+		});
+		
+		// Add message to the created view 'row_block' when a wine was added to the end of our database
+		row_block.add(lbl_addwine);
+		// Created view 'row_block' attached to the super view 'table' for this file
+		table.add(row_block);
+			
+		row_block.addEventListener('click', function(e){
+			alert('add wine clicked');  // load add wine page
+		});	
+	}; // if statement ends
+*/
 	
 	/**********************************************************
 	 * 
-	 * This still needs work, doesn't open in a resonable way
+	 * This still needs work, it now opens a new window with a
+	 * message but once label gets clicked an error occurs.
 	 * 
 	 **********************************************************/
 	
-	
-	// if(pl.length < 1 || !pl[0].friend){
-		// var add_wine = Ti.UI.createView({
-			// width: Titanium.Platform.displayCaps.platformWidth - 20,
-			// height: Ti.UI.SIZE,
-			// top: 10,
-			// left: 10,
-			// right: 10,
-			// backgroundColor: '#fcf3e1',
-			// borderRadius: global.android?0:10,
-			// //title: "Don't see the wine you were looking for?\nAdd it to our database",
-		// });
-		// add_wine.add(Ti.UI.createLabel({
-			// width: Ti.UI.SIZE,
-			// height: Ti.UI.SIZE,
-			// top:10, bottom: 10,
-			// textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-			// text: "Don't see the wine you were looking for?\nAdd it to our database",
-			// touchEnabled: false
-		// }));
-		// table.add(add_wine);
-		// var edit_wine = require('ui/common/elements/edit_wine');
-		// add_wine.addEventListener('click', function(){
-			// var ew = edit_wine();
-			// ew.containingTab = table.containingTab;
-			// table.containingTab.open(wr);
-		// });
-	// }
+	if(pl.length < 1 || !pl[0].friend){
+		var add_wine = Ti.UI.createView({
+			width: Titanium.Platform.displayCaps.platformWidth - 20,
+			height: Ti.UI.SIZE,
+			top: 10,
+			left: 10,
+			right: 10,
+			backgroundColor: '#fcf3e1',
+			borderRadius: global.android?0:10,
+			//title: "Don't see the wine you were looking for?\nAdd it to our database",
+		});
+		add_wine.add(Ti.UI.createLabel({
+			width: Ti.UI.SIZE,
+			height: Ti.UI.SIZE,
+			top:10, bottom: 10,
+			textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+			text: "Don't see the wine you were looking for?\nAdd it to our database",
+			touchEnabled: false
+		}));
+		table.add(add_wine);
+		var edit_wine = require('ui/common/elements/edit_wine');
+		add_wine.addEventListener('click', function(){
+			var ew = edit_wine();
+			//ew.containingTab = table.containingTab;
+			ew.containingTab;
+			ew = table.containingTab;
+			//table.containingTab.open(wr);
+			table.containingTab.open(ew);
+		});
+	}; // if statement ends here when 0 results from a search.
 	
 	var table_view = Ti.UI.createView({
 		height: Ti.UI.SIZE,
